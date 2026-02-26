@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Answer Engine Optimization (AEO)
+# Pointing AI bots to a clean markdown summary of the site
+Allow: /llms.txt
+
+# Sitemaps
+Sitemap: https://www.gayrealestateconnecticut.com/sitemap.xml
