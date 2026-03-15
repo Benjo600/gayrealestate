@@ -8,19 +8,19 @@ const Features: React.FC = () => {
       step: 'Step 1',
       title: "One-Stop Shop",
       content: "From agents to a trusted lender and attorney, we have everything in place to support you through every step of your real estate journey — seamlessly and efficiently.",
-      image: "/images/features/one_stop_shop.png"
+      image: "/images/ct-highlights/01. One-stop shop 1.jpg"
     },
     {
       step: 'Step 2',
       title: "LGBTQ+ Friendly & Affirming",
       content: "We're part of the community, proudly serving the community, with a deep understanding of the unique experiences and needs of LGBTQ+ buyers and sellers.",
-      image: "/images/features/lgbtq_friendly.png"
+      image: "/images/ct-highlights/02. LGBTQ+ Friendly and Affirming.jpg"
     },
     {
       step: 'Step 3',
       title: "Local Specialists",
       content: "We don't just know the market — we know the neighborhoods, the towns, the vibe, and the community. From local insights and events to pricing strategy and timing, we help you make informed decisions with confidence.",
-      image: "/images/features/local_specialists.png"
+      image: "/images/ct-highlights/03. Local specialists.jpg"
     }
   ];
 

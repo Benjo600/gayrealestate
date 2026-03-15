@@ -30,10 +30,10 @@ const Footer: React.FC = () => {
           <p className="text-slate-400 text-base md:text-lg mb-8 md:mb-10 max-w-2xl mx-auto font-light px-4 md:px-0">
             Connect with our network of trusted, LGBTQ+ friendly agents and find a home where you truly belong.
           </p>
-          <a href="#find-agent" className="group px-8 py-3.5 md:px-10 md:py-4 bg-gradient-to-r from-brand-600 to-brand-700 text-white font-semibold text-[13px] md:text-base rounded-full hover:from-brand-500 hover:to-brand-600 transition-all duration-300 shadow-lg hover:shadow-brand-500/30 inline-flex items-center gap-2 md:gap-3">
+          <Link to="/#find-agent" className="group px-8 py-3.5 md:px-10 md:py-4 bg-gradient-to-r from-brand-600 to-brand-700 text-white font-semibold text-[13px] md:text-base rounded-full hover:from-brand-500 hover:to-brand-600 transition-all duration-300 shadow-lg hover:shadow-brand-500/30 inline-flex items-center gap-2 md:gap-3">
             Find Your Agent
             <ArrowRight className="w-4 h-4 md:w-5 md:h-5 transition-transform group-hover:translate-x-1" />
-          </a>
+          </Link>
         </div>
 
         {/* Main Footer Content */}

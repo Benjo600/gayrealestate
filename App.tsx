@@ -12,6 +12,7 @@ import SellersGuide from './components/pages/SellersGuide';
 import MarketingYourHome from './components/pages/MarketingYourHome';
 import AboutUs from './components/pages/AboutUs';
 import PrivacyPolicy from './components/pages/PrivacyPolicy';
+import Reviews from './components/pages/Reviews';
 
 const App: React.FC = () => {
   return (
@@ -30,6 +31,7 @@ const App: React.FC = () => {
         <Route path="/marketing-your-home" element={<MarketingYourHome />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/reviews" element={<Reviews />} />
         {/* Fallback */}
         <Route path="*" element={<HomePage />} />
       </Routes>

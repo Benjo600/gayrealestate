@@ -16,7 +16,7 @@ const AgentFinder: React.FC = () => {
   const getRoleBadge = (role: string) => {
     switch (role) {
       case 'agent': return { label: 'Realtor' };
-      case 'lender': return { label: 'Mortgage Banker' };
+      case 'lender': return { label: 'Mortgage Lender' };
       case 'attorney': return { label: 'Attorney' };
       default: return { label: 'Professional' };
     }
@@ -98,8 +98,8 @@ const AgentFinder: React.FC = () => {
                     <Target className="w-3.5 h-3.5" />
                   </div>
                   <div className="flex flex-col">
-                    <span className="text-[10px] uppercase tracking-wider font-bold text-slate-500">Award</span>
-                    <span className="text-xs font-semibold text-slate-200 line-clamp-1">{agent.stats.find(s => s.label.includes('Award') || s.label.includes('Nationwide') || s.label.includes('Focus') || s.label.includes('Approach') || s.label.includes('Specialty'))?.value || 'Top Performer'}</span>
+                    <span className="text-[10px] uppercase tracking-wider font-bold text-slate-500">{agent.stats.find(s => s.label === 'Areas' || s.label === 'Award')?.label || 'Areas'}</span>
+                    <span className="text-xs font-semibold text-slate-200 line-clamp-1">{agent.stats.find(s => s.label === 'Areas' || s.label === 'Award')?.value || 'Top Performer'}</span>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">

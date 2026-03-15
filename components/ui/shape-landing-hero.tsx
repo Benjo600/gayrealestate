@@ -1,9 +1,21 @@
 "use client";
 
-import React, { useRef } from "react";
-import { motion } from "framer-motion";
+import React, { useRef, useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Circle, ArrowRight, Play, Star } from "lucide-react";
 import { cn } from "../../lib/utils";
+
+// CT Highlights slideshow images
+const ctHighlightImages = [
+    "/images/ct-highlights/anastasia-oDpiy4LNyIs-unsplash.jpg",
+    "/images/ct-highlights/balazs-busznyak-MAIq7eiPLEQ-unsplash.jpg",
+    "/images/ct-highlights/christopher-luther-85O7wucKcdY-unsplash.jpg",
+    "/images/ct-highlights/hayrullah-gozcu-GytLIxS302k-unsplash.jpg",
+    "/images/ct-highlights/richard-liu-7AxIUra4j3E-unsplash.jpg",
+    "/images/ct-highlights/richard-liu-M2GrqHZMc4U-unsplash.jpg",
+    "/images/ct-highlights/rusty-watson-4L4UzXB9lD4-unsplash.jpg",
+    "/images/ct-highlights/rusty-watson-Uq5Nqfzr5zU-unsplash.jpg",
+];
 
 interface HeroGeometricProps {
     badge?: string;
@@ -24,7 +36,15 @@ function HeroGeometric({
     ctaHref = "#find-agent",
     backgroundImage = "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=60&w=1600&auto=format&fit=crop"
 }: HeroGeometricProps) {
-    const videoRef = useRef<HTMLVideoElement>(null);
+    const [currentSlide, setCurrentSlide] = useState(0);
+
+    // Auto-advance slideshow
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentSlide((prev) => (prev + 1) % ctHighlightImages.length);
+        }, 5000);
+        return () => clearInterval(interval);
+    }, []);
 
     const fadeUpVariants = {
         hidden: { opacity: 0, y: 20 },
@@ -77,39 +97,30 @@ function HeroGeometric({
             <div className="absolute bottom-8 left-8 w-24 h-24 border-l-2 border-b-2 border-gold-500/30 z-40 pointer-events-none" />
             <div className="absolute bottom-8 right-8 w-24 h-24 border-r-2 border-b-2 border-gold-500/30 z-40 pointer-events-none" />
 
-            {/* Background Video Layer */}
-            {backgroundImage && (
-                <div className="absolute inset-0 z-0">
-                    {/* Premium multi-layer overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-b from-zinc-900/70 via-zinc-900/20 to-zinc-900/85 z-10" />
-                    <div className="absolute inset-0 bg-gradient-to-r from-brand-900/15 via-transparent to-brand-900/15 z-10" />
-                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(10,10,15,0.5)_100%)] z-10" />
+            {/* Background Slideshow Layer */}
+            <div className="absolute inset-0 z-0">
+                {/* Premium multi-layer overlay */}
+                <div className="absolute inset-0 bg-gradient-to-b from-zinc-900/70 via-zinc-900/20 to-zinc-900/85 z-10" />
+                <div className="absolute inset-0 bg-gradient-to-r from-brand-900/15 via-transparent to-brand-900/15 z-10" />
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(10,10,15,0.5)_100%)] z-10" />
 
-                    {/* Subtle gold gradient accent */}
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(212,175,55,0.08)_0%,transparent_50%)] z-10" />
+                {/* Subtle gold gradient accent */}
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(212,175,55,0.08)_0%,transparent_50%)] z-10" />
 
-                    <video
-                        ref={videoRef}
-                        src="/hero-video.mp4#t=2"
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        preload="auto"
-                        className="w-full h-full object-cover hidden md:block"
-                        style={{
-                            willChange: 'transform',
-                            transform: 'translateZ(0)'
-                        }}
+                {/* CT Highlights Slideshow */}
+                <AnimatePresence mode="sync">
+                    <motion.img
+                        key={currentSlide}
+                        src={ctHighlightImages[currentSlide]}
+                        alt={`Connecticut scenery ${currentSlide + 1}`}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 1.5, ease: "easeInOut" }}
+                        className="absolute inset-0 w-full h-full object-cover"
                     />
-                    {/* Mobile background image placeholder */}
-                    <img
-                        src="/images/home_hero_mobile.png"
-                        alt="Stunning Real Estate at Sunset"
-                        className="w-full h-full object-cover md:hidden"
-                    />
-                </div>
-            )}
+                </AnimatePresence>
+            </div>
 
             {/* Floating decorative elements */}
             <div className="absolute top-1/4 left-10 w-2 h-2 rounded-full bg-gold-500/60 animate-float z-20" />
@@ -157,13 +168,16 @@ function HeroGeometric({
                             </h1>
                         </motion.div>
 
-                        {/* Description */}
+                        {/* Connecticut welcomes you + Description */}
                         <motion.div
                             custom={2}
                             variants={fadeUpVariants}
                             initial="hidden"
                             animate="visible"
                         >
+                            <p className="text-lg md:text-xl text-gold-300 font-semibold tracking-wide mb-2">
+                                Connecticut welcomes you
+                            </p>
                             <p className="text-base md:text-lg text-zinc-400 leading-relaxed max-w-xl mb-6 md:mb-10">
                                 {description}
                             </p>
@@ -192,6 +206,20 @@ function HeroGeometric({
 
                     </div>
                 </div>
+            </div>
+
+            {/* Slideshow indicator dots */}
+            <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-50 flex gap-2">
+                {ctHighlightImages.map((_, i) => (
+                    <button
+                        key={i}
+                        onClick={() => setCurrentSlide(i)}
+                        className={cn(
+                            "w-2 h-2 rounded-full transition-all duration-300",
+                            i === currentSlide ? "bg-gold-400 w-6" : "bg-white/30 hover:bg-white/50"
+                        )}
+                    />
+                ))}
             </div>
 
             {/* Premium gradient transition to next section */}
