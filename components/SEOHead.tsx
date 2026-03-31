@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { Helmet } from 'react-helmet-async';
 
 export interface SEOHeadProps {
     title: string;
@@ -18,8 +19,7 @@ export interface SEOHeadProps {
 }
 
 /**
- * Manages document <head> SEO tags declaratively via useEffect.
- * Cleans up on unmount / re-render so each page gets correct meta.
+ * Manages document <head> SEO tags using react-helmet-async.
  */
 const SEOHead: React.FC<SEOHeadProps> = ({
     title,
@@ -35,111 +35,46 @@ const SEOHead: React.FC<SEOHeadProps> = ({
     extraMeta,
     noIndex = false,
 }) => {
-    useEffect(() => {
-        // --- Title ---
-        const prevTitle = document.title;
-        document.title = title;
+    return (
+        <Helmet>
+            {/* Standard tags */}
+            <title>{title}</title>
+            <meta name="description" content={description} />
+            {keywords && <meta name="keywords" content={keywords} />}
+            {author && <meta name="author" content={author} />}
+            {noIndex && <meta name="robots" content="noindex, nofollow" />}
+            {canonical && <link rel="canonical" href={canonical} />}
 
-        // --- Helper to upsert a <meta> tag ---
-        const createdElements: HTMLElement[] = [];
+            {/* Open Graph */}
+            <meta property="og:title" content={title} />
+            <meta property="og:description" content={description} />
+            <meta property="og:type" content={ogType} />
+            {ogImage && <meta property="og:image" content={ogImage} />}
+            {ogImageAlt && <meta property="og:image:alt" content={ogImageAlt} />}
+            {canonical && <meta property="og:url" content={canonical} />}
+            <meta property="og:site_name" content="GayRealEstateCT.net" />
 
-        const setMeta = (attr: 'name' | 'property', key: string, content: string) => {
-            let el = document.querySelector<HTMLMetaElement>(`meta[${attr}="${key}"]`);
-            if (!el) {
-                el = document.createElement('meta');
-                el.setAttribute(attr, key);
-                document.head.appendChild(el);
-                createdElements.push(el);
-            }
-            el.setAttribute('content', content);
-        };
+            {/* Twitter Card */}
+            <meta name="twitter:card" content={twitterCard} />
+            <meta name="twitter:title" content={title} />
+            <meta name="twitter:description" content={description} />
+            {ogImage && <meta name="twitter:image" content={ogImage} />}
+            {ogImageAlt && <meta name="twitter:image:alt" content={ogImageAlt} />}
 
-        // --- Standard meta ---
-        setMeta('name', 'description', description);
+            {/* Extra meta tags */}
+            {extraMeta && Object.entries(extraMeta).map(([name, content]) => (
+                <meta key={name} name={name} content={content} />
+            ))}
 
-        if (keywords) {
-            setMeta('name', 'keywords', keywords);
-        }
-        if (author) {
-            setMeta('name', 'author', author);
-        }
-        if (noIndex) {
-            setMeta('name', 'robots', 'noindex, nofollow');
-        }
-
-        // --- Open Graph ---
-        setMeta('property', 'og:title', title);
-        setMeta('property', 'og:description', description);
-        setMeta('property', 'og:type', ogType);
-        if (ogImage) {
-            setMeta('property', 'og:image', ogImage);
-        }
-        if (ogImageAlt) {
-            setMeta('property', 'og:image:alt', ogImageAlt);
-        }
-        if (canonical) {
-            setMeta('property', 'og:url', canonical);
-        }
-        setMeta('property', 'og:site_name', 'GayRealEstateCT.net');
-
-        // --- Twitter Card ---
-        setMeta('name', 'twitter:card', twitterCard);
-        setMeta('name', 'twitter:title', title);
-        setMeta('name', 'twitter:description', description);
-        if (ogImage) {
-            setMeta('name', 'twitter:image', ogImage);
-        }
-        if (ogImageAlt) {
-            setMeta('name', 'twitter:image:alt', ogImageAlt);
-        }
-
-        // --- Extra meta ---
-        if (extraMeta) {
-            (Object.entries(extraMeta) as [string, string][]).forEach(([name, content]) => {
-                setMeta('name', name, content);
-            });
-        }
-
-        // --- Canonical link ---
-        let canonicalEl = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-        if (canonical) {
-            if (!canonicalEl) {
-                canonicalEl = document.createElement('link');
-                canonicalEl.setAttribute('rel', 'canonical');
-                document.head.appendChild(canonicalEl);
-                createdElements.push(canonicalEl);
-            }
-            canonicalEl.setAttribute('href', canonical);
-        }
-
-        // --- JSON-LD Structured Data ---
-        let ldScript: HTMLScriptElement | null = null;
-        if (structuredData) {
-            ldScript = document.createElement('script');
-            ldScript.setAttribute('type', 'application/ld+json');
-            ldScript.setAttribute('data-seo-head', 'true');
-            const dataArray = Array.isArray(structuredData) ? structuredData : [structuredData];
-            ldScript.textContent = JSON.stringify(
-                dataArray.length === 1 ? dataArray[0] : dataArray
-            );
-            document.head.appendChild(ldScript);
-        }
-
-        // --- Cleanup on unmount / re-render ---
-        return () => {
-            document.title = prevTitle;
-            createdElements.forEach((el) => {
-                if (el.parentNode) el.parentNode.removeChild(el);
-            });
-            if (ldScript && ldScript.parentNode) {
-                ldScript.parentNode.removeChild(ldScript);
-            }
-            // Remove any previous JSON-LD injected by this component
-            document.querySelectorAll('script[data-seo-head="true"]').forEach((el) => el.remove());
-        };
-    }, [title, description, canonical, ogType, ogImage, ogImageAlt, twitterCard, keywords, author, structuredData, extraMeta, noIndex]);
-
-    return null; // Renders nothing — side-effect only
+            {/* JSON-LD Structured Data */}
+            {structuredData && (
+                <script type="application/ld+json">
+                    {JSON.stringify(structuredData)}
+                </script>
+            )}
+        </Helmet>
+    );
 };
 
 export default SEOHead;
+

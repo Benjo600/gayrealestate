@@ -188,9 +188,9 @@ const BlogPost: React.FC = () => {
     const blogSEOData = useMemo(() => {
         if (!post) return null;
         return {
-            pageTitle: `${post.title} | Gay Real Estate CT`,
-            pageDescription: post.excerpt,
-            canonicalUrl: `${BASE_URL}/blog/${post.slug}`,
+            title: `${post.title} | Gay Real Estate CT`,
+            description: post.excerpt,
+            canonical: `${BASE_URL}/blog/${post.slug}`,
             structuredData: [
                 {
                     '@context': 'https://schema.org',
@@ -278,7 +278,7 @@ const BlogPost: React.FC = () => {
                             {agent ? (
                                 <Link to={`/agent/${agent.id}`} className="flex items-center gap-4 group">
                                     <div className="relative p-1 rounded-2xl bg-white border border-slate-200 group-hover:border-brand-400 transition-colors shadow-sm">
-                                        <img src={agent.image} className="w-16 h-16 md:w-20 md:h-20 rounded-xl object-cover grayscale-[0.05] group-hover:grayscale-0 transition-all" style={{ objectPosition: 'center 20%' }} />
+                                        <img src={agent.image} alt={agent.name} className="w-16 h-16 md:w-20 md:h-20 rounded-xl object-cover grayscale-[0.05] group-hover:grayscale-0 transition-all" style={{ objectPosition: 'center 20%' }} />
                                     </div>
                                     <div>
                                         <p className="text-slate-900 font-bold text-lg mb-0.5 group-hover:text-brand-600 transition-colors">{post.author}</p>
@@ -388,7 +388,7 @@ const BlogPost: React.FC = () => {
                                 <div className="flex items-center gap-5 mb-8 relative z-10">
                                     <div className="relative group/photo">
                                         <div className="absolute -inset-2 bg-gradient-to-br from-brand-400 to-brand-600 rounded-2xl opacity-20 group-hover/photo:opacity-40 transition-opacity blur-[2px]" />
-                                        <img src={agent.image} className="relative w-32 h-32 rounded-xl object-cover border-2 border-white/10 shadow-2xl" style={{ objectPosition: 'center 20%' }} />
+                                        <img src={agent.image} alt={agent.name} className="relative w-32 h-32 rounded-xl object-cover border-2 border-white/10 shadow-2xl" style={{ objectPosition: 'center 20%' }} />
                                         <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-brand-500 rounded-full border-4 border-slate-900 flex items-center justify-center shadow-lg">
                                             <CheckCircle2 className="w-5 h-5 text-white" />
                                         </div>
@@ -453,7 +453,7 @@ const BlogPost: React.FC = () => {
                         {BLOG_POSTS.filter(p => p.id !== post.id).slice(0, 3).map((p) => (
                             <Link key={p.id} to={`/blog/${p.slug}`} className="group block">
                                 <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden mb-8 shadow-lg">
-                                    <img src={p.image} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+                                    <img src={p.image} alt={p.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
                                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                                 </div>
                                 <div className="space-y-4 px-2">
