@@ -3,6 +3,12 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import sitemap from 'vite-plugin-sitemap';
 
+import { BLOG_POSTS } from './data/blogs';
+import { agents } from './data/agents';
+
+const blogRoutes = BLOG_POSTS.map(post => `/blog/${post.slug}`);
+const agentRoutes = Object.keys(agents).map(id => `/agent/${id}`);
+
 export default defineConfig({
   server: {
     port: 3000,
@@ -24,7 +30,9 @@ export default defineConfig({
         '/relocation', 
         '/marketing', 
         '/mortgage-calculator', 
-        '/reviews'
+        '/reviews',
+        ...blogRoutes,
+        ...agentRoutes
       ]
     })
   ],
