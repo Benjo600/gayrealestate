@@ -16,8 +16,8 @@ const phases = [
         icon: Clipboard,
         num: '02',
         title: 'Prepare & Stage Your Home',
-        body: `Buyers make decisions in the first 30 seconds. We'll walk through your home room-by-room and identify exactly what will move the needle — and what's unnecessary expense. Our recommendations focus on maximizing ROI, not perfectionism.`,
-        checklist: ['Pre-listing walkthrough with prioritized action items', 'Connections to trusted contractors, painters, and cleaners', 'Professional staging consultation (or full staging for vacant homes)', 'Curb appeal assessment and improvements'],
+        body: `Buyers make decisions in the first 30 seconds. We'll walk through your home room-by-room and identify exactly what will move the needle — and what's unnecessary expense. We will also help you complete the mandatory Connecticut Residential Property Condition Disclosure Report.`,
+        checklist: ['Pre-listing walkthrough with prioritized action items', 'Completion of mandatory CT Property & Lead Disclosures', 'Professional staging consultation (or full staging for vacant homes)', 'Connections to trusted contractors, painters, and cleaners'],
     },
     {
         icon: TrendingUp,
@@ -46,9 +46,12 @@ const SellersGuide: React.FC = () => {
     useEffect(() => { window.scrollTo(0, 0); }, []);
 
     return (
-        <div className="min-h-screen bg-slate-50">
+        <div 
+            className="min-h-screen font-sans relative selection:bg-purple-500/20"
+            style={{ background: 'linear-gradient(160deg, #fdf4ff 0%, #fff7f0 25%, #f0f9ff 50%, #f7fff4 75%, #fdf4ff 100%)' }}
+        >
             <SEOHead
-                title="Connecticut Seller's Guide | LGBTQ+-Allied Real Estate | GayRealEstate.com"
+                title="Connecticut Seller's Guide | LGBTQ+-Allied Real Estate | GayRealEstateCT.net"
                 description="The complete guide to selling your Connecticut home — pricing strategy, staging, marketing, offer negotiation, and closing. Written by LGBTQ+-allied CT real estate professionals."
                 canonical="https://www.gayrealestateconnecticut.com/sellers-guide"
                 keywords="Connecticut home selling guide, sell my home Connecticut LGBTQ, CT real estate seller guide, how to sell your home for more Connecticut"
@@ -64,26 +67,27 @@ const SellersGuide: React.FC = () => {
             </nav>
 
             {/* Hero */}
-            <header className="relative bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 pt-24 md:pt-32 pb-12 md:pb-24 overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_30%,rgba(212,175,55,0.15),transparent_60%)]" />
-                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-400/40 to-transparent" />
-                <div className="max-w-4xl mx-auto px-4 md:px-6 text-center relative z-10">
-                    <div className="inline-flex items-center gap-2 px-4 py-1.5 md:px-5 md:py-2 bg-white/10 rounded-full border border-white/10 mb-6 md:mb-8">
-                        <TrendingUp className="w-3.5 h-3.5 md:w-4 md:h-4 text-gold-400" />
-                        <span className="text-[10px] md:text-xs font-bold text-gold-300 uppercase tracking-widest">Seller's Guide</span>
+            <header className="relative pt-32 md:pt-40 pb-12 md:pb-20 overflow-hidden text-center">
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_15%_30%,rgba(229,0,0,0.07),transparent_55%)] pointer-events-none" />
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_85%_25%,rgba(0,76,255,0.07),transparent_50%)] pointer-events-none" />
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_70%,rgba(119,0,136,0.06),transparent_55%)] pointer-events-none" />
+                <div className="max-w-4xl mx-auto px-4 md:px-6 relative z-10">
+                    <div className="inline-flex items-center gap-2 px-5 py-2 bg-white/80 rounded-full border border-purple-200/50 shadow-sm mb-6 md:mb-8">
+                        <TrendingUp className="w-4 h-4 text-purple-500" />
+                        <span className="text-xs font-semibold text-slate-600 uppercase tracking-widest">Seller's Guide</span>
                     </div>
-                    <h1 className="text-4xl md:text-6xl font-serif font-bold text-white mb-4 md:mb-6 leading-tight">
+                    <h1 className="text-4xl md:text-6xl font-display font-bold text-slate-900 mb-4 md:mb-6 leading-tight">
                         Sell Smart.<br />
-                        <span className="bg-gradient-to-r from-gold-300 to-gold-500 bg-clip-text text-transparent">Sell for More.</span>
+                        <span style={{ background: 'linear-gradient(135deg, #770088, #004CFF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Sell for More.</span>
                     </h1>
-                    <p className="text-slate-300 text-base md:text-lg max-w-2xl mx-auto leading-relaxed font-light">
+                    <p className="text-slate-600 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
                         A five-phase guide to selling your Connecticut home — from pre-listing strategy to closing table. Written by agents who close deals, not just write guides.
                     </p>
                     <div className="flex flex-wrap gap-4 justify-center mt-10">
-                        <a href="#phase-1" className="px-8 py-4 bg-gradient-to-r from-gold-500 to-gold-600 text-slate-900 font-bold rounded-full hover:shadow-lg hover:shadow-gold-500/30 transition-all inline-flex items-center gap-2">
+                        <a href="#phase-1" className="px-8 py-4 text-white font-bold rounded-full shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all inline-flex items-center gap-2" style={{ background: 'linear-gradient(135deg, #C0003A 0%, #6B008A 45%, #0A2FA8 100%)' }}>
                             Read the Guide <ArrowRight className="w-4 h-4" />
                         </a>
-                        <a href="/home-valuation" className="px-8 py-4 bg-white/10 border border-white/20 text-white font-semibold rounded-full hover:bg-white/20 transition-all">
+                        <a href="/#contact" className="px-8 py-4 bg-white/60 backdrop-blur-sm border border-purple-200 text-slate-700 font-semibold rounded-full hover:bg-white hover:border-purple-300 transition-all shadow-sm">
                             Get a Free Valuation
                         </a>
                     </div>
@@ -113,14 +117,14 @@ const SellersGuide: React.FC = () => {
                 {phases.map((phase, i) => {
                     const Icon = phase.icon;
                     return (
-                        <div key={i} id={`phase-${i + 1}`} className="bg-white rounded-2xl md:rounded-3xl shadow-sm border border-slate-100 overflow-hidden group hover:border-gold-300 hover:shadow-xl transition-all duration-500">
-                            <div className="bg-gradient-to-r from-slate-800 to-slate-700 p-6 md:p-8 flex items-center gap-4 md:gap-6">
-                                <div className="w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-gold-500/20 border border-gold-400/30 flex items-center justify-center flex-shrink-0">
-                                    <Icon className="w-6 h-6 md:w-7 md:h-7 text-gold-300" />
+                        <div key={i} id={`phase-${i + 1}`} className="bg-white/70 backdrop-blur-sm rounded-2xl md:rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-purple-100/60 overflow-hidden group hover:border-purple-300 hover:shadow-xl transition-all duration-500">
+                            <div className="px-6 py-5 md:px-10 md:py-6 border-b border-purple-100/50 flex items-center gap-4 md:gap-6" style={{ background: 'linear-gradient(to right, rgba(255,255,255,0.8), rgba(247,242,255,0.8))' }}>
+                                <div className="w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl shadow-sm border border-purple-100 flex items-center justify-center flex-shrink-0" style={{ background: 'linear-gradient(135deg, #C0003A 0%, #6B008A 45%, #0A2FA8 100%)' }}>
+                                    <Icon className="w-6 h-6 md:w-7 md:h-7 text-white" />
                                 </div>
                                 <div>
-                                    <p className="text-gold-400 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-1 md:mb-2">Phase {phase.num}</p>
-                                    <h2 className="text-xl md:text-2xl font-serif font-bold text-white">{phase.title}</h2>
+                                    <p className="text-[10px] md:text-xs font-bold uppercase tracking-widest mb-1 md:mb-2" style={{ background: 'linear-gradient(90deg, #E50000, #FF8D00, #FFEE00, #028121, #004CFF, #770088)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Phase {phase.num}</p>
+                                    <h2 className="text-xl md:text-2xl font-display font-bold text-slate-900">{phase.title}</h2>
                                 </div>
                             </div>
                             <div className="p-5 md:p-8">
@@ -143,23 +147,26 @@ const SellersGuide: React.FC = () => {
             </section>
 
             {/* Testimonial */}
-            <section className="bg-gradient-to-br from-slate-800 to-slate-900 py-16 md:py-20">
-                <div className="max-w-4xl mx-auto px-4 md:px-6">
-                    <div className="text-center mb-10 md:mb-12">
-                        <div className="flex justify-center gap-1 text-gold-400 text-lg md:text-xl mb-4 md:mb-6">
-                            {[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 md:w-6 md:h-6 fill-gold-400" />)}
-                        </div>
-                        <blockquote className="text-white text-xl md:text-2xl font-serif italic leading-relaxed mb-4 md:mb-6 max-w-2xl mx-auto">
-                            "We listed on Thursday morning. By Saturday we had four offers. We accepted one at $62,000 over asking. The preparation strategy made all the difference."
-                        </blockquote>
-                        <p className="text-slate-400 text-xs md:text-sm">— Couple selling West Hartford home, Spring 2025</p>
+            <section className="max-w-4xl mx-auto px-4 md:px-6 pb-20 relative z-10 pt-8">
+                <div className="bg-white/80 backdrop-blur-md rounded-3xl border border-purple-100 p-10 md:p-16 text-center shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+                    <div className="flex justify-center gap-1 text-purple-400 text-lg md:text-xl mb-4 md:mb-6">
+                        {[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 md:w-6 md:h-6 fill-purple-400" />)}
                     </div>
+                    <blockquote className="text-slate-800 text-xl md:text-2xl font-display italic leading-relaxed mb-4 md:mb-6 max-w-2xl mx-auto font-medium">
+                        "We listed on Thursday morning. By Saturday we had four offers. We accepted one at $62,000 over asking. The preparation strategy made all the difference."
+                    </blockquote>
+                    <p className="text-slate-500 text-xs md:text-sm mb-8">— Couple selling West Hartford home, Spring 2025</p>
+
                     <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
-                        <a href="/home-valuation" className="px-6 py-3.5 md:px-10 md:py-4 bg-gradient-to-r from-gold-400 to-gold-600 text-slate-900 font-bold rounded-xl shadow-xl hover:shadow-gold-500/30 hover:-translate-y-0.5 transition-all duration-300 inline-flex items-center justify-center gap-2 text-sm md:text-base w-full sm:w-auto">
-                            Get Your Free Valuation <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
+                        <a 
+                            href="/#contact" 
+                            className="px-6 py-3.5 md:px-10 md:py-4 text-white font-bold rounded-xl md:rounded-2xl shadow-xl hover:-translate-y-1 transition-all duration-300 inline-flex items-center justify-center gap-2 text-sm md:text-base w-full sm:w-auto"
+                            style={{ background: 'linear-gradient(135deg, #C0003A 0%, #6B008A 45%, #0A2FA8 100%)' }}
+                        >
+                            Get Your Free Valuation <ArrowRight className="w-5 h-5" />
                         </a>
-                        <a href="/#contact" className="px-6 py-3.5 md:px-10 md:py-4 bg-white/10 border border-white/20 text-white font-semibold rounded-xl hover:bg-white/20 transition-all inline-flex items-center justify-center gap-2 text-sm md:text-base w-full sm:w-auto">
-                            <Phone className="w-3.5 h-3.5 md:w-4 md:h-4" /> Talk to a Listing Agent
+                        <a href="/#contact" className="px-6 py-3.5 md:px-10 md:py-4 bg-white border border-slate-200 text-slate-700 font-semibold rounded-xl hover:bg-slate-50 transition-all inline-flex items-center justify-center gap-2 text-sm md:text-base w-full sm:w-auto">
+                            <Phone className="w-4 h-4" /> Talk to a Listing Agent
                         </a>
                     </div>
                 </div>

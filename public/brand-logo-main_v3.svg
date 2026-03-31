@@ -1,0 +1,16 @@
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="rainbow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF3A33" /> <!-- Red -->
+      <stop offset="25%" stop-color="#FFA82E" /> <!-- Orange -->
+      <stop offset="50%" stop-color="#D7E02D" /> <!-- Yellow-Green -->
+      <stop offset="75%" stop-color="#2D9EE0" /> <!-- Blue -->
+      <stop offset="100%" stop-color="#9C27B0" /> <!-- Purple -->
+    </linearGradient>
+  </defs>
+  <!-- Main continuous line design matching the user's exact logo -->
+  <path d="M50 15L15 45V80C15 85 20 90 25 90H40C40 90 40 75 50 75C60 75 60 90 60 90H75C80 90 85 85 85 80V45L50 15Z" 
+    stroke="url(#rainbow)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M50 75C25 75 20 40 40 40C45 40 50 45 50 45C50 45 55 40 60 40C80 40 75 75 50 75Z" 
+    stroke="url(#rainbow)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

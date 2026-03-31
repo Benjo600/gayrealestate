@@ -1,8 +1,9 @@
 "use client"
 
-import React, { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import React, { useState, useEffect, useRef } from "react"
+import { motion, AnimatePresence, useScroll, useTransform, useSpring } from "framer-motion"
 import { cn } from "../../lib/utils"
+import { ChevronUp, ChevronDown } from "lucide-react"
 
 interface Feature {
   step: string
@@ -23,29 +24,44 @@ export function FeatureSteps({
   features,
   className,
   title = "How to get Started",
-  autoPlayInterval = 3000,
   imageHeight = "h-[400px]",
 }: FeatureStepsProps) {
   const [currentFeature, setCurrentFeature] = useState(0)
-  const [progress, setProgress] = useState(0)
+  const [direction, setDirection] = useState(1)
+  const containerRef = useRef<HTMLDivElement>(null)
 
+  // Use page scroll within the component's range to drive the active slide
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start center", "end center"],
+  })
+
+  // Transform scroll percentage (0-1) to feature index (0 to length-1)
+  const featureIndex = useTransform(scrollYProgress, [0, 1], [0, features.length - 1])
+  
+  // Update state when scroll crosses a step boundary
   useEffect(() => {
-    const interval = 100;
-    const increment = 100 / (autoPlayInterval / interval);
+    return featureIndex.onChange((v) => {
+      const nextIndex = Math.round(v)
+      if (nextIndex !== currentFeature) {
+        setDirection(nextIndex > currentFeature ? 1 : -1)
+        setCurrentFeature(nextIndex)
+      }
+    })
+  }, [featureIndex, currentFeature])
 
-    const timer = setInterval(() => {
-      setProgress((prev) => {
-        if (prev < 100) return prev + increment;
-        setCurrentFeature((prevFeat) => (prevFeat + 1) % features.length);
-        return 0;
-      });
-    }, interval);
+  const handleNext = () => {
+    setDirection(1)
+    setCurrentFeature((prev) => (prev + 1) % features.length)
+  }
 
-    return () => clearInterval(timer);
-  }, [features.length, autoPlayInterval]);
+  const handlePrev = () => {
+    setDirection(-1)
+    setCurrentFeature((prev) => (prev > 0 ? prev - 1 : features.length - 1))
+  }
 
   return (
-    <div className={cn("p-8 md:p-12", className)}>
+    <div ref={containerRef} className={cn("p-8 md:p-12", className)}>
       <div className="max-w-7xl mx-auto w-full">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-medium mb-12 text-center text-slate-900">
           {title}
@@ -58,11 +74,11 @@ export function FeatureSteps({
                 key={index}
                 className="relative cursor-pointer"
                 onClick={() => {
+                  setDirection(index > currentFeature ? 1 : -1);
                   setCurrentFeature(index);
-                  setProgress(0);
                 }}
               >
-                {/* Animated background pill - like navbar */}
+                {/* Animated background pill */}
                 {index === currentFeature && (
                   <motion.div
                     layoutId="feature-selector"
@@ -120,32 +136,83 @@ export function FeatureSteps({
 
           <div
             className={cn(
-              "order-1 md:order-2 relative h-[280px] md:h-[350px] lg:h-[450px] overflow-hidden rounded-2xl shadow-luxury",
+              "order-1 md:order-2 relative h-[280px] md:h-[350px] lg:h-[450px] overflow-hidden rounded-2xl shadow-luxury group",
               imageHeight
             )}
           >
+            {/* Navigation Arrows Overlay */}
+            <div className="absolute inset-0 z-40 flex flex-col pointer-events-none">
+              <div 
+                className="flex-1 flex items-start justify-center pt-8 opacity-0 group-hover:opacity-100 transition-all duration-300 bg-gradient-to-b from-charcoal-900/40 to-transparent pointer-events-auto cursor-pointer"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handlePrev();
+                }}
+              >
+                <motion.div 
+                  whileHover={{ y: -5, scale: 1.1 }}
+                  className="w-14 h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-xl"
+                >
+                  <ChevronUp className="w-8 h-8" />
+                </motion.div>
+              </div>
+
+              <div 
+                className="flex-1 flex items-end justify-center pb-8 opacity-0 group-hover:opacity-100 transition-all duration-300 bg-gradient-to-t from-charcoal-900/40 to-transparent pointer-events-auto cursor-pointer"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleNext();
+                }}
+              >
+                <motion.div 
+                  whileHover={{ y: 5, scale: 1.1 }}
+                  className="w-14 h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-xl"
+                >
+                  <ChevronDown className="w-8 h-8" />
+                </motion.div>
+              </div>
+            </div>
+
             {/* Premium corner accents */}
             <div className="absolute top-4 left-4 w-8 h-8 border-l-2 border-t-2 border-white/40 z-30 pointer-events-none" />
             <div className="absolute top-4 right-4 w-8 h-8 border-r-2 border-t-2 border-white/40 z-30 pointer-events-none" />
             <div className="absolute bottom-4 left-4 w-8 h-8 border-l-2 border-b-2 border-white/40 z-30 pointer-events-none" />
             <div className="absolute bottom-4 right-4 w-8 h-8 border-r-2 border-b-2 border-white/40 z-30 pointer-events-none" />
 
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="popLayout" custom={direction}>
               {features.map(
                 (feature, index) =>
                   index === currentFeature && (
                     <motion.div
                       key={index}
-                      className="absolute inset-0 rounded-2xl overflow-hidden bg-slate-100"
-                      initial={{ y: 100, opacity: 0, scale: 0.95 }}
-                      animate={{ y: 0, opacity: 1, scale: 1 }}
-                      exit={{ y: -100, opacity: 0, scale: 0.95 }}
+                      custom={direction}
+                      variants={{
+                        initial: (direction: number) => ({
+                          y: direction > 0 ? 100 : -100,
+                          opacity: 0,
+                          scale: 0.95,
+                        }),
+                        animate: {
+                          y: 0,
+                          opacity: 1,
+                          scale: 1,
+                        },
+                        exit: (direction: number) => ({
+                          y: direction > 0 ? -100 : 100,
+                          opacity: 0,
+                          scale: 0.95,
+                        }),
+                      }}
+                      initial="initial"
+                      animate="animate"
+                      exit="exit"
                       transition={{ duration: 0.5, ease: [0.25, 0.4, 0.25, 1] }}
+                      className="absolute inset-0 rounded-2xl overflow-hidden bg-slate-100"
                     >
                       <img
                         src={feature.image}
                         alt={feature.step}
-                        className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                       />
                       {/* Premium gradient overlay */}
                       <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/60 via-transparent to-transparent" />
@@ -153,6 +220,19 @@ export function FeatureSteps({
                   ),
               )}
             </AnimatePresence>
+
+            {/* Scroll progress dot bar at the bottom */}
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-50 flex gap-2">
+              {features.map((_, i) => (
+                <div 
+                  key={i} 
+                  className={cn(
+                    "w-2 h-2 rounded-full transition-all duration-300",
+                    i === currentFeature ? "bg-gold-500 w-6" : "bg-white/30"
+                  )} 
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>

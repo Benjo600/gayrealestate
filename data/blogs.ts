@@ -205,7 +205,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <p>Abby Dudarewicz lives in Glastonbury with her wife, son, and two cats — she navigates the Connecticut school system as a parent, not just as an agent. That lived experience, combined with her professional focus on serving Hartford, Tolland, and Middlesex Counties, gives her a ground-level view of which districts are genuinely affirming and which are still catching up. She brings that knowledge to every family she works with.</p>
 
       <h2>The Legal Foundation: Connecticut's 2021 LGBTQ+ Equity Act</h2>
-      <p>Connecticut passed landmark legislation in 2021 requiring all public schools to include LGBTQ+ history in their curriculum. This is important context: while implementation varies by district, having an explicit legal mandate means schools can't simply ignore LGBTQ+ content. This places Connecticut significantly ahead of most states and provides a legal backstop for families who encounter resistance.</p>
+      <p>Connecticut passed landmark legislation in 2021 requiring all public schools to include LGBTQ+ history in their curriculum. When evaluating schools, we recommend cross-referencing <a href="https://www.greatschools.org/connecticut/" target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:underline">GreatSchools.org</a> with local community feedback. You can also find official state performance data on the <a href="https://edsight.ct.gov" target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:underline">Connecticut EdSight portal</a>.</p>
 
       <h2>Before You Commit to a District: Our Recommended Research Steps</h2>
       <ol>
@@ -459,7 +459,7 @@ Lakefront properties here are rare, fiercely held, and range from rustic seasona
       <p>For LGBTQ+ couples, especially unmarried partners, the choice of how to hold title can be the difference between a surviving partner inheriting the family home and being forced to negotiate with a deceased partner's relatives over a property they helped pay for. This is not hypothetical — Carolyn has seen these situations unfold, and they are avoidable.</p>
 
       <h2>Estate Planning: The Non-Negotiable Companion to Buying</h2>
-      <p>Connecticut's legal framework is strong for LGBTQ+ buyers — the state has robust non-discrimination laws and has recognized same-sex marriage since 2008. But legal protection at the state level doesn't automatically protect you from complications in estate administration, particularly if family members of a deceased partner choose to contest anything.</p>
+      <p>Connecticut's legal framework is strong for LGBTQ+ buyers — the state has robust non-discrimination laws and has recognized same-sex marriage since 2008. The <strong>Connecticut Commission on Human Rights and Opportunities (CHRO)</strong> is the state's primary agency for enforcing anti-discrimination laws. You can learn more about your rights on the <a href="https://portal.ct.gov/CHRO" target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:underline">official CHRO website</a>. Additionally, the <strong>Human Rights Campaign (HRC)</strong> provides a detailed <a href="https://www.hrc.org/resources/state-maps/connecticut" target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:underline">CT State Equity Profile</a> that breaks down the legal landscape.</p>
       <p>Carolyn's practice spans real estate transactions, trusts and estates, and probate law — which means she can address both the closing documents and the estate planning that should accompany any significant property purchase. A will, a healthcare proxy, and a durable power of attorney are the minimum infrastructure every couple should have in place before they take title to a property together.</p>
 
       <h2>What Happens at a Connecticut Real Estate Closing</h2>
@@ -486,5 +486,165 @@ Lakefront properties here are rare, fiercely held, and range from rustic seasona
     readTime: "9 MIN READ",
     author: "Carolyn Futtner",
     authorRole: "Real Estate Attorney | Founding Partner, MPF Law"
+  },
+  {
+    id: 10,
+    slug: "trans-moving-connecticut-guide",
+    title: "Trans Moving to Connecticut: What to Actually Know Before You Relocate",
+    excerpt: "Thinking about moving to Connecticut as a trans person? Here's what the state's protections actually cover, which towns are most welcoming, and what people don't tell you upfront.",
+    seoKeywords: "trans moving Connecticut, transgender moving Connecticut, trans friendly towns CT, LGBTQ relocation Connecticut",
+    content: `
+      <p class="lead-paragraph">Connecticut comes up a lot when trans people are looking for a safer state to move to — and it's not just hype. The legal protections are real, the general culture is more progressive than most of the country, and the state has actively passed shield laws protecting people flee-ing anti-trans legislation elsewhere. National organizations like the <a href="https://realestatealliance.org" target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:underline">LGBTQ+ Real Estate Alliance</a> often highlight CT as a model for inclusive housing.</p>
+
+      <p>But moving as a trans person involves more than just picking a state. You need movers you can trust, a realtor who gets it, and a realistic picture of what life actually looks like there — including the parts that are still imperfect.</p>
+
+      <h2>What Connecticut's Legal Protections Actually Cover</h2>
+      <p>Connecticut has banned housing discrimination based on gender identity since 1991. That covers advertising, leasing, and selling — meaning a landlord or seller legally cannot treat you differently because you're trans. For a deep dive into these protections, refer to the <a href="https://portal.ct.gov/CHRO/Legal/Legal/Discrimination-in-Housing" target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:underline">CHRO Housing Discrimination Guide</a>.</p>
+
+      <h2>Which Connecticut Towns Are Actually Welcoming</h2>
+      <ul>
+        <li><strong>West Hartford:</strong> Top-rated suburb, good schools, and a genuinely inclusive feel. Highly recommended for trans families with kids.</li>
+        <li><strong>New Haven:</strong> More urban, more visible queer presence, and a Yale-connected progressive culture. East Rock and Wooster Square are the primary hubs.</li>
+        <li><strong>Middletown:</strong> Smaller and quieter, but known locally as extremely trans-friendly due to Wesleyan University's influence.</li>
+      </ul>
+
+      <h2>Choosing Movers as a Trans Person</h2>
+      <p>Most moving companies don't advertise how they handle trans clients' name preferences or privacy. We recommend asking whether they use preferred names on all paperwork and if they have experience with LGBTQ+ relocations. Companies like <strong>Trans USA Moving</strong> specifically market to our community.</p>
+
+      <h2>Real Talk: What's Still Hard</h2>
+      <p>Connecticut is expensive. Electricity bills are among the highest in the US, and heating an older New England home in winter is a genuine budget item. Additionally, while protections are strong, wait times for trans-competent healthcare providers can be long in less urban areas.</p>
+    `,
+    image: "/trans_moving_ct.png",
+    category: "RELOCATION GUIDE",
+    date: "MARCH 28, 2026",
+    readTime: "7 MIN READ",
+    author: "Abby Dudarewicz",
+    authorRole: "Licensed CT Realtor & LGBTQ+ Community Advocate"
+  },
+  {
+    id: 11,
+    slug: "lgbtq-friendly-small-towns-connecticut",
+    title: "LGBTQ-Friendly Small Towns in Connecticut: An Honest Guide",
+    excerpt: "Not every LGBTQ person moving to Connecticut wants a city. Here are the small towns actually worth considering — with honest notes on what makes each one work.",
+    seoKeywords: "LGBTQ friendly small towns CT, gay friendly Connecticut small towns, queer small towns New England",
+    content: `
+      <p class="lead-paragraph">Most Connecticut relocation content focuses on West Hartford or New Haven. But a lot of LGBTQ people moving to the state aren't looking for suburbs or cities — they want something smaller, quieter, and still genuinely welcoming.</p>
+
+      <h2>Chester: The Creative Soul</h2>
+      <p>Chester sits in the Connecticut River Valley and has a genuine arts community. It comes up consistently in conversations about LGBTQ-friendly towns, particularly among queer artists and creatives. The tradeoff? It's very small, and you'll drive to Middletown or New Haven for major shopping and healthcare.</p>
+
+      <h2>Middletown: The Progressive Hub</h2>
+      <p>Middletown is larger than Chester but still qualifies as a small city. Wesleyan University gives it a progressive feel that punches way above its weight. It's often mentioned as one of the most genuinely welcoming mid-size towns in the state, with a great downtown scene.</p>
+
+      <h2>Ridgefield: Refined and Manicured</h2>
+      <p>In Fairfield County, Ridgefield is wealthier and more manicured, with a strong arts presence. It's known as one of the most progressive towns near the New York border. The trade-off is the cost — home prices are well above the state average.</p>
+
+      <h2>The Rural Reality</h2>
+      <p>In small-town CT, you absolutely need a car. Public transit is nearly non-existent. LGBTQ-specific healthcare is also thinner, meaning you might drive 30-45 minutes for a specialized provider. However, the tradeoff is space, nature, and a community where you are known as a neighbor first.</p>
+    `,
+    image: "/lgbtq_small_towns_ct.png",
+    category: "LOCAL SPOTLIGHT",
+    date: "MARCH 25, 2026",
+    readTime: "8 MIN READ",
+    author: "Travis Lipinski",
+    authorRole: "Licensed CT Realtor | Litchfield County Specialist"
+  },
+  {
+    id: 12,
+    slug: "wooster-square-new-haven-lgbtq-neighborhood",
+    title: "Wooster Square New Haven: Is It Still the Best LGBTQ Neighborhood?",
+    excerpt: "Wooster Square is New Haven's most talked-about LGBTQ neighborhood. Here's what it's actually like to live there — the community, the tradeoffs, and what you need to know.",
+    seoKeywords: "Wooster Square New Haven LGBTQ, gay neighborhood New Haven CT, moving to New Haven LGBTQ",
+    content: `
+      <p class="lead-paragraph">Wooster Square gets mentioned in almost every guide to LGBTQ life in New Haven — and for good reason. It's the most historically queer-concentrated part of the city, it has a real neighborhood feel, and it's where you'll find the highest density of pride flags and community-minded neighbors.</p>
+
+      <h2>The Neighborhood Character</h2>
+      <p>Wooster Square is New Haven's Little Italy — and also its de facto gay neighborhood. Victorian and Gothic-style row houses line streets that have been on the National Register of Historic Places for decades. Frank Pepe's and Sally's, two of the country's most famous pizza spots, are both here, adding a vibrant energy to the quiet streets.</p>
+
+      <h2>Why LGBTQ Residents Stay</h2>
+      <p>The queer presence here isn't loud or commercial — it’s grassroots. It’s the kind of place where a neighborhood trash cleanup or a park meet-up organized by queer residents draws dozens of people. The community is low-key, family-oriented, and genuinely welcoming. Plus, New Haven's Pride Center is just a short walk away.</p>
+
+      <h2>Real Talk: The Tradeoffs</h2>
+      <p>Wooster Square sits at the edge of more urban areas, meaning crime is a real conversation that happens at neighborhood meetings. Additionally, the neighborhood has become increasingly desirable, leading to gentrification that is shifting property values. While it’s more affordable than West Hartford, it’s no longer the "secret" it once was.</p>
+    `,
+    image: "/new_haven_wooster.png",
+    category: "LOCAL SPOTLIGHT",
+    date: "MARCH 20, 2026",
+    readTime: "7 MIN READ",
+    author: "Arek Wtulich",
+    authorRole: "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance"
+  },
+  {
+    id: 13,
+    slug: "chester-ct-lgbtq-family-guide",
+    title: "Chester, CT for LGBTQ Families: Is This Small Town Worth It?",
+    excerpt: "Chester comes up in almost every small-town LGBTQ Connecticut conversation. Here's what living there actually looks like for a gay family.",
+    seoKeywords: "Chester CT LGBTQ, gay family small town Connecticut, LGBTQ friendly Chester Connecticut",
+    content: `
+      <p class="lead-paragraph">Chester comes up constantly in conversations about LGBTQ-friendly small towns in Connecticut. It's an arts-focused community that punches way above its weight for a town of only 3,800 people.</p>
+
+      <h2>Community Without Performance</h2>
+      <p>Chester isn't trying to be a "gay town." It's just a small Connecticut town where LGBTQ residents are treated as neighbors. For families who want low-key normalcy rather than a visible scene, this is a distinct advantage. The town's galleries, theater, and restaurants create a sophisticated atmosphere that appeals to city-transplants.</p>
+
+      <h2>Nature and Space</h2>
+      <p>The Connecticut River Valley is genuinely beautiful, offering fall foliage, kayaking, and hiking right at your doorstep. Families often describe the slower pace as a major gain for their mental health and quality of life. You gain actual space for the same price as a cramped suburban lot elsewhere.</p>
+
+      <h2>What to Consider</h2>
+      <p>It is very small. If you don't click with the immediate community, options are limited. While Regional School District 4 is solid, it's not the same powerhouse as West Hartford. You will also drive for everything—groceries, medical appointments, and work. But for many LGBTQ families, the trade-off for a peaceful, affirming home is worth every mile.</p>
+    `,
+    image: "/chester_ct_family.png",
+    category: "FAMILY GUIDE",
+    date: "MARCH 15, 2026",
+    readTime: "8 MIN READ",
+    author: "Abby Dudarewicz",
+    authorRole: "Licensed CT Realtor & LGBTQ+ Community Advocate"
+  },
+  {
+    id: 14,
+    slug: "best-lgbtq-neighborhoods-new-haven-ct",
+    title: "Best LGBTQ Neighborhoods in New Haven, CT: A Real Breakdown",
+    excerpt: "Looking for the best LGBTQ neighborhood in New Haven? Here's a real breakdown of Wooster Square, East Rock, and Westville.",
+    seoKeywords: "best LGBTQ neighborhoods New Haven, gay neighborhood New Haven CT, moving to New Haven LGBTQ",
+    content: `
+      <p class="lead-paragraph">New Haven is often more affordable, more diverse, and more urban than its suburban neighbors. Yale's presence gives it an intellectual and progressive culture that makes it a top destination for LGBTQ buyers.</p>
+
+      <h2>East Rock: The Academic Enclave</h2>
+      <p>East Rock is the primary alternative to Wooster Square. It has a more residential, quieter feel and is a favorite among Yale faculty and young professionals. The tree-lined streets and proximity to East Rock Park make it an ideal spot for those who want city access without the noise. It feels slightly more "settled" than Wooster Square.</p>
+
+      <h2>Westville: Artsy and Walkable</h2>
+      <p>Westville sits on the western edge of the city and offers a "village" feel within the city limits. It’s artsy, walkable, and home to many galleries and small businesses. For LGBTQ people who want New Haven's culture but prefer less density, Westville is an exceptional value.</p>
+
+      <h2>Downtown / Ninth Square</h2>
+      <p>If you want urban energy, the Ninth Square area is the place to be. It's dense, walkable, and close to New Haven's main social hubs. While it’s mostly apartments, the culture is young, progressive, and very visible.</p>
+    `,
+    image: "/new_haven_neighborhoods.png",
+    category: "LOCAL SPOTLIGHT",
+    date: "MARCH 10, 2026",
+    readTime: "8 MIN READ",
+    author: "Arek Wtulich",
+    authorRole: "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance"
+  },
+  {
+    id: 15,
+    slug: "gay-realtor-connecticut-guide",
+    title: "Gay Realtor in Connecticut: How to Find One That Actually Helps",
+    excerpt: "A realtor who gets it makes a real difference. Here's what to look for when choosing an LGBTQ-affirming real estate agent in CT.",
+    seoKeywords: "gay realtor Connecticut, LGBTQ realtor Connecticut, gay real estate agent CT",
+    content: `
+      <p class="lead-paragraph">Buying or renting a home in Connecticut as an LGBTQ person is legally protected—but feeling comfortable through the process is just as important. A realtor who "gets it" understands the nuances of choosing a neighborhood and navigating the legalities of LGBTQ homeownership.</p>
+
+      <h2>What to Look For</h2>
+      <p>A genuinely affirming realtor will know which neighborhoods are safe and welcoming across the state, not just in the well-known hubs. They will understand the specific concerns around documentation for trans clients and will never assume anything about your family structure.</p>
+
+      <h2>Why it Matters</h2>
+      <p>Working with someone who shares your values saves time and stress. They can point out details—like a local school district's history with LGBTQ inclusion or a neighborhood's social vibe—that a standard agent might miss. At serhant.ct, we pride ourselves on being that expert resource for the community.</p>
+    `,
+    image: "/gay_realtor_guide.png",
+    category: "EXPERT ADVICE",
+    date: "MARCH 5, 2026",
+    readTime: "6 MIN READ",
+    author: "Arek Wtulich",
+    authorRole: "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance"
   }
 ];
+

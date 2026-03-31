@@ -13,6 +13,11 @@ export interface Agent {
     specialties: string[];
     credentials: { label: string; type: 'verified' | 'award' | 'achievement' }[];
     whyWorkWithMe: string[];
+    instagram?: string;
+    nmls?: string;
+    branchAddress?: string;
+    branchNmls?: string;
+    bookingLink?: string;
 }
 
 export const agents: Record<string, Agent> = {
@@ -20,7 +25,7 @@ export const agents: Record<string, Agent> = {
         id: "arek",
         name: "Arek Wtulich",
         title: "CT Realtor | William Raveis",
-        tagline: "Your dedicated advocate for inclusive home buying.",
+        tagline: "Your dedicated advocate for inclusive home buying, selling or investing.",
         image: "/images/Arek_Alt_1.jpg",
         heroImageStyle: { objectPosition: '65% 10%' },
         bio: "Arek Wtulich is a full-time, licensed CT Realtor who proudly serves the LGBTQ+ community and allies with enthusiasm, integrity, and a deeply personal approach to real estate. Since 2020, Arek has helped buyers and sellers across the state turn their housing goals into reality, with a special passion for guiding first-time homebuyers through what can often feel like an emotional and overwhelming process. His clients know him for his optimism, clear communication, and ability to create a calm, empowering experience from the first showing to the closing table.\n\nArek's dedication to excellence was recognized early in his career when he earned the Century 21 Quality Award in his first full year in the business. He believes that every client deserves not only expert market knowledge, but also a trusted advocate who understands the importance of feeling safe, seen, and supported, especially when making one of life's biggest financial and personal decisions.\n\nA passionate leader and advocate, Arek is deeply involved in both the real estate and LGBTQ+ communities. He was a Co-Founder and Vice President of the Connecticut Chapter of the LGBTQ+ Real Estate Alliance, and served on the Board of Directors for the Tri-County Alliance of Realtors, where he was the 2025 Vice President. He is also a HYPE Ambassador with Hartford Young Professionals & Entrepreneurs and an active member of BNI Rocky Hill.",
@@ -42,7 +47,8 @@ export const agents: Record<string, Agent> = {
             "Century 21 Quality Award recipient in first full year",
             "Deep expertise guiding first-time homebuyers",
             "Trusted advocate for LGBTQ+ community and allies"
-        ]
+        ],
+        instagram: "@areksellsre"
     },
     abby: {
         id: "abby",
@@ -69,7 +75,8 @@ export const agents: Record<string, Agent> = {
             "Personal LGBTQ+ lived experience as part of the community",
             "Deep coverage of Hartford, Tolland & Middlesex Counties",
             "Approachable, organized, and genuinely invested in your outcome"
-        ]
+        ],
+        instagram: "@abbydudarewicz"
     },
 
     travis: {
@@ -98,12 +105,13 @@ export const agents: Record<string, Agent> = {
             "Over a decade of property management experience",
             "Deep knowledge of architecture and property conditions",
             "Active community leader across multiple boards"
-        ]
+        ],
+        instagram: "@travislipinskitherealtor"
     },
     jake: {
         id: "jake",
         name: "Jake Earl",
-        title: "Senior Vice President | Total Mortgage",
+        title: "VP, Mortgage Banker | Total Mortgage",
         tagline: "Top 1% Lender turning complex finances into approvals.",
         image: "/images/jake.jpg?v=2",
         heroImageStyle: { objectFit: 'cover', objectPosition: 'top center' },
@@ -126,7 +134,12 @@ export const agents: Record<string, Agent> = {
             "#2 Lender at Total Mortgage in 2024",
             "Over 15 years of industry experience since 2010",
             "Business built on word-of-mouth referrals"
-        ]
+        ],
+        instagram: "@Jakethefishdaddy",
+        nmls: "975556",
+        branchAddress: "128 Garden Street, Farmington, CT 06032",
+        branchNmls: "2587938",
+        bookingLink: "https://www.totalmortgage.com/bankers/jake-earl"
     },
     carolyn: {
         id: "carolyn",
@@ -154,6 +167,7 @@ export const agents: Record<string, Agent> = {
             "Experienced across courtrooms including CT Appellate Court",
             "Founding Partner at Mancini, Provenzano & Futtner, LLC",
             "UConn Honors Scholar with deep legal expertise"
-        ]
+        ],
+        instagram: "@bronxette"
     }
 };

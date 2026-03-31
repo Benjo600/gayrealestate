@@ -33,8 +33,8 @@ export const BookTestimonial = ({ testimonials, agentImage, agentName }: Compone
         height={450}
         showCover={true}
         usePortrait={smallerDevice}
-        onFlip={(e: any) => console.log(e.data)}
-        onChangeState={(e: any) => console.log(e.data)}
+        onFlip={(e: any) => {}}
+        onChangeState={(e: any) => {}}
         className="book-container shadow-2xl"
         style={{}}
         startPage={0}

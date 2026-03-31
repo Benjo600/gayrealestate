@@ -23,6 +23,7 @@ const chapters = [
         title: 'Financing Your Home',
         points: [
             'Know the loan types: Conventional, FHA, VA, USDA, and CHFA (Connecticut-specific)',
+            'Complete CHFA\'s mandatory homebuyer education class (if using a state-funded loan)',
             'Understand PMI — and how to avoid or eliminate it',
             'Get pre-approved before making a single offer',
             'Work with a lender experienced with LGBTQ+ buyers and non-traditional income structures',
@@ -83,9 +84,12 @@ const BuyersGuide: React.FC = () => {
     useEffect(() => { window.scrollTo(0, 0); }, []);
 
     return (
-        <div className="min-h-screen bg-slate-50">
+        <div 
+            className="min-h-screen font-sans relative selection:bg-purple-500/20"
+            style={{ background: 'linear-gradient(160deg, #fdf4ff 0%, #fff7f0 25%, #f0f9ff 50%, #f7fff4 75%, #fdf4ff 100%)' }}
+        >
             <SEOHead
-                title="LGBTQ+ Buyer's Guide — Connecticut Real Estate | GayRealEstate.com"
+                title="LGBTQ+ Buyer's Guide — Connecticut Real Estate | GayRealEstateCT.net"
                 description="The complete Connecticut buyer's guide for LGBTQ+ home buyers. From credit to closing, neighborhood matching to legal protection — everything you need in one place."
                 canonical="https://www.gayrealestateconnecticut.com/buyers-guide"
                 keywords="LGBTQ buyers guide Connecticut, gay home buyer guide CT, Connecticut home buying LGBTQ, same sex couple home buying Connecticut guide"
@@ -101,25 +105,26 @@ const BuyersGuide: React.FC = () => {
             </nav>
 
             {/* Hero */}
-            <header className="relative bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 pt-24 md:pt-32 pb-12 md:pb-24 overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(124,58,237,0.2),transparent_60%)]" />
-                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-400/40 to-transparent" />
-                <div className="max-w-4xl mx-auto px-4 md:px-6 text-center relative z-10">
-                    <div className="inline-flex items-center gap-2 px-4 py-1.5 md:px-5 md:py-2 bg-white/10 rounded-full border border-white/10 mb-6 md:mb-8">
-                        <BookOpen className="w-3.5 h-3.5 md:w-4 md:h-4 text-gold-400" />
-                        <span className="text-[10px] md:text-xs font-bold text-gold-300 uppercase tracking-widest">Buyer's Guide</span>
+            <header className="relative pt-32 md:pt-40 pb-12 md:pb-20 overflow-hidden text-center">
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_15%_30%,rgba(229,0,0,0.07),transparent_55%)] pointer-events-none" />
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_85%_25%,rgba(0,76,255,0.07),transparent_50%)] pointer-events-none" />
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_70%,rgba(119,0,136,0.06),transparent_55%)] pointer-events-none" />
+                <div className="max-w-4xl mx-auto px-4 md:px-6 relative z-10">
+                    <div className="inline-flex items-center gap-2 px-5 py-2 bg-white/80 rounded-full border border-purple-200/50 shadow-sm mb-6 md:mb-8">
+                        <BookOpen className="w-4 h-4 text-purple-500" />
+                        <span className="text-xs font-semibold text-slate-600 uppercase tracking-widest">Buyer's Guide</span>
                     </div>
-                    <h1 className="text-4xl md:text-6xl font-serif font-bold text-white mb-4 md:mb-6 leading-tight">
-                        The Complete <span className="bg-gradient-to-r from-brand-300 to-gold-300 bg-clip-text text-transparent">LGBTQ+ Buyer's Guide</span><br />to Connecticut
+                    <h1 className="text-4xl md:text-6xl font-display font-bold text-slate-900 mb-4 md:mb-6 leading-tight">
+                        The Complete <span style={{ background: 'linear-gradient(135deg, #770088, #004CFF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>LGBTQ+ Buyer's Guide</span><br />to Connecticut
                     </h1>
-                    <p className="text-slate-300 text-base md:text-lg max-w-2xl mx-auto leading-relaxed font-light">
+                    <p className="text-slate-600 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
                         Six chapters of honest, practical guidance — from getting your finances right to closing the deal and protecting your investment legally.
                     </p>
                     <div className="flex flex-wrap gap-4 justify-center mt-10">
-                        <a href="#chapter-1" className="px-8 py-4 bg-gradient-to-r from-brand-500 to-brand-700 text-white font-semibold rounded-full hover:shadow-lg hover:shadow-brand-500/30 transition-all inline-flex items-center gap-2">
+                        <a href="#chapter-1" className="px-8 py-4 text-white font-bold rounded-full shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all inline-flex items-center gap-2" style={{ background: 'linear-gradient(135deg, #C0003A 0%, #6B008A 45%, #0A2FA8 100%)' }}>
                             Start Reading <ArrowRight className="w-4 h-4" />
                         </a>
-                        <a href="/#contact" className="px-8 py-4 bg-white/10 border border-white/20 text-white font-semibold rounded-full hover:bg-white/20 transition-all">
+                        <a href="/#contact" className="px-8 py-4 bg-white/60 backdrop-blur-sm border border-purple-200 text-slate-700 font-semibold rounded-full hover:bg-white hover:border-purple-300 transition-all shadow-sm">
                             Talk to an Agent
                         </a>
                     </div>
@@ -156,15 +161,15 @@ const BuyersGuide: React.FC = () => {
                 {chapters.map((ch, i) => {
                     const Icon = ch.icon;
                     return (
-                        <div key={i} id={`chapter-${i + 1}`} className="bg-white rounded-2xl md:rounded-3xl shadow-sm border border-slate-100 overflow-hidden hover:border-brand-200 hover:shadow-lg transition-all duration-500">
+                        <div key={i} id={`chapter-${i + 1}`} className="bg-white/70 backdrop-blur-sm rounded-2xl md:rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-purple-100/60 overflow-hidden hover:border-purple-300 hover:shadow-xl transition-all duration-500">
                             {/* Chapter Header */}
-                            <div className="bg-gradient-to-r from-slate-800 to-slate-700 p-6 md:p-8 flex items-center gap-4 md:gap-6">
-                                <div className="w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center flex-shrink-0">
+                            <div className="px-6 py-5 md:px-10 md:py-6 border-b border-purple-100/50 flex items-center gap-4 md:gap-6" style={{ background: 'linear-gradient(to right, rgba(255,255,255,0.8), rgba(247,242,255,0.8))' }}>
+                                <div className="w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl shadow-sm border border-purple-100 flex items-center justify-center flex-shrink-0" style={{ background: 'linear-gradient(135deg, #C0003A 0%, #6B008A 45%, #0A2FA8 100%)' }}>
                                     <Icon className="w-6 h-6 md:w-7 md:h-7 text-white" />
                                 </div>
                                 <div>
-                                    <p className="text-gold-400 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-1">{ch.num}</p>
-                                    <h2 className="text-xl md:text-2xl font-serif font-bold text-white">{ch.title}</h2>
+                                    <p className="text-[10px] md:text-xs font-bold uppercase tracking-widest mb-1" style={{ background: 'linear-gradient(90deg, #E50000, #FF8D00, #FFEE00, #028121, #004CFF, #770088)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>{ch.num}</p>
+                                    <h2 className="text-xl md:text-2xl font-display font-bold text-slate-900">{ch.title}</h2>
                                 </div>
                             </div>
                             {/* Chapter Body */}
@@ -189,15 +194,18 @@ const BuyersGuide: React.FC = () => {
             </section>
 
             {/* Download CTA */}
-            <section className="bg-gradient-to-br from-slate-800 to-slate-900 py-16 md:py-20">
-                <div className="max-w-4xl mx-auto px-4 md:px-6 text-center relative">
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 h-px w-48 bg-gradient-to-r from-transparent via-gold-400 to-transparent" />
-                    <h2 className="text-3xl md:text-4xl font-serif font-bold text-white mb-3 md:mb-4 mt-4">Want Personalized Advice?</h2>
-                    <p className="text-slate-300 text-base md:text-lg mb-6 md:mb-8 max-w-xl mx-auto">Every buyer's situation is different. Talk to one of our LGBTQ+-allied agents for guidance tailored to your goals, budget, and timeline.</p>
-                    <a href="/#contact" className="inline-flex items-center justify-center gap-2 px-6 py-3.5 md:px-10 md:py-5 bg-gradient-to-r from-brand-500 via-brand-600 to-gold-500 text-white font-bold rounded-xl md:rounded-2xl shadow-xl hover:shadow-brand-500/40 hover:-translate-y-0.5 transition-all duration-300 text-sm md:text-base w-full sm:w-auto">
-                        Get Free Personalized Advice <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
+            <section className="max-w-4xl mx-auto px-4 md:px-6 pb-20 relative z-10 pt-8">
+                <div className="bg-white/80 backdrop-blur-md rounded-3xl border border-purple-100 p-10 md:p-16 text-center shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+                    <h2 className="text-3xl md:text-4xl font-display font-bold text-slate-900 mb-3 md:mb-4">Want Personalized Advice?</h2>
+                    <p className="text-slate-600 text-base md:text-lg mb-6 md:mb-8 max-w-xl mx-auto">Every buyer's situation is different. Talk to one of our LGBTQ+-allied agents for guidance tailored to your goals, budget, and timeline.</p>
+                    <a 
+                        href="/#contact" 
+                        className="inline-flex items-center justify-center gap-2 px-6 py-3.5 md:px-10 md:py-5 text-white font-bold rounded-xl md:rounded-2xl shadow-xl hover:-translate-y-1 transition-all duration-300 text-sm md:text-base w-full sm:w-auto"
+                        style={{ background: 'linear-gradient(135deg, #C0003A 0%, #6B008A 45%, #0A2FA8 100%)' }}
+                    >
+                        Get Free Personalized Advice <ArrowRight className="w-5 h-5" />
                     </a>
-                    <p className="text-slate-500 text-[11px] md:text-xs mt-4">🔒 No commitment. Completely confidential.</p>
+                    <p className="text-slate-400 text-[11px] md:text-xs mt-4">🔒 No commitment. Completely confidential.</p>
                 </div>
             </section>
 

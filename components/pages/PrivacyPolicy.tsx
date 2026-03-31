@@ -7,7 +7,7 @@ import SEOHead from '../SEOHead';
 const sections = [
     {
         title: 'Information We Collect',
-        content: `When you use GayRealEstate.com, we may collect the following types of information:
+        content: `When you use GayRealEstateCT.net, we may collect the following types of information:
 
 **Information you provide directly:**
 - Contact information (name, email address, phone number)
@@ -85,7 +85,7 @@ If you have specific privacy concerns about how you engage with us, please reach
 - **Opt out** of the sale of your personal data (we do not sell personal data)
 - **Non-discrimination** — exercising any of these rights will not affect the quality of our services
 
-To exercise any of these rights, contact us at info@gayrealestateconnecticut.com. We will respond within 45 days as required by law.`,
+To exercise any of these rights, contact us securely via our website's contact form. We will respond within 45 days as required by law.`,
     },
     {
         title: 'Security',
@@ -111,8 +111,8 @@ Material changes — changes that significantly affect how we handle your person
         title: 'Contact Us',
         content: `If you have questions, concerns, or requests regarding this Privacy Policy or how we handle your personal data, please contact us:
 
-**GayRealEstate.com — Connecticut**
-Email: info@gayrealestateconnecticut.com
+**GayRealEstateCT.net — Connecticut**
+Contact Form: https://www.gayrealestateconnecticut.com/#contact
 Phone: (860) 404-2188
 
 We are committed to resolving privacy concerns promptly and transparently.`,
@@ -148,12 +148,15 @@ const PrivacyPolicy: React.FC = () => {
     };
 
     return (
-        <div className="min-h-screen bg-slate-50">
+        <div 
+            className="min-h-screen font-sans relative selection:bg-purple-500/20"
+            style={{ background: 'linear-gradient(160deg, #fdf4ff 0%, #fff7f0 25%, #f0f9ff 50%, #f7fff4 75%, #fdf4ff 100%)' }}
+        >
             <SEOHead
-                title="Privacy Policy | GayRealEstate.com"
-                description="GayRealEstate.com privacy policy — how we collect, use, and protect your personal information, with a specific commitment to LGBTQ+ community privacy."
+                title="Privacy Policy | GayRealEstateCT.net"
+                description="GayRealEstateCT.net privacy policy — how we collect, use, and protect your personal information, with a specific commitment to LGBTQ+ community privacy."
                 canonical="https://www.gayrealestateconnecticut.com/privacy-policy"
-                keywords="GayRealEstate.com privacy policy, Connecticut real estate privacy"
+                keywords="GayRealEstateCT.net privacy policy, Connecticut real estate privacy"
                 noIndex={false}
             />
 
@@ -167,39 +170,40 @@ const PrivacyPolicy: React.FC = () => {
             </nav>
 
             {/* Hero */}
-            <header className="relative bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 pt-24 md:pt-32 pb-12 md:pb-20 overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(124,58,237,0.1),transparent_60%)]" />
-                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-400/40 to-transparent" />
-                <div className="max-w-4xl mx-auto px-4 md:px-6 text-center relative z-10">
-                    <div className="inline-flex items-center gap-2 px-4 py-1.5 md:px-5 md:py-2 bg-white/10 rounded-full border border-white/10 mb-6 md:mb-8">
-                        <Shield className="w-3.5 h-3.5 md:w-4 md:h-4 text-gold-400" />
-                        <span className="text-[10px] md:text-xs font-bold text-gold-300 uppercase tracking-widest">Privacy Policy</span>
+            <header className="relative pt-32 md:pt-40 pb-12 md:pb-20 overflow-hidden text-center">
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_15%_30%,rgba(229,0,0,0.07),transparent_55%)] pointer-events-none" />
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_85%_25%,rgba(0,76,255,0.07),transparent_50%)] pointer-events-none" />
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_70%,rgba(119,0,136,0.06),transparent_55%)] pointer-events-none" />
+                <div className="max-w-4xl mx-auto px-4 md:px-6 relative z-10">
+                    <div className="inline-flex items-center gap-2 px-5 py-2 bg-white/80 rounded-full border border-purple-200/50 shadow-sm mb-6 md:mb-8">
+                        <Shield className="w-4 h-4 text-purple-500" />
+                        <span className="text-xs font-semibold text-slate-600 uppercase tracking-widest">Privacy Policy</span>
                     </div>
-                    <h1 className="text-3xl md:text-5xl font-serif font-bold text-white mb-3 md:mb-4 leading-tight">
+                    <h1 className="text-4xl md:text-6xl font-display font-bold text-slate-900 mb-4 leading-tight">
                         Your Privacy Matters.<br />
-                        <span className="bg-gradient-to-r from-brand-300 to-gold-300 bg-clip-text text-transparent">Especially Here.</span>
+                        <span style={{ background: 'linear-gradient(135deg, #770088, #004CFF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Especially Here.</span>
                     </h1>
-                    <p className="text-slate-400 text-xs md:text-sm mt-3 md:mt-4">Last Updated: February 25, 2026</p>
+                    <p className="text-slate-500 text-xs md:text-sm mt-3 md:mt-4 font-medium uppercase tracking-wider">Last Updated: February 25, 2026</p>
                 </div>
             </header>
 
             {/* Intro */}
-            <section className="max-w-4xl mx-auto px-4 md:px-6 py-8 md:py-12">
-                <div className="bg-brand-50 border border-brand-100 rounded-xl md:rounded-2xl p-5 md:p-8">
-                    <p className="text-slate-700 text-[13px] md:text-base leading-relaxed">
-                        GayRealEstate.com is committed to protecting your privacy. We understand that for many people in the LGBTQ+ community, privacy around real estate activities is not just a preference — it's a matter of personal safety and comfort. This policy explains what information we collect, how we use it, and the specific commitments we make to our community. If you have any questions, please don't hesitate to <a href="mailto:info@gayrealestateconnecticut.com" className="text-brand-600 font-semibold hover:underline">contact us directly</a>.
+            <section className="max-w-4xl mx-auto px-4 md:px-6 py-8 md:py-12 relative z-10">
+                <div className="bg-white/60 backdrop-blur-md border border-purple-100 rounded-2xl md:rounded-3xl p-6 md:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+                    <p className="text-slate-700 text-sm md:text-base leading-relaxed">
+                        GayRealEstateCT.net is committed to protecting your privacy. We understand that for many people in the LGBTQ+ community, privacy around real estate activities is not just a preference — it's a matter of personal safety and comfort. This policy explains what information we collect, how we use it, and the specific commitments we make to our community. If you have any questions, please don't hesitate to <a href="/#contact" className="font-semibold hover:opacity-80 transition-opacity" style={{ color: '#6B008A' }}>contact us directly</a>.
                     </p>
                 </div>
             </section>
 
             {/* Sections */}
-            <section className="max-w-4xl mx-auto px-4 md:px-6 pb-16 md:pb-24 space-y-6 md:space-y-8">
+            <section className="max-w-4xl mx-auto px-4 md:px-6 pb-16 md:pb-24 space-y-6 md:space-y-8 relative z-10">
                 {sections.map((section, i) => (
-                    <div key={i} className="bg-white rounded-2xl md:rounded-3xl shadow-sm border border-slate-100 overflow-hidden">
-                        <div className="bg-slate-800 px-5 py-4 md:px-8 md:py-5">
-                            <h2 className="text-white font-bold text-base md:text-lg font-serif">{section.title}</h2>
+                    <div key={i} className="bg-white/70 backdrop-blur-sm rounded-2xl md:rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-purple-100/60 overflow-hidden">
+                        <div className="px-6 py-5 md:px-10 md:py-6 border-b border-purple-100/50" style={{ background: 'linear-gradient(to right, rgba(255,255,255,0.8), rgba(247,242,255,0.8))' }}>
+                            <h2 className="font-display font-bold text-lg md:text-xl text-slate-900">{section.title}</h2>
                         </div>
-                        <div className="px-5 py-5 md:px-8 md:py-6 space-y-1">
+                        <div className="px-6 py-6 md:px-10 md:py-8 space-y-1">
                             {renderContent(section.content)}
                         </div>
                     </div>
@@ -207,11 +211,15 @@ const PrivacyPolicy: React.FC = () => {
             </section>
 
             {/* Footer CTA */}
-            <section className="bg-white border-t border-slate-100 py-12">
-                <div className="max-w-4xl mx-auto px-6 text-center">
-                    <p className="text-slate-600 mb-4">Questions about your privacy or how we handle your data?</p>
-                    <a href="mailto:info@gayrealestateconnecticut.com" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-brand-600 to-brand-700 text-white font-bold rounded-xl hover:from-brand-500 hover:to-brand-600 transition-all shadow-lg hover:shadow-brand-500/30">
-                        Email Us Directly <ArrowRight className="w-4 h-4" />
+            <section className="max-w-4xl mx-auto px-4 md:px-6 pb-20 relative z-10">
+                <div className="bg-white/80 backdrop-blur-md rounded-3xl border border-purple-100 p-10 md:p-16 text-center shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+                    <p className="text-slate-600 mb-6 font-medium text-lg">Questions about your privacy or how we handle your data?</p>
+                    <a 
+                        href="/#contact" 
+                        className="inline-flex items-center gap-3 px-10 py-4 text-white font-bold rounded-full hover:opacity-90 transition-opacity shadow-lg"
+                        style={{ background: 'linear-gradient(135deg, #C0003A 0%, #6B008A 45%, #0A2FA8 100%)' }}
+                    >
+                        Email Us Directly <ArrowRight className="w-5 h-5" />
                     </a>
                 </div>
             </section>

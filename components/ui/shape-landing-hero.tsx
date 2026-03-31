@@ -4,6 +4,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Circle, ArrowRight, Play, Star } from "lucide-react";
 import { cn } from "../../lib/utils";
+import { Link } from "react-router-dom";
 
 // CT Highlights slideshow images
 const ctHighlightImages = [
@@ -25,6 +26,7 @@ interface HeroGeometricProps {
     ctaText?: string;
     ctaHref?: string;
     backgroundImage?: string;
+    storyHref?: string;
 }
 
 function HeroGeometric({
@@ -34,6 +36,7 @@ function HeroGeometric({
     description = "Connect with local, friendly, and trusted real estate agents who understand your journey and share your values.",
     ctaText = "Our Agents",
     ctaHref = "#find-agent",
+    storyHref = "/about",
     backgroundImage = "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=60&w=1600&auto=format&fit=crop"
 }: HeroGeometricProps) {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -91,11 +94,7 @@ function HeroGeometric({
                 }
             `}</style>
 
-            {/* Decorative Corner Accents */}
-            <div className="absolute top-8 left-8 w-24 h-24 border-l-2 border-t-2 border-gold-500/30 z-40 pointer-events-none" />
-            <div className="absolute top-8 right-8 w-24 h-24 border-r-2 border-t-2 border-gold-500/30 z-40 pointer-events-none" />
-            <div className="absolute bottom-8 left-8 w-24 h-24 border-l-2 border-b-2 border-gold-500/30 z-40 pointer-events-none" />
-            <div className="absolute bottom-8 right-8 w-24 h-24 border-r-2 border-b-2 border-gold-500/30 z-40 pointer-events-none" />
+            {/* Main Hero Content */}
 
             {/* Background Slideshow Layer */}
             <div className="absolute inset-0 z-0">
@@ -104,8 +103,8 @@ function HeroGeometric({
                 <div className="absolute inset-0 bg-gradient-to-r from-brand-900/15 via-transparent to-brand-900/15 z-10" />
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(10,10,15,0.5)_100%)] z-10" />
 
-                {/* Subtle gold gradient accent */}
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(212,175,55,0.08)_0%,transparent_50%)] z-10" />
+                {/* Subtle pride gradient accent */}
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(124,58,237,0.1)_0%,transparent_50%)] z-10" />
 
                 {/* CT Highlights Slideshow */}
                 <AnimatePresence mode="sync">
@@ -123,7 +122,7 @@ function HeroGeometric({
             </div>
 
             {/* Floating decorative elements */}
-            <div className="absolute top-1/4 left-10 w-2 h-2 rounded-full bg-gold-500/60 animate-float z-20" />
+            <div className="absolute top-1/4 left-10 w-2 h-2 rounded-full animate-pride-border animate-float z-20 opacity-60" />
             <div className="absolute top-1/3 right-16 w-1.5 h-1.5 rounded-full bg-brand-400/60 animate-float z-20" style={{ animationDelay: '1s' }} />
             <div className="absolute bottom-1/3 left-20 w-1 h-1 rounded-full bg-white/40 animate-float z-20" style={{ animationDelay: '2s' }} />
 
@@ -175,7 +174,7 @@ function HeroGeometric({
                             initial="hidden"
                             animate="visible"
                         >
-                            <p className="text-lg md:text-xl text-gold-300 font-semibold tracking-wide mb-2">
+                            <p className="pride-gradient-text text-lg md:text-xl font-bold tracking-wide mb-2 animate-rainbow-text">
                                 Connecticut welcomes you
                             </p>
                             <p className="text-base md:text-lg text-zinc-400 leading-relaxed max-w-xl mb-6 md:mb-10">
@@ -183,26 +182,7 @@ function HeroGeometric({
                             </p>
                         </motion.div>
 
-                        <motion.div
-                            custom={3}
-                            variants={fadeUpVariants}
-                            initial="hidden"
-                            animate="visible"
-                            className="flex flex-col sm:flex-row gap-3 md:gap-4 w-full sm:w-auto mt-2"
-                        >
-                            <a
-                                href={ctaHref}
-                                className="group inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 md:px-8 md:py-4 text-sm font-semibold text-zinc-950 transition-all hover:scale-[1.02] hover:bg-zinc-200 active:scale-[0.98] w-full sm:w-auto"
-                            >
-                                {ctaText}
-                                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                            </a>
 
-                            <button className="group inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-6 py-3.5 md:px-8 md:py-4 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/10 hover:border-white/20 w-full sm:w-auto">
-                                <Play className="w-4 h-4 fill-current" />
-                                Watch Story
-                            </button>
-                        </motion.div>
 
                     </div>
                 </div>
@@ -225,8 +205,6 @@ function HeroGeometric({
             {/* Premium gradient transition to next section */}
             <div className="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-champagne-50 via-champagne-50/30 to-transparent pointer-events-none z-40" />
 
-            {/* Decorative bottom accent line */}
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-transparent via-gold-500/40 to-transparent z-50" />
         </div>
     );
 }

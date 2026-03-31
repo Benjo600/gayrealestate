@@ -1,0 +1,15 @@
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="rainbow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF3A33" /> <!-- Red -->
+      <stop offset="25%" stop-color="#FFA82E" /> <!-- Orange -->
+      <stop offset="50%" stop-color="#D7E02D" /> <!-- Yellow-Green -->
+      <stop offset="75%" stop-color="#2D9EE0" /> <!-- Blue -->
+      <stop offset="100%" stop-color="#9C27B0" /> <!-- Purple -->
+    </linearGradient>
+  </defs>
+  <!-- Continuous house/heart loop path -->
+  <path d="M50 20L85 50V80C85 85 80 90 75 90H60C60 90 60 75 50 75C40 75 40 90 40 90H25C20 90 15 85 15 80V50L50 20Z" stroke="url(#rainbow)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+  <!-- Internal Heart part that loops back -->
+  <path d="M50 75C50 75 25 65 25 45C25 35 35 32 40 32C45 32 50 38 50 38C50 38 55 32 60 32C65 32 75 35 75 45C75 65 50 75 50 75Z" stroke="url(#rainbow)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

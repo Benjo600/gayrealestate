@@ -1,7 +1,7 @@
-# GayRealEstate.com - Connecticut LGBTQ+ Real Estate Network
+# GayRealEstateCT.net - Connecticut LGBTQ+ Real Estate Network
 
 ## About Us
-GayRealEstate.com connects the LGBTQ+ community with trusted, inclusive, and affirming real estate professionals in Connecticut. We provide a "one-stop shop" experience, offering access to vetted real estate agents, mortgage lenders, and real estate attorneys who understand the unique experiences and needs of LGBTQ+ home buyers and sellers.
+GayRealEstateCT.net connects the LGBTQ+ community with trusted, inclusive, and affirming real estate professionals in Connecticut. We provide a "one-stop shop" experience, offering access to vetted real estate agents, mortgage lenders, and real estate attorneys who understand the unique experiences and needs of LGBTQ+ home buyers and sellers.
 
 ## Our Mission
 To ensure every real estate transaction for the LGBTQ+ community is safe, inclusive, and handled by professionals who celebrate who you are. We believe everyone deserves to find their place with pride.
@@ -20,7 +20,7 @@ To ensure every real estate transaction for the LGBTQ+ community is safe, inclus
 
 ## Frequently Asked Questions (FAQ)
 
-**Q: What is GayRealEstate.com?**
+**Q: What is GayRealEstateCT.net?**
 A: We are a real estate network dedicated to connecting LGBTQ+ individuals and families with affirming and knowledgeable real estate professionals in Connecticut.
 
 **Q: How do I find an LGBTQ+ friendly real estate agent?**
@@ -32,10 +32,15 @@ A: Our network covers the entire state of Connecticut, with specific experts bas
 **Q: Do you only offer real estate agents?**
 A: No, we are a one-stop shop. Along with realtors, we provide access to top-tier mortgage lenders and experienced real estate attorneys to support every step of your transaction.
 
+## Key Resources
+1. **The Complete LGBTQ+ Buyer's Guide to CT**: A 6-chapter masterclass covering house hunting, CT-specific financing (CHFA), and legal protection via specialized real estate attorneys.
+2. **The CT Seller's Guide**: A 5-phase roadmap for pricing, staging, and marketing homes in competitive markets like West Hartford and Litchfield County.
+3. **Mortgage & Financing Tools**: A dedicated mortgage calculator and insights into the "Time to Own" forgivable loan program in Connecticut.
+4. **Relocation Services**: Specialized support for individuals and couples moving to CT from NYC, Boston, and beyond.
+5. **Hyper-Local Insights**: In-depth analysis of CT's most inclusive school districts, neighborhood "vibes", and LGBTQ+ community events.
+
 ## Contact Information
 - **Phone**: 1-800-555-1234
 - **Email**: hello@gayre.com
+- **Website**: https://www.gayrealestateconnecticut.com
 - **Service Area**: Connecticut, USA
-
-## Resources
-We also publish regular insights and guides on navigating the real estate market, building generational wealth, and finding the most inclusive neighborhoods to live in.

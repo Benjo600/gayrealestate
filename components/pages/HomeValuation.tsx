@@ -32,9 +32,12 @@ const HomeValuation: React.FC = () => {
     };
 
     return (
-        <div className="min-h-screen bg-slate-50">
+        <div 
+            className="min-h-screen font-sans relative selection:bg-purple-500/20"
+            style={{ background: 'linear-gradient(160deg, #fdf4ff 0%, #fff7f0 25%, #f0f9ff 50%, #f7fff4 75%, #fdf4ff 100%)' }}
+        >
             <SEOHead
-                title="Free Home Valuation in Connecticut | GayRealEstate.com"
+                title="Free Home Valuation in Connecticut | GayRealEstateCT.net"
                 description="Get a free, accurate home valuation from LGBTQ+-allied Connecticut real estate agents. Know what your home is worth with real local comps — no algorithms, no pressure."
                 canonical="https://www.gayrealestateconnecticut.com/home-valuation"
                 keywords="free home valuation Connecticut, what is my home worth CT, Connecticut home value estimate LGBTQ, sell my Connecticut home"
@@ -50,19 +53,20 @@ const HomeValuation: React.FC = () => {
             </nav>
 
             {/* Hero */}
-            <header className="relative bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 pt-24 md:pt-32 pb-12 md:pb-24 overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(212,175,55,0.15),transparent_60%)]" />
-                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-400/40 to-transparent" />
-                <div className="max-w-4xl mx-auto px-4 md:px-6 text-center relative z-10">
-                    <div className="inline-flex items-center gap-2 px-4 py-1.5 md:px-5 md:py-2 bg-white/10 rounded-full border border-white/10 mb-6 md:mb-8">
-                        <TrendingUp className="w-3.5 h-3.5 md:w-4 md:h-4 text-gold-400" />
-                        <span className="text-[10px] md:text-xs font-bold text-gold-300 uppercase tracking-widest">Free Home Valuation</span>
+            <header className="relative pt-32 md:pt-40 pb-12 md:pb-20 overflow-hidden text-center">
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_15%_30%,rgba(229,0,0,0.07),transparent_55%)] pointer-events-none" />
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_85%_25%,rgba(0,76,255,0.07),transparent_50%)] pointer-events-none" />
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_70%,rgba(119,0,136,0.06),transparent_55%)] pointer-events-none" />
+                <div className="max-w-4xl mx-auto px-4 md:px-6 relative z-10">
+                    <div className="inline-flex items-center gap-2 px-5 py-2 bg-white/80 rounded-full border border-purple-200/50 shadow-sm mb-6 md:mb-8">
+                        <TrendingUp className="w-4 h-4 text-purple-500" />
+                        <span className="text-xs font-semibold text-slate-600 uppercase tracking-widest">Free Home Valuation</span>
                     </div>
-                    <h1 className="text-4xl md:text-6xl font-serif font-bold text-white mb-4 md:mb-6 leading-tight">
+                    <h1 className="text-4xl md:text-6xl font-display font-bold text-slate-900 mb-4 md:mb-6 leading-tight">
                         What Is Your<br />
-                        <span className="bg-gradient-to-r from-gold-300 to-gold-500 bg-clip-text text-transparent">Home Worth Today?</span>
+                        <span style={{ background: 'linear-gradient(135deg, #770088, #004CFF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Home Worth Today?</span>
                     </h1>
-                    <p className="text-slate-300 text-base md:text-lg max-w-2xl mx-auto leading-relaxed font-light">
+                    <p className="text-slate-600 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
                         Get a free, agent-prepared home valuation — not an algorithm. Real comps. Local expertise. No strings attached.
                     </p>
                 </div>
@@ -73,7 +77,7 @@ const HomeValuation: React.FC = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 md:gap-12 items-start">
                     {/* Form */}
                     <div className="lg:col-span-3">
-                        <div className="bg-white rounded-2xl md:rounded-3xl shadow-lg border border-slate-100 p-6 md:p-10">
+                        <div className="bg-white/70 backdrop-blur-md rounded-2xl md:rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-purple-100/60 p-6 md:p-10 relative z-10">
                             {submitted ? (
                                 <div className="text-center py-10 md:py-16">
                                     <div className="w-16 h-16 md:w-20 md:h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6">
@@ -83,7 +87,7 @@ const HomeValuation: React.FC = () => {
                                     <p className="text-slate-600 text-sm md:text-lg max-w-md mx-auto mb-6 md:mb-8">
                                         A member of our team will prepare your home valuation and reach out within <strong>24 hours</strong> — usually same business day.
                                     </p>
-                                    <p className="text-slate-500 text-xs md:text-sm">Questions? Email us at <a href="mailto:info@gayrealestateconnecticut.com" className="text-brand-600 hover:underline">info@gayrealestateconnecticut.com</a></p>
+                                    <p className="text-slate-500 text-xs md:text-sm">Questions? <a href="/#contact" className="text-brand-600 hover:underline">Contact us</a></p>
                                 </div>
                             ) : (
                                 <>
@@ -149,7 +153,7 @@ const HomeValuation: React.FC = () => {
                                             <label className="block text-sm font-semibold text-slate-700 mb-2">Anything else we should know?</label>
                                             <textarea name="notes" value={form.notes} onChange={handleChange} rows={3} placeholder="Unique features, concerns, special circumstances..." className="w-full px-4 py-3 border border-slate-200 rounded-xl text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all text-sm resize-none" />
                                         </div>
-                                        <button type="submit" disabled={sending} className="w-full py-4 bg-gradient-to-r from-brand-600 to-brand-700 text-white font-bold rounded-xl hover:from-brand-500 hover:to-brand-600 transition-all duration-300 shadow-lg hover:shadow-brand-500/30 flex items-center justify-center gap-2 disabled:opacity-70">
+                                        <button type="submit" disabled={sending} className="w-full py-4 text-white font-bold rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70" style={{ background: 'linear-gradient(135deg, #C0003A 0%, #6B008A 45%, #0A2FA8 100%)' }}>
                                             {sending ? (
                                                 <><RefreshCwIcon /> Sending…</>
                                             ) : (
@@ -165,18 +169,18 @@ const HomeValuation: React.FC = () => {
 
                     {/* Benefits Sidebar */}
                     <div className="lg:col-span-2 space-y-4 md:space-y-6 sticky top-8">
-                        <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl md:rounded-3xl p-6 md:p-8 text-white shadow-xl relative overflow-hidden">
-                            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-gold-400 via-brand-500 to-gold-400" />
-                            <Home className="w-8 h-8 md:w-10 md:h-10 text-gold-400 mb-3 md:mb-4" />
-                            <h3 className="text-xl md:text-2xl font-serif font-bold mb-2 md:mb-3">Why a Real Agent Valuation?</h3>
-                            <p className="text-slate-300 text-[13px] md:text-sm leading-relaxed mb-4 md:mb-6">
+                        <div className="bg-white/60 backdrop-blur-md rounded-2xl md:rounded-3xl p-6 md:p-8 text-slate-800 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-purple-100/60 relative overflow-hidden z-10">
+                            <div className="absolute top-0 left-0 right-0 h-1" style={{ background: 'linear-gradient(90deg, #E50000, #FF8D00, #FFEE00, #028121, #004CFF, #770088)' }} />
+                            <Home className="w-8 h-8 md:w-10 md:h-10 text-purple-500 mb-3 md:mb-4" />
+                            <h3 className="text-xl md:text-2xl font-display font-bold mb-2 md:mb-3">Why a Real Agent Valuation?</h3>
+                            <p className="text-slate-600 text-[13px] md:text-sm leading-relaxed mb-4 md:mb-6">
                                 Zillow's "Zestimate" can be off by $50,000–$150,000 in Connecticut. Our agents know your specific street, your specific buyer pool, and what updates actually add value vs. what looks nice but doesn't move the needle.
                             </p>
                             <div className="space-y-2 md:space-y-3">
                                 {['Response within 24 hours', 'No obligation to list with us', 'Professional CMA report included', 'Based on real sold comps'].map((item) => (
                                     <div key={item} className="flex items-center gap-2 md:gap-3">
-                                        <CheckCircle className="w-3.5 h-3.5 md:w-4 md:h-4 text-green-400 flex-shrink-0" />
-                                        <span className="text-[13px] md:text-sm text-slate-300">{item}</span>
+                                        <CheckCircle className="w-3.5 h-3.5 md:w-4 md:h-4 text-purple-500 flex-shrink-0" />
+                                        <span className="text-[13px] md:text-sm text-slate-700 font-medium">{item}</span>
                                     </div>
                                 ))}
                             </div>
@@ -190,12 +194,9 @@ const HomeValuation: React.FC = () => {
                         ))}
 
                         <div className="bg-brand-50 border border-brand-200 rounded-xl md:rounded-2xl p-5 md:p-6">
-                            <p className="text-brand-800 font-semibold text-[13px] md:text-sm mb-2 md:mb-3">Prefer to talk directly?</p>
-                            <a href="tel:+18604042188" className="flex items-center gap-2 text-brand-700 font-bold hover:text-brand-900 transition-colors mb-2 text-sm md:text-base">
-                                <Phone className="w-4 h-4" /> (860) 404-2188
-                            </a>
-                            <a href="mailto:info@gayrealestateconnecticut.com" className="flex items-center gap-2 text-brand-700 font-bold hover:text-brand-900 transition-colors text-[13px] md:text-sm">
-                                <Mail className="w-4 h-4" /> info@gayrealestate...com
+                            <p className="text-brand-800 font-semibold text-[13px] md:text-sm mb-2 md:mb-3">Prefer to connect directly?</p>
+                            <a href="/#contact" className="inline-flex items-center gap-2 text-brand-700 font-bold hover:text-brand-900 transition-colors mb-2 text-sm md:text-base border border-brand-300 px-4 py-2 rounded-lg bg-white shadow-sm">
+                                Open Contact Form <ArrowRight className="w-4 h-4 ml-1" />
                             </a>
                         </div>
                     </div>

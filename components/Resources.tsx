@@ -1,122 +1,156 @@
-import React from 'react';
-import { ArrowRight, Calendar, Clock, BookOpen } from 'lucide-react';
+import React, { useState, useMemo } from 'react';
+import { ArrowRight, Calendar, Clock, BookOpen, MapPin, Sparkles, GraduationCap, Scale } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { BLOG_POSTS } from '../data/blogs';
 
-
-
 const Resources: React.FC = () => {
+  const [activeTab, setActiveTab] = useState('ALL');
+
+  const tabs = [
+    { id: 'ALL', label: 'All Articles', icon: Sparkles },
+    { id: 'RELOCATION', label: 'Moving to CT', icon: ArrowRight },
+    { id: 'NEIGHBORHOODS', label: 'Town Guides', icon: MapPin },
+    { id: 'FAMILY', label: 'Family & Schools', icon: GraduationCap },
+    { id: 'ADVICE', label: 'Expert Advice', icon: Scale }
+  ];
+
+  const filteredPosts = useMemo(() => {
+    if (activeTab === 'ALL') return BLOG_POSTS;
+    
+    return BLOG_POSTS.filter(post => {
+      const category = post.category.toUpperCase();
+      if (activeTab === 'RELOCATION') return category.includes('RELOCATION') || category.includes('LIVING GUIDE') || category.includes('EVENTS');
+      if (activeTab === 'NEIGHBORHOODS') return category.includes('LOCAL') || category.includes('SPOTLIGHT') || category.includes('LITCHFIELD');
+      if (activeTab === 'FAMILY') return category.includes('FAMILY') || category.includes('SCHOOL');
+      if (activeTab === 'ADVICE') return category.includes('LEGAL') || category.includes('MARKET') || category.includes('EXPERT');
+      return true;
+    });
+  }, [activeTab]);
+
   return (
-    <section id="resources" className="py-12 md:py-24 lg:py-32 bg-gradient-to-b from-stone-50 via-slate-50 to-stone-50 relative overflow-hidden">
-      {/* Refined neutral background */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(212,175,55,0.06),transparent_70%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_70%,rgba(120,113,108,0.04),transparent_70%)]" />
+    <section id="resources" className="py-12 md:py-24 lg:py-32 relative overflow-hidden" style={{ background: 'linear-gradient(160deg, #fdf4ff 0%, #fff7f0 25%, #f0f9ff 50%, #f7fff4 75%, #fdf4ff 100%)' }}>
+      {/* LGBTQ-toned radial washes */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_15%_30%,rgba(229,0,0,0.06),transparent_55%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_40%_10%,rgba(255,141,0,0.06),transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_65%_80%,rgba(2,129,33,0.05),transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_85%_25%,rgba(0,76,255,0.06),transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_60%,rgba(119,0,136,0.05),transparent_55%)]" />
 
-      {/* Subtle warm orbs */}
-      <div className="absolute top-20 right-[10%] w-[400px] h-[400px] bg-gold-200/20 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-20 left-[10%] w-[450px] h-[450px] bg-stone-300/15 rounded-full blur-3xl"></div>
-
-      {/* Delicate texture */}
-      <div className="absolute inset-0 opacity-[0.01]" style={{
-        backgroundImage: `radial-gradient(circle at 1px 1px, rgba(120,113,108,0.1) 1px, transparent 0)`,
-        backgroundSize: '48px 48px'
-      }} />
-
-      {/* Refined top accent */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-300/30 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Premium Section Header */}
-        <div className="text-center max-w-4xl mx-auto mb-12 md:mb-20">
+        <div className="text-center max-w-4xl mx-auto mb-12 md:mb-16">
           {/* Decorative badge */}
-          <div className="inline-flex items-center gap-2 md:gap-2.5 px-4 py-1.5 md:px-5 md:py-2.5 bg-white/90 backdrop-blur-sm rounded-full border border-stone-200 shadow-sm mb-6 md:mb-8">
-            <BookOpen className="w-3.5 h-3.5 md:w-4 md:h-4 text-gold-600" />
-            <span className="text-[10px] md:text-[11px] font-semibold text-slate-700 tracking-[0.15em] uppercase">Latest Articles</span>
+          <div className="inline-flex items-center gap-2 md:gap-2.5 px-4 py-1.5 md:px-5 md:py-2.5 bg-white/80 backdrop-blur-sm rounded-full border border-purple-200/50 shadow-sm mb-6 md:mb-8">
+            <BookOpen className="w-3.5 h-3.5 md:w-4 md:h-4 text-purple-500" />
+            <span className="text-[10px] md:text-[11px] font-semibold text-slate-600 tracking-[0.15em] uppercase">Resource Center</span>
           </div>
 
-          <h2 className="text-4xl md:text-6xl lg:text-7xl font-display font-semibold text-slate-900 mb-4 md:mb-6 tracking-tight">
-            Insights <span className="text-gold-600 italic">&</span> Stories
+          <h2 className="text-4xl md:text-6xl lg:text-7xl font-display font-semibold text-slate-900 mb-4 md:mb-6 tracking-tight leading-tight">
+            Knowledge Hub <br className="hidden md:block" />
+            <span className="pride-gradient-text italic">& Insights</span>
           </h2>
 
-          {/* Premium decorative line */}
-          <div className="flex items-center justify-center gap-2 md:gap-3 mb-6 md:mb-8 mt-4 md:mt-0">
-            <div className="w-16 md:w-20 h-px bg-gradient-to-r from-transparent via-gold-400/50 to-gold-400/50" />
-            <div className="w-1 md:w-1.5 h-1 md:h-1.5 rounded-full bg-gold-400" />
-            <div className="w-16 md:w-20 h-px bg-gradient-to-l from-transparent via-gold-400/50 to-gold-400/50" />
-          </div>
-
-          <p className="text-base md:text-xl text-slate-600 font-light max-w-3xl mx-auto leading-relaxed mt-4 md:mt-0 px-4 md:px-0">
-            Expert advice, market trends, and community stories to help you make informed real estate decisions.
+          <p className="text-base md:text-xl text-slate-600 font-light max-w-2xl mx-auto leading-relaxed mt-4 md:mt-0 px-4 md:px-0">
+            Expert guides, local spotlights, and community resources curated specifically for LGBTQ+ home buyers and sellers in Connecticut.
           </p>
+        </div>
+
+        {/* Premium Tabs */}
+        <div className="flex flex-wrap items-center justify-center gap-2 md:gap-4 mb-12 md:mb-16">
+          {tabs.map((tab) => {
+            const Icon = tab.icon;
+            const isActive = activeTab === tab.id;
+            return (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300 border ${
+                  isActive 
+                  ? 'bg-slate-900 border-slate-900 text-white shadow-lg' 
+                  : 'bg-white border-slate-200 text-slate-600 hover:border-purple-300 hover:bg-purple-50/50'
+                }`}
+              >
+                <Icon className={`w-4 h-4 ${isActive ? 'text-purple-300' : 'text-slate-400'}`} />
+                {tab.label}
+              </button>
+            );
+          })}
         </div>
 
         {/* Premium Blog Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {BLOG_POSTS.map((post, index) => (
+          {filteredPosts.map((post, index) => (
             <article
               key={post.id}
-              className="group h-full"
+              className="group h-full animate-in fade-in slide-in-from-bottom-8 duration-700 fill-mode-both"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <Link
                 to={`/blog/${post.slug}`}
-                className="bg-white rounded-2xl overflow-hidden border border-stone-200 shadow-md hover:shadow-xl hover:border-gold-300/60 transition-all duration-500 flex flex-col h-full block hover:-translate-y-1"
+                className="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-2xl hover:border-purple-300/60 transition-all duration-500 flex flex-col h-full block hover:-translate-y-2"
               >
-                {/* Image */}
-                <div className="relative h-48 md:h-56 overflow-hidden bg-stone-100">
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
+                {/* Image Section */}
+                <div className="relative h-56 md:h-64 overflow-hidden bg-stone-100">
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
                   <img
                     src={post.image}
                     alt={post.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                   />
-                  <div className="absolute top-4 left-4 z-20">
-                    <span className="px-3.5 py-1.5 bg-white/95 backdrop-blur-sm text-[10px] font-semibold uppercase tracking-wider text-gold-700 rounded-full shadow-sm border border-gold-200/50">
+                  
+                  {/* Category Tag */}
+                  <div className="absolute top-5 left-5 z-20">
+                    <span className="px-4 py-2 bg-white/95 backdrop-blur-sm text-[10px] font-bold uppercase tracking-widest text-brand-700 rounded-lg shadow-sm border border-brand-100 group-hover:bg-brand-50 transition-colors">
                       {post.category}
                     </span>
                   </div>
 
-                  {/* Hover overlay badge */}
-                  <div className="absolute bottom-4 right-4 z-20 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                    <span className="px-4 py-2 bg-slate-900 text-white text-xs font-semibold rounded-full flex items-center gap-2 shadow-lg">
-                      Read More <ArrowRight className="w-3 h-3" />
-                    </span>
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="p-5 md:p-8 flex-col flex-grow bg-white">
-                  <div className="flex items-center gap-3 md:gap-4 text-[11px] md:text-xs text-slate-500 mb-3 md:mb-4 font-medium uppercase tracking-wide">
-                    <span className="flex items-center gap-1.5">
-                      <Calendar className="w-3 md:w-3.5 h-3 md:h-3.5 text-gold-600" />
+                  {/* Date/Read Time Float */}
+                  <div className="absolute bottom-5 left-5 z-20 text-white opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0 flex items-center gap-4">
+                    <span className="flex items-center gap-1.5 text-[10px] font-medium tracking-wider uppercase">
+                      <Calendar className="w-3.5 h-3.5 text-brand-400" />
                       {post.date}
                     </span>
-                    <span className="w-1 h-1 rounded-full bg-stone-300" />
-                    <span className="flex items-center gap-1.5">
-                      <Clock className="w-3 md:w-3.5 h-3 md:h-3.5 text-gold-600" />
+                    <span className="flex items-center gap-1.5 text-[10px] font-medium tracking-wider uppercase">
+                      <Clock className="w-3.5 h-3.5 text-brand-400" />
                       {post.readTime}
                     </span>
                   </div>
 
-                  <h3 className="text-lg md:text-xl font-display font-semibold text-slate-900 mb-2 md:mb-3 group-hover:text-gold-700 transition-colors duration-300 leading-tight">
+                  {/* Read More Pulse */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 scale-90 group-hover:scale-100 z-20 pointer-events-none">
+                    <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30">
+                       <ArrowRight className="w-8 h-8 text-white animate-pulse" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Content Section */}
+                <div className="p-8 flex-col flex-grow bg-white relative">
+                  <h3 className="text-xl md:text-2xl font-display font-bold text-slate-900 mb-4 group-hover:text-purple-700 transition-colors duration-300 leading-tight">
                     {post.title}
                   </h3>
 
-                  <p className="text-slate-600 text-[13px] md:text-sm leading-relaxed mb-4 md:mb-6 flex-grow font-normal line-clamp-3">
+                  <p className="text-slate-600 text-sm md:text-base leading-relaxed mb-8 flex-grow font-light line-clamp-3">
                     {post.excerpt}
                   </p>
 
-                  <div className="flex items-center justify-between pt-3 md:pt-4 border-t border-stone-200">
-                    <span className="inline-flex items-center gap-1.5 md:gap-2 text-[13px] md:text-sm font-semibold text-gold-700 group-hover:text-gold-800 transition-colors">
-                      Read Article
-                      <ArrowRight className="w-3.5 h-3.5 md:w-4 md:h-4 transition-transform group-hover:translate-x-1" />
-                    </span>
-
-                    {/* Reading progress indicator */}
-                    <div className="h-1 w-12 bg-stone-200 rounded-full overflow-hidden">
-                      <div className="h-full w-0 group-hover:w-full bg-gradient-to-r from-gold-500 to-gold-600 transition-all duration-500 rounded-full" />
+                  <div className="flex items-center justify-between pt-6 border-t border-slate-100">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full bg-brand-100 flex items-center justify-center text-brand-700 font-bold text-[10px]">
+                        {post.author.charAt(0)}
+                      </div>
+                      <span className="text-xs font-semibold text-slate-700">
+                        {post.author}
+                      </span>
                     </div>
+
+                    <span className="text-[10px] font-black tracking-widest text-brand-500 uppercase flex items-center gap-2 group-hover:text-brand-700">
+                      View Details
+                      <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
+                    </span>
                   </div>
                 </div>
               </Link>
@@ -124,20 +158,15 @@ const Resources: React.FC = () => {
           ))}
         </div>
 
-        {/* Premium View All Button */}
-        <div className="mt-12 md:mt-20 text-center">
-          <button className="group relative px-6 md:px-10 py-3 md:py-4 bg-white border-2 border-stone-200 text-slate-900 font-semibold text-[13px] md:text-base rounded-full hover:border-gold-400 hover:bg-stone-50 transition-all duration-300 shadow-sm hover:shadow-md overflow-hidden">
-            <span className="relative z-10 flex items-center gap-2">
-              View All Articles
-              <ArrowRight className="w-3.5 h-3.5 md:w-4 md:h-4 transition-transform group-hover:translate-x-1" />
-            </span>
-          </button>
+        {/* Results Counter */}
+        <div className="mt-12 text-center">
+            <p className="text-slate-400 text-sm font-medium">
+              Showing {filteredPosts.length} of {BLOG_POSTS.length} expert articles
+            </p>
         </div>
 
       </div>
 
-      {/* Subtle gold accent */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-300/30 to-transparent" />
     </section>
   );
 };

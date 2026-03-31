@@ -42,10 +42,10 @@ const HomePage: React.FC = () => {
             mainEntity: [
                 {
                     '@type': 'Question',
-                    name: 'What is GayRealEstate.com?',
+                    name: 'What is GayRealEstateCT.net?',
                     acceptedAnswer: {
                         '@type': 'Answer',
-                        text: 'GayRealEstate.com is a one-stop real estate service connecting the LGBTQ+ community with trusted, inclusive agents, mortgage lenders, and attorneys in Connecticut.',
+                        text: 'GayRealEstateCT.net is a one-stop real estate service connecting the LGBTQ+ community with trusted, inclusive agents, mortgage lenders, and attorneys in Connecticut.',
                     },
                 },
                 {
@@ -73,12 +73,12 @@ const HomePage: React.FC = () => {
 
             {/* Page-level SEO */}
             <SEOHead
-                title="GayRealEstate.com | LGBTQ+ Friendly Real Estate Agents in Connecticut"
-                description="Find trusted, LGBTQ+ friendly real estate agents, mortgage lenders, and attorneys in Connecticut. GayRealEstate.com — your one-stop shop for inclusive home buying and selling."
+                title="GayRealEstateCT.net | LGBTQ+ Friendly Real Estate Agents in Connecticut"
+                description="Find trusted, LGBTQ+ friendly real estate agents, mortgage lenders, and attorneys in Connecticut. GayRealEstateCT.net — your one-stop shop for inclusive home buying and selling."
                 canonical={`${BASE_URL}/`}
                 ogType="website"
                 ogImage="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=60&w=1200&auto=format&fit=crop"
-                ogImageAlt="Modern luxury home — GayRealEstate.com"
+                ogImageAlt="Modern luxury home — GayRealEstateCT.net"
                 keywords="LGBTQ real estate, gay friendly realtor, Connecticut real estate agents, inclusive housing, LGBTQ mortgage lender, LGBTQ attorney, buy home Connecticut"
                 structuredData={homepageStructuredData}
             />
@@ -88,14 +88,16 @@ const HomePage: React.FC = () => {
                 <AnimatedGradientBackground
                     gradientColors={[
                         "#fdfcf9", // Champagne white
-                        "#f9f6f0", // Soft champagne
-                        "#f5f3ff", // Light violet
-                        "#fdf9e7", // Light gold
+                        "#fef2f2", // Light red
+                        "#fffbeb", // Light orange/yellow
+                        "#f0fdf4", // Light green
+                        "#eff6ff", // Light blue
+                        "#f5f3ff", // Light purple
                         "#fdfcf9"  // Champagne white
                     ]}
-                    gradientStops={[0, 25, 50, 75, 100]}
-                    animationSpeed={0.001}
-                    breathingRange={3}
+                    gradientStops={[0, 15, 30, 45, 60, 80, 100]}
+                    animationSpeed={0.0008}
+                    breathingRange={2}
                 />
             </div>
 

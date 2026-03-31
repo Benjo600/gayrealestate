@@ -80,7 +80,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
         if (canonical) {
             setMeta('property', 'og:url', canonical);
         }
-        setMeta('property', 'og:site_name', 'GayRealEstate.com');
+        setMeta('property', 'og:site_name', 'GayRealEstateCT.net');
 
         // --- Twitter Card ---
         setMeta('name', 'twitter:card', twitterCard);

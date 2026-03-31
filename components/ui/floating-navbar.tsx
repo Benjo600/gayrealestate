@@ -8,6 +8,7 @@ import {
 import { cn } from "../../lib/utils";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 
+
 export const FloatingNav = ({
     navItems,
     className,
@@ -86,12 +87,15 @@ export const FloatingNav = ({
                 }}
                 className={cn(
                     "flex max-w-fit fixed top-8 inset-x-0 mx-auto rounded-full z-[5000] p-1.5 items-center justify-center",
-                    "bg-charcoal-900/90 border border-white/10 shadow-2xl backdrop-blur-xl",
+                    "bg-charcoal-900/90 border border-slate-800/50 shadow-2xl backdrop-blur-xl gap-2 px-4",
                     className
                 )}
             >
-                {/* Premium gold accent line at top */}
-                <div className="absolute -top-px left-1/2 -translate-x-1/2 w-16 h-px bg-gradient-to-r from-transparent via-gold-400/30 to-transparent" />
+                {/* Logo Section */}
+                <Link to="/" className="flex items-center gap-2 pr-4 border-r border-slate-800/50 hover:opacity-80 transition-opacity">
+                    <img src="/logo.png" alt="Logo" className="w-6 h-6 object-contain" />
+                    <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-white hidden lg:block">GayRealEstateCT</span>
+                </Link>
 
                 {navItems.map((navItem: any, idx: number) => {
                     // Page link (like Reviews)
@@ -142,7 +146,7 @@ export const FloatingNav = ({
                                             animate={{ opacity: 1, y: 0, scale: 1 }}
                                             exit={{ opacity: 0, y: 8, scale: 0.95 }}
                                             transition={{ duration: 0.2 }}
-                                            className="absolute top-full left-1/2 -translate-x-1/2 mt-2 min-w-[220px] bg-charcoal-900/95 border border-white/10 backdrop-blur-xl rounded-2xl p-2 shadow-2xl"
+                                            className="absolute top-full left-1/2 -translate-x-1/2 mt-2 min-w-[220px] bg-charcoal-900/95 border border-slate-800/50 backdrop-blur-xl rounded-2xl p-2 shadow-2xl"
                                         >
                                             {navItem.dropdownItems?.map((item: any, i: number) => (
                                                 <Link
@@ -177,7 +181,7 @@ export const FloatingNav = ({
                             {active === navItem.link && (
                                 <motion.span
                                     layoutId="active-pill"
-                                    className="absolute inset-0 rounded-full -z-10 bg-gradient-to-r from-white/20 to-white/10 border border-white/20 backdrop-blur-sm"
+                                    className="absolute inset-0 rounded-full -z-10 bg-gradient-to-r from-white/10 to-white/5 border border-slate-700/30 backdrop-blur-sm"
                                     transition={{ type: "spring", bounce: 0.15, duration: 0.5 }}
                                 />
                             )}

@@ -82,9 +82,12 @@ const FirstTimeBuyers: React.FC = () => {
     useEffect(() => { window.scrollTo(0, 0); }, []);
 
     return (
-        <div className="min-h-screen bg-slate-50">
+        <div 
+            className="min-h-screen font-sans relative selection:bg-purple-500/20"
+            style={{ background: 'linear-gradient(160deg, #fdf4ff 0%, #fff7f0 25%, #f0f9ff 50%, #f7fff4 75%, #fdf4ff 100%)' }}
+        >
             <SEOHead
-                title="First-Time Home Buying Guide for LGBTQ+ Buyers in Connecticut | GayRealEstate.com"
+                title="First-Time Home Buying Guide for LGBTQ+ Buyers in Connecticut | GayRealEstateCT.net"
                 description="Your comprehensive step-by-step guide to buying your first home in Connecticut as an LGBTQ+ buyer. Learn about financing, finding inclusive agents, and protecting your investment."
                 canonical="https://www.gayrealestateconnecticut.com/first-time-buyers"
                 keywords="first time home buyer Connecticut LGBTQ, LGBTQ first time buyer guide CT, gay couple buying first home Connecticut, home buying steps Connecticut"
@@ -100,27 +103,27 @@ const FirstTimeBuyers: React.FC = () => {
             </nav>
 
             {/* Hero */}
-            <header className="relative bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 pt-24 md:pt-32 pb-12 md:pb-24 overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(124,58,237,0.2),transparent_60%)]" />
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_30%,rgba(212,175,55,0.12),transparent_60%)]" />
-                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-400/40 to-transparent" />
-                <div className="max-w-4xl mx-auto px-4 md:px-6 text-center relative z-10">
-                    <div className="inline-flex items-center gap-2 px-4 py-1.5 md:px-5 md:py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/10 mb-6 md:mb-8">
-                        <Home className="w-3.5 h-3.5 md:w-4 md:h-4 text-gold-400" />
-                        <span className="text-[10px] md:text-xs font-bold text-gold-300 uppercase tracking-widest">First-Time Buyers</span>
+            <header className="relative pt-32 md:pt-40 pb-12 md:pb-20 overflow-hidden text-center">
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_15%_30%,rgba(229,0,0,0.07),transparent_55%)] pointer-events-none" />
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_85%_25%,rgba(0,76,255,0.07),transparent_50%)] pointer-events-none" />
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_70%,rgba(119,0,136,0.06),transparent_55%)] pointer-events-none" />
+                <div className="max-w-4xl mx-auto px-4 md:px-6 relative z-10">
+                    <div className="inline-flex items-center gap-2 px-5 py-2 bg-white/80 rounded-full border border-purple-200/50 shadow-sm mb-6 md:mb-8">
+                        <Home className="w-4 h-4 text-purple-500" />
+                        <span className="text-xs font-semibold text-slate-600 uppercase tracking-widest">First-Time Buyers</span>
                     </div>
-                    <h1 className="text-4xl md:text-6xl font-serif font-bold text-white mb-4 md:mb-6 leading-tight">
+                    <h1 className="text-4xl md:text-6xl font-display font-bold text-slate-900 mb-4 md:mb-6 leading-tight">
                         Your First Home.<br />
-                        <span className="bg-gradient-to-r from-brand-300 via-brand-200 to-gold-300 bg-clip-text text-transparent">Done Right.</span>
+                        <span style={{ background: 'linear-gradient(135deg, #770088, #004CFF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Done Right.</span>
                     </h1>
-                    <p className="text-slate-300 text-base md:text-xl max-w-2xl mx-auto leading-relaxed font-light">
+                    <p className="text-slate-600 text-base md:text-xl max-w-2xl mx-auto leading-relaxed">
                         A step-by-step guide to buying your first home in Connecticut — written specifically for LGBTQ+ buyers who want to feel safe, informed, and supported at every stage.
                     </p>
                     <div className="flex items-center justify-center gap-4 mt-10 flex-wrap">
-                        <a href="#steps" className="px-8 py-4 bg-gradient-to-r from-brand-500 to-brand-700 text-white font-semibold rounded-full hover:shadow-lg hover:shadow-brand-500/30 transition-all duration-300 inline-flex items-center gap-2">
-                            See the Steps <ArrowRight className="w-4 h-4" />
+                        <a href="#steps" className="px-8 py-4 text-white font-bold rounded-full shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 inline-flex items-center gap-2" style={{ background: 'linear-gradient(135deg, #C0003A 0%, #6B008A 45%, #0A2FA8 100%)' }}>
+                            See the Steps <ArrowRight className="w-4 h-4 ml-1" />
                         </a>
-                        <a href="/#contact" className="px-8 py-4 bg-white/10 border border-white/20 text-white font-semibold rounded-full hover:bg-white/20 transition-all duration-300">
+                        <a href="/#contact" className="px-8 py-4 bg-white/60 backdrop-blur-sm border border-purple-200 text-slate-700 font-semibold rounded-full hover:bg-white hover:border-purple-300 shadow-sm transition-all duration-300">
                             Talk to an Agent
                         </a>
                     </div>
@@ -137,10 +140,10 @@ const FirstTimeBuyers: React.FC = () => {
                     {steps.map((step, i) => {
                         const Icon = step.icon;
                         return (
-                            <div key={i} className="group flex flex-col md:flex-row gap-6 md:gap-8 bg-white rounded-2xl md:rounded-3xl p-5 md:p-8 shadow-sm border border-slate-100 hover:border-brand-200 hover:shadow-xl transition-all duration-500">
+                            <div key={i} className="group flex flex-col md:flex-row gap-6 md:gap-8 bg-white/60 backdrop-blur-sm rounded-2xl md:rounded-3xl p-6 md:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-purple-100/60 hover:border-purple-300 hover:shadow-xl transition-all duration-500">
                                 <div className="flex-shrink-0 flex flex-col items-center gap-2 md:gap-3 md:w-24">
-                                    <span className="text-4xl md:text-5xl font-bold text-slate-100 font-serif">{step.number}</span>
-                                    <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center shadow-md shadow-brand-500/20">
+                                    <span className="text-3xl md:text-4xl font-extrabold font-sans tracking-tight" style={{ background: 'linear-gradient(90deg, #E50000, #FF8D00, #FFEE00, #028121, #004CFF, #770088)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', opacity: 0.8 }}>{step.number}</span>
+                                    <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl shadow-sm border border-purple-100 flex items-center justify-center pt-0.5" style={{ background: 'linear-gradient(135deg, #C0003A 0%, #6B008A 45%, #0A2FA8 100%)' }}>
                                         <Icon className="w-5 h-5 md:w-6 md:h-6 text-white" />
                                     </div>
                                 </div>
@@ -163,13 +166,19 @@ const FirstTimeBuyers: React.FC = () => {
             </section>
 
             {/* Mid CTA */}
-            <section className="bg-gradient-to-r from-brand-600 to-brand-800 py-12 md:py-16">
+            <section className="py-12 md:py-16 relative z-10">
                 <div className="max-w-4xl mx-auto px-4 md:px-6 text-center">
-                    <div className="flex items-center justify-center gap-1 text-gold-300 text-lg mb-4">★★★★★</div>
-                    <h2 className="text-2xl md:text-4xl font-serif font-bold text-white mb-3 md:mb-4 pt-4 md:pt-0">Ready to Start Your Search?</h2>
-                    <p className="text-brand-100 text-[13px] md:text-lg mb-6 md:mb-8 max-w-xl mx-auto px-4">Our LGBTQ+-led team will guide you from pre-approval to keys — with zero judgment and total confidentiality.</p>
-                    <a href="/#contact" className="inline-flex items-center justify-center gap-2 px-8 py-3.5 md:px-10 md:py-4 bg-white text-brand-700 font-bold rounded-xl md:rounded-full hover:bg-gold-50 transition-all shadow-lg hover:shadow-xl text-sm md:text-base w-full sm:w-auto">
-                        Get a Free Consultation <ArrowRight className="w-4 h-4" />
+                    <div className="flex items-center justify-center gap-1 text-purple-400 text-lg md:text-xl mb-4">
+                        {[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 md:w-6 md:h-6 fill-purple-400" />)}
+                    </div>
+                    <h2 className="text-3xl md:text-4xl font-display font-bold text-slate-900 mb-3 md:mb-4 pt-4 md:pt-0">Ready to Start Your Search?</h2>
+                    <p className="text-slate-600 text-[13px] md:text-lg mb-6 md:mb-8 max-w-xl mx-auto px-4">Our LGBTQ+-led team will guide you from pre-approval to keys — with zero judgment and total confidentiality.</p>
+                    <a 
+                        href="/#contact" 
+                        className="inline-flex items-center justify-center gap-2 px-8 py-3.5 md:px-10 md:py-4 text-white font-bold rounded-xl md:rounded-full hover:-translate-y-1 transition-all duration-300 shadow-xl text-sm md:text-base w-full sm:w-auto"
+                        style={{ background: 'linear-gradient(135deg, #C0003A 0%, #6B008A 45%, #0A2FA8 100%)' }}
+                    >
+                        Get a Free Consultation <ArrowRight className="w-4 h-4 ml-1" />
                     </a>
                 </div>
             </section>
@@ -195,18 +204,17 @@ const FirstTimeBuyers: React.FC = () => {
 
             {/* Closing CTA */}
             <section className="max-w-5xl mx-auto px-4 md:px-6 pb-16 md:pb-24">
-                <div className="bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 rounded-2xl md:rounded-3xl p-6 md:p-12 text-center relative overflow-hidden shadow-2xl">
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(124,58,237,0.2),transparent_60%)]" />
-                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-500 via-gold-400 to-brand-500" />
+                <div className="bg-white/60 backdrop-blur-md rounded-2xl md:rounded-3xl p-6 md:p-12 text-center relative overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-purple-100/60">
+                    <div className="absolute top-0 left-0 right-0 h-1" style={{ background: 'linear-gradient(90deg, #E50000, #FF8D00, #FFEE00, #028121, #004CFF, #770088)' }} />
                     <div className="relative z-10">
-                        <Phone className="w-8 h-8 md:w-10 md:h-10 text-gold-400 mx-auto mb-4 md:mb-6" />
-                        <h2 className="text-3xl md:text-4xl font-serif font-bold text-white mb-3 md:mb-4">Talk to Someone Who Gets It</h2>
-                        <p className="text-slate-300 text-[13px] md:text-lg max-w-xl mx-auto mb-6 md:mb-8">Our agents live and work in Connecticut's LGBTQ+ communities. They're not just professionals — they're neighbors.</p>
+                        <Phone className="w-8 h-8 md:w-10 md:h-10 text-purple-500 mx-auto mb-4 md:mb-6" />
+                        <h2 className="text-3xl md:text-4xl font-display font-bold text-slate-900 mb-3 md:mb-4">Talk to Someone Who Gets It</h2>
+                        <p className="text-slate-600 text-[13px] md:text-lg max-w-xl mx-auto mb-6 md:mb-8">Our agents live and work in Connecticut's LGBTQ+ communities. They're not just professionals — they're neighbors.</p>
                         <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
-                            <a href="/#contact" className="px-6 py-3.5 md:px-10 md:py-4 bg-gradient-to-r from-brand-500 to-gold-500 text-white font-bold rounded-xl md:rounded-2xl shadow-xl hover:shadow-brand-500/40 hover:-translate-y-0.5 transition-all duration-300 inline-flex items-center justify-center gap-2 text-sm md:text-base">
+                            <a href="/#contact" className="px-6 py-3.5 md:px-10 md:py-4 text-white font-bold rounded-xl md:rounded-2xl shadow-xl hover:shadow-2xl hover:-translate-y-0.5 transition-all duration-300 inline-flex items-center justify-center gap-2 text-sm md:text-base" style={{ background: 'linear-gradient(135deg, #C0003A 0%, #6B008A 45%, #0A2FA8 100%)' }}>
                                 Connect With Our Team <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
                             </a>
-                            <Link to="/#find-agent" className="px-6 py-3.5 md:px-10 md:py-4 bg-white/10 border border-white/20 text-white font-semibold rounded-xl md:rounded-2xl hover:bg-white/20 transition-all duration-300 text-sm md:text-base justify-center flex">
+                            <Link to="/#find-agent" className="px-6 py-3.5 md:px-10 md:py-4 bg-white border border-purple-200 text-slate-700 font-semibold rounded-xl md:rounded-2xl hover:border-purple-300 transition-all duration-300 text-sm md:text-base justify-center flex">
                                 Browse Our Agents
                             </Link>
                         </div>

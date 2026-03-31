@@ -20,26 +20,25 @@ export function ExploreProfileButton({
             onClick={onClick}
             className={cn(
                 "group relative overflow-hidden w-full",
-                "bg-slate-900 hover:bg-slate-800",
                 "text-white font-semibold text-base",
                 "rounded-xl h-14",
-                "border border-slate-800 hover:border-gold-500/50",
-                "shadow-lg shadow-slate-900/20 hover:shadow-xl hover:shadow-gold-500/20",
-                "transition-all duration-500 ease-out",
+                "border border-white/20",
+                "shadow-lg hover:shadow-purple-500/30 transition-all duration-500",
                 "hover:-translate-y-0.5",
                 className
             )}
+            style={{ background: 'linear-gradient(135deg, #770088 0%, #4B0082 35%, #004CFF 100%)' }}
             size="lg"
             {...props}
         >
-            {/* Background gradient effect on hover */}
-            <span className="absolute inset-0 bg-gradient-to-r from-gold-500/0 via-gold-500/10 to-gold-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            {/* Shimmer sweep on hover */}
+            <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700" style={{ background: 'linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.18) 50%, transparent 70%)', backgroundSize: '200% 100%' }} />
 
             {/* Button content */}
             <span className="relative flex items-center justify-center gap-3 w-full">
                 <span className="tracking-wide">{label}</span>
                 <ArrowRight
-                    className="w-5 h-5 transition-all duration-500 ease-out group-hover:translate-x-1 group-hover:text-gold-300"
+                    className="w-5 h-5 transition-all duration-500 ease-out group-hover:translate-x-1 group-hover:text-white"
                     strokeWidth={2.5}
                 />
             </span>

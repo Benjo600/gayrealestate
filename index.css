@@ -1,11 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Premium Real Estate Design System */
 /* Enhanced CSS for a luxurious, premium aesthetic */
 
 /* ==========================================
    CUSTOM FONTS & BASE STYLES
    ========================================== */
-
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 
 :root {
     /* Premium Gold Accents */
@@ -90,6 +94,17 @@
     }
 }
 
+@keyframes pride-flow {
+    0%   { background-position: 0%   center; }
+    100% { background-position: 300% center; }
+}
+
+/* Chrome-compatible animated gradient text: hue-rotate is GPU-composited */
+@keyframes pride-hue {
+    0%   { filter: hue-rotate(0deg)   saturate(1.4); }
+    100% { filter: hue-rotate(360deg) saturate(1.4); }
+}
+
 .animate-rainbow-text {
     background: linear-gradient(90deg,
             #ef4444 0%,
@@ -106,6 +121,28 @@
     background-clip: text;
     animation: rainbow-shift 4s linear infinite;
     will-change: background-position;
+}
+
+@keyframes pride-glow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(124, 58, 237, 0.2), 0 0 40px rgba(236, 72, 153, 0.1);
+    }
+    33% {
+        box-shadow: 0 0 20px rgba(59, 130, 246, 0.2), 0 0 40px rgba(34, 197, 94, 0.1);
+    }
+    66% {
+        box-shadow: 0 0 20px rgba(234, 179, 8, 0.2), 0 0 40px rgba(249, 115, 22, 0.1);
+    }
+}
+
+.animate-pride-glow {
+    animation: pride-glow 6s ease-in-out infinite;
+}
+
+.animate-pride-border {
+    background: linear-gradient(90deg, #E50000, #FF8D00, #FFEE00, #028121, #004CFF, #770088);
+    background-size: 300% 100%;
+    animation: rainbow-shift 4s linear infinite;
 }
 
 @keyframes float {
@@ -175,6 +212,31 @@
     animation: gradient-shift 8s ease infinite;
 }
 
+@keyframes pride-bg-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.bg-pride-animated {
+    background: linear-gradient(
+        135deg,
+        #E50000 0%,
+        #FF8D00 20%,
+        #FFEE00 38%,
+        #028121 52%,
+        #004CFF 70%,
+        #770088 100%
+    );
+    background-size: 100% 100%;
+    animation: pride-stripe-wave 6s ease-in-out infinite;
+}
+
+@keyframes pride-stripe-wave {
+    0%, 100% { filter: brightness(1) saturate(1); }
+    50% { filter: brightness(1.08) saturate(1.15); }
+}
+
 /* ==========================================
    PREMIUM UTILITY CLASSES
    ========================================== */
@@ -191,7 +253,36 @@
     background: rgba(10, 10, 15, 0.8);
     backdrop-filter: blur(24px) saturate(180%);
     -webkit-backdrop-filter: blur(24px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.glass-pride {
+    background: linear-gradient(135deg, 
+        rgba(30, 15, 60, 0.9) 0%, 
+        rgba(15, 10, 30, 0.95) 100%
+    );
+    backdrop-filter: blur(28px) saturate(200%);
+    -webkit-backdrop-filter: blur(28px) saturate(200%);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+.glass-pride::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, 
+        rgba(239, 68, 68, 0.05) 0%, 
+        rgba(249, 115, 22, 0.05) 16%, 
+        rgba(234, 179, 8, 0.05) 33%, 
+        rgba(34, 197, 94, 0.05) 50%, 
+        rgba(59, 130, 246, 0.05) 66%, 
+        rgba(139, 92, 246, 0.05) 83%, 
+        rgba(236, 72, 153, 0.05) 100%
+    );
+    pointer-events: none;
+    mix-blend-mode: overlay;
 }
 
 /* Premium Shadows */
@@ -273,6 +364,15 @@
     background: linear-gradient(90deg, #FF5F6D 0%, #FFC371 20%, #FFEF96 40%, #91EAE4 60%, #7F7FD5 80%, #9146FF 100%);
     height: 4px;
     width: 100%;
+}
+
+.pride-gradient-text {
+    background: linear-gradient(to right, #E50000, #FF8D00, #FFEE00, #028121, #004CFF, #770088);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% auto;
+    animation: rainbow-shift 4s linear infinite;
 }
 
 /* Premium Pattern Overlay */
@@ -596,6 +696,45 @@
 }
 
 /* ==========================================
+   PRIDE LEFT-PANEL — DISTINCT FLAG STRIPES
+   ========================================== */
+
+/*
+ * bg-pride-mix — left content panel on realtor profiles.
+ *
+ * Six equal horizontal bands that mirror the actual pride flag:
+ *   Red / Orange / Yellow / Green / Blue / Violet
+ * Only a 2% feather between bands so each colour reads clearly.
+ * A semi-transparent dark overlay sits on top for text legibility.
+ */
+.bg-pride-mix {
+    background:
+        /* semi-transparent dark veil for text readability */
+        linear-gradient(
+            160deg,
+            rgba(0, 0, 0, 0.50) 0%,
+            rgba(0, 0, 0, 0.40) 50%,
+            rgba(0, 0, 0, 0.52) 100%
+        ),
+        /* LGBTQ+ colours blended diagonally — generous overlap so they merge */
+        linear-gradient(
+            160deg,
+            #E50000  0%,
+            #FF8D00 25%,
+            #FFEE00 42%,
+            #028121 58%,
+            #004CFF 75%,
+            #770088 100%
+        );
+    animation: pride-pulse 8s ease-in-out infinite;
+}
+
+@keyframes pride-pulse {
+    0%, 100% { filter: brightness(1)   saturate(1);    }
+    50%       { filter: brightness(1.1) saturate(1.18); }
+}
+
+/* ==========================================
    BLOG ARTICLE TYPOGRAPHY ENHANCEMENTS
    ========================================== */
 
@@ -652,4 +791,14 @@
 .prose ol li::marker {
     color: #7c3aed;
     font-weight: 600;
+}
+
+/* Table of Contents & Scroll */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
+.blog-content h2 {
+    scroll-margin-top: 120px;
 }

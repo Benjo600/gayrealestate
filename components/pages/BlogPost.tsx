@@ -1,6 +1,24 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, Calendar, Clock, User, ArrowRight, Star, Send, CheckCircle2 } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { 
+    ArrowLeft, 
+    Calendar, 
+    Clock, 
+    User, 
+    ArrowRight, 
+    Star, 
+    Send, 
+    CheckCircle2, 
+    Share2, 
+    Twitter, 
+    Facebook, 
+    Linkedin as LinkedInIcon,
+    ChevronRight,
+    Bookmark
+} from 'lucide-react';
+
+
 import { BLOG_POSTS } from '../../data/blogs';
 import Footer from '../Footer';
 import SEOHead from '../SEOHead';
@@ -8,7 +26,6 @@ import { agents } from '../../data/agents';
 
 const BASE_URL = 'https://www.gayrealestateconnecticut.com';
 
-// Map blog author names to agent IDs for profile linking
 const AUTHOR_AGENT_MAP: Record<string, string> = {
     'Arek Wtulich': 'arek',
     'Abby Dudarewicz': 'abby',
@@ -42,7 +59,7 @@ const BlogCTAForm: React.FC<BlogCTAFormProps> = ({ postTitle, authorName }) => {
             const chatId = import.meta.env.VITE_TELEGRAM_CHAT_ID as string | undefined;
 
             if (!token || !chatId || token === 'YOUR_BOT_TOKEN_HERE') {
-                throw new Error('Telegram credentials not configured. Check your .env.local file.');
+                throw new Error('Telegram credentials not configured.');
             }
 
             const now = new Date().toLocaleString('en-US', {
@@ -69,393 +86,392 @@ const BlogCTAForm: React.FC<BlogCTAFormProps> = ({ postTitle, authorName }) => {
                 body: JSON.stringify({ chat_id: chatId, text, parse_mode: 'Markdown' }),
             });
 
-            if (!res.ok) {
-                const err = await res.json();
-                throw new Error(err?.description ?? `Telegram API error (${res.status})`);
-            }
-
+            if (!res.ok) throw new Error('Telegram API error');
             setStatus('success');
         } catch (err: unknown) {
-            const msg = err instanceof Error ? err.message : 'Something went wrong. Please try again.';
-            console.error('Telegram blog CTA error:', err);
-            setErrorMsg(msg);
+            setErrorMsg('Something went wrong. Please try again.');
             setStatus('error');
             setTimeout(() => { setStatus('idle'); setErrorMsg(''); }, 5000);
         }
     };
 
-    const inputCls = 'w-full px-3 py-2.5 md:px-4 md:py-3 bg-white/10 border border-white/20 rounded-lg md:rounded-xl text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-white/40 focus:border-white/40 transition-all text-[13px] md:text-sm';
+    const inputCls = 'w-full px-4 py-3 bg-slate-50/50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-400/20 focus:border-brand-400 transition-all text-sm';
 
     if (status === 'success') {
         return (
-            <div className="text-center py-8">
-                <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4 border border-green-500/30">
-                    <CheckCircle2 className="w-8 h-8 text-green-400" />
+            <div className="text-center py-8 animate-in fade-in zoom-in-95 duration-500">
+                <div className="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-4 border border-green-200">
+                    <CheckCircle2 className="w-8 h-8 text-green-500" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">Message Received!</h3>
-                <p className="text-slate-300 text-sm max-w-xs mx-auto">
-                    Our team will be in touch within one business day. We look forward to speaking with you.
+                <h3 className="text-xl font-display font-bold text-slate-900 mb-2">Expert Consultation Booked</h3>
+                <p className="text-slate-600 text-sm max-w-xs mx-auto">
+                    A specialist will be in touch shortly to assist with your journey.
                 </p>
             </div>
         );
     }
 
     return (
-        <form onSubmit={handleSubmit} className="space-y-3 md:space-y-4">
-            <div>
-                <label className="block text-[11px] md:text-xs font-semibold text-white/60 uppercase tracking-wider mb-1 md:mb-2">Your Name *</label>
-                <input
-                    required
-                    value={form.name}
-                    onChange={change('name')}
-                    placeholder="Jane Smith"
-                    className={inputCls}
-                />
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
+        <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                    <label className="block text-[11px] md:text-xs font-semibold text-white/60 uppercase tracking-wider mb-1 md:mb-2">Email Address *</label>
-                    <input
-                        required
-                        type="email"
-                        value={form.email}
-                        onChange={change('email')}
-                        placeholder="your@email.com"
-                        className={inputCls}
-                    />
+                   <input required value={form.name} onChange={change('name')} placeholder="Full Name *" className={inputCls} />
                 </div>
                 <div>
-                    <label className="block text-[11px] md:text-xs font-semibold text-white/60 uppercase tracking-wider mb-1 md:mb-2">Phone Number *</label>
-                    <input
-                        required
-                        type="tel"
-                        value={form.phone}
-                        onChange={change('phone')}
-                        placeholder="(860) 555-0100"
-                        className={inputCls}
-                    />
+                   <input required type="email" value={form.email} onChange={change('email')} placeholder="Email Address *" className={inputCls} />
                 </div>
             </div>
-            <div>
-                <label className="block text-[11px] md:text-xs font-semibold text-white/60 uppercase tracking-wider mb-1 md:mb-2">Message (optional)</label>
-                <textarea
-                    value={form.message}
-                    onChange={change('message')}
-                    rows={3}
-                    placeholder="Tell us what you're looking for — buying, selling, relocating..."
-                    className={`${inputCls} resize-none`}
-                />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                   <input required type="tel" value={form.phone} onChange={change('phone')} placeholder="Phone Number *" className={inputCls} />
+                </div>
+                <button
+                    type="submit"
+                    disabled={status === 'submitting'}
+                    className="px-6 py-3 bg-slate-900 text-white font-bold rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70 text-sm"
+                >
+                    {status === 'submitting' ? 'Booking...' : 'Get Free Consultation'}
+                </button>
             </div>
-
-            {status === 'error' && (
-                <div className="text-xs text-red-400 bg-red-500/10 border border-red-500/20 rounded-xl px-4 py-3">{errorMsg}</div>
-            )}
-
-            <button
-                type="submit"
-                disabled={status === 'submitting'}
-                id="blog-cta-submit"
-                className="w-full sm:w-auto px-6 py-3 md:px-10 md:py-4 bg-gradient-to-r from-brand-500 via-brand-600 to-gold-500 text-white font-bold rounded-lg md:rounded-xl shadow-lg hover:shadow-2xl hover:shadow-brand-500/40 hover:scale-[1.02] transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-wait text-[13px] md:text-sm"
-            >
-                {status === 'submitting' ? (
-                    <>
-                        <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
-                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" />
-                        </svg>
-                        Sending…
-                    </>
-                ) : (
-                    <>
-                        <Send className="w-4 h-4" />
-                        Get a Free Consultation
-                    </>
-                )}
-            </button>
-            <p className="text-xs text-white/30 flex items-center gap-1.5">
-                <span>🔒</span> Your information is private and shared only with our licensed team.
-            </p>
+            {status === 'error' && <p className="text-xs text-red-600">{errorMsg}</p>}
         </form>
     );
 };
+
 // ────────────────────────────────────────────────────────────────────────────
 
 const BlogPost: React.FC = () => {
     const { slug } = useParams<{ slug: string }>();
-
     const post = BLOG_POSTS.find(p => p.slug === slug);
+    const contentRef = useRef<HTMLDivElement>(null);
+    const [scrollProgress, setScrollProgress] = useState(0);
+    const [headings, setHeadings] = useState<{ id: string; text: string }[]>([]);
+    const [activeId, setActiveId] = useState<string>('');
+
+    // Extract headings for Table of Contents
+    useEffect(() => {
+        if (post && contentRef.current) {
+            const hElements = contentRef.current.querySelectorAll('h2');
+            const hData = Array.from(hElements).map((h, i) => {
+                const id = `heading-${i}`;
+                (h as HTMLElement).id = id;
+                return { id, text: (h as HTMLElement).innerText };
+            });
+            setHeadings(hData);
+        }
+    }, [post]);
+
+    // Handle scroll progress and active section
+    useEffect(() => {
+        const handleScroll = () => {
+            const totalScroll = document.documentElement.scrollTop;
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            setScrollProgress((totalScroll / windowHeight) * 100);
+
+            // Find active heading (using standard find with reversed array for compatibility)
+            const hElements = Array.from(document.querySelectorAll('h2'));
+            const currentHeading = [...hElements].reverse().find(h => h.getBoundingClientRect().top < 150);
+            if (currentHeading) setActiveId(currentHeading.id);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     useEffect(() => {
-        if (post) {
-            window.scrollTo(0, 0);
-        }
+        if (post) window.scrollTo(0, 0);
     }, [post]);
 
     const agentId = post ? AUTHOR_AGENT_MAP[post.author] : undefined;
     const agent = agentId ? agents[agentId] : undefined;
 
-    // Build SEO data for this blog post
     const blogSEOData = useMemo(() => {
         if (!post) return null;
-        const pageTitle = `${post.title} | Gay Real Estate Connecticut`;
-        const pageDescription = post.excerpt;
-        const canonicalUrl = `${BASE_URL}/blog/${post.slug}`;
-
-        const structuredData = [
-            {
-                '@context': 'https://schema.org',
-                '@type': 'Article',
-                headline: post.title,
-                description: post.excerpt,
-                image: post.image,
-                datePublished: post.date,
-                author: {
-                    '@type': 'Person',
-                    name: post.author,
-                    jobTitle: post.authorRole,
-                },
-                publisher: {
-                    '@type': 'Organization',
-                    name: 'Gay Real Estate Connecticut',
-                    url: BASE_URL,
-                },
-                mainEntityOfPage: {
-                    '@type': 'WebPage',
-                    '@id': canonicalUrl,
-                },
-                articleSection: post.category,
-            },
-            {
-                '@context': 'https://schema.org',
-                '@type': 'BreadcrumbList',
-                itemListElement: [
-                    { '@type': 'ListItem', position: 1, name: 'Home', item: `${BASE_URL}/` },
-                    { '@type': 'ListItem', position: 2, name: 'Insights & Stories', item: `${BASE_URL}/#resources` },
-                    { '@type': 'ListItem', position: 3, name: post.title, item: canonicalUrl },
-                ],
-            },
-        ];
-
-        return { pageTitle, pageDescription, canonicalUrl, structuredData };
+        return {
+            pageTitle: `${post.title} | Gay Real Estate CT`,
+            pageDescription: post.excerpt,
+            canonicalUrl: `${BASE_URL}/blog/${post.slug}`,
+            structuredData: [
+                {
+                    '@context': 'https://schema.org',
+                    '@type': 'Article',
+                    headline: post.title,
+                    description: post.excerpt,
+                    image: post.image,
+                    datePublished: post.date,
+                    author: { '@type': 'Person', name: post.author, jobTitle: post.authorRole },
+                    publisher: { '@type': 'Organization', name: 'Gay Real Estate Connecticut', url: BASE_URL },
+                }
+            ]
+        };
     }, [post]);
 
-    if (!post) {
-        return (
-            <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-4">
-                <SEOHead
-                    title="Article Not Found | Gay Real Estate Connecticut"
-                    description="The article you are looking for does not exist or has been moved."
-                    noIndex={true}
-                />
-                <h1 className="text-3xl font-serif text-slate-900 mb-4">Article Not Found</h1>
-                <p className="text-slate-600 mb-8">The article you are looking for does not exist or has been moved.</p>
-                <Link to="/" className="text-brand-600 font-semibold hover:underline flex items-center gap-2">
-                    <ArrowLeft className="w-4 h-4" /> Back to Home
-                </Link>
-            </div>
-        );
-    }
+    if (!post) return <div className="text-center p-20">Article Not Found</div>;
 
     return (
-        <div className="min-h-screen bg-slate-50">
+        <div className="min-h-screen bg-white selection:bg-brand-100 selection:text-brand-900 font-sans">
+            {blogSEOData && <SEOHead {...blogSEOData} ogType="article" ogImage={post.image} ogImageAlt={post.title} keywords={post.seoKeywords} />}
 
-            {/* Dynamic Blog Post SEO */}
-            {blogSEOData && (
-                <SEOHead
-                    title={blogSEOData.pageTitle}
-                    description={blogSEOData.pageDescription}
-                    canonical={blogSEOData.canonicalUrl}
-                    ogType="article"
-                    ogImage={post.image}
-                    ogImageAlt={post.title}
-                    keywords={post.seoKeywords || `${post.category}, LGBTQ real estate Connecticut, ${post.title}`}
-                    author={post.author}
-                    structuredData={blogSEOData.structuredData}
+            {/* Sticky Progress Bar */}
+            <div className="fixed top-0 left-0 right-0 h-1.5 z-[100] bg-slate-100/50 backdrop-blur-sm origin-left">
+                <div 
+                    className="h-full bg-gradient-to-r from-red-500 via-orange-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500 transition-all duration-150"
+                    style={{ width: `${scrollProgress}%` }}
                 />
-            )}
+            </div>
 
-            {/* Navigation */}
-            <nav className="absolute top-0 left-0 right-0 p-6 z-10" aria-label="Back navigation">
-                <div className="max-w-7xl mx-auto">
-                    <Link
-                        to="/"
-                        className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-md rounded-full text-sm font-semibold text-slate-700 hover:bg-white hover:shadow-md transition-all duration-300"
-                    >
+            {/* Premium Floating Back Button */}
+            <div className="fixed top-8 left-8 z-[60] hidden md:block">
+                <Link 
+                    to="/" 
+                    className="group flex items-center gap-3 px-5 py-3 bg-white/80 backdrop-blur-xl border border-slate-200/50 rounded-2xl shadow-xl hover:shadow-2xl hover:-translate-y-0.5 transition-all duration-300"
+                >
+                    <div className="w-8 h-8 rounded-xl bg-slate-900 text-white flex items-center justify-center transition-transform group-hover:-translate-x-1">
                         <ArrowLeft className="w-4 h-4" />
-                        Back to Home
-                    </Link>
-                </div>
-            </nav>
-
-            <article>
-                {/* Article Header with Hero Image */}
-                <header className="relative h-[65vh] min-h-[420px]">
-                    <div className="absolute inset-0">
-                        <img
-                            src={post.image}
-                            alt={`Featured image for: ${post.title}`}
-                            className="w-full h-full object-cover"
-                        />
-                        <div className="absolute inset-0 bg-slate-900/50 backdrop-blur-[1px]" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/20 to-slate-900/40" />
                     </div>
+                    <div className="flex flex-col">
+                        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 leading-none mb-1">Return</span>
+                        <span className="text-sm font-bold text-slate-900 leading-none">Home</span>
+                    </div>
+                </Link>
+            </div>
 
-                    <div className="absolute bottom-0 left-0 right-0 p-6 md:p-16">
-                        <div className="max-w-4xl mx-auto text-white">
-                            <span className="inline-block px-3 py-1 bg-brand-500/80 backdrop-blur-md text-xs font-bold uppercase tracking-wider rounded-full mb-4 md:mb-6 text-white shadow-sm">
+            {/* Post Header / Hero */}
+            <header className="relative w-full pt-20 pb-16 md:pt-32 md:pb-24 overflow-hidden bg-slate-50">
+                {/* Decorative Elements */}
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(124,58,237,0.08),transparent_50%)]" />
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(244,63,94,0.05),transparent_50%)]" />
+                
+                <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+                    <div className="max-w-4xl">
+                        <motion.div 
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6 }}
+                            className="flex items-center gap-4 mb-8 md:mb-12"
+                        >
+                            <span className="px-4 py-1.5 bg-white border border-slate-200 text-brand-600 text-[10px] md:text-xs font-bold uppercase tracking-[0.3em] rounded-full shadow-sm">
                                 {post.category}
                             </span>
-                            <h1 className="text-3xl md:text-5xl font-serif font-bold mb-4 md:mb-6 leading-tight">
-                                {post.title}
-                            </h1>
+                            <div className="w-1 h-1 rounded-full bg-slate-300" />
+                            <span className="text-slate-500 text-[10px] md:text-xs font-bold uppercase tracking-widest flex items-center gap-2">
+                                <Clock className="w-3.5 h-3.5 text-brand-500" />
+                                {post.readTime}
+                            </span>
+                        </motion.div>
 
-                            <div className="flex flex-wrap items-center gap-4 md:gap-6 text-[13px] md:text-sm font-medium text-slate-200">
-                                <div className="flex items-center gap-2">
-                                    {agent ? (
-                                        <Link to={`/agent/${agent.id}`} className="flex items-center gap-2 hover:text-brand-300 transition-colors">
-                                            <img
-                                                src={agent.image}
-                                                alt={agent.name}
-                                                className="w-6 h-6 md:w-7 md:h-7 rounded-full object-cover border border-white/30"
-                                                onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
-                                            />
-                                            <span>{post.author}</span>
-                                        </Link>
-                                    ) : (
-                                        <>
-                                            <User className="w-3.5 h-3.5 md:w-4 md:h-4 text-brand-400" />
-                                            <span>{post.author}</span>
-                                        </>
-                                    )}
+                        <motion.h1 
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.1 }}
+                            className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-slate-900 mb-10 md:mb-16 leading-[1.05] tracking-tight"
+                        >
+                            {post.title}
+                        </motion.h1>
+
+                        <motion.div 
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.2 }}
+                            className="flex flex-wrap items-center gap-8 md:gap-12"
+                        >
+                            {agent ? (
+                                <Link to={`/agent/${agent.id}`} className="flex items-center gap-4 group">
+                                    <div className="relative p-1 rounded-2xl bg-white border border-slate-200 group-hover:border-brand-400 transition-colors shadow-sm">
+                                        <img src={agent.image} className="w-16 h-16 md:w-20 md:h-20 rounded-xl object-cover grayscale-[0.05] group-hover:grayscale-0 transition-all" style={{ objectPosition: 'center 20%' }} />
+                                    </div>
+                                    <div>
+                                        <p className="text-slate-900 font-bold text-lg mb-0.5 group-hover:text-brand-600 transition-colors">{post.author}</p>
+                                        <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">{post.authorRole}</p>
+                                    </div>
+                                </Link>
+                            ) : (
+                                <div className="flex items-center gap-4">
+                                    <div className="w-14 h-14 rounded-full bg-slate-200 flex items-center justify-center">
+                                        <User className="w-6 h-6 text-slate-400" />
+                                    </div>
+                                    <p className="text-slate-900 font-bold text-lg">{post.author}</p>
                                 </div>
-                                <div className="flex items-center gap-2">
-                                    <Calendar className="w-3.5 h-3.5 md:w-4 md:h-4 text-brand-400" />
-                                    <time dateTime={post.date}>{post.date}</time>
-                                </div>
-                                <div className="flex items-center gap-2">
-                                    <Clock className="w-3.5 h-3.5 md:w-4 md:h-4 text-brand-400" />
-                                    <span>{post.readTime}</span>
-                                </div>
+                            )}
+                            
+                            <div className="hidden sm:block h-12 w-px bg-slate-200" />
+                            
+                            <div className="flex flex-col">
+                                <span className="text-slate-400 text-[10px] font-black uppercase tracking-widest mb-1.5">Published</span>
+                                <span className="text-slate-900 font-bold text-lg">{post.date}</span>
                             </div>
-                        </div>
+                        </motion.div>
                     </div>
-                </header>
+                </div>
+            </header>
 
-                <div className="max-w-3xl mx-auto px-5 md:px-6 py-10 md:py-16">
+            {/* Featured Image Section */}
+            <div className="max-w-7xl mx-auto px-6 md:px-12 -mt-10 md:-mt-16">
+                <motion.div 
+                    initial={{ opacity: 0, scale: 0.98 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.8, delay: 0.3 }}
+                    className="relative aspect-[16/9] md:aspect-[21/9] w-full rounded-[2.5rem] overflow-hidden shadow-2xl shadow-slate-200 border-8 border-white"
+                >
+                    <img src={post.image} alt={post.title} className="w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                </motion.div>
+            </div>
 
-                    {/* Article Content */}
-                    <div
-                        className="prose prose-lg prose-slate prose-headings:font-serif prose-headings:font-bold prose-headings:text-slate-900 prose-p:text-slate-600 prose-a:text-brand-600 hover:prose-a:text-brand-700 prose-blockquote:border-brand-500 prose-blockquote:bg-brand-50 prose-blockquote:py-1 prose-blockquote:rounded-r-lg max-w-none"
+            {/* Layout Body */}
+            <main className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-16 md:gap-24 px-6 md:px-12 py-20 md:py-32">
+                
+                {/* Article Content */}
+                <article className="relative">
+                    <p className="text-2xl md:text-3xl text-slate-900 font-serif italic leading-relaxed mb-16 md:mb-24 relative">
+                        <span className="absolute -left-10 top-0 text-7xl text-brand-100 font-serif leading-none opacity-50">"</span>
+                        {post.excerpt}
+                    </p>
+
+                    <div 
+                        ref={contentRef}
+                        className="blog-content prose prose-2xl prose-slate max-w-none 
+                        prose-headings:font-display prose-headings:font-bold prose-headings:text-slate-900
+                        prose-h2:text-4xl md:prose-h2:text-5xl prose-h2:mt-24 prose-h2:mb-10 prose-h2:tracking-tight
+                        prose-p:text-slate-600 prose-p:leading-relaxed prose-p:mb-10 prose-p:text-lg md:prose-p:text-xl md:prose-p:font-light
+                        prose-strong:text-slate-900 prose-strong:font-bold
+                        prose-a:text-brand-600 prose-a:no-underline prose-a:font-bold hover:prose-a:text-brand-800 transition-colors border-b border-brand-200/50
+                        prose-ul:list-none prose-ul:pl-0 prose-li:pl-0 prose-li:mb-6
+                        prose-li:before:content-[''] prose-li:before:inline-block prose-li:before:w-2.5 prose-li:before:h-2.5 
+                        prose-li:before:bg-brand-500 prose-li:before:rounded-full prose-li:before:mr-5 prose-li:before:mb-0.5"
                         dangerouslySetInnerHTML={{ __html: post.content }}
                     />
 
-                    {/* Author Bio Section */}
-                    <aside className="mt-14 pt-8 border-t border-slate-200" aria-label="About the author">
-                        {agent ? (
-                            <div className="flex flex-col sm:flex-row gap-6 items-start">
-                                <Link to={`/agent/${agent.id}`} className="shrink-0 group">
-                                    <img
-                                        src={agent.image}
-                                        alt={agent.name}
-                                        className="w-20 h-20 rounded-2xl object-cover border-2 border-slate-200 group-hover:border-brand-400 transition-colors shadow-md"
-                                        onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
-                                    />
-                                </Link>
-                                <div className="flex-1">
-                                    <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Written by</p>
-                                    <Link to={`/agent/${agent.id}`} className="hover:text-brand-600 transition-colors">
-                                        <p className="text-xl font-serif font-bold text-slate-900">{agent.name}</p>
-                                    </Link>
-                                    <p className="text-brand-600 text-sm font-medium mb-3">{post.authorRole}</p>
-                                    <div className="flex flex-wrap gap-2 mb-3">
-                                        {agent.credentials.slice(0, 2).map((c, i) => (
-                                            <span key={i} className="inline-flex items-center gap-1 px-2.5 py-1 bg-slate-100 text-slate-600 text-xs rounded-full font-medium">
-                                                {c.type === 'award' && <Star className="w-3 h-3 text-gold-500" />}
-                                                {c.label}
-                                            </span>
-                                        ))}
-                                    </div>
-                                    <Link
-                                        to={`/agent/${agent.id}`}
-                                        className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600 hover:text-brand-700 transition-colors"
+
+                </article>
+
+                {/* Sidebar */}
+                <aside className="relative">
+                    <div className="sticky top-24 space-y-10">
+                        
+                        {/* Table of Contents Card */}
+                        <div className="bg-white rounded-[2rem] p-8 border border-slate-100 shadow-xl shadow-slate-200/40 relative overflow-hidden">
+                             <div className="absolute top-0 right-0 p-6 opacity-5">
+                                <Bookmark className="w-16 h-16" />
+                             </div>
+                             <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 mb-8 flex items-center gap-3">
+                                <span className="w-6 h-px bg-slate-200" />
+                                On this page
+                            </h4>
+                            <nav className="space-y-4">
+                                {headings.map((h) => (
+                                    <a 
+                                        key={h.id} 
+                                        href={`#${h.id}`}
+                                        className={`group flex items-start gap-4 text-sm font-bold leading-snug transition-all duration-300 ${
+                                            activeId === h.id 
+                                            ? 'text-brand-600' 
+                                            : 'text-slate-400 hover:text-slate-900'
+                                        }`}
                                     >
-                                        View full profile <ArrowRight className="w-3.5 h-3.5" />
-                                    </Link>
+                                        <div className={`w-1.5 h-1.5 rounded-full mt-2 transition-all ${
+                                            activeId === h.id ? 'bg-brand-500 scale-125' : 'bg-slate-200 group-hover:bg-slate-400'
+                                        }`} />
+                                        <span>{h.text}</span>
+                                    </a>
+                                ))}
+                            </nav>
+                        </div>
+
+                        {/* Author Card - Premium */}
+                        {agent && (
+                             <div className="bg-slate-900 rounded-[2rem] p-8 text-white relative overflow-hidden group">
+                                <div className="absolute inset-0 bg-gradient-to-br from-brand-500/20 to-transparent opacity-50 transition-opacity group-hover:opacity-100" />
+                                
+                                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 mb-8 relative z-10">Expert Author</p>
+                                
+                                <div className="flex items-center gap-5 mb-8 relative z-10">
+                                    <div className="relative group/photo">
+                                        <div className="absolute -inset-2 bg-gradient-to-br from-brand-400 to-brand-600 rounded-2xl opacity-20 group-hover/photo:opacity-40 transition-opacity blur-[2px]" />
+                                        <img src={agent.image} className="relative w-32 h-32 rounded-xl object-cover border-2 border-white/10 shadow-2xl" style={{ objectPosition: 'center 20%' }} />
+                                        <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-brand-500 rounded-full border-4 border-slate-900 flex items-center justify-center shadow-lg">
+                                            <CheckCircle2 className="w-5 h-5 text-white" />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p className="font-display font-bold text-lg">{agent.name}</p>
+                                        <p className="text-xs text-brand-400 font-bold uppercase tracking-widest">{post.authorRole}</p>
+                                    </div>
                                 </div>
-                            </div>
-                        ) : (
-                            <div className="flex items-center gap-4">
-                                <div className="w-12 h-12 bg-slate-200 rounded-full flex items-center justify-center">
-                                    <User className="w-6 h-6 text-slate-400" />
-                                </div>
-                                <div>
-                                    <p className="text-sm font-bold text-slate-900 uppercase tracking-wide">Written by</p>
-                                    <p className="text-lg font-serif text-slate-800">{post.author}, <span className="text-slate-500 italic text-base">{post.authorRole}</span></p>
-                                </div>
+                                <p className="text-sm text-white/70 leading-relaxed mb-8 relative z-10 font-light">
+                                   Dedicated to helping the LGBTQ+ community find a place to call home since 2010.
+                                </p>
+                                <Link to={`/agent/${agent.id}`} className="relative z-10 flex items-center justify-between group/btn px-6 py-4 bg-white/10 hover:bg-white text-white hover:text-slate-900 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all duration-300">
+                                    Explore Profile
+                                    <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                                </Link>
                             </div>
                         )}
-                    </aside>
 
-                    {/* ── SINGLE CLOSING CTA — Inline Telegram Form ── */}
-                    <div className="mt-16 rounded-3xl overflow-hidden shadow-2xl relative">
-                        {/* Background layers */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-slate-800 via-slate-700 to-slate-800" />
-                        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(124,58,237,0.25),transparent_55%)]" />
-                        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(212,175,55,0.15),transparent_55%)]" />
-                        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-500 via-gold-400 to-brand-500" />
 
-                        <div className="relative z-10 p-5 sm:p-10 md:p-14">
-                            {/* Header */}
-                            <div className="text-center mb-6 md:mb-10">
-                                {/* Per-agent face position overrides so each thumbnail crops correctly */}
-                                {(() => {
-                                    const facePos: Record<string, string> = {
-                                        arek: '60% 8%',
-                                        abby: '50% 10%',
-                                        travis: '50% 12%',
-                                        jake: '50% 10%',
-                                    };
-                                    return (
-                                        <div className="flex justify-center gap-2 md:gap-3 mb-4 md:mb-6">
-                                            {(['arek', 'abby', 'travis', 'jake'] as const).map((id) => {
-                                                const a = agents[id];
-                                                return (
-                                                    <img
-                                                        key={id}
-                                                        src={a.image}
-                                                        alt={a.name}
-                                                        title={a.name}
-                                                        className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover border-2 border-slate-600 shadow-lg"
-                                                        style={{ objectPosition: facePos[id] }}
-                                                        onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
-                                                    />
-                                                );
-                                            })}
-                                        </div>
-                                    );
-                                })()}
-                                <div className="flex items-center justify-center gap-2 mb-2 md:mb-3">
-                                    <div className="flex text-gold-400 text-[10px] md:text-sm">★★★★★</div>
-                                    <span className="text-slate-400 text-[10px] md:text-xs font-medium">Trusted by 250+ LGBTQ+ clients</span>
-                                </div>
-                                <h2 className="text-xl md:text-3xl font-serif font-bold text-white mb-2 md:mb-3 leading-tight">
-                                    Ready to Talk to Someone Who Gets It?
+                    </div>
+                </aside>
+            </main>
+
+            {/* Next Step Section - Ultra Modern */}
+            <section className="bg-white pb-32 px-6">
+                 <div className="max-w-7xl mx-auto">
+                    <div className="relative bg-slate-50 rounded-[4rem] p-10 md:p-24 overflow-hidden border border-slate-200/50">
+                        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-300 via-brand-600 to-brand-800" />
+                        
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                            <div>
+                                <h2 className="text-4xl md:text-6xl font-display font-bold text-slate-900 mb-8 leading-[1.1] tracking-tight">
+                                    Reach out to <span className="pride-gradient-text italic">{post.author.split(' ')[0]}</span> Today.
                                 </h2>
-                                <p className="text-slate-300 text-[13px] md:text-sm leading-relaxed max-w-lg mx-auto">
-                                    Our LGBTQ+-led team — agents, a Top 1% lender, and a real estate attorney — is ready to answer your questions. No pressure, no commitment.
+                                <p className="text-lg text-slate-500 font-light leading-relaxed mb-4 max-w-lg">
+                                    Have questions about this article? Connect with {post.author.split(' ')[0]} for expert, LGBTQ+ inclusive real estate guidance in Connecticut.
                                 </p>
                             </div>
-
-                            {/* Inline form */}
-                            <BlogCTAForm postTitle={post.title} authorName={post.author} />
+                            <div className="bg-white/80 backdrop-blur-xl rounded-[3rem] p-8 md:p-12 shadow-2xl shadow-slate-200 border border-white">
+                                <BlogCTAForm postTitle={post.title} authorName={post.author} />
+                            </div>
                         </div>
                     </div>
+                 </div>
+            </section>
 
+            {/* Related Discoveries */}
+             <section className="py-32 px-6 bg-white border-t border-slate-50">
+                <div className="max-w-7xl mx-auto">
+                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-20">
+                        <div>
+                            <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 mb-4">Related Discoveries</h3>
+                            <p className="text-3xl font-display font-bold text-slate-900">Recommended for you</p>
+                        </div>
+                        <Link to="/#resources" className="flex items-center gap-2 text-sm font-bold text-brand-600 hover:text-brand-800 transition-colors">
+                            View All Articles <ArrowRight className="w-4 h-4" />
+                        </Link>
+                    </div>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16">
+                        {BLOG_POSTS.filter(p => p.id !== post.id).slice(0, 3).map((p) => (
+                            <Link key={p.id} to={`/blog/${p.slug}`} className="group block">
+                                <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden mb-8 shadow-lg">
+                                    <img src={p.image} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                                </div>
+                                <div className="space-y-4 px-2">
+                                    <span className="text-[10px] font-black uppercase tracking-widest text-brand-600 block">{p.category}</span>
+                                    <h4 className="text-2xl font-bold text-slate-900 leading-tight group-hover:text-brand-700 transition-colors">{p.title}</h4>
+                                    <div className="flex items-center gap-4 pt-2">
+                                        <div className="h-px flex-1 bg-slate-100 group-hover:bg-brand-200 transition-colors" />
+                                        <ArrowRight className="w-5 h-5 text-slate-300 group-hover:text-brand-600 group-hover:translate-x-1 transition-all" />
+                                    </div>
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
                 </div>
-            </article >
+            </section>
 
             <Footer />
-        </div >
+        </div>
     );
 };
 

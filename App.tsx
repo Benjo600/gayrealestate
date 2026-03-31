@@ -10,13 +10,25 @@ import BuyersGuide from './components/pages/BuyersGuide';
 import HomeValuation from './components/pages/HomeValuation';
 import SellersGuide from './components/pages/SellersGuide';
 import MarketingYourHome from './components/pages/MarketingYourHome';
-import AboutUs from './components/pages/AboutUs';
 import PrivacyPolicy from './components/pages/PrivacyPolicy';
 import Reviews from './components/pages/Reviews';
+import AboutUs from './components/pages/AboutUs';
+import NotFound from './components/pages/NotFound';
+import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+};
 
 const App: React.FC = () => {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/agent/:id" element={<RealtorProfile />} />
@@ -29,11 +41,11 @@ const App: React.FC = () => {
         <Route path="/home-valuation" element={<HomeValuation />} />
         <Route path="/sellers-guide" element={<SellersGuide />} />
         <Route path="/marketing-your-home" element={<MarketingYourHome />} />
-        <Route path="/about" element={<AboutUs />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/reviews" element={<Reviews />} />
+        <Route path="/about" element={<AboutUs />} />
         {/* Fallback */}
-        <Route path="*" element={<HomePage />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

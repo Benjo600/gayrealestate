@@ -1,0 +1,17 @@
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="rainbow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0.0" stop-color="#FF5F6D" /> <!-- Red -->
+      <stop offset="0.2" stop-color="#FFC371" /> <!-- Orange -->
+      <stop offset="0.4" stop-color="#FFEF96" /> <!-- Yellow -->
+      <stop offset="0.6" stop-color="#91EAE4" /> <!-- Green/Cyan -->
+      <stop offset="0.8" stop-color="#7F7FD5" /> <!-- Blue -->
+      <stop offset="1.0" stop-color="#9146FF" /> <!-- Purple -->
+    </linearGradient>
+  </defs>
+  <!-- Single continuous line for the house and integrated heart as seen in the user's exact logo -->
+  <path d="M50 15L85 45V80C85 85 80 90 75 90H60C60 90 60 75 50 75C40 75 40 90 40 90H25C20 90 15 85 15 80V45L50 15Z" 
+    stroke="url(#rainbow)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M50 75C28 75 22 42 42 42C47 42 50 48 50 48C50 48 53 42 58 42C78 42 72 75 50 75Z" 
+    stroke="url(#rainbow)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

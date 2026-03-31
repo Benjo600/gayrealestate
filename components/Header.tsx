@@ -4,6 +4,7 @@ import { Home, User, MessageSquare, BookOpen, Menu, X, ShoppingBag, Tag, Star } 
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 
+
 const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
@@ -16,17 +17,12 @@ const Header: React.FC = () => {
       icon: <Home className="h-4 w-4 text-neutral-500 dark:text-white" />,
     },
     {
-      name: "Why Us",
-      link: "/#why-us",
-      icon: <Star className="h-4 w-4 text-neutral-500 dark:text-white" />,
-    },
-    {
-      name: "Find Agents",
+      name: "Meet Agents",
       link: "/#find-agent",
       icon: <User className="h-4 w-4 text-neutral-500 dark:text-white" />,
     },
     {
-      name: "Stories",
+      name: "Insights",
       link: "/#resources",
       icon: <BookOpen className="h-4 w-4 text-neutral-500 dark:text-white" />,
     },
@@ -62,7 +58,7 @@ const Header: React.FC = () => {
     {
       name: "About",
       link: "/about",
-      icon: <User className="h-4 w-4 text-neutral-500 dark:text-white" />,
+      icon: <Star className="h-4 w-4 text-neutral-500 dark:text-white" />,
       isPage: true,
     },
     {
@@ -106,7 +102,7 @@ const Header: React.FC = () => {
       <div className="md:hidden fixed top-6 right-6 z-[6000]">
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="p-3 bg-charcoal-900 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] border border-white/10 rounded-full backdrop-blur-xl text-white transition-transform active:scale-95"
+          className="p-3 bg-white/90 shadow-lg border border-slate-200 rounded-full backdrop-blur-xl transition-transform active:scale-95" style={{ color: '#6B008A' }}
         >
           {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
@@ -120,9 +116,18 @@ const Header: React.FC = () => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden fixed top-[80px] right-6 z-[6000] bg-charcoal-900/95 border border-white/10 backdrop-blur-xl rounded-2xl p-2 shadow-2xl min-w-[220px] max-h-[70vh] overflow-y-auto"
+            className="md:hidden fixed top-[80px] right-6 z-[6000] bg-white/95 border border-slate-200 backdrop-blur-xl rounded-2xl shadow-2xl min-w-[220px] max-h-[70vh] overflow-y-auto overflow-x-hidden"
           >
-            <div className="flex flex-col space-y-1">
+
+            <div className="p-4 border-b border-slate-100 flex items-center gap-3">
+              <img src="/logo.png" alt="Logo" className="w-8 h-8 object-contain" />
+              <div className="flex flex-col">
+                <span className="text-xs font-bold text-slate-900 leading-none">GayRealEstateCT</span>
+                <span className="text-[10px] font-medium text-brand-600 uppercase tracking-widest mt-0.5">Connecticut</span>
+              </div>
+            </div>
+
+            <div className="p-2 flex flex-col space-y-1">
               {navItems.map((item: any, idx: number) => {
                 // Page link (Reviews)
                 if (item.isPage) {
@@ -131,7 +136,7 @@ const Header: React.FC = () => {
                       key={idx}
                       to={item.link}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="flex items-center gap-3 px-4 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-xl transition-all"
+                      className="flex items-center gap-3 px-4 py-3 text-slate-700 hover:text-slate-900 hover:bg-purple-50 rounded-xl transition-all"
                     >
                       {item.icon}
                       <span className="font-medium text-sm">{item.name}</span>
@@ -143,7 +148,7 @@ const Header: React.FC = () => {
                 if (item.isDropdown && item.dropdownItems) {
                   return (
                     <div key={idx}>
-                      <div className="flex items-center gap-3 px-4 py-3 text-slate-400">
+                        <div className="flex items-center gap-3 px-4 py-3 text-slate-500">
                         {item.icon}
                         <span className="font-medium text-sm">{item.name}</span>
                       </div>
@@ -153,7 +158,7 @@ const Header: React.FC = () => {
                             key={i}
                             to={sub.href}
                             onClick={() => setIsMobileMenuOpen(false)}
-                            className="block px-4 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/10 rounded-lg transition-all"
+                            className="block px-4 py-2 text-sm text-slate-600 hover:text-slate-900 hover:bg-purple-50 rounded-lg transition-all"
                           >
                             {sub.label}
                           </Link>
@@ -169,7 +174,7 @@ const Header: React.FC = () => {
                     key={idx}
                     href={item.link}
                     onClick={(e) => handleMobileNavClick(e, item.link)}
-                    className="flex items-center gap-3 px-4 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-xl transition-all"
+                    className="flex items-center gap-3 px-4 py-3 text-slate-700 hover:text-slate-900 hover:bg-purple-50 rounded-xl transition-all"
                   >
                     {item.icon}
                     <span className="font-medium text-sm">{item.name}</span>

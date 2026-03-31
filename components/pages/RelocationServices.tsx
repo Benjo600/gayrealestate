@@ -44,9 +44,12 @@ const RelocationServices: React.FC = () => {
     useEffect(() => { window.scrollTo(0, 0); }, []);
 
     return (
-        <div className="min-h-screen bg-slate-50">
+        <div 
+            className="min-h-screen font-sans relative selection:bg-purple-500/20"
+            style={{ background: 'linear-gradient(160deg, #fdf4ff 0%, #fff7f0 25%, #f0f9ff 50%, #f7fff4 75%, #fdf4ff 100%)' }}
+        >
             <SEOHead
-                title="LGBTQ+ Relocation Services in Connecticut | GayRealEstate.com"
+                title="LGBTQ+ Relocation Services in Connecticut | GayRealEstateCT.net"
                 description="Relocating to Connecticut? Our LGBTQ+-led team provides full-service relocation support — neighborhood matching, community integration, vendor introductions, and remote closing support."
                 canonical="https://www.gayrealestateconnecticut.com/relocation-services"
                 keywords="LGBTQ relocation Connecticut, gay couple moving to CT, relocating to Connecticut services, moving to Connecticut LGBTQ support"
@@ -62,26 +65,27 @@ const RelocationServices: React.FC = () => {
             </nav>
 
             {/* Hero */}
-            <header className="relative bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 pt-24 md:pt-32 pb-16 md:pb-24 overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(124,58,237,0.2),transparent_60%)]" />
-                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-400/40 to-transparent" />
-                <div className="max-w-4xl mx-auto px-4 md:px-6 text-center relative z-10">
-                    <div className="inline-flex items-center gap-2 px-4 py-1.5 md:px-5 md:py-2 bg-white/10 rounded-full border border-white/10 mb-6 md:mb-8">
-                        <Truck className="w-3.5 h-3.5 md:w-4 md:h-4 text-gold-400" />
-                        <span className="text-[10px] md:text-xs font-bold text-gold-300 uppercase tracking-widest">Relocation Services</span>
+            <header className="relative pt-32 md:pt-40 pb-12 md:pb-20 overflow-hidden text-center">
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_15%_30%,rgba(229,0,0,0.07),transparent_55%)] pointer-events-none" />
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_85%_25%,rgba(0,76,255,0.07),transparent_50%)] pointer-events-none" />
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_70%,rgba(119,0,136,0.06),transparent_55%)] pointer-events-none" />
+                <div className="max-w-4xl mx-auto px-4 md:px-6 relative z-10">
+                    <div className="inline-flex items-center gap-2 px-5 py-2 bg-white/80 rounded-full border border-purple-200/50 shadow-sm mb-6 md:mb-8">
+                        <Truck className="w-4 h-4 text-purple-500" />
+                        <span className="text-xs font-semibold text-slate-600 uppercase tracking-widest">Relocation Services</span>
                     </div>
-                    <h1 className="text-4xl md:text-6xl font-serif font-bold text-white mb-4 md:mb-6 leading-tight">
+                    <h1 className="text-4xl md:text-6xl font-display font-bold text-slate-900 mb-4 md:mb-6 leading-tight">
                         Move to Connecticut.<br />
-                        <span className="bg-gradient-to-r from-brand-300 to-gold-300 bg-clip-text text-transparent">Arrive as a Neighbor.</span>
+                        <span style={{ background: 'linear-gradient(135deg, #770088, #004CFF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Arrive as a Neighbor.</span>
                     </h1>
-                    <p className="text-slate-300 text-base md:text-lg max-w-2xl mx-auto leading-relaxed font-light">
+                    <p className="text-slate-600 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
                         We do more than help you find a house — we help you find your community. Our LGBTQ+-led relocation service handles every detail from your first virtual tour to your first neighborhood block party.
                     </p>
                     <div className="flex flex-wrap gap-4 justify-center mt-10">
-                        <a href="/#contact" className="px-8 py-4 bg-gradient-to-r from-brand-500 to-brand-700 text-white font-semibold rounded-full hover:shadow-lg hover:shadow-brand-500/30 transition-all inline-flex items-center gap-2">
-                            Start Your Relocation <ArrowRight className="w-4 h-4" />
+                        <a href="/#contact" className="px-8 py-4 text-white font-bold rounded-full shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all inline-flex items-center gap-2" style={{ background: 'linear-gradient(135deg, #C0003A 0%, #6B008A 45%, #0A2FA8 100%)' }}>
+                            Start Your Relocation <ArrowRight className="w-4 h-4 ml-1" />
                         </a>
-                        <a href="#destinations" className="px-8 py-4 bg-white/10 border border-white/20 text-white font-semibold rounded-full hover:bg-white/20 transition-all">
+                        <a href="#destinations" className="px-8 py-4 bg-white/60 backdrop-blur-sm border border-purple-200 text-slate-700 font-semibold rounded-full hover:bg-white hover:border-purple-300 shadow-sm transition-all">
                             Explore Destinations
                         </a>
                     </div>
@@ -98,16 +102,16 @@ const RelocationServices: React.FC = () => {
                     {services.map((svc, i) => {
                         const Icon = svc.icon;
                         return (
-                            <div key={i} className="bg-white rounded-2xl md:rounded-3xl p-6 md:p-8 shadow-sm border border-slate-100 hover:border-brand-200 hover:shadow-xl transition-all duration-500 group">
-                                <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center mb-4 md:mb-6 shadow-md shadow-brand-500/20 group-hover:scale-110 transition-transform">
+                            <div key={i} className="bg-white/60 backdrop-blur-sm rounded-2xl md:rounded-3xl p-6 md:p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-purple-100/60 hover:border-purple-300 hover:shadow-xl transition-all duration-500 group">
+                                <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl border border-purple-200/50 flex items-center justify-center mb-4 md:mb-6 shadow-sm group-hover:scale-110 transition-transform" style={{ background: 'linear-gradient(135deg, #C0003A 0%, #6B008A 45%, #0A2FA8 100%)' }}>
                                     <Icon className="w-5 h-5 md:w-6 md:h-6 text-white" />
                                 </div>
-                                <h3 className="text-xl md:text-2xl font-serif font-bold text-slate-900 mb-2 md:mb-3 group-hover:text-brand-700 transition-colors">{svc.title}</h3>
+                                <h3 className="text-xl md:text-2xl font-display font-bold text-slate-900 mb-2 md:mb-3 group-hover:text-purple-700 transition-colors">{svc.title}</h3>
                                 <p className="text-slate-600 text-[13px] md:text-base leading-relaxed mb-4 md:mb-6">{svc.description}</p>
                                 <ul className="space-y-2">
                                     {svc.items.map((item, j) => (
                                         <li key={j} className="flex items-center gap-3 text-sm text-slate-600">
-                                            <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
+                                            <CheckCircle className="w-4 h-4 text-purple-500 flex-shrink-0" />
                                             {item}
                                         </li>
                                     ))}
@@ -127,14 +131,14 @@ const RelocationServices: React.FC = () => {
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {destinations.map((dest) => (
-                            <div key={dest.name} className="bg-white rounded-2xl p-7 shadow-sm border border-slate-100 hover:border-gold-300 hover:shadow-md transition-all duration-300 group">
+                            <div key={dest.name} className="bg-white/70 backdrop-blur-md rounded-2xl p-7 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-purple-100/60 hover:border-purple-300 hover:shadow-xl transition-all duration-300 group">
                                 <div className="flex items-start justify-between mb-4">
-                                    <h3 className="text-xl font-bold text-slate-900 group-hover:text-brand-700 transition-colors">{dest.name}</h3>
-                                    <span className="text-xs font-semibold px-3 py-1 bg-gold-100 text-gold-700 rounded-full">{dest.badge}</span>
+                                    <h3 className="text-xl font-bold font-display text-slate-900 group-hover:text-purple-700 transition-colors">{dest.name}</h3>
+                                    <span className="text-xs font-semibold px-3 py-1 bg-purple-100/80 text-purple-700 rounded-full border border-purple-200">{dest.badge}</span>
                                 </div>
                                 <p className="text-slate-600 text-sm leading-relaxed mb-4">{dest.desc}</p>
                                 <div className="flex items-center gap-2">
-                                    <MapPin className="w-4 h-4 text-brand-500" />
+                                    <MapPin className="w-4 h-4 text-purple-500" />
                                     <span className="text-sm font-semibold text-slate-700">{dest.price}</span>
                                 </div>
                             </div>
