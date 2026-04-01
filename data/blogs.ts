@@ -19,12 +19,12 @@ export const BLOG_POSTS: BlogPost[] = [
     id: 4,
     slug: "best-places-to-live-in-connecticut-lgbtq",
     title: "Best Places to Live in Connecticut for LGBTQ+ People (2026 Guide)",
-    excerpt: "Connecticut is more welcoming than you think — and some of its cities and towns rank among the most LGBTQ+-friendly in the entire Northeast. Here's your definitive guide to finding your people and your place.",
+    excerpt: "Connecticut is more welcoming than you think — and some of its cities and towns rank among the most LGBTQ+ friendly in the entire Northeast. Here's your definitive guide to finding your people and your place.",
     seoKeywords: "best places to live in Connecticut for LGBTQ, LGBTQ friendly Connecticut towns, gay friendly Connecticut, where to live in CT LGBTQ",
     content: `
-      <p class="lead-paragraph">Let's be honest: when most people picture an LGBTQ+-friendly place to live, they think New York, San Francisco, or maybe Portland. Connecticut rarely makes that list. And that's exactly the problem — because what you don't know could cost you the home, the community, and the life you actually want.</p>
+      <p class="lead-paragraph">Let's be honest: when most people picture an LGBTQ+ friendly place to live, they think New York, San Francisco, or maybe Portland. Connecticut rarely makes that list. And that's exactly the problem - because what you don't know could cost you the home, the community, and the life you actually want.</p>
 
-      <p>Connecticut has been quietly building one of the most robust LGBTQ+ protections frameworks in the country. It was the <strong>second state in the nation to legalize same-sex marriage</strong> back in 2008 — before it was federally mandated. It has comprehensive non-discrimination laws covering housing, employment, and public accommodations. And it's home to some genuinely thriving, deeply welcoming communities. You just have to know where to look.</p>
+      <p>Connecticut has been quietly building one of the most robust LGBTQ+ protections frameworks in the country. It was the <strong>second state in the nation to legalize same-sex marriage</strong> back in 2008 - before it was federally mandated. It has comprehensive non-discrimination laws covering housing, employment, and public accommodations. And it's home to some genuinely thriving, deeply welcoming communities. You just have to know where to look.</p>
 
       <h2>Why Connecticut? The Case You Haven't Heard Yet</h2>
       <p>Before we get into specific towns, let's address something: why Connecticut at all? The honest answer is value. If you're moving from NYC or Boston, you can get a 3-bedroom home with a yard, top-rated schools, and a 60-minute train commute for what a studio apartment costs in Brooklyn. And with remote work now permanent for many professionals, the calculus has completely changed.</p>
@@ -32,20 +32,20 @@ export const BLOG_POSTS: BlogPost[] = [
 
       <h2>🏆 West Hartford: The Gold Standard</h2>
       <p>If you only research one Connecticut town, make it West Hartford. This is the community that consistently tops every LGBTQ+ livability metric, and for good reason. The local government has been explicitly pro-LGBTQ+ for decades. The school district is recognized for its inclusive curriculum and supportive staff. And the walkable Blue Back Square area has become a genuine hub for queer-friendly dining, shops, and nightlife.</p>
-      <p>Arek Wtulich — Co-Founder and Vice President of the Connecticut Chapter of the LGBTQ+ Real Estate Alliance, and 2025 Vice President of the Board of the Tri-County Alliance of Realtors — consistently points clients toward West Hartford first when they ask where the community is strongest. His deep roots in Hartford County's real estate and LGBTQ+ networks make him one of the most connected advocates for buyers navigating this market.</p>
-      <p>The median home price hovers around $380,000–$450,000, with townhomes and condos available for first-time buyers in the low $200s. The commute to Hartford is under 15 minutes. It's arguably the best all-around package in Connecticut.</p>
+      <p>Arek consistently shares information about West Hartford first when asked where the community is strongest. His deep roots in Hartford County's real estate and LGBTQ+ networks make him one of the most connected advocates for buyers navigating this market.</p>
+      <p>The median home price hovers around $540,000 for single family homes, with townhomes and condos available for first-time buyers in the $345s. The commute to Hartford is under 15 minutes. It's arguably the best all-around package in Connecticut.</p>
 
       <h2>🌈 Northampton's Shadow: Northampton-Adjacent Towns</h2>
       <p>The Pioneer Valley influence extends south into Connecticut's Tolland and Windham counties. Towns like <strong>Mansfield (Storrs)</strong>, home to UConn, have a progressive, academic culture that tends to be strongly LGBTQ+ inclusive. If you want lower home prices and don't need the urban amenities, this is worth exploring.</p>
 
       <h2>🏙️ Hartford: Affordable, Authentic, and Underrated</h2>
-      <p>Hartford proper gets overlooked because of its urban challenges, but the LGBTQ+ community here is real, vibrant, and deeply rooted. The city has been a destination for queer nightlife in Connecticut for decades, and ongoing revitalization projects are making neighborhoods like Parkville and Blue Hills genuinely attractive. For investors or buyers willing to be early, Hartford offers <strong>extraordinary value</strong> — single-family homes under $200,000 are still possible.</p>
+      <p>Hartford proper gets overlooked because of its urban challenges, but the LGBTQ+ community here is real, vibrant, and deeply rooted. The city has been a destination for queer nightlife in Connecticut for decades, and ongoing revitalization projects are making neighborhoods like Parkville and Blue Hills genuinely attractive. For investors or buyers willing to be early, Hartford offers <strong>extraordinary value</strong> - single-family homes under $250,000 are still possible.</p>
 
       <h2>🌊 New Haven: Yale Energy, Queer Culture, and Coastal Proximity</h2>
-      <p>New Haven's Wooster Square and East Rock neighborhoods have long attracted artists, academics, and progressive thinkers — which translates to a strong, visible LGBTQ+ presence. Yale University anchors an intellectual culture that doesn't tolerate intolerance. Home prices are rising but still accessible compared to NYC, and you're 90 minutes from Manhattan by train.</p>
+      <p>New Haven's Wooster Square and East Rock neighborhoods have long attracted artists, academics, and progressive thinkers - which translates to a strong, visible LGBTQ+ presence. Yale University anchors an intellectual culture that doesn't tolerate intolerance. Home prices are rising but still accessible compared to NYC, and you're 90 minutes from Manhattan by train.</p>
 
       <h2>🍂 Litchfield County: For the LGBTQ+ Buyer Who Wants Space</h2>
-      <p>This surprises people: rural Northwestern Connecticut — Litchfield, Washington, Warren, and the lake communities — has long been a quiet retreat for LGBTQ+ professionals and couples from NYC and Boston. It's not the same as living in West Hartford, but the second-home and weekend community here is extremely welcoming. If you want land, privacy, and natural beauty, Travis Lipinski, our Litchfield County specialist, knows this market intimately.</p>
+      <p>This surprises people: rural Northwestern Connecticut - Litchfield, Washington, Warren, and the lake communities - has long been a quiet retreat for LGBTQ+ professionals and couples from NYC and Boston. It's not the same as living in West Hartford, but the second-home and weekend community here is extremely welcoming. If you want land, privacy, and natural beauty, Travis Lipinski, our Litchfield County specialist, knows this market intimately.</p>
 
       <h2>What to Look For When Evaluating Any Connecticut Town</h2>
       <ul>
@@ -57,8 +57,8 @@ export const BLOG_POSTS: BlogPost[] = [
       </ul>
 
       <h2>Your Next Step: Talk to Someone Who Knows This From the Inside</h2>
-      <p>You can read rankings all day, but the most important insight comes from people who have lived this experience themselves — who have navigated Connecticut's market not just as realtors, but as members of the community they're helping you find. That's the difference we offer.</p>
-      <p>Our team includes licensed agents who are part of the LGBTQ+ Real Estate Alliance, who live in these communities, and who have helped hundreds of LGBTQ+ buyers find exactly what they were looking for — not just a house, but a home where they genuinely belong.</p>
+      <p>You can read rankings all day, but the most important insight comes from people who have lived this experience themselves - who have navigated Connecticut's market not just as realtors, but as members of the community they're helping you find. That's the difference we offer.</p>
+      <p>Our team includes licensed agents who are part of the LGBTQ+ Real Estate Alliance, who live in these communities, and who have helped hundreds of LGBTQ+ buyers find exactly what they were looking for - not just a house, but a home where they genuinely belong.</p>
     `,
     image: "/ct_lgbtq_places.png",
     category: "LGBTQ+ LIVING GUIDE",
@@ -76,16 +76,16 @@ export const BLOG_POSTS: BlogPost[] = [
     content: `
       <p class="lead-paragraph">West Hartford keeps appearing on every "best places to live" list for LGBTQ+ buyers in Connecticut. But lists don't tell you <em>why</em> — and "why" is everything when you're deciding where to plant roots. Here's the real story.</p>
 
-      <p>West Hartford isn't just passively inclusive. It's a community that has been <strong>actively building its LGBTQ+ identity for over two decades</strong>. That's a meaningful distinction. There's a difference between a town that won't discriminate and a town that celebrates — and West Hartford is firmly in the second category.</p>
+      <p>West Hartford isn't just passively inclusive. It's a community that has been <strong>actively building its LGBTQ+ identity for over two decades</strong>. That's a meaningful distinction. There's a difference between a town that won't discriminate and a town that celebrates, and West Hartford is firmly in the second category.</p>
 
       <h2>The Local Government Is Actually On Your Side</h2>
-      <p>West Hartford's Town Council has explicitly passed LGBTQ+ non-discrimination protections that go beyond state law requirements. The town is a consistent participant in Pride month programming, including official town government recognition. During June, you'll see Pride flags alongside the American flag on town property — not as a political statement, but as a statement of community values.</p>
+      <p>West Hartford's Town Council has explicitly passed LGBTQ+ non-discrimination protections that go beyond state law requirements. The town is a consistent participant in Pride month programming, including official town government recognition. During June, you'll see Pride flags alongside the American flag on town property - not as a political statement, but as a statement of community values.</p>
       <p>This matters practically because local government attitude shapes everything from code enforcement fairness to how school boards are run. When the people in charge genuinely support the community, it flows through every institution.</p>
 
       <h2>The Schools Are a Major Draw — Especially for Families</h2>
       <p>West Hartford Public Schools are consistently rated among the best in Connecticut, but for LGBTQ+ families, the quality of inclusion matters as much as test scores. The district has explicit, named protections for LGBTQ+ students in its anti-bullying and non-discrimination policies. GSA (Gender & Sexuality Alliance) clubs exist at both high schools. Teachers receive training on affirming practices.</p>
       <p>The result: LGBTQ+ families with children regularly cite the school district as their primary reason for choosing West Hartford over comparable towns with similar price points and commute times.</p>
-      <p>Abby Dudarewicz, who serves Hartford, Tolland, and Middlesex Counties, lives this reality firsthand — she is a Connecticut Realtor with SERHANT. CT who lives in Glastonbury with her wife, son, and two cats, and is passionate about helping LGBTQ+ buyers, sellers, and families feel informed, supported, and confident throughout the entire process. When she recommends a school district, it is grounded in personal experience, not just research.</p>
+      <p>Abby Dudarewicz, who serves Hartford, Tolland, and Middlesex Counties, lives this reality firsthand - she is a Connecticut Realtor with SERHANT. CT who lives in Glastonbury with her wife, son, and two cats, and is passionate about helping LGBTQ+ buyers, sellers, and families feel informed, supported, and confident throughout the entire process. When she recommends a school district, it is grounded in personal experience, not just research.</p>
 
       <h2>The Neighborhood You'll Actually Want to Live In</h2>
       <p>Blue Back Square is the commercial and social heart of West Hartford Center — and it's genuinely alive in a way that many Connecticut downtowns aren't. Restaurants, boutiques, a movie theater, and bars within walking distance of residential neighborhoods. The queer-friendly social scene here is real: multiple establishments have long histories of welcoming LGBTQ+ clientele, and the crowd reflects the community's diversity.</p>
@@ -94,9 +94,9 @@ export const BLOG_POSTS: BlogPost[] = [
       <h2>The Real Estate Market: What You Actually Need to Know</h2>
       <p>West Hartford's housing market is competitive, and prices have risen significantly since 2020. Here's the current landscape:</p>
       <ul>
-        <li><strong>Condos & townhomes:</strong> $200,000–$350,000 — most accessible entry point</li>
-        <li><strong>Single-family homes:</strong> $350,000–$600,000 for most of the market</li>
-        <li><strong>Premium neighborhoods near the Center:</strong> $600,000+</li>
+        <li><strong>Condos & townhomes:</strong> $345,000 median price in 2025 - most accessible entry point</li>
+        <li><strong>Single-family homes:</strong> $542,000 median price in 2025</li>
+        <li><strong>Premium neighborhoods near the Center:</strong> $700,000+</li>
         <li><strong>Days on market:</strong> Often under 2 weeks for desirable homes — you need to be ready to move fast</li>
       </ul>
       <p>This is a market where having a knowledgeable, well-networked agent is not optional — it's the difference between getting the house and losing it to a cash offer you didn't know was coming.</p>
@@ -117,19 +117,19 @@ export const BLOG_POSTS: BlogPost[] = [
     id: 6,
     slug: "moving-to-connecticut-as-a-gay-couple",
     title: "Moving to Connecticut as a Gay Couple: What No One Tells You",
-    excerpt: "You've researched the laws. You know the Pride parade cities. But the real questions — about daily life, community fit, home buying as a couple, and protecting your investment — don't show up in the search results. Until now.",
+    excerpt: "You've researched the laws. You know the Pride parade towns and cities. But the real questions — about daily life, community fit, home buying as a couple, and protecting your investment — don't show up in the search results. Until now.",
     seoKeywords: "moving to Connecticut gay couple, relocating to CT LGBTQ, gay couple Connecticut real estate, same sex couple home buying Connecticut",
     content: `
-      <p class="lead-paragraph">You've done the research. Connecticut has strong LGBTQ+ protections. You know about West Hartford. You've read the "best places to live" lists. But here's what those lists don't tell you: the gap between a town that's legally safe and a town where you'll actually feel at home is enormous — and bridging that gap is what we do.</p>
+      <p class="lead-paragraph">You've done the research. Connecticut has strong LGBTQ+ protections. You know about West Hartford. You've read the "best places to live" lists. But here's what those lists don't tell you: the gap between a town that's legally safe and a town where you'll actually feel at home is enormous, and bridging that gap is what we do.</p>
 
       <p>This post is for couples who are serious about making a move. Not window-shopping. Not "someday." People who are looking at their current situation — the cramped apartment, the absurd rent, the commute, the relationship that deserves more space — and thinking: it's time.</p>
 
       <h2>The Question Everyone Asks First (And It's the Wrong Question)</h2>
       <p>"Is Connecticut safe for gay couples?" Yes. Completely. Connecticut has had marriage equality since 2008. It has robust non-discrimination laws. Anti-LGBTQ+ housing discrimination is illegal and taken seriously. You are protected. That question is settled.</p>
-      <p>The better questions are: <em>Where in Connecticut will we actually thrive? What does our daily life look like? Will we have community? Will our relationship be seen and celebrated, or just tolerated?</em> Those are harder — and more important.</p>
+      <p>The better questions are: <em>Where in Connecticut will we actually thrive? What does our daily life look like? Will we have community? Will our relationship be seen and celebrated, or just tolerated?</em> Those are harder, and more important.</p>
 
       <h2>The Daily Life Reality in Connecticut's Top LGBTQ+ Towns</h2>
-      <p>In West Hartford, you will walk down the street holding hands and nobody will look twice. Not because they're being polite — because it's genuinely normal. You'll go to restaurants where other same-sex couples are at the next table. Your neighbors may display a Pride flag year-round (many do). The local coffee shop will have a "Love is Love" sticker in the window. This is the daily texture of life in a community that's been building inclusive culture for decades.</p>
+      <p>In West Hartford, you will walk down the street holding hands and nobody will look twice. Not because they're being polite, because it's genuinely normal. You'll go to restaurants where other same-sex couples are at the next table. Your neighbors may display a Pride flag year-round (many do). The local coffee shop will have a "Love is Love" sticker in the window. This is the daily texture of life in a community that's been building inclusive culture for decades.</p>
       <p>In New Haven's East Rock neighborhood, the academic and arts community creates a similar environment — diverse, progressive, and actively queer-friendly. In Litchfield County's second-home communities, the culture is more private but equally welcoming: this is where NYC's gay professional class has been vacationing and retiring for generations.</p>
 
       <h2>Buying a Home Together: The Practical Considerations</h2>
@@ -137,7 +137,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <ul>
         <li><strong>How you hold title matters.</strong> Couples should work with their real estate attorney to understand the difference between joint tenancy with right of survivorship and tenancy in common — and which protects them better given their specific situation. Attorney Carolyn Futtner on our team handles exactly this.</li>
         <li><strong>Mortgage qualification as a couple.</strong> Both incomes, both credit scores, both financial histories. Working with a lender who has experience with same-sex couples ensures you're getting accurate guidance, not assumptions based on traditional household models. Jake Earl, our Top 1% mortgage lender, has navigated countless LGBTQ+ couple transactions.</li>
-        <li><strong>Know your budget ceiling before you fall in love with a property.</strong> Connecticut's competitive markets (West Hartford, parts of New Haven and Fairfield counties) move fast. Pre-approval isn't optional — it's the minimum entry requirement.</li>
+        <li><strong>Know your budget ceiling before you fall in love with a property.</strong> Connecticut's competitive markets move fast. Pre-approval isn't optional, it's the minimum entry requirement.</li>
         <li><strong>Commission structures and representation.</strong> Buyer representation is now more important than ever post-NAR settlement changes. Make sure your agent is exclusively representing your interests.</li>
       </ul>
 
@@ -146,11 +146,11 @@ export const BLOG_POSTS: BlogPost[] = [
       <p>Connecticut has an active LGBTQ+ social infrastructure beyond Pride month. Hartford has consistent queer nightlife. New Haven and West Hartford have LGBTQ+ professional networking. Multiple towns have PFLAG chapters and LGBTQ+ community centers. If you come here expecting isolation, you'll be pleasantly shocked.</p>
 
       <h2>The NYC Comparison (Since You're Probably Thinking It)</h2>
-      <p>If you're moving from New York — and a significant portion of our clients are — here's the honest comparison: You will gain space, equity, and a lower cost of living. You will miss certain things about city life: the density of nightlife, the anonymity, the sheer volume of queer spaces. Connecticut's queer scene is smaller and more community-oriented — which many of our clients find they prefer after the initial adjustment period.</p>
-      <p>The train to NYC runs regularly from New Haven, Hartford, and Fairfield County stations. Nobody's asking you to cut the cord. They're asking you to build something.</p>
+      <p>If you're moving from New York — and a significant portion of our clients are — here's the honest comparison: You will gain space, equity, and a lower cost of living. You will miss certain things about city life: the density of nightlife, the anonymity, the sheer volume of queer spaces. Connecticut's queer scene is much smaller and more community-oriented, which many of our clients find they prefer after the initial adjustment period.</p>
+      <p>The train to NYC runs regularly from New Haven, Hartford (through New Haven), and Fairfield County stations. Nobody's asking you to cut the cord. They're asking you to build something.</p>
 
       <h2>Our Team Has Lived This</h2>
-      <p>Arek Wtulich, our lead agent, is a Co-Founder and Vice President of the Connecticut Chapter of the LGBTQ+ Real Estate Alliance. He's not just an agent who serves this community — he is this community. When you work with our team, you're working with people who understand the nuances of this kind of move from the inside, not from a brochure.</p>
+      <p>Arek Wtulich, our lead agent, was a Co-Founder and Vice President of the Connecticut Chapter of the LGBTQ+ Real Estate Alliance. He's not just an agent who serves this community — he is a part of the community. When you work with our team, you're working with people who understand the nuances of this kind of move from the inside, not from a brochure.</p>
     `,
     image: "/gay_couple_moving_ct.png",
     category: "RELOCATION GUIDE",
@@ -553,16 +553,16 @@ Lakefront properties here are rare, fiercely held, and range from rustic seasona
     id: 12,
     slug: "wooster-square-new-haven-lgbtq-neighborhood",
     title: "Wooster Square New Haven: Is It Still the Best LGBTQ Neighborhood?",
-    excerpt: "Wooster Square is New Haven's most talked-about LGBTQ neighborhood. Here's what it's actually like to live there — the community, the tradeoffs, and what you need to know.",
+    excerpt: "Wooster Square is New Haven's most talked-about LGBTQ neighborhood. Here's what it's actually like to live there - the community, the tradeoffs, and what you need to know.",
     seoKeywords: "Wooster Square New Haven LGBTQ, gay neighborhood New Haven CT, moving to New Haven LGBTQ",
     content: `
-      <p class="lead-paragraph">Wooster Square gets mentioned in almost every guide to LGBTQ life in New Haven — and for good reason. It's the most historically queer-concentrated part of the city, it has a real neighborhood feel, and it's where you'll find the highest density of pride flags and community-minded neighbors.</p>
+      <p class="lead-paragraph">Wooster Square gets mentioned in almost every guide to LGBTQ life in New Haven, and for good reason. It's the most historically queer-concentrated part of the city, it has a real neighborhood feel, and it's where you'll find the highest density of pride flags and community-minded neighbors.</p>
 
       <h2>The Neighborhood Character</h2>
-      <p>Wooster Square is New Haven's Little Italy — and also its de facto gay neighborhood. Victorian and Gothic-style row houses line streets that have been on the National Register of Historic Places for decades. Frank Pepe's and Sally's, two of the country's most famous pizza spots, are both here, adding a vibrant energy to the quiet streets.</p>
+      <p>Wooster Square is New Haven's Little Italy - and also its de facto gay neighborhood. Victorian and Gothic-style row houses line streets that have been on the National Register of Historic Places for decades. Frank Pepe's and Sally's, two of the country's most famous pizza spots, are both here, adding a vibrant energy to the quiet streets.</p>
 
       <h2>Why LGBTQ Residents Stay</h2>
-      <p>The queer presence here isn't loud or commercial — it’s grassroots. It’s the kind of place where a neighborhood trash cleanup or a park meet-up organized by queer residents draws dozens of people. The community is low-key, family-oriented, and genuinely welcoming. Plus, New Haven's Pride Center is just a short walk away.</p>
+      <p>The queer presence here isn't loud or commercial - it’s grassroots. It’s the kind of place where a neighborhood trash cleanup or a park meet-up organized by queer residents draws dozens of people. The community is low-key, family-oriented, and genuinely welcoming. Plus, New Haven's Pride Center is just a short walk away.</p>
 
       <h2>Real Talk: The Tradeoffs</h2>
       <p>Wooster Square sits at the edge of more urban areas, meaning crime is a real conversation that happens at neighborhood meetings. Additionally, the neighborhood has become increasingly desirable, leading to gentrification that is shifting property values. While it’s more affordable than West Hartford, it’s no longer the "secret" it once was.</p>
@@ -631,13 +631,13 @@ Lakefront properties here are rare, fiercely held, and range from rustic seasona
     excerpt: "A realtor who gets it makes a real difference. Here's what to look for when choosing an LGBTQ-affirming real estate agent in CT.",
     seoKeywords: "gay realtor Connecticut, LGBTQ realtor Connecticut, gay real estate agent CT",
     content: `
-      <p class="lead-paragraph">Buying or renting a home in Connecticut as an LGBTQ person is legally protected—but feeling comfortable through the process is just as important. A realtor who "gets it" understands the nuances of choosing a neighborhood and navigating the legalities of LGBTQ homeownership.</p>
+      <p class="lead-paragraph">Buying or renting a home in Connecticut as an LGBTQ person is legally protected - but feeling comfortable through the process is just as important. A realtor who "gets it" understands the nuances of choosing a neighborhood and navigating the legalities of LGBTQ homeownership.</p>
 
       <h2>What to Look For</h2>
       <p>A genuinely affirming realtor will know which neighborhoods are safe and welcoming across the state, not just in the well-known hubs. They will understand the specific concerns around documentation for trans clients and will never assume anything about your family structure.</p>
 
       <h2>Why it Matters</h2>
-      <p>Working with someone who shares your values saves time and stress. They can point out details—like a local school district's history with LGBTQ inclusion or a neighborhood's social vibe—that a standard agent might miss. At serhant.ct, we pride ourselves on being that expert resource for the community.</p>
+      <p>Working with someone who shares your values saves time and stress. They can point out details - like a local school district's history with LGBTQ inclusion or a neighborhood's social vibe - that a standard agent might miss. At GayRealEstateCT, we pride ourselves on being that expert resource for the community.</p>
     `,
     image: "/gay_realtor_guide.png",
     category: "EXPERT ADVICE",

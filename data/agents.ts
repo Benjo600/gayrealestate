@@ -61,7 +61,7 @@ export const agents: Record<string, Agent> = {
         role: "agent",
         stats: [
             { label: "Experience", value: "Since 2022" },
-            { label: "Areas", value: "Hartford, Middlesex, New Haven Counties" },
+            { label: "Areas", value: "Hartford, Middlesex, Tolland Counties" },
             { label: "Community", value: "LGBTQ+ Advocate" }
         ],
         specialties: ["Residential Sales", "Buyer Representation", "LGBTQ+ Families", "Hartford & Tolland Counties"],
@@ -93,7 +93,7 @@ export const agents: Record<string, Agent> = {
             { label: "Areas", value: "Litchfield, Hartford Counties" },
             { label: "Background", value: "Hospitality" }
         ],
-        specialties: ["Commercial RE", "Airbnb host", "Leases", "Second Home Properties"],
+        specialties: ["Residential and Commercial RE", "Airbnb host", "Leases", "Second Home Properties"],
         credentials: [
             { label: "Licensed CT Realtor", type: "verified" },
             { label: "Johnson & Wales University — Business", type: "achievement" },
