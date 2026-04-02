@@ -125,13 +125,7 @@ const Header: React.FC = () => {
             className="md:hidden fixed top-[80px] right-6 z-[6000] bg-white/95 border border-slate-200 backdrop-blur-xl rounded-2xl shadow-2xl min-w-[220px] max-h-[70vh] overflow-y-auto overflow-x-hidden"
           >
 
-            <div className="p-4 border-b border-slate-100 flex items-center gap-3">
-              <img src="/logo.png" alt="Logo" className="w-8 h-8 object-contain" />
-              <div className="flex flex-col">
-                <span className="text-xs font-bold text-slate-900 leading-none">GayRealEstateCT</span>
-                <span className="text-[10px] font-medium text-brand-600 uppercase tracking-widest mt-0.5">Connecticut</span>
-              </div>
-            </div>
+
 
             <div className="p-2 flex flex-col space-y-1">
               {navItems.map((item: any, idx: number) => {

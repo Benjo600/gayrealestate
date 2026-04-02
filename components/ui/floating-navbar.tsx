@@ -82,20 +82,16 @@ export const FloatingNav = ({
                     opacity: visible ? 1 : 0,
                 }}
                 transition={{
-                    duration: 0.4,
-                    ease: [0.25, 0.4, 0.25, 1],
+                    duration: 0.3,
+                    ease: "easeInOut",
                 }}
                 className={cn(
-                    "flex max-w-fit fixed top-8 inset-x-0 mx-auto rounded-full z-[5000] p-1.5 items-center justify-center",
-                    "bg-charcoal-900/90 border border-slate-800/50 shadow-2xl backdrop-blur-xl gap-2 px-4",
+                    "flex max-w-fit fixed top-5 inset-x-0 mx-auto rounded-full z-[5000] p-1 items-center justify-center",
+                    "bg-charcoal-900/90 border border-slate-800/50 shadow-2xl backdrop-blur-xl gap-1 px-2.5",
                     className
                 )}
             >
-                {/* Logo Section */}
-                <Link to="/" className="flex items-center gap-2 pr-4 border-r border-slate-800/50 hover:opacity-80 transition-opacity">
-                    <img src="/logo.png" alt="Logo" className="w-6 h-6 object-contain" />
-                    <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-white hidden lg:block">GayRealEstateCT</span>
-                </Link>
+
 
                 {navItems.map((navItem: any, idx: number) => {
                     // Page link (like Reviews)
@@ -105,7 +101,7 @@ export const FloatingNav = ({
                                 key={`link=${idx}`}
                                 to={navItem.link}
                                 className={cn(
-                                    "relative items-center flex space-x-1 font-semibold text-sm px-5 py-2.5 rounded-full transition-all duration-300",
+                                    "relative items-center flex space-x-1 font-semibold text-sm px-4 py-2 rounded-full transition-all duration-300",
                                     location.pathname === navItem.link
                                         ? "text-white bg-white/10"
                                         : "text-slate-300 hover:text-white"
@@ -128,7 +124,7 @@ export const FloatingNav = ({
                             >
                                 <button
                                     className={cn(
-                                        "relative items-center flex space-x-1 font-semibold text-sm px-5 py-2.5 rounded-full transition-all duration-300",
+                                        "relative items-center flex space-x-1 font-semibold text-sm px-4 py-2 rounded-full transition-all duration-300",
                                         "text-slate-300 hover:text-white"
                                     )}
                                 >
@@ -152,7 +148,7 @@ export const FloatingNav = ({
                                                 <Link
                                                     key={i}
                                                     to={item.href}
-                                                    className="block px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/10 rounded-xl transition-all"
+                                                    className="block px-4 py-2 text-sm text-slate-300 hover:text-white hover:bg-white/10 rounded-xl transition-all"
                                                 >
                                                     {item.label}
                                                 </Link>
@@ -171,7 +167,7 @@ export const FloatingNav = ({
                             href={navItem.link}
                             onClick={(e) => handleNavClick(e, navItem.link)}
                             className={cn(
-                                "relative items-center flex space-x-1 font-semibold text-sm px-5 py-2.5 rounded-full transition-all duration-300",
+                                "relative items-center flex space-x-1 font-semibold text-sm px-4 py-2 rounded-full transition-all duration-300",
                                 active === navItem.link
                                     ? "text-white"
                                     : "text-slate-300 hover:text-white"
