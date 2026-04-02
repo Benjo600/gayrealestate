@@ -13,6 +13,7 @@ import MarketingYourHome from './components/pages/MarketingYourHome';
 import PrivacyPolicy from './components/pages/PrivacyPolicy';
 import Reviews from './components/pages/Reviews';
 import AboutUs from './components/pages/AboutUs';
+import CommunityEvents from './components/pages/CommunityEvents';
 import NotFound from './components/pages/NotFound';
 import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
@@ -44,6 +45,7 @@ const App: React.FC = () => {
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/reviews" element={<Reviews />} />
         <Route path="/about" element={<AboutUs />} />
+        <Route path="/community" element={<CommunityEvents />} />
         {/* Fallback */}
         <Route path="*" element={<NotFound />} />
       </Routes>

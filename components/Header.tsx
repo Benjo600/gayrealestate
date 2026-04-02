@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FloatingNav } from './ui/floating-navbar';
-import { Home, User, MessageSquare, BookOpen, Menu, X, ShoppingBag, Tag, Star } from 'lucide-react';
+import { Home, User, MessageSquare, BookOpen, Menu, X, ShoppingBag, Tag, Star, Calendar } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 
@@ -18,7 +18,7 @@ const Header: React.FC = () => {
     },
     {
       name: "Meet Agents",
-      link: "/#find-agent",
+      link: "/about#team",
       icon: <User className="h-4 w-4 text-neutral-500 dark:text-white" />,
     },
     {
@@ -28,7 +28,7 @@ const Header: React.FC = () => {
     },
     {
       name: "For Buyers",
-      link: "/#find-agent",
+      link: "/about#team",
       icon: <ShoppingBag className="h-4 w-4 text-neutral-500 dark:text-white" />,
       isDropdown: true,
       dropdownItems: [
@@ -40,7 +40,7 @@ const Header: React.FC = () => {
     },
     {
       name: "For Sellers",
-      link: "/#find-agent",
+      link: "/about#team",
       icon: <Tag className="h-4 w-4 text-neutral-500 dark:text-white" />,
       isDropdown: true,
       dropdownItems: [
@@ -53,6 +53,12 @@ const Header: React.FC = () => {
       name: "Reviews",
       link: "/reviews",
       icon: <MessageSquare className="h-4 w-4 text-neutral-500 dark:text-white" />,
+      isPage: true,
+    },
+    {
+      name: "Community",
+      link: "/community",
+      icon: <Calendar className="h-4 w-4 text-neutral-500 dark:text-white" />,
       isPage: true,
     },
     {

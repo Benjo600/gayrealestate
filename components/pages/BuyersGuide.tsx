@@ -91,7 +91,7 @@ const BuyersGuide: React.FC = () => {
             <SEOHead
                 title="LGBTQ+ Buyer's Guide — Connecticut Real Estate | GayRealEstateCT.net"
                 description="The complete Connecticut buyer's guide for LGBTQ+ home buyers. From credit to closing, neighborhood matching to legal protection — everything you need in one place."
-                canonical="https://www.gayrealestateconnecticut.com/buyers-guide"
+                canonical="https://www.gayrealestatect.net/buyers-guide"
                 keywords="LGBTQ buyers guide Connecticut, gay home buyer guide CT, Connecticut home buying LGBTQ, same sex couple home buying Connecticut guide"
             />
 

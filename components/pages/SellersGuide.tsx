@@ -53,7 +53,7 @@ const SellersGuide: React.FC = () => {
             <SEOHead
                 title="Connecticut Seller's Guide | LGBTQ+-Allied Real Estate | GayRealEstateCT.net"
                 description="The complete guide to selling your Connecticut home — pricing strategy, staging, marketing, offer negotiation, and closing. Written by LGBTQ+-allied CT real estate professionals."
-                canonical="https://www.gayrealestateconnecticut.com/sellers-guide"
+                canonical="https://www.gayrealestatect.net/sellers-guide"
                 keywords="Connecticut home selling guide, sell my home Connecticut LGBTQ, CT real estate seller guide, how to sell your home for more Connecticut"
             />
 

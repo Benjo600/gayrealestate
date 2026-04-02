@@ -24,7 +24,7 @@ import Footer from '../Footer';
 import SEOHead from '../SEOHead';
 import { agents } from '../../data/agents';
 
-const BASE_URL = 'https://www.gayrealestateconnecticut.com';
+const BASE_URL = 'https://www.gayrealestatect.net';
 
 const AUTHOR_AGENT_MAP: Record<string, string> = {
     'Arek Wtulich': 'arek',
@@ -200,7 +200,7 @@ const BlogPost: React.FC = () => {
                     image: post.image,
                     datePublished: post.date,
                     author: { '@type': 'Person', name: post.author, jobTitle: post.authorRole },
-                    publisher: { '@type': 'Organization', name: 'Gay Real Estate Connecticut', url: BASE_URL },
+                    publisher: { '@type': 'Organization', name: 'GayRealEstateCT.net', url: BASE_URL },
                 }
             ]
         };

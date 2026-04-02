@@ -112,7 +112,7 @@ Material changes — changes that significantly affect how we handle your person
         content: `If you have questions, concerns, or requests regarding this Privacy Policy or how we handle your personal data, please contact us:
 
 **GayRealEstateCT.net — Connecticut**
-Contact Form: https://www.gayrealestateconnecticut.com/#contact
+Contact Form: https://www.gayrealestatect.net/#contact
 Phone: (860) 404-2188
 
 We are committed to resolving privacy concerns promptly and transparently.`,
@@ -155,7 +155,7 @@ const PrivacyPolicy: React.FC = () => {
             <SEOHead
                 title="Privacy Policy | GayRealEstateCT.net"
                 description="GayRealEstateCT.net privacy policy — how we collect, use, and protect your personal information, with a specific commitment to LGBTQ+ community privacy."
-                canonical="https://www.gayrealestateconnecticut.com/privacy-policy"
+                canonical="https://www.gayrealestatect.net/privacy-policy"
                 keywords="GayRealEstateCT.net privacy policy, Connecticut real estate privacy"
                 noIndex={false}
             />

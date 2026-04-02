@@ -180,6 +180,22 @@ function HeroGeometric({
                             <p className="text-base md:text-lg text-zinc-400 leading-relaxed max-w-xl mb-6 md:mb-10">
                                 {description}
                             </p>
+
+                            <div className="flex flex-wrap gap-4 items-center">
+                                <Link
+                                    to="/about#team"
+                                    className="group px-8 py-4 bg-white text-zinc-950 font-bold rounded-xl flex items-center gap-2 hover:bg-gold-400 hover:text-zinc-900 transition-all duration-300 shadow-xl"
+                                >
+                                    {ctaText}
+                                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                </Link>
+                                <a
+                                    href="/#contact"
+                                    className="px-8 py-4 bg-zinc-900/50 backdrop-blur-md border border-white/10 text-white font-bold rounded-xl hover:bg-white/10 transition-all duration-300"
+                                >
+                                    Get Started
+                                </a>
+                            </div>
                         </motion.div>
 
 

@@ -5,13 +5,14 @@ import AnimatedGradientBackground from '../ui/animated-gradient-background';
 import Features from '../Features';
 import AgentFinder from '../AgentFinder';
 import Resources from '../Resources';
+import CommunitySpotlight from '../CommunitySpotlight';
 import EnquiryForm from '../EnquiryForm';
 import Footer from '../Footer';
 import { ScrollToTop } from '../ui/scroll-to-top';
 import SEOHead from '../SEOHead';
 import { Home, Search, Heart, BookOpen } from 'lucide-react';
 
-const BASE_URL = 'https://www.gayrealestateconnecticut.com';
+const BASE_URL = 'https://www.gayrealestatect.net';
 
 const HomePage: React.FC = () => {
     const navItems = [
@@ -112,6 +113,7 @@ const HomePage: React.FC = () => {
 
                 <Features />
                 <AgentFinder />
+                <CommunitySpotlight />
                 <Resources />
                 <EnquiryForm />
                 <Footer />

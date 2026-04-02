@@ -51,7 +51,7 @@ const RelocationServices: React.FC = () => {
             <SEOHead
                 title="LGBTQ+ Relocation Services in Connecticut | GayRealEstateCT.net"
                 description="Relocating to Connecticut? Our LGBTQ+-led team provides full-service relocation support — neighborhood matching, community integration, vendor introductions, and remote closing support."
-                canonical="https://www.gayrealestateconnecticut.com/relocation-services"
+                canonical="https://www.gayrealestatect.net/relocation-services"
                 keywords="LGBTQ relocation Connecticut, gay couple moving to CT, relocating to Connecticut services, moving to Connecticut LGBTQ support"
             />
 

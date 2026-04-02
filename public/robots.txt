@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.gayrealestateconnecticut.com/sitemap.xml
+Sitemap: https://www.gayrealestatect.net/sitemap.xml

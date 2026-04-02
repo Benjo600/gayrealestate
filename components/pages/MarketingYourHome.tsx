@@ -53,7 +53,7 @@ const MarketingYourHome: React.FC = () => {
             <SEOHead
                 title="Marketing Your Home in Connecticut | GayRealEstateCT.net"
                 description="See how we market your Connecticut home to get top dollar — professional photography, MLS syndication, social media targeting, and LGBTQ+ buyer network outreach."
-                canonical="https://www.gayrealestateconnecticut.com/marketing-your-home"
+                canonical="https://www.gayrealestatect.net/marketing-your-home"
                 keywords="how to market your home Connecticut, sell home fast CT, real estate marketing Connecticut, LGBTQ real estate marketing CT"
             />
 

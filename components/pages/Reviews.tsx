@@ -295,7 +295,7 @@ const Reviews: React.FC = () => {
             <SEOHead
                 title="Reviews | GayRealEstateCT.net"
                 description="Client testimonials for our real estate professionals."
-                canonical="https://www.gayrealestateconnecticut.com/reviews"
+                canonical="https://www.gayrealestatect.net/reviews"
                 ogType="website"
             />
             <Header />

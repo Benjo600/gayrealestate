@@ -39,7 +39,7 @@ const AboutUs: React.FC = () => {
             <SEOHead
                 title="About GayRealEstateCT.net | LGBTQ+ Real Estate in Connecticut"
                 description="Learn about GayRealEstateCT.net — our history, our team, and our mission to help the LGBTQ+ community find homes where they truly belong in Connecticut."
-                canonical="https://www.gayrealestateconnecticut.com/about"
+                canonical="https://www.gayrealestatect.net/about"
                 keywords="about GayRealEstateCT.net, LGBTQ real estate Connecticut team, gay friendly realtor Connecticut, LGBTQ+ real estate alliance Connecticut"
             />
 
@@ -110,7 +110,7 @@ const AboutUs: React.FC = () => {
             </section>
 
             {/* Team */}
-            <section className="py-16 md:py-24 max-w-6xl mx-auto px-4 md:px-6">
+            <section id="team" className="py-16 md:py-24 max-w-6xl mx-auto px-4 md:px-6">
                 <div className="text-center mb-10 md:mb-14">
                     <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-3 md:mb-4">Meet Our Connecticut Team</h2>
                     <p className="text-slate-600 text-sm md:text-lg max-w-2xl mx-auto">Agents, a lender, and an attorney — all under one roof, all working for you.</p>
@@ -173,9 +173,9 @@ const AboutUs: React.FC = () => {
                         <a href="/#contact" className="px-8 py-3.5 md:px-10 md:py-4 text-white font-bold rounded-xl md:rounded-2xl shadow-xl hover:-translate-y-0.5 transition-all duration-300 inline-flex items-center justify-center gap-2 text-sm md:text-base" style={{ background: 'linear-gradient(135deg, #C0003A 0%, #6B008A 45%, #0A2FA8 100%)' }}>
                             Get in Touch <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
                         </a>
-                        <Link to="/#find-agent" className="px-8 py-3.5 md:px-10 md:py-4 bg-white border border-slate-200 text-slate-700 font-semibold rounded-xl md:rounded-2xl hover:border-purple-300 hover:shadow-md transition-all text-sm md:text-base justify-center flex">
+                        <a href="#team" className="px-8 py-3.5 md:px-10 md:py-4 bg-white border border-slate-200 text-slate-700 font-semibold rounded-xl md:rounded-2xl hover:border-purple-300 hover:shadow-md transition-all text-sm md:text-base justify-center flex">
                             Meet the Agents
-                        </Link>
+                        </a>
                     </div>
                 </div>
 

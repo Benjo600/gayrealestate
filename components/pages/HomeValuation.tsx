@@ -39,7 +39,7 @@ const HomeValuation: React.FC = () => {
             <SEOHead
                 title="Free Home Valuation in Connecticut | GayRealEstateCT.net"
                 description="Get a free, accurate home valuation from LGBTQ+-allied Connecticut real estate agents. Know what your home is worth with real local comps — no algorithms, no pressure."
-                canonical="https://www.gayrealestateconnecticut.com/home-valuation"
+                canonical="https://www.gayrealestatect.net/home-valuation"
                 keywords="free home valuation Connecticut, what is my home worth CT, Connecticut home value estimate LGBTQ, sell my Connecticut home"
             />
 

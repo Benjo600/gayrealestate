@@ -17,7 +17,7 @@ export default defineConfig({
   plugins: [
     react(),
     sitemap({
-      hostname: 'https://www.gayrealestateconnecticut.com',
+      hostname: 'https://www.gayrealestatect.net',
       dynamicRoutes: [
         '/', 
         '/about', 

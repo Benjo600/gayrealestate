@@ -89,7 +89,7 @@ const FirstTimeBuyers: React.FC = () => {
             <SEOHead
                 title="First-Time Home Buying Guide for LGBTQ+ Buyers in Connecticut | GayRealEstateCT.net"
                 description="Your comprehensive step-by-step guide to buying your first home in Connecticut as an LGBTQ+ buyer. Learn about financing, finding inclusive agents, and protecting your investment."
-                canonical="https://www.gayrealestateconnecticut.com/first-time-buyers"
+                canonical="https://www.gayrealestatect.net/first-time-buyers"
                 keywords="first time home buyer Connecticut LGBTQ, LGBTQ first time buyer guide CT, gay couple buying first home Connecticut, home buying steps Connecticut"
             />
 
@@ -214,7 +214,7 @@ const FirstTimeBuyers: React.FC = () => {
                             <a href="/#contact" className="px-6 py-3.5 md:px-10 md:py-4 text-white font-bold rounded-xl md:rounded-2xl shadow-xl hover:shadow-2xl hover:-translate-y-0.5 transition-all duration-300 inline-flex items-center justify-center gap-2 text-sm md:text-base" style={{ background: 'linear-gradient(135deg, #C0003A 0%, #6B008A 45%, #0A2FA8 100%)' }}>
                                 Connect With Our Team <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
                             </a>
-                            <Link to="/#find-agent" className="px-6 py-3.5 md:px-10 md:py-4 bg-white border border-purple-200 text-slate-700 font-semibold rounded-xl md:rounded-2xl hover:border-purple-300 transition-all duration-300 text-sm md:text-base justify-center flex">
+                            <Link to="/about#team" className="px-6 py-3.5 md:px-10 md:py-4 bg-white border border-purple-200 text-slate-700 font-semibold rounded-xl md:rounded-2xl hover:border-purple-300 transition-all duration-300 text-sm md:text-base justify-center flex">
                                 Browse Our Agents
                             </Link>
                         </div>

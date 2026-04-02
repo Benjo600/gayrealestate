@@ -19,7 +19,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 import { agents } from '../../data/agents';
 
-const BASE_URL = 'https://www.gayrealestateconnecticut.com';
+const BASE_URL = 'https://www.gayrealestatect.net';
 
 const RealtorProfile: React.FC = () => {
     const { id } = useParams<{ id: string }>();
@@ -81,7 +81,7 @@ const RealtorProfile: React.FC = () => {
                         '@type': 'ListItem',
                         position: 2,
                         name: 'Our Team',
-                        item: `${BASE_URL}/#find-agent`,
+                        item: `${BASE_URL}/about#team`,
                     },
                     {
                         '@type': 'ListItem',

@@ -21,15 +21,15 @@ const Footer: React.FC = () => {
         <div className="text-center mb-12 md:mb-20 pb-10 md:pb-16 border-b border-slate-200">
           <p className="font-bold text-xs md:text-sm tracking-widest uppercase mb-3 md:mb-4" style={{ background: 'linear-gradient(90deg, #E50000, #FF8D00, #FFEE00, #028121, #004CFF, #770088)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Ready to find your home?</p>
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-display font-medium text-slate-900 mb-4 md:mb-6 tracking-tight">
-            Start Your <span className="italic" style={{ background: 'linear-gradient(135deg, #770088, #004CFF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Journey</span> Today
+            Start Your <span className="pride-gradient-text italic">Journey</span> Today
           </h2>
           <p className="text-slate-500 text-base md:text-lg mb-8 md:mb-10 max-w-2xl mx-auto font-light px-4 md:px-0">
             Connect with our network of trusted, LGBTQ+ friendly agents and find a home where you truly belong.
           </p>
-          <a href="/#find-agent" className="group px-8 py-3.5 md:px-10 md:py-4 text-white font-semibold text-[13px] md:text-base rounded-full transition-all duration-300 shadow-lg hover:opacity-90 inline-flex items-center gap-2 md:gap-3" style={{ background: 'linear-gradient(135deg, #C0003A 0%, #6B008A 45%, #0A2FA8 100%)' }}>
-            Find Your Agent
+          <Link to="/about#team" className="group px-8 py-3.5 md:px-10 md:py-4 text-white font-semibold text-[13px] md:text-base rounded-full transition-all duration-300 shadow-lg hover:opacity-90 inline-flex items-center gap-2 md:gap-3" style={{ background: 'linear-gradient(135deg, #C0003A 0%, #6B008A 45%, #0A2FA8 100%)' }}>
+            Find Your Agent 
             <ArrowRight className="w-4 h-4 md:w-5 md:h-5 transition-transform group-hover:translate-x-1" />
-          </a>
+          </Link>
         </div>
 
         {/* Main Footer Content */}
@@ -89,7 +89,7 @@ const Footer: React.FC = () => {
                 { label: 'Free Home Valuation', href: '/home-valuation' },
                 { label: "Seller's Guide", href: '/sellers-guide' },
                 { label: 'Marketing Your Home', href: '/marketing-your-home' },
-                { label: 'Find a Listing Agent', href: '/#find-agent' }
+                { label: 'Find a Listing Agent', href: '/about#team' }
               ].map(({ label, href }, i) => (
                 <li key={i}>
                   {href.includes('#') ? (
@@ -117,6 +117,7 @@ const Footer: React.FC = () => {
             <ul className="space-y-4">
               {[
                 { label: 'About Us', href: '/about' },
+                { label: 'Community Hub', href: '/community' },
                 { label: 'Blog & News', href: '/#resources' },
                 { label: 'Contact Support', href: '/#contact' },
                 { label: 'Privacy Policy', href: '/privacy-policy' }
