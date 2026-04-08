@@ -186,12 +186,14 @@ const HomeValuation: React.FC = () => {
                             </div>
                         </div>
 
-                        {benefits.map((b, i) => (
-                            <div key={i} className="bg-white rounded-xl md:rounded-2xl p-5 md:p-6 shadow-sm border border-slate-100">
-                                <h4 className="font-bold text-slate-900 mb-1 md:mb-2 text-[15px] md:text-base">{b.title}</h4>
-                                <p className="text-slate-600 text-[13px] md:text-sm leading-relaxed">{b.desc}</p>
-                            </div>
-                        ))}
+                        <div className="grid grid-cols-2 gap-3">
+                            {benefits.map((b, i) => (
+                                <div key={i} className="bg-white rounded-xl md:rounded-2xl p-3 md:p-6 shadow-sm border border-slate-100 flex flex-col gap-1.5">
+                                    <h4 className="font-bold text-slate-900 mb-1 text-[11px] md:text-base leading-tight">{b.title}</h4>
+                                    <p className="text-slate-500 text-[9px] md:text-sm leading-snug line-clamp-4 md:line-clamp-none">{b.desc}</p>
+                                </div>
+                            ))}
+                        </div>
 
                         <div className="bg-brand-50 border border-brand-200 rounded-xl md:rounded-2xl p-5 md:p-6">
                             <p className="text-brand-800 font-semibold text-[13px] md:text-sm mb-2 md:mb-3">Prefer to connect directly?</p>

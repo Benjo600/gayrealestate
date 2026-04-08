@@ -82,7 +82,7 @@ const FirstTimeBuyers: React.FC = () => {
     useEffect(() => { window.scrollTo(0, 0); }, []);
 
     return (
-        <div 
+        <div
             className="min-h-screen font-sans relative selection:bg-purple-500/20"
             style={{ background: 'linear-gradient(160deg, #fdf4ff 0%, #fff7f0 25%, #f0f9ff 50%, #f7fff4 75%, #fdf4ff 100%)' }}
         >
@@ -136,21 +136,21 @@ const FirstTimeBuyers: React.FC = () => {
                     <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-3 md:mb-4">The 6-Step Buying Process</h2>
                     <p className="text-slate-600 text-[13px] md:text-lg max-w-2xl mx-auto">Every first-time buyer goes through these stages. We'll be with you through each one.</p>
                 </div>
-                <div className="space-y-6 md:space-y-10">
+                <div className="grid grid-cols-2 gap-2 md:gap-10 items-stretch">
                     {steps.map((step, i) => {
                         const Icon = step.icon;
                         return (
-                            <div key={i} className="group flex flex-col md:flex-row gap-6 md:gap-8 bg-white/60 backdrop-blur-sm rounded-2xl md:rounded-3xl p-6 md:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-purple-100/60 hover:border-purple-300 hover:shadow-xl transition-all duration-500">
-                                <div className="flex-shrink-0 flex flex-col items-center gap-2 md:gap-3 md:w-24">
-                                    <span className="text-3xl md:text-4xl font-extrabold font-sans tracking-tight" style={{ background: 'linear-gradient(90deg, #E50000, #FF8D00, #FFEE00, #028121, #004CFF, #770088)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', opacity: 0.8 }}>{step.number}</span>
-                                    <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl shadow-sm border border-purple-100 flex items-center justify-center pt-0.5" style={{ background: 'linear-gradient(135deg, #C0003A 0%, #6B008A 45%, #0A2FA8 100%)' }}>
-                                        <Icon className="w-5 h-5 md:w-6 md:h-6 text-white" />
+                            <div key={i} className="group flex flex-col gap-3 bg-white/60 backdrop-blur-sm rounded-xl md:rounded-3xl p-3 md:p-10 shadow-[0_4px_20px_rgb(0,0,0,0.04)] border border-purple-100/60 hover:border-purple-300 transition-all duration-500">
+                                <div className="flex-shrink-0 flex items-center justify-between md:flex-col md:items-center gap-2 md:gap-3 md:w-24">
+                                    <span className="text-xl md:text-4xl font-extrabold font-sans tracking-tight" style={{ background: 'linear-gradient(90deg, #E50000, #FF8D00, #FFEE00, #028121, #004CFF, #770088)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', opacity: 0.8 }}>{step.number}</span>
+                                    <div className="w-8 h-8 md:w-14 md:h-14 rounded-lg md:rounded-2xl shadow-sm border border-purple-100 flex items-center justify-center pt-0.5" style={{ background: 'linear-gradient(135deg, #C0003A 0%, #6B008A 45%, #0A2FA8 100%)' }}>
+                                        <Icon className="w-4 h-4 md:w-6 md:h-6 text-white" />
                                     </div>
                                 </div>
-                                <div className="flex-1">
-                                    <h3 className="text-xl md:text-2xl font-serif font-bold text-slate-900 mb-2 md:mb-3 group-hover:text-brand-700 transition-colors">{step.title}</h3>
-                                    <p className="text-slate-600 leading-relaxed mb-4 md:mb-5 text-[13px] md:text-base">{step.description}</p>
-                                    <ul className="space-y-2">
+                                <div className="flex-1 min-w-0">
+                                    <h3 className="text-[11px] md:text-2xl font-serif font-bold text-slate-900 mb-1 md:mb-3 group-hover:text-brand-700 transition-colors leading-tight">{step.title}</h3>
+                                    <p className="text-slate-500 leading-snug mb-2 md:mb-5 text-[9px] md:text-base line-clamp-4 md:line-clamp-none">{step.description}</p>
+                                    <ul className="space-y-1 md:space-y-2 hidden sm:block">
                                         {step.tips.map((tip, j) => (
                                             <li key={j} className="flex items-start gap-2 md:gap-3 text-[13px] md:text-sm text-slate-600">
                                                 <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 md:mt-0.5" />
@@ -173,8 +173,8 @@ const FirstTimeBuyers: React.FC = () => {
                     </div>
                     <h2 className="text-3xl md:text-4xl font-display font-bold text-slate-900 mb-3 md:mb-4 pt-4 md:pt-0">Ready to Start Your Search?</h2>
                     <p className="text-slate-600 text-[13px] md:text-lg mb-6 md:mb-8 max-w-xl mx-auto px-4">Our LGBTQ+-led team will guide you from pre-approval to keys — with zero judgment and total confidentiality.</p>
-                    <a 
-                        href="/#contact" 
+                    <a
+                        href="/#contact"
                         className="inline-flex items-center justify-center gap-2 px-8 py-3.5 md:px-10 md:py-4 text-white font-bold rounded-xl md:rounded-full hover:-translate-y-1 transition-all duration-300 shadow-xl text-sm md:text-base w-full sm:w-auto"
                         style={{ background: 'linear-gradient(135deg, #C0003A 0%, #6B008A 45%, #0A2FA8 100%)' }}
                     >
@@ -189,14 +189,14 @@ const FirstTimeBuyers: React.FC = () => {
                     <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-3 md:mb-4">Frequently Asked Questions</h2>
                     <p className="text-slate-600 text-[13px] md:text-lg">Honest answers to the questions every first-time buyer asks.</p>
                 </div>
-                <div className="space-y-4 md:space-y-6">
+                <div className="grid grid-cols-2 gap-2 md:gap-8 items-stretch">
                     {faqs.map((faq, i) => (
-                        <div key={i} className="bg-white rounded-xl md:rounded-2xl p-5 md:p-8 shadow-sm border border-slate-100">
-                            <h3 className="text-base md:text-lg font-bold text-slate-900 mb-2 md:mb-3 flex items-start gap-3">
-                                <span className="flex-shrink-0 w-6 h-6 md:w-7 md:h-7 rounded-full bg-brand-100 text-brand-700 text-xs md:text-sm font-bold flex items-center justify-center md:mt-0.5">{i + 1}</span>
-                                <span className="mt-0.5 md:mt-0">{faq.q}</span>
+                        <div key={i} className="bg-white rounded-xl md:rounded-2xl p-3 md:p-8 shadow-sm border border-slate-100 flex flex-col gap-1.5">
+                            <h3 className="text-[10px] md:text-lg font-bold text-slate-900 mb-1 md:mb-3 flex items-start gap-1.5">
+                                <span className="flex-shrink-0 w-5 h-5 md:w-7 md:h-7 rounded-full bg-brand-100 text-brand-700 text-[8px] md:text-sm font-bold flex items-center justify-center md:mt-0.5">{i + 1}</span>
+                                <span className="mt-0.5 md:mt-0 leading-tight">{faq.q}</span>
                             </h3>
-                            <p className="text-slate-600 leading-relaxed pl-9 md:pl-10 text-[13px] md:text-base">{faq.a}</p>
+                            <p className="text-slate-500 leading-snug pl-6 md:pl-10 text-[9px] md:text-base line-clamp-5 md:line-clamp-none">{faq.a}</p>
                         </div>
                     ))}
                 </div>

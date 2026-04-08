@@ -83,7 +83,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ agentName, agentTitl
         'w-full px-3 py-2.5 rounded-xl text-sm text-slate-900 placeholder-slate-400',
         'bg-white/80 border border-slate-200',
         'focus:outline-none focus:border-purple-300 focus:ring-4 focus:ring-purple-50 focus:bg-white',
-        'transition-all duration-200 shadow-[inset_0_2px_4px_rgba(0,0,0,0.02)]',
+        'transition-all duration-200',
     ].join(' ');
 
     return (
@@ -92,44 +92,45 @@ export const ContactModal: React.FC<ContactModalProps> = ({ agentName, agentTitl
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
+                transition={{ duration: 0.15 }}
                 className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-4"
                 onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
             >
-                {/* Frosted Backdrop */}
-                <div className="absolute inset-0 bg-slate-900/40 backdrop-blur-sm" />
+                {/* Frosted Backdrop - Reduced Blur for Performance */}
+                <div className="absolute inset-0 bg-slate-900/40 backdrop-blur-[2px]" />
 
-                {/* Panel */}
+                {/* Panel - Switched to Shorter Ease for Snappiness */}
                 <motion.div
-                    initial={{ y: 20, opacity: 0, scale: 0.98 }}
-                    animate={{ y: 0, opacity: 1, scale: 1 }}
-                    exit={{ y: 20, opacity: 0, scale: 0.98 }}
-                    transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-                    className="relative z-10 w-full max-w-md overflow-hidden rounded-3xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.2)] bg-white/95 backdrop-blur-xl border border-white/50 flex flex-col max-h-[90vh]"
+                    initial={{ y: 15, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: 10, opacity: 0 }}
+                    transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
+                    className="relative z-10 w-full max-w-md overflow-hidden rounded-3xl shadow-2xl bg-white flex flex-col max-h-[90vh]"
                 >
                     {/* Brand Gradient Bar */}
-                    <div className="h-1.5 w-full" style={{ background: 'linear-gradient(90deg, #E50000, #FF8D00, #FFEE00, #028121, #004CFF, #770088)' }} />
+                    <div className="h-1.5 w-full flex-shrink-0" style={{ background: 'linear-gradient(90deg, #E50000, #FF8D00, #FFEE00, #028121, #004CFF, #770088)' }} />
 
                     {/* Header */}
-                    <div className="px-5 pt-4 pb-3 flex items-start justify-between bg-slate-50/50 border-b border-slate-100 flex-shrink-0">
+                    <div className="px-5 pt-4 pb-3 flex items-start justify-between bg-slate-50/80 border-b border-slate-100 flex-shrink-0">
                         <div>
                             <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-purple-600 mb-0.5">Contact Agent</p>
                             <h2 className="text-slate-900 font-display text-lg font-bold leading-tight">{agentName}</h2>
                         </div>
                         <button
                             onClick={onClose}
-                            className="w-7 h-7 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-500 hover:bg-slate-200 hover:text-slate-700 transition-all"
+                            className="w-7 h-7 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-500 hover:bg-slate-200 hover:text-slate-700 active:scale-90 transition-all font-bold"
                             aria-label="Close"
                         >
                             <X className="w-3.5 h-3.5" />
                         </button>
                     </div>
 
-                    {/* Scrollable Body */}
-                    <div className="px-5 py-4 overflow-y-auto">
+                    {/* Body */}
+                    <div className="px-5 py-4 overflow-y-auto custom-scrollbar-hide">
                         {status === 'success' ? (
                             <motion.div
-                                initial={{ opacity: 0, scale: 0.95 }}
-                                animate={{ opacity: 1, scale: 1 }}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
                                 className="text-center py-6"
                             >
                                 <div className="w-12 h-12 rounded-full bg-green-50 border border-green-100 flex items-center justify-center mx-auto mb-3">
@@ -141,17 +142,17 @@ export const ContactModal: React.FC<ContactModalProps> = ({ agentName, agentTitl
                                 </p>
                                 <button
                                     onClick={onClose}
-                                    className="mt-5 px-6 py-2.5 bg-slate-100 border border-slate-200 text-slate-700 text-sm font-semibold rounded-xl hover:bg-slate-200 transition-all"
+                                    className="mt-5 px-6 py-2.5 bg-slate-900 text-white text-sm font-semibold rounded-xl active:scale-95 transition-all"
                                 >
-                                    Close
+                                    Done
                                 </button>
                             </motion.div>
                         ) : (
-                            <form onSubmit={handleSubmit} className="space-y-3">
+                            <form onSubmit={handleSubmit} className="space-y-4">
 
                                 <div className="grid grid-cols-2 gap-3">
-                                    <div>
-                                        <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">Your Name *</label>
+                                    <div className="space-y-1.5">
+                                        <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider pl-1">Your Name *</label>
                                         <input
                                             required
                                             value={form.name}
@@ -160,8 +161,8 @@ export const ContactModal: React.FC<ContactModalProps> = ({ agentName, agentTitl
                                             className={inputCls}
                                         />
                                     </div>
-                                    <div>
-                                        <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">Phone *</label>
+                                    <div className="space-y-1.5">
+                                        <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider pl-1">Phone *</label>
                                         <input
                                             required
                                             type="tel"
@@ -173,9 +174,12 @@ export const ContactModal: React.FC<ContactModalProps> = ({ agentName, agentTitl
                                     </div>
                                 </div>
 
-                                <div>
-                                    <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">Email <span className="text-slate-400 font-normal lowercase tracking-normal">(Optional)</span></label>
+                                <div className="space-y-1.5">
+                                    <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider pl-1">
+                                        Email {form.method === 'email' ? <span className="text-red-500 font-black">*</span> : <span className="text-slate-400 font-normal lowercase tracking-normal">(Optional)</span>}
+                                    </label>
                                     <input
+                                        required={form.method === 'email'}
                                         type="email"
                                         value={form.email}
                                         onChange={change('email')}
@@ -184,8 +188,8 @@ export const ContactModal: React.FC<ContactModalProps> = ({ agentName, agentTitl
                                     />
                                 </div>
 
-                                <div>
-                                    <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1.5">Preferred Contact</label>
+                                <div className="space-y-2">
+                                    <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider pl-1">Preferred Contact</label>
                                     <div className="grid grid-cols-4 gap-2">
                                         {contactMethods.map(({ value, label, icon: Icon }) => {
                                             const active = form.method === value;
@@ -194,12 +198,12 @@ export const ContactModal: React.FC<ContactModalProps> = ({ agentName, agentTitl
                                                     key={value}
                                                     type="button"
                                                     onClick={() => setForm(p => ({ ...p, method: value }))}
-                                                    className={[
-                                                        'flex flex-col items-center justify-center gap-1 py-2 rounded-lg border text-[11px] font-bold transition-all duration-200',
-                                                        active
-                                                            ? 'bg-purple-50 border-purple-300 text-purple-700 shadow-sm'
-                                                            : 'bg-white border-slate-200 text-slate-500 hover:bg-slate-50',
-                                                    ].join(' ')}
+                                                    className={`
+                                                        flex flex-col items-center justify-center gap-1.5 py-2.5 rounded-xl border text-[10px] font-bold transition-all duration-150
+                                                        ${active 
+                                                            ? 'bg-slate-900 border-slate-900 text-white shadow-md scale-[1.02]' 
+                                                            : 'bg-white border-slate-200 text-slate-500 active:bg-slate-50'}
+                                                    `}
                                                 >
                                                     <Icon className="w-3.5 h-3.5" />
                                                     {label}
@@ -209,25 +213,34 @@ export const ContactModal: React.FC<ContactModalProps> = ({ agentName, agentTitl
                                     </div>
                                 </div>
 
-                                {form.method !== 'email' && (
-                                    <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }}>
-                                        <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1 mt-1">Date & Time <span className="text-slate-400 font-normal lowercase tracking-normal">(Optional)</span></label>
-                                        <input
-                                            type="datetime-local"
-                                            value={form.date}
-                                            onChange={change('date')}
-                                            className={inputCls}
-                                        />
-                                    </motion.div>
-                                )}
+                                <AnimatePresence mode="popLayout">
+                                    {form.method !== 'email' && (
+                                        <motion.div 
+                                            key="date-field"
+                                            initial={{ opacity: 0, scale: 0.98 }} 
+                                            animate={{ opacity: 1, scale: 1 }}
+                                            exit={{ opacity: 0, scale: 0.98 }}
+                                            transition={{ duration: 0.15 }}
+                                            className="space-y-1.5"
+                                        >
+                                            <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider pl-1">Prefered Date & Time</label>
+                                            <input
+                                                type="datetime-local"
+                                                value={form.date}
+                                                onChange={change('date')}
+                                                className={inputCls}
+                                            />
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
 
-                                <div>
-                                    <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">Message</label>
+                                <div className="space-y-1.5">
+                                    <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider pl-1">Message</label>
                                     <textarea
                                         value={form.message}
                                         onChange={change('message')}
-                                        placeholder="I'm interested in buying a home in West Hartford..."
-                                        className={`${inputCls} resize-none h-16`}
+                                        placeholder="I'm interested in working with you..."
+                                        className={`${inputCls} resize-none h-20`}
                                     />
                                 </div>
 
@@ -238,21 +251,16 @@ export const ContactModal: React.FC<ContactModalProps> = ({ agentName, agentTitl
                                 <motion.button
                                     type="submit"
                                     disabled={status === 'submitting'}
-                                    whileHover={{ scale: 1.01 }}
-                                    whileTap={{ scale: 0.98 }}
-                                    className="w-full py-3 rounded-xl font-bold text-[13px] text-white flex items-center justify-center gap-2 shadow-lg disabled:opacity-70 mt-2"
+                                    whileTap={{ scale: 0.97 }}
+                                    className="w-full py-3.5 rounded-xl font-bold text-sm text-white flex items-center justify-center gap-2 shadow-lg disabled:opacity-70 mt-2 hover:brightness-110 active:brightness-90 transition-all"
                                     style={{ background: 'linear-gradient(135deg, #C0003A 0%, #6B008A 45%, #0A2FA8 100%)' }}
                                 >
                                     {status === 'submitting' ? (
-                                        <><svg className="w-3.5 h-3.5 animate-spin" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" /></svg> Sending…</>
+                                        <><div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" /> Sending…</>
                                     ) : (
                                         <><Send className="w-3.5 h-3.5" /> Send Request</>
                                     )}
                                 </motion.button>
-                                
-                                <p className="text-center text-[9px] font-medium text-slate-400 mt-2 flex items-center justify-center gap-1">
-                                    🔒 Your information is secure and private.
-                                </p>
                             </form>
                         )}
                     </div>
@@ -262,3 +270,4 @@ export const ContactModal: React.FC<ContactModalProps> = ({ agentName, agentTitl
     );
 };
 
+export default ContactModal;

@@ -1,16 +1,24 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { HeroGeometric } from '../ui/shape-landing-hero';
 import Header from '../Header';
 import AnimatedGradientBackground from '../ui/animated-gradient-background';
-import Features from '../Features';
-import AgentFinder from '../AgentFinder';
-import Resources from '../Resources';
-import CommunitySpotlight from '../CommunitySpotlight';
-import EnquiryForm from '../EnquiryForm';
+// Lazy load below-the-fold components
+const Features = lazy(() => import('../Features'));
+const AgentFinder = lazy(() => import('../AgentFinder'));
+const Resources = lazy(() => import('../Resources'));
+const CommunitySpotlight = lazy(() => import('../CommunitySpotlight'));
+const EnquiryForm = lazy(() => import('../EnquiryForm'));
 import Footer from '../Footer';
 import { ScrollToTop } from '../ui/scroll-to-top';
 import SEOHead from '../SEOHead';
 import { Home, Search, Heart, BookOpen } from 'lucide-react';
+
+// Loading skeleton for lazy components
+const SectionLoader = () => (
+    <div className="w-full h-48 flex items-center justify-center">
+        <div className="w-8 h-8 border-4 border-purple-500/20 border-t-purple-500 rounded-full animate-spin" />
+    </div>
+);
 
 const BASE_URL = 'https://www.gayrealestatect.net';
 
@@ -111,11 +119,13 @@ const HomePage: React.FC = () => {
                     <HeroGeometric />
                 </div>
 
-                <Features />
-                <AgentFinder />
-                <CommunitySpotlight />
-                <Resources />
-                <EnquiryForm />
+                <Suspense fallback={<SectionLoader />}>
+                    <Features />
+                    <AgentFinder />
+                    <CommunitySpotlight />
+                    <Resources />
+                    <EnquiryForm />
+                </Suspense>
                 <Footer />
             </main>
             <ScrollToTop />

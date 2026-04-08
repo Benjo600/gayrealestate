@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, Heart, Shield, Users, Home, Star, Award, Instagram } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Heart, Shield, Users, Home, Award, Instagram } from 'lucide-react';
 import Footer from '../Footer';
 import SEOHead from '../SEOHead';
 import { agents } from '../../data/agents';
@@ -9,99 +9,85 @@ const values = [
     {
         icon: Heart,
         title: 'Community First',
-        desc: 'We are members of the community we serve — not just allies. Our team includes LGBTQ+ agents who have navigated these markets personally and bring that lived experience to every transaction.',
+        desc: 'We are members of the community we serve — not just allies.',
     },
     {
         icon: Shield,
         title: 'Complete Representation',
-        desc: 'We believe in full buyer and seller representation. Your interests come first — always. We will never represent both sides of a transaction, and we will never pressure you toward a deal that isn\'t right for you.',
+        desc: 'Your interests come first — always. Full advocacy.',
     },
     {
         icon: Users,
         title: 'Professional Network',
-        desc: 'Beyond our agents, our team includes a Top 1% mortgage lender and a real estate attorney who specializes in LGBTQ+ estate planning and title — a truly complete real estate service.',
+        desc: 'Top 1% mortgage lenders and specialized title attorneys.',
     },
     {
         icon: Home,
         title: 'Hyperlocal Knowledge',
-        desc: 'Connecticut real estate is intensely local. We know which streets get sun, which neighborhoods are experiencing value growth, and which school principals show up at Pride. That\'s the knowledge that matters.',
+        desc: 'We know which neighborhoods are experiencing growth.',
     },
 ];
 
-
 const AboutUs: React.FC = () => {
     useEffect(() => { window.scrollTo(0, 0); }, []);
-
     const teamList = Object.values(agents);
 
     return (
-        <div className="min-h-screen" style={{ background: 'linear-gradient(160deg, #fdf4ff 0%, #fff7f0 25%, #f0f9ff 50%, #f7fff4 75%, #fdf4ff 100%)' }}>
+        <div className="min-h-screen selection:bg-purple-500/10" style={{ background: 'linear-gradient(160deg, #fdf4ff 0%, #fff7f0 25%, #f0f9ff 50%, #f7fff4 75%, #fdf4ff 100%)' }}>
             <SEOHead
-                title="About GayRealEstateCT.net | LGBTQ+ Real Estate in Connecticut"
-                description="Learn about GayRealEstateCT.net — our history, our team, and our mission to help the LGBTQ+ community find homes where they truly belong in Connecticut."
+                title="About GayRealEstateCT.net | LGBTQ+ Real Estate"
+                description="Learn about our mission to help the LGBTQ+ community find homes where they truly belong in Connecticut."
                 canonical="https://www.gayrealestatect.net/about"
-                keywords="about GayRealEstateCT.net, LGBTQ real estate Connecticut team, gay friendly realtor Connecticut, LGBTQ+ real estate alliance Connecticut"
             />
 
-            {/* Back Nav */}
-            <nav className="absolute top-0 left-0 right-0 p-6 z-10">
+            <nav className="absolute top-0 left-0 right-0 p-4 z-10">
                 <div className="max-w-7xl mx-auto">
-                    <Link to="/" className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-md rounded-full text-sm font-semibold text-slate-700 hover:bg-white hover:shadow-md transition-all">
-                        <ArrowLeft className="w-4 h-4" /> Back to Home
+                    <Link to="/" className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-md rounded-full text-[11px] font-bold uppercase tracking-wider text-slate-700 shadow-sm">
+                        <ArrowLeft className="w-3.5 h-3.5" /> Home
                     </Link>
                 </div>
             </nav>
 
-            {/* Hero */}
-            <header className="relative pt-24 md:pt-32 pb-16 md:pb-32 overflow-hidden" style={{ background: 'linear-gradient(160deg, #fdf4ff 0%, #f0f4ff 50%, #f0fff8 100%)' }}>
+            <header className="relative pt-24 md:pt-40 pb-12 md:pb-40 overflow-hidden text-center">
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_15%_30%,rgba(229,0,0,0.07),transparent_55%)]" />
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_85%_25%,rgba(0,76,255,0.07),transparent_50%)]" />
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_70%,rgba(119,0,136,0.06),transparent_55%)]" />
 
-                <div className="max-w-4xl mx-auto px-4 md:px-6 text-center relative z-10">
-                    <div className="inline-flex items-center gap-2 px-4 py-1.5 md:px-5 md:py-2 bg-white/80 rounded-full border border-purple-200/50 shadow-sm mb-6 md:mb-8">
-                        <Heart className="w-3.5 h-3.5 md:w-4 md:h-4 text-purple-500" />
-                        <span className="text-[10px] md:text-xs font-bold text-slate-600 uppercase tracking-widest">Our Story</span>
+                <div className="max-w-7xl mx-auto px-5 relative z-10">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/80 rounded-full border border-purple-200/50 shadow-sm mb-4">
+                        <Heart className="w-3 h-3 text-purple-500" />
+                        <span className="text-[9px] font-bold text-slate-600 uppercase tracking-widest">Our Mission</span>
                     </div>
-                    <h1 className="text-4xl md:text-6xl font-serif font-bold text-slate-900 mb-4 md:mb-6 leading-tight">
+                    <h1 className="text-3xl md:text-8xl font-serif font-bold text-slate-900 mb-6 leading-tight">
                         We Help Our Community<br />
                         <span style={{ background: 'linear-gradient(135deg, #770088, #004CFF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Find Where They Belong.</span>
                     </h1>
-                    <p className="text-slate-600 text-base md:text-xl max-w-2xl mx-auto leading-relaxed font-light">
-                        GayRealEstateCT.net connects the LGBTQ+ community with trusted, inclusive real estate professionals who understand the unique dimensions of buying and selling a home as a queer person or couple.
+                    <p className="text-slate-600 text-[13px] md:text-2xl max-w-3xl mx-auto leading-relaxed">
+                        GayRealEstateCT.net connects the LGBTQ+ community with trusted, inclusive real estate professionals across Connecticut.
                     </p>
                 </div>
-
             </header>
 
-            {/* Mission */}
-            <section className="max-w-4xl mx-auto px-4 md:px-6 pt-16 md:pt-24 pb-12 md:pb-16 text-center">
-                <p className="text-lg md:text-2xl text-slate-700 leading-relaxed font-light max-w-3xl mx-auto">
-                    A home is more than a financial asset. It's where you wake up every morning, where you host the people you love, where your children grow up. For LGBTQ+ buyers, finding a home where you'll truly be welcome — not just legally protected — requires insight that goes beyond square footage and school ratings.
-                </p>
-                <p className="text-xl md:text-2xl text-slate-700 leading-relaxed font-light max-w-3xl mx-auto mt-6">
-                    <span className="text-brand-600 font-semibold">That's the insight we provide.</span>
+            <section className="max-w-7xl mx-auto px-6 py-12 md:py-32 text-center">
+                <p className="text-sm md:text-4xl text-slate-700 leading-relaxed font-light">
+                    A home is more than a financial asset. For LGBTQ+ buyers, finding a home where you'll truly be welcome requires insight that goes beyond square footage. <span className="text-brand-600 font-semibold md:block mt-2">That's the insight we provide.</span>
                 </p>
             </section>
 
-            {/* Values */}
-            <section className="py-12 md:py-20" style={{ background: 'linear-gradient(160deg, #fdf4ff 0%, #f0f4ff 50%, #f0fff8 100%)' }}>
-                <div className="max-w-6xl mx-auto px-4 md:px-6">
-                    <div className="text-center mb-10 md:mb-14">
-                        <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-3 md:mb-4">What We Stand For</h2>
+            <section className="py-12 md:py-20 bg-slate-50/40">
+                <div className="max-w-6xl mx-auto px-4">
+                    <div className="text-center mb-10">
+                        <h2 className="text-2xl md:text-4xl font-serif font-bold text-slate-900">What We Stand For</h2>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-8">
                         {values.map((v, i) => {
                             const Icon = v.icon;
                             return (
-                                <div key={i} className="flex gap-4 md:gap-6 p-6 md:p-8 rounded-2xl md:rounded-3xl border border-slate-100 hover:border-purple-200 hover:shadow-lg transition-all duration-300" style={{ background: 'linear-gradient(145deg, #fdf4ff 0%, #f0f4ff 50%, #f0fff8 100%)' }}>
-                                    <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl flex items-center justify-center flex-shrink-0 shadow-md" style={{ background: 'linear-gradient(135deg, #C0003A 0%, #6B008A 45%, #0A2FA8 100%)' }}>
-                                        <Icon className="w-5 h-5 md:w-6 md:h-6 text-white" />
+                                <div key={i} className="flex flex-col items-center text-center p-5 rounded-2xl border border-slate-100 bg-white shadow-sm">
+                                    <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-3 shadow-md" style={{ background: 'linear-gradient(135deg, #C0003A 0%, #6B008A 45%, #0A2FA8 100%)' }}>
+                                        <Icon className="w-5 h-5 text-white" />
                                     </div>
-                                    <div>
-                                        <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-2">{v.title}</h3>
-                                        <p className="text-slate-600 leading-relaxed text-[13px] md:text-sm">{v.desc}</p>
-                                    </div>
+                                    <h3 className="text-xs md:text-xl font-bold text-slate-900 mb-1.5">{v.title}</h3>
+                                    <p className="text-slate-500 leading-tight text-[10px] md:text-sm">{v.desc}</p>
                                 </div>
                             );
                         })}
@@ -109,76 +95,67 @@ const AboutUs: React.FC = () => {
                 </div>
             </section>
 
-            {/* Team */}
-            <section id="team" className="py-16 md:py-24 max-w-6xl mx-auto px-4 md:px-6">
-                <div className="text-center mb-10 md:mb-14">
-                    <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-3 md:mb-4">Meet Our Connecticut Team</h2>
-                    <p className="text-slate-600 text-sm md:text-lg max-w-2xl mx-auto">Agents, a lender, and an attorney — all under one roof, all working for you.</p>
+            <section id="team" className="py-12 md:py-24 max-w-7xl mx-auto px-4 overflow-hidden">
+                <div className="text-center mb-8">
+                    <h2 className="text-2xl md:text-4xl font-serif font-bold text-slate-900 mb-2">Meet Our Team</h2>
+                    <p className="text-slate-500 text-[11px] md:text-lg">Specialized experts working for you across CT.</p>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                
+                <div className="flex md:grid md:grid-cols-3 gap-5 overflow-x-auto pb-4 md:pb-0 snap-x no-scrollbar ml-[-1rem] mr-[-1rem] px-4 md:px-0">
                     {teamList.map((agent) => (
                         <Link
                             key={agent.id}
                             to={`/agent/${agent.id}`}
-                            className="group bg-white/80 backdrop-blur-sm rounded-2xl md:rounded-3xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-purple-100/50 hover:border-purple-300 hover:shadow-xl transition-all duration-500"
+                            className="flex-shrink-0 w-[240px] md:w-auto snap-center bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-sm border border-slate-100 group"
                         >
-                            <div className="relative h-56 md:h-64 overflow-hidden bg-slate-200">
+                            <div className="relative h-44 md:h-64 overflow-hidden">
                                 <img
                                     src={agent.image}
                                     alt={agent.name}
-                                    className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                                     onError={(e) => { (e.currentTarget as HTMLImageElement).src = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80'; }}
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
-                                <div className="absolute bottom-4 left-4 right-4 text-left">
-                                    <p className="text-white font-bold text-xl font-serif leading-tight">{agent.name}</p>
-                                    <p className="text-slate-300 text-xs mb-1.5">{agent.title}</p>
+                                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
+                                <div className="absolute bottom-3 left-4 text-left">
+                                    <p className="text-white font-bold text-md leading-tight">{agent.name}</p>
+                                    <p className="text-white/60 text-[9px] uppercase font-black tracking-widest">{agent.title.split(' ')[0]}</p>
+                                </div>
+                            </div>
+                            <div className="p-4 flex items-center justify-between bg-slate-50/50">
+                                <div className="flex items-center gap-3">
+                                    <span className="text-[10px] uppercase font-black text-brand-600">Profile</span>
                                     {agent.instagram && (
-                                        <div className="flex items-center gap-1 text-[10px] text-white/50 font-medium">
+                                        <div 
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                window.open(`https://instagram.com/${agent.instagram!.replace('@', '')}`, '_blank');
+                                            }}
+                                            className="p-1.5 bg-white rounded-lg border border-slate-200 text-slate-400 hover:text-pink-600 hover:border-pink-200 transition-all"
+                                        >
                                             <Instagram className="w-3 h-3" />
-                                            {agent.instagram}
                                         </div>
                                     )}
                                 </div>
-                            </div>
-                            <div className="p-5 md:p-6 text-left">
-                                <div className="flex flex-wrap gap-2 mb-4">
-                                    {agent.credentials.slice(0, 2).map((c, i) => (
-                                        <span key={i} className="inline-flex items-center gap-1 px-2.5 py-1 bg-brand-50 text-brand-700 text-xs rounded-full font-medium border border-brand-100">
-                                            {c.type === 'award' && <Award className="w-3 h-3" />}
-                                            {c.label}
-                                        </span>
-                                    ))}
-                                </div>
-                                <div className="flex items-center gap-2 text-brand-600 font-semibold text-sm group-hover:text-brand-700 transition-colors">
-                                    View Profile <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                                </div>
+                                <ArrowRight className="w-4 h-4 text-brand-600 group-hover:translate-x-1 transition-transform" />
                             </div>
                         </Link>
                     ))}
                 </div>
             </section>
 
-
-            {/* Closing CTA */}
-            <section className="py-16 md:py-20 relative overflow-hidden" style={{ background: 'linear-gradient(160deg, #fdf4ff 0%, #f0f4ff 50%, #f0fff8 100%)' }}>
-
-                <div className="max-w-4xl mx-auto px-4 md:px-6 text-center relative">
-                    <div className="flex justify-center gap-1 text-purple-400 text-lg md:text-xl mb-4 md:mb-6 mt-4">
-                        {[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 md:w-6 md:h-6 fill-purple-400" />)}
-                    </div>
-                    <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-3 md:mb-4">Ready to Work Together?</h2>
-                    <p className="text-slate-500 text-base md:text-lg mb-6 md:mb-8 max-w-xl mx-auto px-4">Let's talk. No pressure, no commitment. Just real people who care about helping you find your home.</p>
-                    <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
-                        <a href="/#contact" className="px-8 py-3.5 md:px-10 md:py-4 text-white font-bold rounded-xl md:rounded-2xl shadow-xl hover:-translate-y-0.5 transition-all duration-300 inline-flex items-center justify-center gap-2 text-sm md:text-base" style={{ background: 'linear-gradient(135deg, #C0003A 0%, #6B008A 45%, #0A2FA8 100%)' }}>
-                            Get in Touch <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
+            <section className="py-12 md:py-20 bg-slate-900 text-white rounded-t-[3rem] mt-8">
+                <div className="max-w-4xl mx-auto px-6 text-center">
+                    <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">Ready to Find Your Home?</h2>
+                    <p className="text-slate-400 text-sm md:text-lg mb-8 max-w-md mx-auto">Our specialized team is ready to guide you home.</p>
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="/#contact" className="px-8 py-4 bg-white text-slate-900 font-bold rounded-xl shadow-lg active:scale-95 transition-all text-sm">
+                            Get in Touch
                         </a>
-                        <a href="#team" className="px-8 py-3.5 md:px-10 md:py-4 bg-white border border-slate-200 text-slate-700 font-semibold rounded-xl md:rounded-2xl hover:border-purple-300 hover:shadow-md transition-all text-sm md:text-base justify-center flex">
-                            Meet the Agents
+                        <a href="#team" className="px-8 py-4 border border-white/20 text-white font-bold rounded-xl hover:bg-white/5 transition-all text-sm">
+                            Meet Team
                         </a>
                     </div>
                 </div>
-
             </section>
 
             <Footer />

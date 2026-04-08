@@ -5,6 +5,50 @@ import Footer from '../Footer';
 import SEOHead from '../SEOHead';
 import { ContactModal } from '../ui/ContactModal';
 
+const SliderInput: React.FC<{
+    label: string;
+    value: number;
+    min: number;
+    max: number;
+    step: number;
+    onChange: (v: number) => void;
+    prefix?: string;
+    suffix?: string;
+    format?: (v: number) => string;
+}> = ({ label, value, min, max, step, onChange, prefix = '', suffix = '', format }) => (
+    <div className="space-y-1 md:space-y-3">
+        <div className="flex items-center justify-between gap-2">
+            <label className="text-[10px] md:text-sm font-semibold text-slate-700 leading-tight">{label}</label>
+            <div className="flex items-center gap-0.5 px-2 py-0.5 md:px-3 md:py-1 bg-brand-50 border border-brand-200 rounded-lg">
+                <span className="text-[10px] text-brand-600 font-medium">{prefix}</span>
+                <input
+                    type="number"
+                    value={value}
+                    min={min}
+                    max={max}
+                    step={step}
+                    onChange={(e) => onChange(Math.min(max, Math.max(min, Number(e.target.value))))}
+                    className="w-14 md:w-20 text-[11px] md:text-sm font-bold text-brand-700 bg-transparent text-right focus:outline-none"
+                />
+                <span className="text-[10px] text-brand-600 font-medium">{suffix}</span>
+            </div>
+        </div>
+        <input
+            type="range"
+            min={min}
+            max={max}
+            step={step}
+            value={value}
+            onChange={(e) => onChange(Number(e.target.value))}
+            className="w-full h-1.5 md:h-2 bg-slate-200 rounded-full appearance-none cursor-pointer accent-brand-600 touch-none"
+        />
+        <div className="hidden md:flex justify-between text-xs text-slate-400">
+            <span>{format ? format(min) : `${prefix}${min.toLocaleString()}${suffix}`}</span>
+            <span>{format ? format(max) : `${prefix}${max.toLocaleString()}${suffix}`}</span>
+        </div>
+    </div>
+);
+
 const MortgageCalculator: React.FC = () => {
     const [homePrice, setHomePrice] = useState(450000);
     const [downPayPct, setDownPayPct] = useState(20);
@@ -62,52 +106,6 @@ const MortgageCalculator: React.FC = () => {
     const fmt = (n: number) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(n);
     const fmtDec = (n: number) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(n);
 
-    type SliderInputProps = {
-        label: string;
-        value: number;
-        min: number;
-        max: number;
-        step: number;
-        onChange: (v: number) => void;
-        prefix?: string;
-        suffix?: string;
-        format?: (v: number) => string;
-    };
-
-    const SliderInput = ({ label, value, min, max, step, onChange, prefix = '', suffix = '', format }: SliderInputProps) => (
-        <div className="space-y-3">
-            <div className="flex items-center justify-between">
-                <label className="text-sm font-semibold text-slate-700">{label}</label>
-                <div className="flex items-center gap-1 px-3 py-1 bg-brand-50 border border-brand-200 rounded-lg">
-                    <span className="text-xs text-brand-600 font-medium">{prefix}</span>
-                    <input
-                        type="number"
-                        value={value}
-                        min={min}
-                        max={max}
-                        step={step}
-                        onChange={(e) => onChange(Math.min(max, Math.max(min, Number(e.target.value))))}
-                        className="w-20 text-sm font-bold text-brand-700 bg-transparent text-right focus:outline-none"
-                    />
-                    <span className="text-xs text-brand-600 font-medium">{suffix}</span>
-                </div>
-            </div>
-            <input
-                type="range"
-                min={min}
-                max={max}
-                step={step}
-                value={value}
-                onChange={(e) => onChange(Number(e.target.value))}
-                className="w-full h-2 bg-slate-200 rounded-full appearance-none cursor-pointer accent-brand-600"
-            />
-            <div className="flex justify-between text-xs text-slate-400">
-                <span>{format ? format(min) : `${prefix}${min.toLocaleString()}${suffix}`}</span>
-                <span>{format ? format(max) : `${prefix}${max.toLocaleString()}${suffix}`}</span>
-            </div>
-        </div>
-    );
-
     return (
         <div 
             className="min-h-screen font-sans relative selection:bg-purple-500/20"
@@ -153,59 +151,23 @@ const MortgageCalculator: React.FC = () => {
             <section className="max-w-7xl mx-auto px-4 md:px-6 py-10 md:py-20">
                 <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
 
-                    {/* Inputs Panel */}
-                    <div className="lg:col-span-3 bg-white/70 backdrop-blur-md rounded-2xl md:rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-purple-100/60 p-5 md:p-8 space-y-6 md:space-y-8 relative z-10">
-                        <div className="flex items-center gap-2 md:gap-3 mb-2">
-                            <div className="w-8 h-8 md:w-10 md:h-10 bg-purple-100/80 rounded-lg md:rounded-xl flex items-center justify-center border border-purple-200/50">
-                                <DollarSign className="w-4 h-4 md:w-5 md:h-5 text-purple-600" />
-                            </div>
-                            <h2 className="text-lg md:text-xl font-display font-bold text-slate-900">Loan Details</h2>
-                        </div>
-
-                        <SliderInput label="Home Price" value={homePrice} min={100000} max={2000000} step={5000} onChange={setHomePrice} prefix="$" format={(v) => `$${(v / 1000).toFixed(0)}k`} />
-                        <SliderInput label="Down Payment" value={downPayPct} min={0} max={60} step={1} onChange={setDownPayPct} suffix="%" />
-                        <SliderInput label="Interest Rate" value={interestRate} min={2} max={12} step={0.125} onChange={setInterestRate} suffix="%" />
-                        <SliderInput label="Loan Term" value={loanTerm} min={10} max={30} step={5} onChange={setLoanTerm} suffix=" yrs" />
-
-                        <div className="border-t border-purple-100/60 pt-6 md:pt-8 space-y-6 md:space-y-8">
-                            <div className="flex items-center gap-2 md:gap-3 mb-2">
-                                <div className="w-8 h-8 md:w-10 md:h-10 bg-blue-50 rounded-lg md:rounded-xl flex items-center justify-center border border-blue-100">
-                                    <TrendingDown className="w-4 h-4 md:w-5 md:h-5 text-blue-600" />
-                                </div>
-                                <h2 className="text-lg md:text-xl font-display font-bold text-slate-900">Monthly Costs</h2>
-                            </div>
-                            <SliderInput label="Annual Property Tax" value={propertyTax} min={0} max={30000} step={100} onChange={setPropertyTax} prefix="$" />
-                            <SliderInput label="Annual Home Insurance" value={homeInsurance} min={0} max={10000} step={50} onChange={setHomeInsurance} prefix="$" />
-                            <SliderInput label="Monthly HOA" value={hoa} min={0} max={2000} step={25} onChange={setHoa} prefix="$" />
-                        </div>
-
-                        <button
-                            onClick={calculate}
-                            className="w-full py-4 text-white font-bold rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2"
-                            style={{ background: 'linear-gradient(135deg, #C0003A 0%, #6B008A 45%, #0A2FA8 100%)' }}
-                        >
-                            <RefreshCw className="w-4 h-4" /> Recalculate
-                        </button>
-                    </div>
-
-                    {/* Results Panel */}
+                    {/* Results Panel First on Mobile */}
                     {results && (
-                        <div className="lg:col-span-2 space-y-6 sticky top-8 z-10">
+                        <div className="lg:col-span-2 order-1 lg:order-2 space-y-4 md:space-y-6 sticky top-8 z-10">
                             {/* Main Result */}
-                            <div className="bg-white/70 backdrop-blur-md rounded-2xl md:rounded-3xl p-6 md:p-8 shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-purple-100/60 text-center relative overflow-hidden">
-                                <div className="absolute top-0 left-0 right-0 h-2" style={{ background: 'linear-gradient(90deg, #E50000, #FF8D00, #FFEE00, #028121, #004CFF, #770088)' }} />
-                                <div className="relative z-10">
-                                    <p className="text-purple-600 text-xs md:text-sm font-semibold uppercase tracking-widest mb-1 md:mb-2 mt-2">Estimated Monthly Payment</p>
-                                    <p className="text-5xl md:text-6xl font-sans tracking-tight font-extrabold text-slate-900 mb-1">{fmt(results.monthlyTotal)}</p>
-                                    <p className="text-slate-500 text-sm">per month</p>
-                                    <div className="mt-6 grid grid-cols-2 gap-3 text-left">
+                            <div className="bg-white/70 backdrop-blur-md rounded-2xl md:rounded-3xl p-4 md:p-8 shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-purple-100/60 text-center relative overflow-hidden">
+                                <div className="absolute top-0 left-0 right-0 h-1.5" style={{ background: 'linear-gradient(90deg, #E50000, #FF8D00, #FFEE00, #028121, #004CFF, #770088)' }} />
+                                <div className="relative z-10 py-1 md:py-0">
+                                    <p className="text-purple-600 text-[9px] md:text-sm font-bold uppercase tracking-[0.2em] mb-1 md:mb-2">Monthly Payment</p>
+                                    <p className="text-4xl md:text-6xl font-sans tracking-tight font-extrabold text-slate-900 mb-1">{fmt(results.monthlyTotal)}</p>
+                                    <div className="flex items-center justify-center gap-4 mt-2 md:mt-4 text-left">
                                         {[
-                                            { label: 'Loan Amount', val: fmt(results.loanAmount) },
-                                            { label: 'Down Payment', val: fmt(results.downPayAmount) },
+                                            { label: 'Loan', val: fmt(results.loanAmount) },
+                                            { label: 'Down', val: fmt(results.downPayAmount) },
                                         ].map(({ label, val }) => (
-                                            <div key={label} className="bg-white/50 rounded-xl p-3 border border-purple-100/50">
-                                                <p className="text-xs text-slate-500 mb-1">{label}</p>
-                                                <p className="text-base font-bold text-slate-900">{val}</p>
+                                            <div key={label} className="bg-white/50 rounded-lg md:rounded-xl px-3 py-1.5 border border-purple-100/50">
+                                                <p className="text-[8px] md:text-xs text-slate-500 uppercase font-black">{label}</p>
+                                                <p className="text-[11px] md:text-base font-bold text-slate-900 leading-tight">{val}</p>
                                             </div>
                                         ))}
                                     </div>
@@ -213,63 +175,102 @@ const MortgageCalculator: React.FC = () => {
                             </div>
 
                             {/* Breakdown */}
-                            <div className="bg-white/70 backdrop-blur-md rounded-2xl md:rounded-3xl p-5 md:p-6 shadow-sm border border-purple-100/60">
-                                <h3 className="font-bold text-slate-800 mb-3 md:mb-4 text-xs md:text-sm uppercase tracking-wide">Monthly Breakdown</h3>
-                                <div className="space-y-4">
+                            <div className="bg-white/70 backdrop-blur-md rounded-2xl md:rounded-3xl p-4 md:p-6 shadow-sm border border-purple-100/60 text-left">
+                                <h3 className="font-bold text-slate-800 mb-2 md:mb-4 text-[10px] md:text-sm uppercase tracking-wide">Monthly Breakdown</h3>
+                                <div className="grid grid-cols-2 lg:grid-cols-1 gap-x-6 gap-y-3">
                                     {[
-                                        { label: 'Principal & Interest', val: results.pAndI, color: 'bg-purple-500' },
-                                        { label: 'Property Tax', val: results.monthlyTax, color: 'bg-orange-400' },
-                                        { label: 'Home Insurance', val: results.monthlyInsurance, color: 'bg-blue-500' },
-                                        ...(results.pmi > 0 ? [{ label: 'PMI', val: results.pmi, color: 'bg-red-400' }] : []),
-                                        ...(results.monthlyHoa > 0 ? [{ label: 'HOA', val: results.monthlyHoa, color: 'bg-slate-400' }] : []),
-                                    ].map(({ label, val, color }) => (
-                                        <div key={label} className="flex items-center gap-3">
-                                            <div className={`w-3 h-3 rounded-full flex-shrink-0 ${color}`} />
-                                            <div className="flex-1">
-                                                <div className="flex justify-between items-center mb-1">
-                                                    <span className="text-sm font-medium text-slate-600">{label}</span>
-                                                    <span className="text-sm font-bold text-slate-800">{fmtDec(val)}/mo</span>
+                                        { label: 'P & I', fullLabel: 'Principal & Interest', val: results.pAndI, color: 'bg-purple-500' },
+                                        { label: 'Tax', fullLabel: 'Property Tax', val: results.monthlyTax, color: 'bg-orange-400' },
+                                        { label: 'Insure', fullLabel: 'Home Insurance', val: results.monthlyInsurance, color: 'bg-blue-500' },
+                                        ...(results.pmi > 0 ? [{ label: 'PMI', fullLabel: 'PMI', val: results.pmi, color: 'bg-red-400' }] : []),
+                                        ...(results.monthlyHoa > 0 ? [{ label: 'HOA', fullLabel: 'HOA', val: results.monthlyHoa, color: 'bg-slate-400' }] : []),
+                                    ].map(({ label, fullLabel, val, color }) => (
+                                        <div key={label} className="flex flex-col gap-1">
+                                            <div className="flex justify-between items-center">
+                                                <div className="flex items-center gap-1.5">
+                                                    <div className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${color}`} />
+                                                    <span className="text-[10px] md:text-sm font-medium text-slate-600 md:hidden">{label}</span>
+                                                    <span className="text-sm font-medium text-slate-600 hidden md:block">{fullLabel}</span>
                                                 </div>
-                                                <div className="h-1.5 bg-slate-100 rounded-full overflow-hidden">
-                                                    <div className={`h-full ${color} rounded-full`} style={{ width: `${Math.min(100, (val / results.monthlyTotal) * 100)}%` }} />
-                                                </div>
+                                                <span className="text-[11px] md:text-sm font-bold text-slate-800">{fmtDec(val)}</span>
+                                            </div>
+                                            <div className="h-1 bg-slate-100 rounded-full overflow-hidden">
+                                                <div className={`h-full ${color} rounded-full`} style={{ width: `${Math.min(100, (val / results.monthlyTotal) * 100)}%` }} />
                                             </div>
                                         </div>
                                     ))}
                                 </div>
                             </div>
 
-                            {/* Lifetime Totals */}
-                            <div className="bg-white/70 backdrop-blur-md rounded-2xl md:rounded-3xl p-5 md:p-6 shadow-sm border border-purple-100/60">
-                                <h3 className="font-bold text-slate-800 mb-3 md:mb-4 text-xs md:text-sm uppercase tracking-wide">Over {loanTerm} Years</h3>
-                                <div className="space-y-3">
+                            {/* Lifetime Totals hide on narrow mobile */}
+                            <div className="bg-white/70 backdrop-blur-md rounded-2xl md:rounded-3xl p-4 md:p-6 shadow-sm border border-purple-100/60 hidden sm:block">
+                                <h3 className="font-bold text-slate-800 mb-2 md:mb-4 text-[10px] md:text-sm uppercase tracking-wide">Lifetime Summary</h3>
+                                <div className="grid grid-cols-2 gap-3">
                                     {[
-                                        { label: 'Total Principal Paid', val: fmt(results.principal) },
-                                        { label: 'Total Interest Paid', val: fmt(results.totalInterest) },
-                                        { label: 'Total Cost of Home', val: fmt(results.totalCost) },
+                                        { label: 'Interest', val: fmt(results.totalInterest) },
+                                        { label: 'Total Paid', val: fmt(results.totalCost) },
                                     ].map(({ label, val }) => (
-                                        <div key={label} className="flex justify-between items-center py-2 border-b border-purple-50 last:border-0">
-                                            <span className="text-sm text-slate-600">{label}</span>
-                                            <span className="text-sm font-bold text-slate-800">{val}</span>
+                                        <div key={label} className="bg-slate-50/50 rounded-xl p-2.5 border border-slate-100 text-center">
+                                            <p className="text-[8px] text-slate-500 uppercase font-black mb-1">{label}</p>
+                                            <p className="text-xs font-bold text-slate-800">{val}</p>
                                         </div>
                                     ))}
                                 </div>
                             </div>
 
                             {results.pmi > 0 && (
-                                <div className="bg-orange-50/80 backdrop-blur-sm border border-orange-200 rounded-2xl p-4 flex gap-3">
+                                <div className="bg-orange-50/80 backdrop-blur-sm border border-orange-200 rounded-2xl p-4 flex gap-3 text-left">
                                     <Info className="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" />
-                                    <p className="text-xs text-orange-800 leading-relaxed">
-                                        <strong>PMI notice:</strong> Your down payment is under 20%, so PMI of {fmt(results.pmi)}/mo applies. It typically drops off once you reach 20% equity. Our lender Jake Earl can explore PMI-avoidance strategies for you.
+                                    <p className="text-[10px] md:text-xs text-orange-800 leading-relaxed">
+                                        <strong>PMI notice:</strong> Down payment under 20%. PMI of {fmt(results.pmi)}/mo applies.
                                     </p>
                                 </div>
                             )}
 
                             <button onClick={() => setIsModalOpen(true)} className="block w-full py-4 text-white font-bold rounded-xl text-center shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all text-sm" style={{ background: 'linear-gradient(135deg, #C0003A 0%, #6B008A 45%, #0A2FA8 100%)' }}>
-                                Talk to Our Partner Lender — Jake Earl <ArrowRight className="inline w-4 h-4 ml-1" />
+                                Talk to Finance Expert <ArrowRight className="inline w-4 h-4 ml-1" />
                             </button>
                         </div>
                     )}
+
+                    {/* Inputs Panel restored and ordered after result on mobile */}
+                    <div className="lg:col-span-3 order-2 lg:order-1 bg-white/70 backdrop-blur-md rounded-2xl md:rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-purple-100/60 p-4 md:p-8 space-y-4 md:space-y-8 relative z-10 text-left">
+                        <div className="flex items-center gap-2 md:gap-3 mb-2">
+                            <div className="w-8 h-8 md:w-10 md:h-10 bg-purple-100/80 rounded-lg md:rounded-xl flex items-center justify-center border border-purple-200/50">
+                                <DollarSign className="w-4 h-4 md:w-5 md:h-5 text-purple-600" />
+                            </div>
+                            <h2 className="text-base md:text-xl font-display font-bold text-slate-900 uppercase tracking-wide">Loan Details</h2>
+                        </div>
+
+                        <div className="grid grid-cols-2 gap-x-4 gap-y-6 md:block md:space-y-8">
+                            <SliderInput label="Home Price" value={homePrice} min={100000} max={2000000} step={5000} onChange={setHomePrice} prefix="$" format={(v) => `$${(v / 1000).toFixed(0)}k`} />
+                            <SliderInput label="Down Pay" value={downPayPct} min={0} max={60} step={1} onChange={setDownPayPct} suffix="%" />
+                            <SliderInput label="Interest Rate" value={interestRate} min={2} max={12} step={0.125} onChange={setInterestRate} suffix="%" />
+                            <SliderInput label="Loan Term" value={loanTerm} min={10} max={30} step={5} onChange={setLoanTerm} suffix=" yrs" />
+                        </div>
+
+                        <div className="border-t border-purple-100/60 pt-4 md:pt-8 space-y-4 md:space-y-8">
+                            <div className="flex items-center gap-2 md:gap-3 mb-2">
+                                <div className="w-8 h-8 md:w-10 md:h-10 bg-blue-50 rounded-lg md:rounded-xl flex items-center justify-center border border-blue-100">
+                                    <TrendingDown className="w-4 h-4 md:w-5 md:h-5 text-blue-600" />
+                                </div>
+                                <h2 className="text-base md:text-xl font-display font-bold text-slate-900 uppercase tracking-wide">Monthly Costs</h2>
+                            </div>
+                            <div className="grid grid-cols-2 gap-x-4 gap-y-6 md:block md:space-y-8">
+                                <SliderInput label="Property Tax" value={propertyTax} min={0} max={30000} step={100} onChange={setPropertyTax} prefix="$" />
+                                <SliderInput label="Insurance" value={homeInsurance} min={0} max={10000} step={50} onChange={setHomeInsurance} prefix="$" />
+                                <SliderInput label="Monthly HOA" value={hoa} min={0} max={2000} step={25} onChange={setHoa} prefix="$" />
+                            </div>
+                        </div>
+
+                        <button
+                            onClick={calculate}
+                            className="w-full py-4 text-white font-bold rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2"
+                            style={{ background: 'linear-gradient(135deg, #C0003A 0%, #6B008A 45%, #0A2FA8 100%)' }}
+                        >
+                            <RefreshCw className="w-4 h-4" /> Update Numbers
+                        </button>
+                    </div>
                 </div>
             </section>
 

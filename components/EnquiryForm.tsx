@@ -52,15 +52,15 @@ const EnquiryFormCard: React.FC = () => {
    const isSuccess = status === 'success';
    const isError = status === 'error';
 
-   const base = 'peer w-full h-12 px-4 pt-5 pb-1 bg-white border border-slate-300 rounded-lg text-slate-800 text-sm placeholder-transparent focus:outline-none focus:border-slate-500 transition-all duration-200';
-   const iconBase = 'peer w-full h-12 pl-11 pr-4 pt-5 pb-1 bg-white border border-slate-300 rounded-lg text-slate-800 text-sm placeholder-transparent focus:outline-none focus:border-slate-500 transition-all duration-200';
-   const lbl = 'absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm transition-all duration-200 pointer-events-none peer-focus:top-2.5 peer-focus:text-[10px] peer-focus:text-slate-500 peer-[:not(:placeholder-shown)]:top-2.5 peer-[:not(:placeholder-shown)]:text-[10px] peer-[:not(:placeholder-shown)]:text-slate-500';
-   const iconLbl = 'absolute left-11 top-1/2 -translate-y-1/2 text-slate-400 text-sm transition-all duration-200 pointer-events-none peer-focus:top-2.5 peer-focus:text-[10px] peer-focus:text-slate-500 peer-[:not(:placeholder-shown)]:top-2.5 peer-[:not(:placeholder-shown)]:text-[10px] peer-[:not(:placeholder-shown)]:text-slate-500';
+   const base = 'peer w-full h-12 px-4 pt-5 pb-1 bg-white border border-slate-300 rounded-lg text-slate-800 text-sm placeholder-transparent focus:outline-none focus:border-slate-800 transition-colors duration-150';
+   const iconBase = 'peer w-full h-12 pl-11 pr-4 pt-5 pb-1 bg-white border border-slate-300 rounded-lg text-slate-800 text-sm placeholder-transparent focus:outline-none focus:border-slate-800 transition-colors duration-150';
+   const lbl = 'absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm transition-all duration-150 pointer-events-none peer-focus:top-2.5 peer-focus:text-[10px] peer-focus:text-slate-900 peer-[:not(:placeholder-shown)]:top-2.5 peer-[:not(:placeholder-shown)]:text-[10px] peer-[:not(:placeholder-shown)]:text-slate-900';
+   const iconLbl = 'absolute left-11 top-1/2 -translate-y-1/2 text-slate-400 text-sm transition-all duration-150 pointer-events-none peer-focus:top-2.5 peer-focus:text-[10px] peer-focus:text-slate-900 peer-[:not(:placeholder-shown)]:top-2.5 peer-[:not(:placeholder-shown)]:text-[10px] peer-[:not(:placeholder-shown)]:text-slate-900';
 
    if (isSuccess) {
       return (
-         <div className="text-center py-16">
-            <div className="w-16 h-16 rounded-full bg-green-50 border border-green-200 flex items-center justify-center mx-auto mb-5">
+         <div className="text-center py-12">
+            <div className="w-16 h-16 rounded-full bg-green-50 border border-green-200 flex items-center justify-center mx-auto mb-5 translate-y-0 opacity-100 transition-all">
                <CheckCircle2 className="w-8 h-8 text-green-500" />
             </div>
             <h3 className="text-xl font-serif font-bold text-slate-900 mb-2">You're all set!</h3>
@@ -99,7 +99,7 @@ const EnquiryFormCard: React.FC = () => {
             <div className="relative">
                <Home className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none z-20" />
                <select id="interest" value={form.interest} onChange={field('interest')}
-                  className="w-full h-12 pl-11 pr-8 appearance-none bg-white border border-slate-300 rounded-lg text-slate-800 text-sm focus:border-slate-500 focus:text-slate-900 transition-all duration-200 cursor-pointer">
+                  className="w-full h-12 pl-11 pr-8 appearance-none bg-white border border-slate-300 rounded-lg text-slate-800 text-sm focus:border-slate-900 focus:text-slate-900 transition-colors duration-150 cursor-pointer">
                   <option value="" disabled>I'm Interested In</option>
                   <option>Buying a Home</option>
                   <option>Selling a Home</option>
@@ -121,22 +121,21 @@ const EnquiryFormCard: React.FC = () => {
          </div>
          <div className="relative">
             <textarea id="message" placeholder=" " rows={3} value={form.message} onChange={field('message')}
-               className="peer w-full px-4 pt-6 pb-2 bg-white border border-slate-300 rounded-lg text-slate-800 text-sm placeholder-transparent focus:outline-none focus:border-slate-500 transition-all duration-200 resize-none" />
-            <label htmlFor="message" className="absolute left-4 top-3.5 text-slate-400 text-sm transition-all duration-200 pointer-events-none peer-focus:top-1.5 peer-focus:text-[10px] peer-focus:text-slate-500 peer-[:not(:placeholder-shown)]:top-1.5 peer-[:not(:placeholder-shown)]:text-[10px] peer-[:not(:placeholder-shown)]:text-slate-500">
-               Tell us if you have a preferred agent or area of CT
+               className="peer w-full px-4 pt-6 pb-2 bg-white border border-slate-300 rounded-lg text-slate-800 text-sm placeholder-transparent focus:outline-none focus:border-slate-800 transition-colors duration-150 resize-none font-sans" />
+            <label htmlFor="message" className="absolute left-4 top-3.5 text-slate-400 text-sm transition-all duration-150 pointer-events-none peer-focus:top-1.5 peer-focus:text-[10px] peer-focus:text-slate-900 peer-[:not(:placeholder-shown)]:top-1.5 peer-[:not(:placeholder-shown)]:text-[10px] peer-[:not(:placeholder-shown)]:text-slate-900 leading-none">
+               Preferred agent or area in Connecticut?
             </label>
          </div>
          {isError && <div className="text-xs text-red-600 bg-red-50 border border-red-200 rounded-lg px-4 py-3">{errorMsg}</div>}
          <button id="enquiry-submit-btn" type="submit" disabled={isSubmitting}
-            className="relative overflow-hidden w-full py-3.5 rounded-lg font-bold text-white text-sm flex items-center justify-center gap-2.5 hover:opacity-90 disabled:opacity-60 transition-all duration-300 mt-2 shadow-md"
+            className="relative overflow-hidden w-full py-3.5 rounded-xl font-bold text-white text-sm flex items-center justify-center gap-2.5 active:scale-[0.98] transition-all duration-200 mt-2 shadow-lg"
             style={{ background: 'linear-gradient(135deg, #C0003A 0%, #6B008A 45%, #0A2FA8 100%)' }}>
             {isSubmitting
-               ? <><svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" /></svg> Sending…</>
+               ? <><div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" /> Sending…</>
                : <>Connect with an Agent <Send className="w-4 h-4" /></>}
          </button>
-         <p className="text-center text-[10px] text-slate-400 flex items-center justify-center gap-1.5">
-            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
-            Your information is secure and shared only with us
+         <p className="text-center text-[10px] text-slate-400 flex items-center justify-center gap-1.5 select-none">
+            🔒 Your information is secure and private
          </p>
       </form>
    );

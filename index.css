@@ -1,8 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 /* Premium Real Estate Design System */
 /* Enhanced CSS for a luxurious, premium aesthetic */
@@ -42,9 +41,9 @@
     color: inherit;
 }
 
-/* Smooth global transitions */
-* {
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+/* Targeted transitions for better performance */
+.transition-smooth {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Premium scrollbar styling */
@@ -801,4 +800,40 @@ html {
 
 .blog-content h2 {
     scroll-margin-top: 120px;
+}
+
+/* === MOBILE PERFORMANCE & CLARITY === */
+.mobile-gpu-boost { 
+  will-change: transform, opacity; 
+  /* Using translate3d for hardware acceleration without subpixel blurring */
+  transform: translate3d(0, 0, 0); 
+  -webkit-backface-visibility: hidden; 
+  backface-visibility: hidden; 
+}
+
+/* Sharp Icons on Mobile */
+svg, .lucide {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  shape-rendering: geometricPrecision;
+}
+
+@media (max-width: 768px) { 
+  /* Limit backdrop blur intensity to keep UI crisp */
+  [class*="backdrop-blur"] { 
+    backdrop-filter: blur(12px) !important; 
+    -webkit-backdrop-filter: blur(12px) !important; 
+  } 
+  
+  /* Remove content blur that was causing "Blurred Icons" */
+  [class*="blur-"]:not([class*="backdrop-"]) {
+    filter: none !important;
+  }
+
+  .animate-float, .animate-pride-border { 
+    display: none !important; 
+  } 
+  .shadow-2xl, .shadow-xl {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+  }
 }

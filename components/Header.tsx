@@ -104,85 +104,102 @@ const Header: React.FC = () => {
         <FloatingNav navItems={navItems} />
       </div>
 
-      {/* Mobile Burger Menu Button */}
-      <div className="md:hidden fixed top-6 right-6 z-[6000]">
+      {/* Mobile Burger Menu Button - Thumb Reachable Zone */}
+      <div className="md:hidden fixed bottom-8 right-6 z-[6000]">
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="p-3 bg-white/90 shadow-lg border border-slate-200 rounded-full backdrop-blur-xl transition-transform active:scale-95" style={{ color: '#6B008A' }}
+          className="p-4 bg-white/95 shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-slate-200/50 rounded-full backdrop-blur-xl transition-all active:scale-90 hover:scale-110 flex items-center justify-center group" 
+          style={{ color: '#6B008A' }}
+          aria-label="Toggle Menu"
         >
-          {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {isMobileMenuOpen ? (
+            <X className="h-6 w-6 transition-transform duration-300 group-hover:rotate-90" />
+          ) : (
+            <Menu className="h-6 w-6 transition-transform duration-300 group-hover:scale-110" />
+          )}
         </button>
       </div>
 
-      {/* Mobile Menu Dropdown */}
+      {/* Mobile Menu - Compact Bottom Slide-Up - Optimized for speed and visibility */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: -10 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: -10 }}
-            transition={{ duration: 0.2 }}
-            className="md:hidden fixed top-[80px] right-6 z-[6000] bg-white/95 border border-slate-200 backdrop-blur-xl rounded-2xl shadow-2xl min-w-[220px] max-h-[70vh] overflow-y-auto overflow-x-hidden"
-          >
+          <>
+            {/* Backdrop - Minimal blur for high performance */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.15 }}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="md:hidden fixed inset-0 bg-black/30 backdrop-blur-[2px] z-[5999]"
+            />
+            
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96, y: 10, x: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0, x: 0 }}
+              exit={{ opacity: 0, scale: 0.96, y: 10, x: 10 }}
+              transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }} // Snappy Ease
+              className="md:hidden fixed bottom-24 right-6 z-[6000] bg-white border border-slate-200/80 rounded-[2.2rem] shadow-[0_25px_60px_rgba(0,0,0,0.2)] w-[300px] max-h-[75vh] overflow-hidden flex flex-col"
+            >
+              <div className="p-4 overflow-y-auto custom-scrollbar-hide">
+                <div className="flex flex-col space-y-1 pt-1 pb-4">
+                  {navItems.map((item: any, idx: number) => {
+                    // Page link (Reviews, Community, About)
+                    if (item.isPage) {
+                      return (
+                        <Link
+                          key={idx}
+                          to={item.link}
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className="flex items-center gap-4 px-5 py-4.5 text-slate-900 hover:bg-slate-50 rounded-2xl transition-colors active:scale-[0.98] group"
+                        >
+                          <div className="p-2.5 bg-slate-100 group-hover:bg-purple-100 text-purple-700 rounded-xl transition-colors">{item.icon}</div>
+                          <span className="font-bold text-[16px] tracking-tight">{item.name}</span>
+                        </Link>
+                      );
+                    }
 
+                    // Dropdown items (For Buyers, For Sellers) - High Contrast Redesign
+                    if (item.isDropdown && item.dropdownItems) {
+                      return (
+                        <div key={idx} className="bg-slate-50/80 rounded-[1.8rem] p-1.5 mb-2 mt-1">
+                          <div className="flex items-center gap-3 px-4 py-3 text-purple-800/60">
+                             <div className="scale-90">{item.icon}</div>
+                             <span className="font-black text-[10px] uppercase tracking-[0.15em]">{item.name}</span>
+                          </div>
+                          <div className="space-y-0.5 px-1 pb-1">
+                            {item.dropdownItems.map((sub: any, i: number) => (
+                              <Link
+                                key={i}
+                                to={sub.href}
+                                onClick={() => setIsMobileMenuOpen(false)}
+                                className="block px-4 py-3.5 text-[14.5px] font-bold text-slate-800 hover:text-purple-700 hover:bg-white rounded-[1.2rem] transition-all active:pl-6 shadow-sm border border-transparent hover:border-slate-100"
+                              >
+                                {sub.label}
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      );
+                    }
 
-
-            <div className="p-2 flex flex-col space-y-1">
-              {navItems.map((item: any, idx: number) => {
-                // Page link (Reviews)
-                if (item.isPage) {
-                  return (
-                    <Link
-                      key={idx}
-                      to={item.link}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="flex items-center gap-3 px-4 py-3 text-slate-700 hover:text-slate-900 hover:bg-purple-50 rounded-xl transition-all"
-                    >
-                      {item.icon}
-                      <span className="font-medium text-sm">{item.name}</span>
-                    </Link>
-                  );
-                }
-
-                // Dropdown items (For Buyers, For Sellers)
-                if (item.isDropdown && item.dropdownItems) {
-                  return (
-                    <div key={idx}>
-                        <div className="flex items-center gap-3 px-4 py-3 text-slate-500">
-                        {item.icon}
-                        <span className="font-medium text-sm">{item.name}</span>
-                      </div>
-                      <div className="pl-6 space-y-1">
-                        {item.dropdownItems.map((sub: any, i: number) => (
-                          <Link
-                            key={i}
-                            to={sub.href}
-                            onClick={() => setIsMobileMenuOpen(false)}
-                            className="block px-4 py-2 text-sm text-slate-600 hover:text-slate-900 hover:bg-purple-50 rounded-lg transition-all"
-                          >
-                            {sub.label}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  );
-                }
-
-                // Normal anchor
-                return (
-                  <a
-                    key={idx}
-                    href={item.link}
-                    onClick={(e) => handleMobileNavClick(e, item.link)}
-                    className="flex items-center gap-3 px-4 py-3 text-slate-700 hover:text-slate-900 hover:bg-purple-50 rounded-xl transition-all"
-                  >
-                    {item.icon}
-                    <span className="font-medium text-sm">{item.name}</span>
-                  </a>
-                );
-              })}
-            </div>
-          </motion.div>
+                    // Normal anchor
+                    return (
+                      <a
+                        key={idx}
+                        href={item.link}
+                        onClick={(e) => handleMobileNavClick(e, item.link)}
+                        className="flex items-center gap-4 px-5 py-4.5 text-slate-900 hover:bg-slate-50 rounded-2xl transition-colors active:scale-[0.98] group"
+                      >
+                         <div className="p-2.5 bg-slate-100 group-hover:bg-purple-100 text-purple-700 rounded-xl transition-colors">{item.icon}</div>
+                        <span className="font-bold text-[16px] tracking-tight">{item.name}</span>
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </div>
