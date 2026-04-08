@@ -135,45 +135,43 @@ const Header: React.FC = () => {
             />
             
             <motion.div
-              initial={{ opacity: 0, scale: 0.96, y: 10, x: 10 }}
-              animate={{ opacity: 1, scale: 1, y: 0, x: 0 }}
-              exit={{ opacity: 0, scale: 0.96, y: 10, x: 10 }}
-              transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }} // Snappy Ease
-              className="md:hidden fixed bottom-24 right-6 z-[6000] bg-white border border-slate-200/80 rounded-[2.2rem] shadow-[0_25px_60px_rgba(0,0,0,0.2)] w-[300px] max-h-[75vh] overflow-hidden flex flex-col"
+              initial={{ opacity: 0, scale: 0.96, y: 15 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.96, y: 15 }}
+              transition={{ duration: 0.25, ease: [0.23, 1, 0.32, 1] }}
+              className="md:hidden fixed bottom-24 right-5 left-5 z-[6000] bg-white border border-slate-200/90 rounded-[2.5rem] shadow-[0_30px_70px_rgba(0,0,0,0.25)] flex flex-col overflow-hidden max-h-[80vh]"
             >
-              <div className="p-4 overflow-y-auto custom-scrollbar-hide">
-                <div className="flex flex-col space-y-1 pt-1 pb-4">
+              <div className="p-4 overflow-y-auto hidden-scrollbar">
+                <div className="flex flex-col space-y-2">
                   {navItems.map((item: any, idx: number) => {
-                    // Page link (Reviews, Community, About)
                     if (item.isPage) {
                       return (
                         <Link
                           key={idx}
                           to={item.link}
                           onClick={() => setIsMobileMenuOpen(false)}
-                          className="flex items-center gap-4 px-5 py-4.5 text-slate-900 hover:bg-slate-50 rounded-2xl transition-colors active:scale-[0.98] group"
+                          className="flex items-center gap-4 px-5 py-3 text-slate-900 hover:bg-slate-50 rounded-2xl transition-colors active:scale-[0.98] group"
                         >
-                          <div className="p-2.5 bg-slate-100 group-hover:bg-purple-100 text-purple-700 rounded-xl transition-colors">{item.icon}</div>
-                          <span className="font-bold text-[16px] tracking-tight">{item.name}</span>
+                          <div className="p-2.5 bg-slate-100 group-hover:bg-purple-100 text-purple-700 rounded-xl transition-colors scale-90">{item.icon}</div>
+                          <span className="font-bold text-[17px] tracking-tight">{item.name}</span>
                         </Link>
                       );
                     }
 
-                    // Dropdown items (For Buyers, For Sellers) - High Contrast Redesign
                     if (item.isDropdown && item.dropdownItems) {
                       return (
-                        <div key={idx} className="bg-slate-50/80 rounded-[1.8rem] p-1.5 mb-2 mt-1">
-                          <div className="flex items-center gap-3 px-4 py-3 text-purple-800/60">
-                             <div className="scale-90">{item.icon}</div>
-                             <span className="font-black text-[10px] uppercase tracking-[0.15em]">{item.name}</span>
+                        <div key={idx} className="bg-slate-50/70 p-4 rounded-[2rem] border border-slate-100/50 my-1">
+                          <div className="flex items-center gap-2 mb-3 px-1">
+                             <div className="text-purple-600/60 scale-75">{item.icon}</div>
+                             <span className="font-black text-[9px] uppercase tracking-[0.2em] text-purple-800/50">{item.name}</span>
                           </div>
-                          <div className="space-y-0.5 px-1 pb-1">
+                          <div className="grid grid-cols-2 gap-2">
                             {item.dropdownItems.map((sub: any, i: number) => (
                               <Link
                                 key={i}
                                 to={sub.href}
                                 onClick={() => setIsMobileMenuOpen(false)}
-                                className="block px-4 py-3.5 text-[14.5px] font-bold text-slate-800 hover:text-purple-700 hover:bg-white rounded-[1.2rem] transition-all active:pl-6 shadow-sm border border-transparent hover:border-slate-100"
+                                className="flex items-center justify-center text-center p-3 text-[12px] font-extrabold text-slate-800 bg-white shadow-sm border border-slate-100 rounded-[1.2rem] leading-tight active:scale-95 transition-transform"
                               >
                                 {sub.label}
                               </Link>
@@ -183,16 +181,15 @@ const Header: React.FC = () => {
                       );
                     }
 
-                    // Normal anchor
                     return (
                       <a
                         key={idx}
                         href={item.link}
                         onClick={(e) => handleMobileNavClick(e, item.link)}
-                        className="flex items-center gap-4 px-5 py-4.5 text-slate-900 hover:bg-slate-50 rounded-2xl transition-colors active:scale-[0.98] group"
+                        className="flex items-center gap-4 px-5 py-3 text-slate-900 hover:bg-slate-50 rounded-2xl transition-colors active:scale-[0.98] group"
                       >
-                         <div className="p-2.5 bg-slate-100 group-hover:bg-purple-100 text-purple-700 rounded-xl transition-colors">{item.icon}</div>
-                        <span className="font-bold text-[16px] tracking-tight">{item.name}</span>
+                         <div className="p-2.5 bg-slate-100 group-hover:bg-purple-100 text-purple-700 rounded-xl transition-colors scale-90">{item.icon}</div>
+                        <span className="font-bold text-[17px] tracking-tight">{item.name}</span>
                       </a>
                     );
                   })}
