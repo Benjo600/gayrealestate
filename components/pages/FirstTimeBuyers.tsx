@@ -81,6 +81,19 @@ const faqs = [
 const FirstTimeBuyers: React.FC = () => {
     useEffect(() => { window.scrollTo(0, 0); }, []);
 
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faqs.map(faq => ({
+            "@type": "Question",
+            "name": faq.q,
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.a
+            }
+        }))
+    };
+
     return (
         <div
             className="min-h-screen font-sans relative selection:bg-purple-500/20"
@@ -91,7 +104,9 @@ const FirstTimeBuyers: React.FC = () => {
                 description="Your comprehensive step-by-step guide to buying your first home in Connecticut as an LGBTQ+ buyer. Learn about financing, finding inclusive agents, and protecting your investment."
                 canonical="https://www.gayrealestatect.net/first-time-buyers"
                 keywords="first time home buyer Connecticut LGBTQ, LGBTQ first time buyer guide CT, gay couple buying first home Connecticut, home buying steps Connecticut"
+                structuredData={faqSchema}
             />
+
 
             {/* Back Nav */}
             <nav className="absolute top-0 left-0 right-0 p-6 z-10">

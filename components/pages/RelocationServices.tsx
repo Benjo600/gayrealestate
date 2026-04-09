@@ -44,6 +44,34 @@ const RelocationServices: React.FC = () => {
     const [activeSvc, setActiveSvc] = useState(0);
     useEffect(() => { window.scrollTo(0, 0); }, []);
 
+    const relocationSchema = {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "LGBTQ+ Relocation Services Connecticut",
+        "description": "Comprehensive relocation support for the LGBTQ+ community moving to Connecticut, including neighborhood matching, vendor introductions, and community integration.",
+        "provider": {
+            "@type": "Organization",
+            "name": "GayRealEstateCT.net",
+            "url": "https://www.gayrealestatect.net/"
+        },
+        "areaServed": {
+            "@type": "State",
+            "name": "Connecticut"
+        },
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Relocation Offerings",
+            "itemListElement": services.map(svc => ({
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": svc.title,
+                    "description": svc.description
+                }
+            }))
+        }
+    };
+
     return (
         <div 
             className="min-h-screen font-sans relative selection:bg-purple-500/20"
@@ -54,7 +82,9 @@ const RelocationServices: React.FC = () => {
                 description="Relocating to Connecticut? Our LGBTQ+-led team provides full-service relocation support — neighborhood matching, community integration, vendor introductions, and remote closing support."
                 canonical="https://www.gayrealestatect.net/relocation-services"
                 keywords="LGBTQ relocation Connecticut, gay couple moving to CT, relocating to Connecticut services, moving to Connecticut LGBTQ support"
+                structuredData={relocationSchema}
             />
+
 
             {/* Back Nav */}
             <nav className="absolute top-0 left-0 right-0 p-6 z-10">
@@ -181,10 +211,10 @@ const RelocationServices: React.FC = () => {
                 </div>
             </section>
 
-            <Footer />
 
             <Footer />
         </div>
+
     );
 };
 
