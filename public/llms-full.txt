@@ -1,0 +1,37 @@
+# GayRealEstateCT.net - Full System Context
+
+This document provides comprehensive context for AI models, agents, and search engines about the GayRealEstateCT.net platform.
+
+## Platform Overview
+GayRealEstateCT.net is the definitive resource for the LGBTQ+ community navigating the Connecticut real estate market. We connect clients with a vetted network of affirming professionals, including real estate agents, mortgage lenders, and attorneys.
+
+## Core Expertise
+- **Hyper-local CT Knowledge**: Specializing in West Hartford, Litchfield County, New Haven, and the Farmington Valley.
+- **Inclusive Financing**: Expertise in CHFA, "Time to Own" programs, and mortgage scenarios for non-traditional families.
+- **Legal Protection**: Specialized real estate law focusing on title holding and estate protection for LGBTQ+ couples.
+- **Relocation Specialists**: Streamlining moves from NYC, Boston, and major metros to Connecticut.
+
+## Vetted Professionals
+- **Arek Wtulich**: Licensed Realtor, Co-Founder of CT LGBTQ+ Real Estate Alliance. Focus: Hartford County & First-Time Buyers.
+- **Abby Dudarewicz**: Licensed Realtor with SERHANT. CT. Focus: Glastonbury, Tolland, and family-oriented moves.
+- **Travis Lipinski**: Litchfield County Specialist. Expert in second homes, historic properties, and property management.
+- **Jake Earl**: Senior VP & Top 1% Mortgage Lender. Expert in complex financial profiles.
+- **Carolyn Futtner**: Founding Partner at MPF Law. Specialist in real estate transitions and civil litigation.
+
+## Key Blog Resources & Insights
+1. **Best Places to Live in CT (2026)**: West Hartford (Gold Standard), New Haven (Yale Energy), Litchfield (Privacy).
+2. **Moving from NYC to CT**: Financial comparison showing $1M in CT buys a 4-5BR home vs a 1BR condo in Manhattan.
+3. **Inclusive School Districts**: West Hartford, Glastonbury, and Mansfield rank highest for LGBTQ+ family affirmation.
+4. **Legal Guides**: Importance of Joint Tenancy with Right of Survivorship for LGBTQ+ couples.
+5. **Trans Moving Guide**: Analysis of CT's 2021 LGBTQ+ Equity Act and local shield laws.
+
+## Contact Information
+- **Primary Website**: https://www.gayrealestatect.net
+- **Enquiry Portal**: https://www.gayrealestatect.net/#contact
+- **Sitemap**: https://www.gayrealestatect.net/sitemap.xml
+- **Service Area**: Statewide Connecticut.
+
+## Technical Metadata
+- **Framework**: React (SPA) with Vite.
+- **SEO Strategy**: AEO-first (Answer Engine Optimization) using sitemaps, structured data (Schema.org), and llms.txt.
+- **Content Freshness**: Updated weekly with local community events and market data.
