@@ -1,6 +1,4 @@
-# Primary domain enforcement
-http://gayrealestatect.net/*  https://www.gayrealestatect.net/:splat  301!
-https://gayrealestatect.net/*  https://www.gayrealestatect.net/:splat  301!
-
-# SPA Routing - Serve index.html for everything that isn't a physical file
+# Fallback for SPA routing
+# Netlify serves existing files (like llms-full.txt) first.
+# This rule only applies if a file IS NOT found.
 /*  /index.html  200
