@@ -1,4 +1,9 @@
-# Fallback for SPA routing
-# Netlify serves existing files (like llms-full.txt) first.
-# This rule only applies if a file IS NOT found.
+# 1. Primary - Redirect the "testing" Netlify URL to the official domain
+https://fascinating-clafoutis-74c1c0.netlify.app/*  https://www.gayrealestatect.net/:splat  301!
+
+# 2. Secondary - Ensure non-www redirects to www
+http://gayrealestatect.net/*  https://www.gayrealestatect.net/:splat  301!
+https://gayrealestatect.net/*  https://www.gayrealestatect.net/:splat  301!
+
+# 3. SPA Routing - Serve index.html for everything that isn't a physical file
 /*  /index.html  200
