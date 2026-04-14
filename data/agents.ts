@@ -18,6 +18,7 @@ export interface Agent {
     branchAddress?: string;
     branchNmls?: string;
     bookingLink?: string;
+    telegramTopicId?: number;
 }
 
 export const agents: Record<string, Agent> = {

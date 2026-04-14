@@ -401,6 +401,7 @@ const RealtorProfile: React.FC = () => {
             {modal.open && (
                 <ContactModal
                     agentName={agent.name}
+                    agentId={agent.id}
                     agentTitle={agent.title}
                     defaultMethod={modal.method}
                     onClose={closeModal}

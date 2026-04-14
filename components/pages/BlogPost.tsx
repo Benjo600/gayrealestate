@@ -41,9 +41,10 @@ type FormStatus = 'idle' | 'submitting' | 'success' | 'error';
 interface BlogCTAFormProps {
     postTitle: string;
     authorName: string;
+    agentId?: string;
 }
 
-const BlogCTAForm: React.FC<BlogCTAFormProps> = ({ postTitle, authorName }) => {
+const BlogCTAForm: React.FC<BlogCTAFormProps> = ({ postTitle, authorName, agentId }) => {
     const [status, setStatus] = useState<FormStatus>('idle');
     const [errorMsg, setErrorMsg] = useState('');
     const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
@@ -74,7 +75,7 @@ const BlogCTAForm: React.FC<BlogCTAFormProps> = ({ postTitle, authorName }) => {
                 `🕐 _Received: ${now} ET_`,
             ].join('\n');
 
-            await sendGenericTelegram(text);
+            await sendGenericTelegram(text, agentId);
             setStatus('success');
         } catch (err: unknown) {
             setErrorMsg('Something went wrong. Please try again.');
@@ -417,7 +418,7 @@ const BlogPost: React.FC = () => {
                                 </p>
                             </div>
                             <div className="bg-white/80 backdrop-blur-xl rounded-[3rem] p-8 md:p-12 shadow-2xl shadow-slate-200 border border-white">
-                                <BlogCTAForm postTitle={post.title} authorName={post.author} />
+                                <BlogCTAForm postTitle={post.title} authorName={post.author} agentId={agentId} />
                             </div>
                         </div>
                     </div>

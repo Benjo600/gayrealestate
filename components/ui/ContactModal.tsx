@@ -7,12 +7,13 @@ export type ModalStatus = 'idle' | 'submitting' | 'success' | 'error';
 
 export interface ContactModalProps {
     agentName: string;
+    agentId: string;
     agentTitle: string;
     defaultMethod: 'call' | 'email' | 'schedule';
     onClose: () => void;
 }
 
-export const ContactModal: React.FC<ContactModalProps> = ({ agentName, agentTitle, defaultMethod, onClose }) => {
+export const ContactModal: React.FC<ContactModalProps> = ({ agentName, agentId, agentTitle, defaultMethod, onClose }) => {
     const [status, setStatus] = useState<ModalStatus>('idle');
     const [errorMsg, setErrorMsg] = useState('');
     const [form, setForm] = useState({
@@ -51,7 +52,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ agentName, agentTitl
                 `💬 *Message:* ${form.message || 'None'}`,
             ].filter(Boolean).join('\n');
 
-            await sendGenericTelegram(text);
+            await sendGenericTelegram(text, agentId);
             setStatus('success');
         } catch (err: unknown) {
             setErrorMsg(err instanceof Error ? err.message : 'Please try again.');

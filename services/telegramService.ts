@@ -4,13 +4,14 @@
  */
 
 export interface EnquiryData {
-    firstName: string;
-    lastName: string;
-    email: string;
-    phone: string;
-    interest: string;
-    location: string;
-    message: string;
+    firstName?: string;
+    lastName?: string;
+    email?: string;
+    phone?: string;
+    interest?: string;
+    location?: string;
+    message?: string;
+    agentId?: string; // Route to specific agent topic
 }
 
 export async function sendEnquiryToTelegram(data: EnquiryData): Promise<void> {
@@ -27,11 +28,11 @@ export async function sendEnquiryToTelegram(data: EnquiryData): Promise<void> {
     }
 }
 
-export async function sendGenericTelegram(text: string): Promise<void> {
+export async function sendGenericTelegram(text: string, agentId?: string): Promise<void> {
     const response = await fetch('/api/send-telegram', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text }),
+        body: JSON.stringify({ text, agentId }),
     });
 
     if (!response.ok) {
