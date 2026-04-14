@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Send, CheckCircle2, Phone, Mail, Video, Users } from 'lucide-react';
+import { sendGenericTelegram } from '../../services/telegramService';
 
 export type ModalStatus = 'idle' | 'submitting' | 'success' | 'error';
 
@@ -31,13 +32,6 @@ export const ContactModal: React.FC<ContactModalProps> = ({ agentName, agentTitl
         e.preventDefault();
         setStatus('submitting');
         try {
-            const token = import.meta.env.VITE_TELEGRAM_BOT_TOKEN as string | undefined;
-            const chatId = import.meta.env.VITE_TELEGRAM_CHAT_ID as string | undefined;
-
-            if (!token || !chatId || token === 'YOUR_BOT_TOKEN_HERE') {
-                throw new Error('Telegram credentials not configured.');
-            }
-
             const methodLabels: Record<string, string> = {
                 'phone-call': '📞 Phone Call',
                 'email': '📧 Email',
@@ -57,13 +51,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ agentName, agentTitl
                 `💬 *Message:* ${form.message || 'None'}`,
             ].filter(Boolean).join('\n');
 
-            const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ chat_id: chatId, text, parse_mode: 'Markdown' }),
-            });
-
-            if (!res.ok) throw new Error('Telegram API error');
+            await sendGenericTelegram(text);
             setStatus('success');
         } catch (err: unknown) {
             setErrorMsg(err instanceof Error ? err.message : 'Please try again.');

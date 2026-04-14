@@ -20,19 +20,26 @@ export default async (req: Request, context: Context) => {
 
     if (!token || !chatId) {
         console.error("Telegram env vars are missing.");
-        return new Response(JSON.stringify({ error: "Telegram not configured" }), { status: 500 });
+        return new Response(JSON.stringify({ error: "Telegram not configured on server" }), { status: 500 });
     }
 
     try {
-        const data: EnquiryData = await req.json();
+        const payload = await req.json();
+        let text = "";
 
-        const now = new Date().toLocaleString('en-US', {
-            timeZone: 'America/New_York',
-            dateStyle: 'medium',
-            timeStyle: 'short',
-        });
+        if (payload.text) {
+            // Frontend provided pre-formatted text
+            text = payload.text;
+        } else {
+            // Fallback to EnquiryData template
+            const data: EnquiryData = payload;
+            const now = new Date().toLocaleString('en-US', {
+                timeZone: 'America/New_York',
+                dateStyle: 'medium',
+                timeStyle: 'short',
+            });
 
-        const text = `
+            text = `
 🏠 *New Enquiry — Connecticut Real Estate*
 
 👤 *Name:* ${data.firstName} ${data.lastName}
@@ -43,7 +50,8 @@ export default async (req: Request, context: Context) => {
 💬 *Message:* ${data.message || 'None'}
 
 🕐 _Received: ${now} ET_
-  `.trim();
+            `.trim();
+        }
 
         const response = await fetch(
             `https://api.telegram.org/bot${token}/sendMessage`,

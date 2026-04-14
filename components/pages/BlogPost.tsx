@@ -23,6 +23,7 @@ import { BLOG_POSTS } from '../../data/blogs';
 import Footer from '../Footer';
 import SEOHead from '../SEOHead';
 import { agents } from '../../data/agents';
+import { sendGenericTelegram } from '../../services/telegramService';
 
 const BASE_URL = 'https://www.gayrealestatect.net';
 
@@ -55,13 +56,6 @@ const BlogCTAForm: React.FC<BlogCTAFormProps> = ({ postTitle, authorName }) => {
         e.preventDefault();
         setStatus('submitting');
         try {
-            const token = import.meta.env.VITE_TELEGRAM_BOT_TOKEN as string | undefined;
-            const chatId = import.meta.env.VITE_TELEGRAM_CHAT_ID as string | undefined;
-
-            if (!token || !chatId || token === 'YOUR_BOT_TOKEN_HERE') {
-                throw new Error('Telegram credentials not configured.');
-            }
-
             const now = new Date().toLocaleString('en-US', {
                 timeZone: 'America/New_York',
                 dateStyle: 'medium',
@@ -80,13 +74,7 @@ const BlogCTAForm: React.FC<BlogCTAFormProps> = ({ postTitle, authorName }) => {
                 `🕐 _Received: ${now} ET_`,
             ].join('\n');
 
-            const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ chat_id: chatId, text, parse_mode: 'Markdown' }),
-            });
-
-            if (!res.ok) throw new Error('Telegram API error');
+            await sendGenericTelegram(text);
             setStatus('success');
         } catch (err: unknown) {
             setErrorMsg('Something went wrong. Please try again.');

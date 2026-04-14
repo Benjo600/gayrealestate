@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Send, Mail, CheckCircle2, Phone, MapPin, Home } from 'lucide-react';
+import { sendEnquiryToTelegram } from '../services/telegramService';
 
 type Status = 'idle' | 'submitting' | 'success' | 'error';
 
@@ -19,25 +20,7 @@ const EnquiryFormCard: React.FC = () => {
       e.preventDefault();
       setStatus('submitting');
       try {
-         const token = import.meta.env.VITE_TELEGRAM_BOT_TOKEN as string | undefined;
-         const chatId = import.meta.env.VITE_TELEGRAM_CHAT_ID as string | undefined;
-         if (!token || !chatId || token === 'YOUR_BOT_TOKEN_HERE') throw new Error('Telegram credentials not configured.');
-         const now = new Date().toLocaleString('en-US', { timeZone: 'America/New_York', dateStyle: 'medium', timeStyle: 'short' });
-         const text = [
-            '🏠 *New Enquiry — Connecticut Real Estate*', '',
-            `👤 *Name:* ${form.firstName} ${form.lastName}`,
-            `📧 *Email:* ${form.email || 'Not provided'}`,
-            `📞 *Phone:* ${form.phone}`,
-            `🎯 *Interest:* ${form.interest || 'Not specified'}`,
-            `📍 *Location:* ${form.location || 'Not specified'}`,
-            `💬 *Message:* ${form.message || 'None'}`, '',
-            `🕐 _Received: ${now} ET_`,
-         ].join('\n');
-         const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-            method: 'POST', headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ chat_id: chatId, text, parse_mode: 'Markdown' }),
-         });
-         if (!res.ok) { const err = await res.json(); throw new Error(err?.description ?? `Telegram API error (${res.status})`); }
+         await sendEnquiryToTelegram(form);
          setStatus('success');
          setForm({ firstName: '', lastName: '', email: '', phone: '', interest: '', location: '', message: '' });
          setTimeout(() => setStatus('idle'), 5000);
