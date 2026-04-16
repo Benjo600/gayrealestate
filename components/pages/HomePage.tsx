@@ -106,7 +106,6 @@ const HomePage: React.FC = () => {
                     ]}
                     gradientStops={[0, 15, 30, 45, 60, 80, 100]}
                     animationSpeed={0.0008}
-                    breathingRange={2}
                 />
             </div>
 
