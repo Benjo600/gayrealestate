@@ -20,7 +20,7 @@ const Features: React.FC = () => {
       step: 'Step 3',
       title: "Local Specialists",
       content: "We don't just know the market — we know the neighborhoods, the towns, the vibe, and the community. From local insights and events to pricing strategy and timing, we help you make informed decisions with confidence.",
-      image: "/images/ct-highlights/local-specialists.png"
+      image: "/images/ct-highlights/aerial-hartford.jpg"
     }
   ];
 

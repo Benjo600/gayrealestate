@@ -18,7 +18,7 @@ export const communityVenues: EventVenue[] = [
         websiteUrl: 'https://chezest.com/events-calendar',
         category: 'Nightlife',
         tags: ['Drag Shows', 'Dancing', 'Community Hub', 'Legendary', 'Craft Cocktails'],
-        image: '/images/events/chez-est.png'
+        image: '/images/events/chez-est-stage.jpg'
     },
     {
         id: 'sky-casper',
@@ -28,7 +28,7 @@ export const communityVenues: EventVenue[] = [
         websiteUrl: 'https://skycasper.com/events/',
         category: 'Entertainment',
         tags: ['Drag Spectacles', 'Luxury Events', 'Live Shows', 'Inclusive Entertainment'],
-        image: '/images/events/sky-casper.png'
+        image: '/images/events/drag-performer-money.jpg'
     }
 ];
 
