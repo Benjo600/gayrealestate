@@ -147,13 +147,13 @@ const AboutUs: React.FC = () => {
                 <div className="max-w-4xl mx-auto px-6 text-center">
                     <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">Ready to Find Your Home?</h2>
                     <p className="text-slate-400 text-sm md:text-lg mb-8 max-w-md mx-auto">Our specialized team is ready to guide you home.</p>
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <a href="/#contact" className="px-8 py-4 bg-white text-slate-900 font-bold rounded-xl shadow-lg active:scale-95 transition-all text-sm">
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                        <a href="/#contact" className="w-full sm:w-auto px-8 py-4 bg-white text-slate-900 font-bold rounded-xl shadow-lg active:scale-95 transition-all text-sm">
                             Get in Touch
                         </a>
-                        <a href="#team" className="px-8 py-4 border border-white/20 text-white font-bold rounded-xl hover:bg-white/5 transition-all text-sm">
-                            Meet Team
-                        </a>
+                        <Link to="/reviews" className="w-full sm:w-auto px-8 py-4 border border-white/20 text-white font-bold rounded-xl hover:bg-white/5 transition-all text-sm text-center">
+                            Client Reviews
+                        </Link>
                     </div>
                 </div>
             </section>

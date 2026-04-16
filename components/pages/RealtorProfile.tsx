@@ -19,6 +19,8 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 
 import { agents } from '../../data/agents';
+import { allReviews } from '../../data/reviews';
+import { Star } from 'lucide-react';
 
 const BASE_URL = 'https://www.gayrealestatect.net';
 
@@ -31,7 +33,7 @@ const RealtorProfile: React.FC = () => {
         method: 'call',
     });
 
-    const [activeTab, setActiveTab] = useState<'bio' | 'expertise' | 'why'>('bio');
+    const [activeTab, setActiveTab] = useState<'bio' | 'expertise' | 'why' | 'testimonials'>('bio');
 
     const openModal = (method: 'call' | 'email' | 'schedule') => setModal({ open: true, method });
     const closeModal = () => setModal(prev => ({ ...prev, open: false }));
@@ -252,7 +254,8 @@ const RealtorProfile: React.FC = () => {
                         {[
                             { id: 'bio', label: 'Story', icon: <User className="w-4 h-4" /> },
                             { id: 'expertise', label: 'Expertise', icon: <Briefcase className="w-4 h-4" /> },
-                            { id: 'why', label: 'Attributes', icon: <Award className="w-4 h-4" /> }
+                            { id: 'why', label: 'Attributes', icon: <Award className="w-4 h-4" /> },
+                            { id: 'testimonials', label: 'Reviews', icon: <Star className="w-4 h-4" /> }
                         ].map((tab) => (
                             <button
                                 key={tab.id}
@@ -326,6 +329,23 @@ const RealtorProfile: React.FC = () => {
                                         </div>
                                     </motion.div>
                                 )}
+                                {activeTab === 'testimonials' && (
+                                    <motion.div key="testimonials" initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }}>
+                                        <h3 className="text-xl font-serif font-bold text-slate-900 mb-6">Client Feedback</h3>
+                                        <div className="space-y-4">
+                                            {(allReviews[agent.id as keyof typeof allReviews] || []).slice(0, 3).map((review, i) => (
+                                                <div key={i} className="p-5 bg-white rounded-2xl border border-slate-100 shadow-sm">
+                                                    <div className="flex gap-1 mb-3">
+                                                        {[...Array(5)].map((_, i) => <Star key={i} className="w-3 h-3 fill-gold-400 text-gold-400" />)}
+                                                    </div>
+                                                    <p className="text-sm text-slate-600 leading-relaxed mb-4">"{review.text}"</p>
+                                                    <p className="text-xs font-bold text-slate-900">— {review.author}</p>
+                                                </div>
+                                            ))}
+                                            <Link to="/reviews" className="block text-center py-3 text-sm font-bold text-purple-600">View All Reviews</Link>
+                                        </div>
+                                    </motion.div>
+                                )}
                             </AnimatePresence>
                         </div>
 
@@ -387,6 +407,29 @@ const RealtorProfile: React.FC = () => {
                                             <Send className="w-4 h-4" />
                                             Connect with {agent.name.split(' ')[0]}
                                         </button>
+                                    </div>
+                                </section>
+
+                                <section>
+                                    <div className="flex items-center justify-between mb-8">
+                                        <p className="text-[10px] uppercase font-bold tracking-widest text-slate-400">Client Feedback</p>
+                                        <Link to="/reviews" className="text-xs font-bold text-purple-600 hover:text-purple-700 transition-colors">View All Reviews &rarr;</Link>
+                                    </div>
+                                    <div className="grid grid-cols-2 gap-6">
+                                        {(allReviews[agent.id as keyof typeof allReviews] || []).slice(0, 2).map((review, i) => (
+                                            <div key={i} className="p-8 bg-slate-50/50 rounded-[2rem] border border-slate-100 flex flex-col">
+                                                <div className="flex gap-1 mb-6">
+                                                    {[...Array(5)].map((_, i) => <Star key={i} className="w-3 h-3 fill-gold-400 text-gold-400" />)}
+                                                </div>
+                                                <p className="text-slate-600 font-light leading-relaxed mb-8 flex-grow">"{review.text}"</p>
+                                                <div className="flex items-center gap-3">
+                                                    <div className="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 font-bold text-xs">
+                                                        {review.author.charAt(0)}
+                                                    </div>
+                                                    <p className="text-sm font-bold text-slate-900">{review.author}</p>
+                                                </div>
+                                            </div>
+                                        ))}
                                     </div>
                                 </section>
                             </div>
