@@ -105,7 +105,7 @@ const HomePage: React.FC = () => {
                         "#fdfcf9"  // Champagne white
                     ]}
                     gradientStops={[0, 15, 30, 45, 60, 80, 100]}
-                    animationSpeed={0.0008}
+                    animationSpeed={15}
                 />
             </div>
 
@@ -113,17 +113,27 @@ const HomePage: React.FC = () => {
             <Header />
 
             {/* Integrated Hero */}
-            <main className="relative z-10">
+            <main className="relative z-10 mobile-gpu-boost">
                 <div id="hero" className="relative z-20">
                     <HeroGeometric />
                 </div>
 
                 <Suspense fallback={<SectionLoader />}>
-                    <Features />
-                    <AgentFinder />
-                    <CommunitySpotlight />
-                    <Resources />
-                    <EnquiryForm />
+                    <div className="content-auto">
+                        <Features />
+                    </div>
+                    <div className="content-auto border-t border-purple-50">
+                        <AgentFinder />
+                    </div>
+                    <div className="content-auto">
+                        <CommunitySpotlight />
+                    </div>
+                    <div className="content-auto">
+                        <Resources />
+                    </div>
+                    <div className="content-auto">
+                        <EnquiryForm />
+                    </div>
                 </Suspense>
                 <Footer />
             </main>
