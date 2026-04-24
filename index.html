@@ -78,42 +78,7 @@
 </head>
 
 <body class="bg-slate-50 text-slate-900 antialiased selection:bg-brand-100 selection:text-brand-900">
-  <div id="root">
-    <div aria-hidden="true" style="opacity: 0.01; position: absolute; top: 0; left: 0; pointer-events: none;">
-      <h1>GayRealEstateCT.net - Connecticut's Premier LGBTQ+ Real Estate Network</h1>
-      <p>Connecting the LGBTQ+ community with vetted, inclusive real estate agents, mortgage lenders, and attorneys in Connecticut.</p>
-      
-      <h2>Main Directory</h2>
-      <ul>
-        <li><a href="/about">About Our Mission</a></li>
-        <li><a href="/agents.html">Full Agent Directory (Static)</a></li>
-        <li><a href="/reviews">Client Testimonials & Success Stories</a></li>
-        <li><a href="/community">Connecticut LGBTQ+ Community Events</a></li>
-      </ul>
-
-      <h2>Resource Center</h2>
-      <ul>
-        <li><a href="/first-time-buyers">LGBTQ+ First-Time Home Buyers Guide</a></li>
-        <li><a href="/mortgage-calculator">Mortgage Calculator for CT Home Buyers</a></li>
-        <li><a href="/buyers-guide">The Ultimate LGBTQ+ Buyers Guide</a></li>
-        <li><a href="/sellers-guide">Selling Your Home in Connecticut</a></li>
-      </ul>
-
-      <h2>Featured Agents</h2>
-      <ul>
-        <li><a href="/agent/arek">Arek Wtulich - Licensed CT Realtor</a></li>
-        <li><a href="/agent/abby">Abby Dudarewicz - CT Realtor</a></li>
-        <li><a href="/agent/travis">Travis Lipinski - Litchfield County Specialist</a></li>
-        <li><a href="/agent/jake">Jake Earl - Mortgage Banker</a></li>
-        <li><a href="/agent/carolyn">Carolyn Futtner - Real Estate Attorney</a></li>
-      </ul>
-
-      <nav>
-        <a href="/llms.txt">Bot-Friendly Text Directory</a> | 
-        <a href="/sitemap.xml">XML Sitemap</a>
-      </nav>
-    </div>
-  </div>
+  <div id="root"></div>
 
   <!-- Google Analytics Placeholder -->
   <!-- 
@@ -127,29 +92,6 @@
   -->
 
   <script type="module" src="/index.tsx"></script>
-
-  <!-- Immediate SEO Injection: Helps Google index SPA routes before React mounts -->
-  <script>
-    (function () {
-      const path = window.location.pathname;
-      const baseUrl = "https://www.gayrealestatect.net";
-
-      // 1. Set Self-Referencing Canonical immediately
-      const link = document.createElement('link');
-      link.rel = 'canonical';
-      link.href = baseUrl + (path === '/' ? '' : path);
-      document.head.appendChild(link);
-
-      // 2. Fast Title Fallback
-      if (path.startsWith('/agent/')) {
-        const name = path.split('/').pop().replace(/-/g, ' ');
-        const formattedName = name.split(' ').map(s => s.charAt(0).toUpperCase() + s.slice(1)).join(' ');
-        document.title = formattedName + " | LGBTQ+ Friendly Professional | GayRealEstateCT.net";
-      } else if (path.startsWith('/blog/')) {
-        document.title = "Latest LGBTQ+ Real Estate News | GayRealEstateCT.net";
-      }
-    })();
-  </script>
 
 </body>
 
