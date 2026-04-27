@@ -22,16 +22,16 @@ export default defineConfig({
       dynamicRoutes: [
         '/', 
         '/about', 
-        '/blog', 
-        '/agents', 
+        '/community',
         '/buyers-guide', 
         '/sellers-guide', 
         '/first-time-buyers', 
         '/home-valuation', 
-        '/relocation', 
-        '/marketing', 
+        '/relocation-services', 
+        '/marketing-your-home', 
         '/mortgage-calculator', 
         '/reviews',
+        '/privacy-policy',
         ...blogRoutes,
         ...agentRoutes
       ]

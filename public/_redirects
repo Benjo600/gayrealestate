@@ -1,2 +1,10 @@
-# REVERT: Essential routing only to break redirect loop
+# Redirect non-www to www and force HTTPS
+https://gayrealestatect.net/* https://www.gayrealestatect.net/:splat 301!
+
+# Legacy Static Page Redirects
+/agents        /about    301
+/agents.html   /about    301
+/reviews.html  /reviews  301
+
+# Essential routing for SPA
 /*  /index.html  200
