@@ -4,9 +4,12 @@ import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 
 // Lazy load all page components
-const HomePage = lazy(() => import('./components/pages/HomePage'));
-const RealtorProfile = lazy(() => import('./components/pages/RealtorProfile'));
-const BlogPost = lazy(() => import('./components/pages/BlogPost'));
+// SEO Critical Pages - Load Eagerly
+import HomePage from './components/pages/HomePage';
+import RealtorProfile from './components/pages/RealtorProfile';
+import BlogPost from './components/pages/BlogPost';
+
+// Resource Pages - Keep Lazy
 const FirstTimeBuyers = lazy(() => import('./components/pages/FirstTimeBuyers'));
 const MortgageCalculator = lazy(() => import('./components/pages/MortgageCalculator'));
 const RelocationServices = lazy(() => import('./components/pages/RelocationServices'));

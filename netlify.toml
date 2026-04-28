@@ -2,6 +2,10 @@
   command = "npm run build"
   publish = "dist"
 
+[[edge_functions]]
+  path = "/*"
+  function = "seo-injector"
+
 [build.processing]
   skip_processing = false
   prerender = true
