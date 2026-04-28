@@ -124,6 +124,18 @@ export default async (request: Request, context: Context) => {
   text = text.replace(/<title>.*?<\/title>/, `<title>${title}</title>`);
   text = text.replace(/<meta name="description" content=".*?" \/>/, `<meta name="description" content="${description}" />`);
   
+  // Inject "Pre-rendered" content into the root div for crawlers
+  // This solves the "Blank Page" issue by providing immediate text content
+  const preRenderedContent = `
+    <div id="root">
+      <div style="display:none" aria-hidden="true">
+        <h1>${title}</h1>
+        <p>${description}</p>
+      </div>
+    </div>
+  `;
+  text = text.replace('<div id="root"></div>', preRenderedContent);
+
   // Add Open Graph and Canonical tags
   const ogTags = `
     <link rel="canonical" href="${request.url}" />
