@@ -114,7 +114,47 @@ export default async (request: Request, context: Context) => {
     title = "GayRealEstateCT.net | LGBTQ+ Friendly Real Estate Agents in Connecticut";
     description = "Find trusted, LGBTQ+ friendly real estate agents, mortgage lenders, and attorneys in Connecticut. Your one-stop shop for inclusive home buying.";
   }
-  // Other pages
+  // Core Informational Pages
+  else if (path === "/first-time-buyers") {
+    title = "First-Time Homebuyer Guide for LGBTQ+ Buyers in CT | GayRealEstateCT.net";
+    description = "Everything LGBTQ+ first-time buyers need to know about purchasing a home in Connecticut.";
+  }
+  else if (path === "/buyers-guide") {
+    title = "LGBTQ+ Buyers Guide Connecticut | GayRealEstateCT.net";
+    description = "A complete step-by-step guide to buying a home in CT as an LGBTQ+ individual or couple.";
+  }
+  else if (path === "/sellers-guide") {
+    title = "Home Sellers Guide CT | GayRealEstateCT.net";
+    description = "How to sell your Connecticut home with confidence — tips from LGBTQ+ friendly agents.";
+  }
+  else if (path === "/mortgage-calculator") {
+    title = "CT Mortgage Calculator | GayRealEstateCT.net";
+    description = "Estimate your monthly mortgage payments for Connecticut homes.";
+  }
+  else if (path === "/relocation-services") {
+    title = "LGBTQ+ Relocation Services in Connecticut | GayRealEstateCT.net";
+    description = "Relocating to Connecticut? Our LGBTQ+ friendly team makes the move seamless.";
+  }
+  else if (path === "/home-valuation") {
+    title = "Free Home Valuation in Connecticut | GayRealEstateCT.net";
+    description = "Get a free estimate of your Connecticut home's current market value.";
+  }
+  else if (path === "/marketing-your-home") {
+    title = "Marketing Your Home in CT | GayRealEstateCT.net";
+    description = "How our LGBTQ+ friendly agents market your Connecticut home to get top dollar.";
+  }
+  else if (path === "/reviews") {
+    title = "Client Reviews | GayRealEstateCT.net";
+    description = "See what LGBTQ+ clients say about our Connecticut real estate services.";
+  }
+  else if (path === "/community") {
+    title = "LGBTQ+ Community Events in Connecticut | GayRealEstateCT.net";
+    description = "Stay connected with local LGBTQ+ events, meetups, and community happenings across CT.";
+  }
+  else if (path === "/privacy-policy") {
+    title = "Privacy Policy | GayRealEstateCT.net";
+    description = "Our privacy policy and data handling practices.";
+  }
   else if (path === "/about") {
     title = "About Us | GayRealEstateCT.net";
     description = "Meet the team dedicated to inclusive real estate in Connecticut.";
