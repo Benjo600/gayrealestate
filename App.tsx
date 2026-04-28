@@ -29,7 +29,7 @@ const PageLoader = () => (
   </div>
 );
 
-const ScrollToTop = () => {
+const PageScrollManager = () => {
   const { pathname } = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -40,7 +40,7 @@ const ScrollToTop = () => {
 const App: React.FC = () => {
   return (
     <BrowserRouter>
-      <ScrollToTop />
+      <PageScrollManager />
       <Suspense fallback={<PageLoader />}>
         <Routes>
           <Route path="/" element={<HomePage />} />

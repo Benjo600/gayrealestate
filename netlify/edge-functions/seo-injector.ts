@@ -125,10 +125,10 @@ export default async (request: Request, context: Context) => {
   text = text.replace(/<meta name="description" content=".*?" \/>/, `<meta name="description" content="${description}" />`);
   
   // Inject "Pre-rendered" content into the root div for crawlers
-  // This solves the "Blank Page" issue by providing immediate text content
+  // This solves the "Blank Page" issue using an SEO-safe accessible pattern
   const preRenderedContent = `
     <div id="root">
-      <div style="display:none" aria-hidden="true">
+      <div class="sr-only">
         <h1>${title}</h1>
         <p>${description}</p>
       </div>
