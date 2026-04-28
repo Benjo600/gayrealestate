@@ -9,7 +9,6 @@ const Resources = lazy(() => import('../Resources'));
 const CommunitySpotlight = lazy(() => import('../CommunitySpotlight'));
 const EnquiryForm = lazy(() => import('../EnquiryForm'));
 import Footer from '../Footer';
-import { ScrollToTop } from '../ui/scroll-to-top';
 import SEOHead from '../SEOHead';
 import { Home, Search, Heart, BookOpen } from 'lucide-react';
 
@@ -122,22 +121,33 @@ const HomePage: React.FC = () => {
                     <div className="content-auto">
                         <Features />
                     </div>
+                </Suspense>
+                
+                <Suspense fallback={<SectionLoader />}>
                     <div className="content-auto border-t border-purple-50">
                         <AgentFinder />
                     </div>
+                </Suspense>
+
+                <Suspense fallback={<SectionLoader />}>
                     <div className="content-auto">
                         <CommunitySpotlight />
                     </div>
+                </Suspense>
+
+                <Suspense fallback={<SectionLoader />}>
                     <div className="content-auto">
                         <Resources />
                     </div>
+                </Suspense>
+
+                <Suspense fallback={<SectionLoader />}>
                     <div className="content-auto">
                         <EnquiryForm />
                     </div>
                 </Suspense>
                 <Footer />
             </main>
-            <ScrollToTop />
         </div>
     );
 };
