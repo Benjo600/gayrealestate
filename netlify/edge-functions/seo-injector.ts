@@ -121,6 +121,11 @@ export default async (request: Request, context: Context) => {
     path = path.slice(0, -1);
   }
 
+  // 🛑 BYPASS: Do not intercept API calls
+  if (path.startsWith("/api/")) {
+    return;
+  }
+
   // Only intercept page requests
   if (path.includes(".") && !path.endsWith(".html")) {
     return;

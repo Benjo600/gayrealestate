@@ -102,26 +102,37 @@ export default async (req: Request, context: Context) => {
             const location = escapeHTML(payload.location || "Not specified");
             const message = escapeHTML(typeof payload.message === 'string' ? payload.message : "None");
 
-            text = `NEW ENQUIRY:\nName: ${firstName} ${lastName}\nEmail: ${email}\nPhone: ${phone}\nInterest: ${interest}\nLocation: ${location}\nMessage: ${message}`;
+        text = `
+🏠 <b>New Enquiry — Connecticut Real Estate</b>
+
+👤 <b>Name:</b> ${firstName} ${lastName}
+📧 <b>Email:</b> ${email}
+📞 <b>Phone:</b> ${phone}
+🎯 <b>Interest:</b> ${interest}
+📍 <b>Location:</b> ${location}
+💬 <b>Message:</b> ${message}
+        `.trim();
+    }
+
+    if (agentId) text = `🔔 <b>FOR AGENT:</b> ${escapeHTML(agentId.toUpperCase())}\n\n${text}`;
+
+    const sendMessage = async (cid: string) => {
+        const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                chat_id: cid,
+                text,
+                parse_mode: 'HTML',
+                reply_markup: { inline_keyboard: [[{ text: "✅ Mark as Attended", callback_data: "handled" }]] }
+            }),
+        });
+        if (!res.ok) {
+            const err = await res.json();
+            return { ok: false, error: err };
         }
-
-        if (agentId) text = `FOR AGENT: ${agentId.toUpperCase()}\n\n${text}`;
-
-        const sendMessage = async (cid: string) => {
-            const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    chat_id: cid,
-                    text: text
-                }),
-            });
-            if (!res.ok) {
-                const err = await res.json();
-                return { ok: false, error: err };
-            }
-            return { ok: true };
-        };
+        return { ok: true };
+    };
 
         const result = await sendMessage(targetChatId);
         
