@@ -41,15 +41,15 @@ export const ContactModal: React.FC<ContactModalProps> = ({ agentName, agentId, 
             };
 
             const text = [
-                `📅 *Contact Request — ${agentName}*`,
-                `_${agentTitle}_`,
+                `📅 <b>Contact Request — ${agentName}</b>`,
+                `<i>${agentTitle}</i>`,
                 '',
-                `👤 *Name:* ${form.name}`,
-                `📞 *Phone:* ${form.phone || 'Not provided'}`,
-                `📧 *Email:* ${form.email || 'Not provided'}`,
-                `📬 *Method:* ${methodLabels[form.method] ?? form.method}`,
-                form.date ? `🗓 *Date/Time:* ${form.date}` : null,
-                `💬 *Message:* ${form.message || 'None'}`,
+                `👤 <b>Name:</b> ${form.name}`,
+                `📞 <b>Phone:</b> ${form.phone || 'Not provided'}`,
+                `📧 <b>Email:</b> ${form.email || 'Not provided'}`,
+                `📬 <b>Method:</b> ${methodLabels[form.method] ?? form.method}`,
+                form.date ? `🗓 <b>Date/Time:</b> ${form.date}` : null,
+                `💬 <b>Message:</b> ${form.message || 'None'}`,
             ].filter(Boolean).join('\n');
 
             await sendGenericTelegram(text, agentId);
