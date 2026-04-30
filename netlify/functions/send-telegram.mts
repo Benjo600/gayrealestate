@@ -1,20 +1,16 @@
-import type { Context, Config } from "@netlify/functions";
+import { Handler } from "@netlify/functions";
 
 // 🏆 PRIVATE AGENT IDS
-// Each agent must start a chat with @inclusivehousingbot and get their ID
 const AGENT_PRIVATE_ID_MAP: Record<string, string> = {
-    "arek": "0",    // Replace with real User IDs
+    "arek": "0",
     "abby": "0",
     "travis": "0",
     "jake": "0",
     "carolyn": "0"
 };
 
-/**
- * Escapes characters for HTML to prevent injection and parsing errors.
- */
 function escapeHTML(text: string = ""): string {
-    return text
+    return text.toString()
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;")
@@ -22,31 +18,23 @@ function escapeHTML(text: string = ""): string {
         .replace(/'/g, "&#039;");
 }
 
-export default async (req: Request, context: Context) => {
-    const token = process.env.TELEGRAM_BOT_TOKEN || Netlify.env.get("TELEGRAM_BOT_TOKEN");
-    // Hardcoding the ID to bypass any Netlify Env Var propagation issues
-    const adminChatId = "-1003377773133"; 
+const handler: Handler = async (event) => {
+    const token = process.env.TELEGRAM_BOT_TOKEN || "";
+    const adminChatId = "-1003377773133"; // Hardcoded for reliability
+
+    if (event.httpMethod !== "POST") {
+        return { statusCode: 405, body: "Method Not Allowed" };
+    }
 
     try {
-        const bodyText = await req.text();
-        let payload: any;
-        try {
-            payload = JSON.parse(bodyText);
-        } catch (e) {
-            return new Response("Invalid JSON", { status: 400 });
-        }
-
-        if (!token || !adminChatId) {
-            return new Response("Config missing", { status: 500 });
-        }
+        const payload = JSON.parse(event.body || "{}");
 
         // ════════════════════════════════════════════════════════════════════════
         // PART 1: TELEGRAM WEBHOOK (Commands & Callbacks)
         // ════════════════════════════════════════════════════════════════════════
-        const isTelegram = !!(payload.update_id || payload.message || payload.callback_query || payload.edited_message);
+        const isTelegram = !!(payload.update_id || payload.message || payload.callback_query);
 
         if (isTelegram) {
-            // A. Callback Query (Buttons)
             if (payload.callback_query) {
                 const cb = payload.callback_query;
                 const msg = cb.message;
@@ -63,9 +51,7 @@ export default async (req: Request, context: Context) => {
                         parse_mode: 'HTML'
                     }),
                 });
-            }
-            // B. Incoming Commands
-            else if (payload.message && payload.message.text) {
+            } else if (payload.message && payload.message.text) {
                 const chatId = payload.message.chat.id;
                 const text = payload.message.text.toLowerCase();
 
@@ -82,7 +68,7 @@ export default async (req: Request, context: Context) => {
                     });
                 }
             }
-            return new Response(JSON.stringify({ ok: true }), { status: 200 });
+            return { statusCode: 200, body: JSON.stringify({ ok: true }) };
         }
 
         // ════════════════════════════════════════════════════════════════════════
@@ -102,7 +88,7 @@ export default async (req: Request, context: Context) => {
             const location = escapeHTML(payload.location || "Not specified");
             const message = escapeHTML(typeof payload.message === 'string' ? payload.message : "None");
 
-        text = `
+            text = `
 🏠 <b>New Enquiry — Connecticut Real Estate</b>
 
 👤 <b>Name:</b> ${firstName} ${lastName}
@@ -111,49 +97,38 @@ export default async (req: Request, context: Context) => {
 🎯 <b>Interest:</b> ${interest}
 📍 <b>Location:</b> ${location}
 💬 <b>Message:</b> ${message}
-        `.trim();
-    }
-
-    if (agentId) text = `🔔 <b>FOR AGENT:</b> ${escapeHTML(agentId.toUpperCase())}\n\n${text}`;
-
-    const sendMessage = async (cid: string) => {
-        const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                chat_id: cid,
-                text,
-                parse_mode: 'HTML',
-                reply_markup: { inline_keyboard: [[{ text: "✅ Mark as Attended", callback_data: "handled" }]] }
-            }),
-        });
-        if (!res.ok) {
-            const err = await res.json();
-            return { ok: false, error: err };
-        }
-        return { ok: true };
-    };
-
-        const result = await sendMessage(targetChatId);
-        
-        if (!result.ok) {
-            return new Response(JSON.stringify({ error: "Telegram Send Failed", details: result.error }), { status: 502 });
+            `.trim();
         }
 
+        if (agentId) text = `🔔 <b>FOR AGENT:</b> ${escapeHTML(agentId.toUpperCase())}\n\n${text}`;
+
+        const sendMessage = async (cid: string) => {
+            const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: cid,
+                    text,
+                    parse_mode: 'HTML',
+                    reply_markup: { inline_keyboard: [[{ text: "✅ Mark as Attended", callback_data: "handled" }]] }
+                }),
+            });
+            if (!res.ok) {
+                const err = await res.json();
+                console.error("Telegram API Error:", err);
+            }
+            return res.ok;
+        };
+
+        await sendMessage(targetChatId);
         if (targetChatId !== adminChatId) await sendMessage(adminChatId);
 
-        return new Response(JSON.stringify({ status: "success" }), { headers: { "Content-Type": "application/json" } });
+        return { statusCode: 200, body: JSON.stringify({ status: "success" }) };
 
     } catch (error: any) {
         console.error("Function Error:", error);
-        return new Response(JSON.stringify({ error: error.message }), { status: 500 });
+        return { statusCode: 500, body: JSON.stringify({ error: error.message }) };
     }
 };
 
-
-
-
-export const config: Config = {
-    path: "/api/send-telegram"
-};
-
+export { handler };
