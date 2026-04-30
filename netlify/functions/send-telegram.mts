@@ -126,11 +126,20 @@ export default async (req: Request, context: Context) => {
                     reply_markup: { inline_keyboard: [[{ text: "✅ Mark as Attended", callback_data: "handled" }]] }
                 }),
             });
-            return res.ok;
+            if (!res.ok) {
+                const err = await res.json();
+                return { ok: false, error: err };
+            }
+            return { ok: true };
         };
 
         const result = await sendMessage(targetChatId);
-        if (result && targetChatId !== adminChatId) await sendMessage(adminChatId);
+        
+        if (!result.ok) {
+            return new Response(JSON.stringify({ error: "Telegram Send Failed", details: result.error }), { status: 502 });
+        }
+
+        if (targetChatId !== adminChatId) await sendMessage(adminChatId);
 
         return new Response(JSON.stringify({ status: "success" }), { headers: { "Content-Type": "application/json" } });
 
