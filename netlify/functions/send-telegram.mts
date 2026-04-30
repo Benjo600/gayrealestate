@@ -24,7 +24,8 @@ function escapeHTML(text: string = ""): string {
 
 export default async (req: Request, context: Context) => {
     const token = process.env.TELEGRAM_BOT_TOKEN || Netlify.env.get("TELEGRAM_BOT_TOKEN");
-    const adminChatId = process.env.TELEGRAM_CHAT_ID || Netlify.env.get("TELEGRAM_CHAT_ID");
+    // Hardcoding the ID to bypass any Netlify Env Var propagation issues
+    const adminChatId = "-1003377773133"; 
 
     try {
         const bodyText = await req.text();
