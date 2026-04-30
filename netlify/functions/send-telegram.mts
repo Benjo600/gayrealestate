@@ -26,24 +26,12 @@ export default async (req: Request, context: Context) => {
     const token = process.env.TELEGRAM_BOT_TOKEN || Netlify.env.get("TELEGRAM_BOT_TOKEN");
     const adminChatId = process.env.TELEGRAM_CHAT_ID || Netlify.env.get("TELEGRAM_CHAT_ID");
 
-    // 1. Diagnostic Helper
-    const sendReport = async (msg: string) => {
-        if (!token || !adminChatId) return;
-        await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ chat_id: adminChatId, text: `🔍 <b>DIAGNOSTIC:</b>\n${msg}`, parse_mode: 'HTML' }),
-        }).catch(() => {});
-    };
-
     try {
-        // 2. Parse Payload
-        let payload: any;
         const bodyText = await req.text();
+        let payload: any;
         try {
             payload = JSON.parse(bodyText);
         } catch (e) {
-            await sendReport(`Failed to parse JSON. Raw body: ${bodyText.slice(0, 100)}`);
             return new Response("Invalid JSON", { status: 400 });
         }
 
@@ -52,11 +40,12 @@ export default async (req: Request, context: Context) => {
         }
 
         // ════════════════════════════════════════════════════════════════════════
-        // 🛑 EARLY EXIT: Handle Telegram Webhook
+        // PART 1: TELEGRAM WEBHOOK (Commands & Callbacks)
         // ════════════════════════════════════════════════════════════════════════
         const isTelegram = !!(payload.update_id || payload.message || payload.callback_query || payload.edited_message);
 
         if (isTelegram) {
+            // A. Callback Query (Buttons)
             if (payload.callback_query) {
                 const cb = payload.callback_query;
                 const msg = cb.message;
@@ -70,36 +59,26 @@ export default async (req: Request, context: Context) => {
                         chat_id: msg.chat.id,
                         message_id: msg.message_id,
                         text: newText,
-                        parse_mode: 'HTML',
-                        reply_markup: { inline_keyboard: [] }
+                        parse_mode: 'HTML'
                     }),
                 });
             }
+            // B. Incoming Commands
             else if (payload.message && payload.message.text) {
                 const chatId = payload.message.chat.id;
                 const text = payload.message.text.toLowerCase();
 
-                if (text.includes("id") || text.includes("start") || text.includes("hello")) {
-                    const isGroup = chatId < 0;
-                    const typeLabel = isGroup ? "Group/Supergroup" : "Private Chat";
-                    
-                    const responseText = `👋 <b>Bot is Active!</b>\n\n<b>Type:</b> ${typeLabel}\n<b>ID:</b> <code>${chatId}</code>\n\nTo receive website enquiries here, set <code>TELEGRAM_CHAT_ID</code> to this ID in your Netlify settings.`;
-
+                if (text.includes("id") || text.includes("start")) {
                     await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
                             chat_id: chatId,
                             message_thread_id: payload.message.message_thread_id || undefined,
-                            text: responseText,
+                            text: `✅ <b>Bot Active</b>\nID: <code>${chatId}</code>`,
                             parse_mode: 'HTML'
                         }),
                     });
-
-                    // CC to Admin
-                    if (chatId.toString() !== adminChatId.toString()) {
-                        await sendReport(`ID requested from ${typeLabel} (${chatId})`);
-                    }
                 }
             }
             return new Response(JSON.stringify({ ok: true }), { status: 200 });
@@ -120,8 +99,7 @@ export default async (req: Request, context: Context) => {
             const phone = escapeHTML(payload.phone || "Not provided");
             const interest = escapeHTML(payload.interest || "Not specified");
             const location = escapeHTML(payload.location || "Not specified");
-            const rawMessage = typeof payload.message === 'string' ? payload.message : "None";
-            const message = escapeHTML(rawMessage);
+            const message = escapeHTML(typeof payload.message === 'string' ? payload.message : "None");
 
             text = `
 🏠 <b>New Enquiry — Connecticut Real Estate</b>
@@ -132,8 +110,6 @@ export default async (req: Request, context: Context) => {
 🎯 <b>Interest:</b> ${interest}
 📍 <b>Location:</b> ${location}
 💬 <b>Message:</b> ${message}
-
-<i>(Debug: Code Version 5.0)</i>
             `.trim();
         }
 
@@ -159,10 +135,11 @@ export default async (req: Request, context: Context) => {
         return new Response(JSON.stringify({ status: "success" }), { headers: { "Content-Type": "application/json" } });
 
     } catch (error: any) {
-        await sendReport(`CRITICAL ERROR: ${error.message}\nStack: ${error.stack?.slice(0, 100)}`);
+        console.error("Function Error:", error);
         return new Response(JSON.stringify({ error: error.message }), { status: 500 });
     }
 };
+
 
 
 
