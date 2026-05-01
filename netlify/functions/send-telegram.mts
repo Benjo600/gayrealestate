@@ -1,18 +1,10 @@
 import { Handler } from "@netlify/functions";
 
 // 🏆 AGENT TO PRIVATE CHAT ID MAPPING
-// Update these IDs if agents want private notifications
 const AGENT_PRIVATE_ID_MAP: Record<string, string> = {
-    "arek": "0",
-    "abby": "0",
-    "travis": "0",
-    "jake": "0",
-    "carolyn": "0"
+    "arek": "0", "abby": "0", "travis": "0", "jake": "0", "carolyn": "0"
 };
 
-/**
- * Escapes special characters for Telegram HTML mode
- */
 function escapeHTML(text: string = ""): string {
     return text.toString()
         .replace(/&/g, "&amp;")
@@ -23,42 +15,56 @@ function escapeHTML(text: string = ""): string {
 }
 
 const handler: Handler = async (event) => {
-    // 1. CONFIGURATION
+    console.log("--- TELEGRAM FUNCTION TRIGGERED ---");
+    console.log("Method:", event.httpMethod);
+    
     const token = process.env.TELEGRAM_BOT_TOKEN;
     const adminChatId = process.env.TELEGRAM_ADMIN_CHAT_ID || "-1003377773133";
     const adminThreadId = process.env.TELEGRAM_THREAD_ID ? parseInt(process.env.TELEGRAM_THREAD_ID) : undefined;
 
-    // Security & Method check
+    // 1. Simple Health Check for browser testing
+    if (event.httpMethod === "GET") {
+        return { 
+            statusCode: 200, 
+            body: JSON.stringify({ 
+                status: "alive", 
+                config: { 
+                    hasToken: !!token, 
+                    adminChatId, 
+                    adminThreadId 
+                } 
+            }) 
+        };
+    }
+
     if (event.httpMethod !== "POST") {
         return { statusCode: 405, body: "Method Not Allowed" };
     }
 
     if (!token) {
-        console.error("CRITICAL: TELEGRAM_BOT_TOKEN is missing from environment variables.");
-        return { statusCode: 500, body: JSON.stringify({ error: "Server Configuration Error" }) };
+        console.error("ERROR: TELEGRAM_BOT_TOKEN is missing.");
+        return { statusCode: 500, body: JSON.stringify({ error: "Missing Bot Token" }) };
     }
 
     try {
-        const body = event.body || "{}";
-        const payload = JSON.parse(body);
-        console.log("DEBUG: Incoming request payload:", Object.keys(payload));
+        const payload = JSON.parse(event.body || "{}");
+        console.log("Payload Keys:", Object.keys(payload));
 
         // ════════════════════════════════════════════════════════════════════════
-        // PART 1: TELEGRAM WEBHOOK HANDLING (Commands from Telegram)
+        // PART 1: TELEGRAM WEBHOOK (Commands)
         // ════════════════════════════════════════════════════════════════════════
-        const isTelegramUpdate = !!(payload.update_id || payload.message || payload.callback_query);
+        const isTelegram = !!(payload.update_id || payload.message || payload.callback_query);
 
-        if (isTelegramUpdate) {
-            console.log("DEBUG: Handling Telegram Webhook update");
-
-            // Handle Buttons (Callbacks)
+        if (isTelegram) {
+            console.log("Processing Telegram Update...");
+            
             if (payload.callback_query) {
                 const cb = payload.callback_query;
                 const msg = cb.message;
                 const agentName = cb.from.first_name || "Agent";
                 const newText = `${msg.text}\n\n✅ <b>HANDLED BY:</b> ${escapeHTML(agentName)}`;
 
-                await fetch(`https://api.telegram.org/bot${token}/editMessageText`, {
+                const res = await fetch(`https://api.telegram.org/bot${token}/editMessageText`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -68,25 +74,22 @@ const handler: Handler = async (event) => {
                         parse_mode: 'HTML'
                     }),
                 });
+                console.log("Edit result status:", res.status);
             } 
-            // Handle Commands (/id, /start)
             else if (payload.message && payload.message.text) {
                 const chatId = payload.message.chat.id;
                 const threadId = payload.message.message_thread_id;
                 const text = payload.message.text.toLowerCase();
 
-                if (text.includes("id") || text.includes("start") || text.includes("help")) {
+                if (text.includes("id") || text.includes("start") || text.includes("ping")) {
                     const responseText = [
-                        `🤖 <b>Telegram Notification Bot</b>`,
-                        `--------------------------`,
-                        `📍 <b>Chat ID:</b> <code>${chatId}</code>`,
-                        threadId ? `🧵 <b>Thread ID:</b> <code>${threadId}</code>` : `🧵 <b>Thread:</b> General/None`,
-                        `👤 <b>Sender:</b> ${escapeHTML(payload.message.from?.first_name || "Unknown")}`,
-                        `--------------------------`,
-                        `<i>Add these to Netlify env vars as <code>TELEGRAM_ADMIN_CHAT_ID</code> and <code>TELEGRAM_THREAD_ID</code> to route leads here.</i>`
+                        `🤖 <b>Notification Bot Active</b>`,
+                        `Chat ID: <code>${chatId}</code>`,
+                        threadId ? `Thread ID: <code>${threadId}</code>` : `Thread: General`,
+                        `Token: ${token.substring(0, 5)}...${token.substring(token.length - 5)}`
                     ].join('\n');
 
-                    await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+                    const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
@@ -96,107 +99,81 @@ const handler: Handler = async (event) => {
                             parse_mode: 'HTML'
                         }),
                     });
+                    console.log("Command response status:", res.status);
                 }
             }
             return { statusCode: 200, body: JSON.stringify({ ok: true }) };
         }
 
         // ════════════════════════════════════════════════════════════════════════
-        // PART 2: WEBSITE LEAD SUBMISSION HANDLING
+        // PART 2: WEBSITE LEAD SUBMISSION
         // ════════════════════════════════════════════════════════════════════════
-        
-        // Determine Routing
         const agentId = payload.agentId;
         const privateChatId = agentId ? AGENT_PRIVATE_ID_MAP[agentId.toLowerCase()] : undefined;
-        
-        // Fallback to admin chat if no specific agent or if agent ID is placeholder "0"
         const finalChatId = (privateChatId && privateChatId !== "0") ? privateChatId : adminChatId;
-        // Only use the global thread ID if we are sending to the admin chat (groups)
         const finalThreadId = (finalChatId === adminChatId) ? adminThreadId : undefined;
 
-        console.log(`DEBUG: Routing lead to Chat ${finalChatId}, Thread ${finalThreadId || 'Main'}`);
+        console.log(`Sending lead to Chat ${finalChatId}, Thread ${finalThreadId || 'Main'}`);
 
-        // Construct Message Text
-        let text = payload.text;
-        if (!text) {
-            // Build default formatted enquiry
+        let messageText = payload.text;
+        if (!messageText) {
             const fName = escapeHTML(payload.firstName || payload.name || "Unknown");
             const lName = escapeHTML(payload.lastName || "");
             const email = escapeHTML(payload.email || "Not provided");
             const phone = escapeHTML(payload.phone || "Not provided");
             const interest = escapeHTML(payload.interest || "Not specified");
             const location = escapeHTML(payload.location || "Not specified");
-            const msg = escapeHTML(typeof payload.message === 'string' ? payload.message : "None");
+            const msgBody = escapeHTML(typeof payload.message === 'string' ? payload.message : "None");
 
-            text = [
-                `🏠 <b>New Enquiry — Connecticut Real Estate</b>`,
-                ``,
-                `👤 <b>Name:</b> ${fName} ${lName}`,
-                `📧 <b>Email:</b> ${email}`,
-                `📞 <b>Phone:</b> ${phone}`,
-                `🎯 <b>Interest:</b> ${interest}`,
-                `📍 <b>Location:</b> ${location}`,
-                `💬 <b>Message:</b> ${msg}`
-            ].join('\n');
+            messageText = `
+🏠 <b>New Enquiry — Connecticut Real Estate</b>
+
+👤 <b>Name:</b> ${fName} ${lName}
+📧 <b>Email:</b> ${email}
+📞 <b>Phone:</b> ${phone}
+🎯 <b>Interest:</b> ${interest}
+📍 <b>Location:</b> ${location}
+💬 <b>Message:</b> ${msgBody}
+            `.trim();
         }
 
-        // Add Agent Attribution header if applicable
-        if (agentId) {
-            text = `🔔 <b>FOR AGENT:</b> ${escapeHTML(agentId.toUpperCase())}\n\n${text}`;
-        }
+        if (agentId) messageText = `🔔 <b>FOR AGENT:</b> ${escapeHTML(agentId.toUpperCase())}\n\n${messageText}`;
 
-        // Send to Telegram
-        const sendToTelegram = async (cid: string, tid?: number) => {
-            const apiEndpoint = `https://api.telegram.org/bot${token}/sendMessage`;
-            const response = await fetch(apiEndpoint, {
+        const sendMessage = async (cid: string, tid?: number) => {
+            const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     chat_id: cid,
                     message_thread_id: tid,
-                    text: text,
+                    text: messageText,
                     parse_mode: 'HTML',
                     reply_markup: {
                         inline_keyboard: [[{ text: "✅ Mark as Attended", callback_data: "handled" }]]
                     }
                 }),
             });
-            
-            const data = await response.json();
-            if (!response.ok) {
-                console.error(`Telegram API Error for chat ${cid}:`, data);
-                return { success: false, error: data };
-            }
-            return { success: true, data };
+            const data = await res.json();
+            return { ok: res.ok, data };
         };
 
-        // Execution
-        const result = await sendToTelegram(finalChatId, finalThreadId);
-
-        // Backup: Always send to admin if the primary target was an agent (dual delivery)
+        const result = await sendMessage(finalChatId, finalThreadId);
+        
+        // Backup to admin
         if (finalChatId !== adminChatId) {
-            await sendToTelegram(adminChatId, adminThreadId);
+            await sendMessage(adminChatId, adminThreadId);
         }
 
-        if (result.success) {
-            return { statusCode: 200, body: JSON.stringify({ status: "success", message: "Notification sent" }) };
+        if (result.ok) {
+            return { statusCode: 200, body: JSON.stringify({ status: "success" }) };
         } else {
-            return { 
-                statusCode: 500, 
-                body: JSON.stringify({ 
-                    status: "error", 
-                    error: result.error,
-                    hint: "Ensure the bot is added to the group and has admin permissions."
-                }) 
-            };
+            console.error("Telegram error:", result.data);
+            return { statusCode: 500, body: JSON.stringify({ error: result.data }) };
         }
 
     } catch (error: any) {
         console.error("HANDLER ERROR:", error);
-        return { 
-            statusCode: 500, 
-            body: JSON.stringify({ error: error.message || "Internal Server Error" }) 
-        };
+        return { statusCode: 500, body: JSON.stringify({ error: error.message }) };
     }
 };
 
