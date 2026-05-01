@@ -77,7 +77,7 @@ export const handler: Handler = async (event) => {
     // Fallback if HTML fails
     if (!result.ok) {
       console.warn("HTML delivery failed, trying plain text. Error:", result.description);
-      const plainTextBody = {
+      const plainTextBody: any = {
         chat_id: targetChatId,
         text: "⚠️ (Plain Text Fallback)\n\n" + text.replace(/<[^>]*>?/gm, '')
       };
