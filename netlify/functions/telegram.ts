@@ -25,14 +25,39 @@ export default async (req: Request, context: Context) => {
       : adminChatId;
     
     let text = payload.text || "";
+
+    const safeHTML = (str: any) => {
+       if (!str) return "N/A";
+       return str.toString()
+         .replace(/&/g, "&amp;")
+         .replace(/</g, "&lt;")
+         .replace(/>/g, "&gt;");
+    };
+
     if (!text) {
-      const name = (payload.firstName || payload.name || "Unknown").toString().replace(/&/g, "&amp;");
-      const email = (payload.email || "N/A").toString().replace(/&/g, "&amp;");
-      const phone = (payload.phone || "N/A").toString().replace(/&/g, "&amp;");
-      const msg = (payload.message || "None").toString().replace(/&/g, "&amp;");
-      text = `🏠 <b>New Lead</b>\n\n👤 <b>Name:</b> ${name}\n📧 <b>Email:</b> ${email}\n📞 <b>Phone:</b> ${phone}\n💬 <b>Message:</b> ${msg}`;
+      // Main Enquiry Form payload
+      const fn = payload.firstName || "";
+      const ln = payload.lastName || "";
+      const name = `${fn} ${ln}`.trim() || payload.name || "Unknown";
+      
+      const email = payload.email;
+      const phone = payload.phone;
+      const interest = payload.interest;
+      const location = payload.location;
+      const msg = payload.message;
+      
+      text = `🏠 <b>NEW LEAD (MAIN FORM)</b>\n\n` +
+             `👤 <b>Name:</b> ${safeHTML(name)}\n` +
+             `📞 <b>Phone:</b> ${safeHTML(phone)}\n` +
+             `📧 <b>Email:</b> ${safeHTML(email)}\n` +
+             `🎯 <b>Interest:</b> ${safeHTML(interest)}\n` +
+             `📍 <b>Location:</b> ${safeHTML(location)}\n\n` +
+             `💬 <b>Message:</b>\n${safeHTML(msg)}`;
     } else {
-      text = text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+      // ContactModal pre-formatted text: We don't want to double-escape structural HTML tags.
+      // The frontend should ideally send clean text, but it's sending raw HTML.
+      // We'll trust the frontend HTML and NOT replace < and > to preserve the bolding.
+      text = text.replace(/&/g, "&amp;"); 
     }
 
     if (agentId) text = `🔔 <b>FOR: ${agentId.toUpperCase()}</b>\n\n${text}`;
