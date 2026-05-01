@@ -15,7 +15,7 @@ export interface EnquiryData {
 }
 
 export async function sendEnquiryToTelegram(data: EnquiryData): Promise<void> {
-    const response = await fetch('/api/send-telegram', {
+    const response = await fetch('/.netlify/functions/send-telegram', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
@@ -29,7 +29,7 @@ export async function sendEnquiryToTelegram(data: EnquiryData): Promise<void> {
 }
 
 export async function sendGenericTelegram(text: string, agentId?: string): Promise<void> {
-    const response = await fetch('/api/send-telegram', {
+    const response = await fetch('/.netlify/functions/send-telegram', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text, agentId }),
