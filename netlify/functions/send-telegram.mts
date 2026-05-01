@@ -5,19 +5,11 @@ const AGENT_PRIVATE_ID_MAP: Record<string, string> = {
 };
 
 /**
- * Safely escapes text for Telegram HTML mode, while preserving <b> and <i> tags if they were already there.
+ * Safely handles HTML escaping for Telegram.
  */
-function safeTelegramHTML(text: string = ""): string {
+function safeHTML(text: string = ""): string {
     return text.toString()
-        .replace(/&(?!(amp|lt|gt|quot|#039);)/g, "&amp;") // Escape & only if not already escaped
-        .replace(/<(?!\/?(b|i|u|code|pre|a|ins|strike|s|tg-spoiler)>)/g, "&lt;") // Escape < only if not a supported tag
-        .replace(/>(?<!<(b|i|u|code|pre|a|ins|strike|s|tg-spoiler))>/g, "&gt;"); // Escape > only if not part of a tag
-}
-
-function escapeHTML(text: string = ""): string {
-    return text.toString()
-        .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+        .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
 
 const handler: Handler = async (event) => {
@@ -25,91 +17,103 @@ const handler: Handler = async (event) => {
     const adminChatId = process.env.TELEGRAM_ADMIN_CHAT_ID || "-1003377773133";
     const adminThreadId = process.env.TELEGRAM_THREAD_ID ? parseInt(process.env.TELEGRAM_THREAD_ID) : undefined;
     
+    // --- DIAGNOSTICS (GET) ---
     if (event.httpMethod === "GET") {
-        return { statusCode: 200, body: "Bot is Alive." };
+        return { 
+            statusCode: 200, 
+            body: `<html><body style="font-family:sans-serif;padding:40px;">
+                <h1>🛠️ Lead Debugger</h1>
+                <p>Status: <b>ALIVE</b></p>
+                <p>Config: Chat=${adminChatId}, Thread=${adminThreadId || 'None'}</p>
+                <a href="?test=true">Send Test Lead</a>
+            </body></html>`,
+            headers: { "Content-Type": "text/html" }
+        };
     }
 
-    if (event.httpMethod !== "POST" || !token) return { statusCode: 405, body: "Not Allowed" };
+    if (event.httpMethod !== "POST") return { statusCode: 405, body: "POST Required" };
+    if (!token) return { statusCode: 500, body: "Missing Token" };
 
     try {
+        console.log("--- INCOMING REQUEST ---");
         const payload = JSON.parse(event.body || "{}");
-        const isTelegram = !!(payload.update_id || payload.message || payload.callback_query);
+        console.log("Payload Received:", JSON.stringify(payload, null, 2));
 
-        if (isTelegram) {
-            // Handle /id command
-            if (payload.message?.text?.toLowerCase().includes("id")) {
-                await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ chat_id: payload.message.chat.id, message_thread_id: payload.message.message_thread_id, text: `✅ <b>ID Check</b>\nChat: <code>${payload.message.chat.id}</code>`, parse_mode: 'HTML' }),
-                });
-            }
+        // 1. TELEGRAM WEBHOOK (Commands)
+        if (payload.message || payload.callback_query) {
             return { statusCode: 200, body: JSON.stringify({ ok: true }) };
         }
 
-        // --- REAL LEAD PROCESSING ---
+        // 2. LEAD PROCESSING
         const agentId = payload.agentId || "";
         const targetChatId = (agentId && AGENT_PRIVATE_ID_MAP[agentId.toLowerCase()] && AGENT_PRIVATE_ID_MAP[agentId.toLowerCase()] !== "0") 
             ? AGENT_PRIVATE_ID_MAP[agentId.toLowerCase()] 
             : adminChatId;
         const targetThreadId = (targetChatId === adminChatId) ? adminThreadId : undefined;
 
-        let messageText = "";
-        
-        // If frontend sends pre-formatted text (like ContactModal)
-        if (payload.text) {
-            messageText = safeTelegramHTML(payload.text);
+        let messageText = payload.text;
+        if (!messageText) {
+            const name = safeHTML(payload.firstName || payload.name || "Unknown");
+            const email = safeHTML(payload.email || "N/A");
+            const phone = safeHTML(payload.phone || "N/A");
+            const msg = safeHTML(payload.message || "None");
+            messageText = `🏠 <b>Website Lead</b>\n\n👤 <b>Name:</b> ${name}\n📧 <b>Email:</b> ${email}\n📞 <b>Phone:</b> ${phone}\n💬 <b>Message:</b> ${msg}`;
         } else {
-            // Build from fields (like EnquiryForm)
-            const fName = escapeHTML(payload.firstName || payload.name || "Unknown");
-            const lName = escapeHTML(payload.lastName || "");
-            const email = escapeHTML(payload.email || "N/A");
-            const phone = escapeHTML(payload.phone || "N/A");
-            const interest = escapeHTML(payload.interest || "N/A");
-            const location = escapeHTML(payload.location || "N/A");
-            const msg = escapeHTML(payload.message || "None");
-            
-            messageText = `🏠 <b>New Website Enquiry</b>\n\n👤 <b>Name:</b> ${fName} ${lName}\n📧 <b>Email:</b> ${email}\n📞 <b>Phone:</b> ${phone}\n🎯 <b>Interest:</b> ${interest}\n📍 <b>Location:</b> ${location}\n💬 <b>Message:</b> ${msg}`;
+            // If text comes from frontend, we still need to make it safe but preserve bold
+            messageText = payload.text.replace(/&/g, "&amp;"); 
         }
 
         if (agentId) messageText = `🔔 <b>FOR: ${agentId.toUpperCase()}</b>\n\n${messageText}`;
 
-        const sendMessage = async (cid: string, tid?: number, useHTML = true) => {
-            const body: any = {
-                chat_id: cid,
-                message_thread_id: tid,
+        // SEND ATTEMPT 1: With HTML & Keyboard
+        const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                chat_id: targetChatId,
+                message_thread_id: targetThreadId,
                 text: messageText,
-            };
-            if (useHTML) {
-                body.parse_mode = 'HTML';
-                body.reply_markup = { inline_keyboard: [[{ text: "✅ Attended", callback_data: "handled" }]] };
-            }
-
-            const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(body),
-            });
-            return await res.json();
-        };
-
-        let result = await sendMessage(targetChatId, targetThreadId, true);
+                parse_mode: 'HTML',
+                reply_markup: { inline_keyboard: [[{ text: "✅ Handled", callback_data: "ok" }]] }
+            }),
+        });
         
-        // Fallback 1: Try without HTML formatting (Plain Text) if it failed
-        if (!result.ok) {
-            console.error("HTML Send Failed, retrying plain text...", result);
-            result = await sendMessage(targetChatId, targetThreadId, false);
-        }
+        const result = await res.json();
+        console.log("Telegram Response:", JSON.stringify(result));
 
         if (result.ok) {
-            if (targetChatId !== adminChatId) await sendMessage(adminChatId, adminThreadId, true);
-            return { statusCode: 200, body: JSON.stringify({ status: "success" }) };
-        } else {
-            return { statusCode: 500, body: JSON.stringify({ error: result.description }) };
+            return { statusCode: 200, body: JSON.stringify({ status: "success", info: "Delivered to Telegram" }) };
         }
 
-    } catch (error: any) {
-        return { statusCode: 500, body: JSON.stringify({ error: error.message }) };
+        // SEND ATTEMPT 2: Plain Text Fallback (No HTML, No Buttons)
+        const retryRes = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                chat_id: targetChatId,
+                message_thread_id: targetThreadId,
+                text: "⚠️ (Format Fallback) " + messageText.replace(/<[^>]*>?/gm, ''), 
+            }),
+        });
+
+        const retryResult = await retryRes.json();
+        if (retryResult.ok) {
+            return { statusCode: 200, body: JSON.stringify({ status: "success", info: "Delivered as Plain Text" }) };
+        }
+
+        // FINAL FAILURE
+        return { 
+            statusCode: 500, 
+            body: JSON.stringify({ 
+                error: "Telegram rejected lead completely", 
+                details: retryResult.description,
+                payload_debug: payload 
+            }) 
+        };
+
+    } catch (err: any) {
+        console.error("Function Error:", err);
+        return { statusCode: 500, body: JSON.stringify({ error: err.message }) };
     }
 };
 
