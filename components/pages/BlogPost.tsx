@@ -64,15 +64,15 @@ const BlogCTAForm: React.FC<BlogCTAFormProps> = ({ postTitle, authorName, agentI
             });
 
             const text = [
-                `📰 *Blog Enquiry — "${postTitle}"*`,
-                `_Submitted by a reader of ${authorName}'s article_`,
+                `📰 <b>Blog Enquiry — "${postTitle}"</b>`,
+                `<i>Submitted by a reader of ${authorName}'s article</i>`,
                 '',
-                `👤 *Name:* ${form.name}`,
-                `📧 *Email:* ${form.email}`,
-                `📞 *Phone:* ${form.phone}`,
-                `💬 *Message:* ${form.message || 'None'}`,
+                `👤 <b>Name:</b> ${form.name}`,
+                `📧 <b>Email:</b> ${form.email}`,
+                `📞 <b>Phone:</b> ${form.phone}`,
+                `💬 <b>Message:</b> ${form.message || 'None'}`,
                 '',
-                `🕐 _Received: ${now} ET_`,
+                `🕐 <i>Received: ${now} ET</i>`,
             ].join('\n');
 
             await sendGenericTelegram(text, agentId);
