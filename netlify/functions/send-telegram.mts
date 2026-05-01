@@ -1,36 +1,27 @@
-import { Handler } from "@netlify/functions";
+import type { Context } from "@netlify/functions";
 
-const AGENT_PRIVATE_ID_MAP: Record<string, string> = {
-  "arek": "0", "abby": "0", "travis": "0", "jake": "0", "carolyn": "0"
-};
+export default async (req: Request, context: Context) => {
+  // 1. CONFIGURATION
+  const token = Netlify.env.get("TELEGRAM_BOT_TOKEN");
+  const adminChatId = Netlify.env.get("TELEGRAM_ADMIN_CHAT_ID") || "-1003377773133";
+  const adminThreadId = Netlify.env.get("TELEGRAM_THREAD_ID");
 
-function safeHTML(text: string = ""): string {
-  return text.toString()
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;");
-}
-
-const handler: Handler = async (event) => {
-  const token = process.env.TELEGRAM_BOT_TOKEN;
-  const adminChatId = process.env.TELEGRAM_ADMIN_CHAT_ID || "-1003377773133";
-  const adminThreadId = process.env.TELEGRAM_THREAD_ID ? parseInt(process.env.TELEGRAM_THREAD_ID) : undefined;
-
-  // 1. HEALTH CHECK (GET)
-  if (event.httpMethod === "GET") {
-    return { statusCode: 200, body: "Telegram Bot is Active." };
+  // 2. HEALTH CHECK (GET)
+  if (req.method === "GET") {
+    return new Response("Bot is ALIVE and using Modern V2 Engine.");
   }
 
-  if (event.httpMethod !== "POST" || !token) {
-    return { statusCode: 405, body: "Method Not Allowed" };
+  // 3. POST HANDLER
+  if (req.method !== "POST") {
+    return new Response("Method Not Allowed", { status: 405 });
   }
 
   try {
-    const payload = JSON.parse(event.body || "{}");
+    const payload = await req.json();
+    console.log("Incoming Payload:", payload);
 
-    // 2. WEBHOOK HANDLING
-    const isTelegram = !!(payload.update_id || payload.message || payload.callback_query);
-    if (isTelegram) {
+    // --- WEBHOOK HANDLING (/id command) ---
+    if (payload.message || payload.callback_query) {
       if (payload.message?.text?.toLowerCase().includes("id")) {
         await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
           method: "POST",
@@ -38,66 +29,56 @@ const handler: Handler = async (event) => {
           body: JSON.stringify({
             chat_id: payload.message.chat.id,
             message_thread_id: payload.message.message_thread_id,
-            text: `🤖 <b>Bot Connected</b>\nID: <code>${payload.message.chat.id}</code>`,
+            text: `🤖 <b>V2 Bot Active</b>\nChat ID: <code>${payload.message.chat.id}</code>`,
             parse_mode: "HTML"
           })
         });
       }
-      return { statusCode: 200, body: JSON.stringify({ ok: true }) };
+      return new Response(JSON.stringify({ ok: true }), { status: 200 });
     }
 
-    // 3. LEAD PROCESSING
-    const agentId = payload.agentId || "";
-    const targetChatId = (agentId && AGENT_PRIVATE_ID_MAP[agentId.toLowerCase()] && AGENT_PRIVATE_ID_MAP[agentId.toLowerCase()] !== "0")
-      ? AGENT_PRIVATE_ID_MAP[agentId.toLowerCase()]
-      : adminChatId;
-    const targetThreadId = (targetChatId === adminChatId) ? adminThreadId : undefined;
+    // --- REAL LEAD PROCESSING ---
+    const name = payload.firstName || payload.name || "Unknown";
+    const email = payload.email || "N/A";
+    const phone = payload.phone || "N/A";
+    const msg = payload.message || "None";
+    const location = payload.location || "N/A";
 
-    let messageText = payload.text;
-    if (!messageText) {
-      const name = safeHTML(payload.firstName || payload.name || "Unknown");
-      const email = safeHTML(payload.email || "N/A");
-      const phone = safeHTML(payload.phone || "N/A");
-      const msg = safeHTML(payload.message || "None");
-      messageText = `🏠 <b>Website Lead</b>\n\n👤 <b>Name:</b> ${name}\n📧 <b>Email:</b> ${email}\n📞 <b>Phone:</b> ${phone}\n💬 <b>Message:</b> ${msg}`;
-    } else {
-      messageText = payload.text.replace(/&/g, "&amp;");
-    }
+    const text = `🏠 <b>Website Lead</b>\n\n👤 <b>Name:</b> ${name}\n📧 <b>Email:</b> ${email}\n📞 <b>Phone:</b> ${phone}\n📍 <b>Location:</b> ${location}\n💬 <b>Message:</b> ${msg}`.replace(/&/g, "&amp;");
 
-    if (agentId) messageText = `🔔 <b>FOR: ${agentId.toUpperCase()}</b>\n\n${messageText}`;
+    const response = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        chat_id: adminChatId,
+        message_thread_id: adminThreadId,
+        text: text,
+        parse_mode: "HTML",
+        reply_markup: { inline_keyboard: [[{ text: "✅ Handled", callback_data: "ok" }]] }
+      })
+    });
 
-    const send = async (cid: string, tid?: number, html = true) => {
-      const body: any = { chat_id: cid, text: messageText };
-      if (tid) body.message_thread_id = tid;
-      if (html) {
-        body.parse_mode = "HTML";
-        body.reply_markup = { inline_keyboard: [[{ text: "✅ Attended", callback_data: "ok" }]] };
-      }
-      const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body)
-      });
-      return await res.json();
-    };
-
-    let result = await send(targetChatId, targetThreadId, true);
-
-    // Fallback: If HTML failed, try plain text
-    if (!result.ok) {
-      result = await send(targetChatId, targetThreadId, false);
-    }
-
+    const result = await response.json();
     if (result.ok) {
-      if (targetChatId !== adminChatId) await send(adminChatId, adminThreadId, true);
-      return { statusCode: 200, body: JSON.stringify({ status: "success" }) };
+      return new Response(JSON.stringify({ status: "success" }), { status: 200 });
     }
 
-    return { statusCode: 500, body: JSON.stringify({ error: result.description }) };
+    // Fallback if HTML fails
+    const retry = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        chat_id: adminChatId,
+        message_thread_id: adminThreadId,
+        text: "⚠️ Lead (Plain Text): " + text.replace(/<[^>]*>?/gm, '')
+      })
+    });
+
+    const retryResult = await retry.json();
+    return new Response(JSON.stringify(retryResult), { status: retryResult.ok ? 200 : 500 });
 
   } catch (error: any) {
-    return { statusCode: 500, body: JSON.stringify({ error: error.message }) };
+    console.error("V2 Error:", error);
+    return new Response(JSON.stringify({ error: error.message }), { status: 500 });
   }
 };
-
-export { handler };
