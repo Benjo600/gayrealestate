@@ -1,70 +1,65 @@
 import { Handler } from "@netlify/functions";
 
-// 🏆 AGENT TO PRIVATE CHAT ID MAPPING
 const AGENT_PRIVATE_ID_MAP: Record<string, string> = {
     "arek": "0", "abby": "0", "travis": "0", "jake": "0", "carolyn": "0"
 };
 
 function escapeHTML(text: string = ""): string {
     return text.toString()
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
+        .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;").replace(/'/g, "&#039;");
 }
 
 const handler: Handler = async (event) => {
-    console.log("--- TELEGRAM FUNCTION TRIGGERED ---");
-    console.log("Method:", event.httpMethod);
-    
     const token = process.env.TELEGRAM_BOT_TOKEN;
     const adminChatId = process.env.TELEGRAM_ADMIN_CHAT_ID || "-1003377773133";
     const adminThreadId = process.env.TELEGRAM_THREAD_ID ? parseInt(process.env.TELEGRAM_THREAD_ID) : undefined;
+    
+    const host = event.headers.host || "www.gayrealestatect.net";
+    const protocol = event.headers["x-forwarded-proto"] || "https";
+    const currentUrl = `${protocol}://${host}/.netlify/functions/send-telegram`;
 
-    // 1. Simple Health Check for browser testing
+    // ════════════════════════════════════════════════════════════════════════
+    // SELF-HEALING / DIAGNOSTICS (GET)
+    // ════════════════════════════════════════════════════════════════════════
     if (event.httpMethod === "GET") {
+        const query = event.queryStringParameters || {};
+        
+        // 🛠️ SPECIAL: SET WEBHOOK
+        if (query.setWebhook === "true") {
+            if (!token) return { statusCode: 500, body: "Missing Token" };
+            const res = await fetch(`https://api.telegram.org/bot${token}/setWebhook?url=${encodeURIComponent(currentUrl)}`);
+            const data = await res.json();
+            return { statusCode: 200, body: JSON.stringify({ action: "setWebhook", url: currentUrl, result: data }) };
+        }
+
         return { 
             statusCode: 200, 
             body: JSON.stringify({ 
                 status: "alive", 
-                config: { 
-                    hasToken: !!token, 
-                    adminChatId, 
-                    adminThreadId 
-                } 
+                webhookUrl: currentUrl,
+                config: { hasToken: !!token, adminChatId, adminThreadId },
+                hint: "To fix the bot connection, add ?setWebhook=true to this URL"
             }) 
         };
     }
 
-    if (event.httpMethod !== "POST") {
-        return { statusCode: 405, body: "Method Not Allowed" };
-    }
-
-    if (!token) {
-        console.error("ERROR: TELEGRAM_BOT_TOKEN is missing.");
-        return { statusCode: 500, body: JSON.stringify({ error: "Missing Bot Token" }) };
+    if (event.httpMethod !== "POST" || !token) {
+        return { statusCode: 405, body: "Not Allowed" };
     }
 
     try {
         const payload = JSON.parse(event.body || "{}");
-        console.log("Payload Keys:", Object.keys(payload));
 
-        // ════════════════════════════════════════════════════════════════════════
-        // PART 1: TELEGRAM WEBHOOK (Commands)
-        // ════════════════════════════════════════════════════════════════════════
+        // 1. WEBHOOK UPDATE
         const isTelegram = !!(payload.update_id || payload.message || payload.callback_query);
-
         if (isTelegram) {
-            console.log("Processing Telegram Update...");
-            
             if (payload.callback_query) {
                 const cb = payload.callback_query;
                 const msg = cb.message;
                 const agentName = cb.from.first_name || "Agent";
                 const newText = `${msg.text}\n\n✅ <b>HANDLED BY:</b> ${escapeHTML(agentName)}`;
-
-                const res = await fetch(`https://api.telegram.org/bot${token}/editMessageText`, {
+                await fetch(`https://api.telegram.org/bot${token}/editMessageText`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -74,22 +69,20 @@ const handler: Handler = async (event) => {
                         parse_mode: 'HTML'
                     }),
                 });
-                console.log("Edit result status:", res.status);
-            } 
-            else if (payload.message && payload.message.text) {
+            } else if (payload.message && payload.message.text) {
                 const chatId = payload.message.chat.id;
                 const threadId = payload.message.message_thread_id;
                 const text = payload.message.text.toLowerCase();
 
                 if (text.includes("id") || text.includes("start") || text.includes("ping")) {
                     const responseText = [
-                        `🤖 <b>Notification Bot Active</b>`,
+                        `🤖 <b>Bot Connected!</b>`,
                         `Chat ID: <code>${chatId}</code>`,
-                        threadId ? `Thread ID: <code>${threadId}</code>` : `Thread: General`,
-                        `Token: ${token.substring(0, 5)}...${token.substring(token.length - 5)}`
+                        threadId ? `Thread ID: <code>${threadId}</code>` : `Topic: General`,
+                        `Config: ${adminChatId === chatId.toString() ? "✅ Matches Admin" : "❌ Different Chat"}`
                     ].join('\n');
 
-                    const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+                    await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
@@ -99,21 +92,16 @@ const handler: Handler = async (event) => {
                             parse_mode: 'HTML'
                         }),
                     });
-                    console.log("Command response status:", res.status);
                 }
             }
             return { statusCode: 200, body: JSON.stringify({ ok: true }) };
         }
 
-        // ════════════════════════════════════════════════════════════════════════
-        // PART 2: WEBSITE LEAD SUBMISSION
-        // ════════════════════════════════════════════════════════════════════════
+        // 2. LEAD SUBMISSION
         const agentId = payload.agentId;
         const privateChatId = agentId ? AGENT_PRIVATE_ID_MAP[agentId.toLowerCase()] : undefined;
-        const finalChatId = (privateChatId && privateChatId !== "0") ? privateChatId : adminChatId;
-        const finalThreadId = (finalChatId === adminChatId) ? adminThreadId : undefined;
-
-        console.log(`Sending lead to Chat ${finalChatId}, Thread ${finalThreadId || 'Main'}`);
+        const targetChatId = (privateChatId && privateChatId !== "0") ? privateChatId : adminChatId;
+        const targetThreadId = (targetChatId === adminChatId) ? adminThreadId : undefined;
 
         let messageText = payload.text;
         if (!messageText) {
@@ -153,26 +141,15 @@ const handler: Handler = async (event) => {
                     }
                 }),
             });
-            const data = await res.json();
-            return { ok: res.ok, data };
+            return await res.json();
         };
 
-        const result = await sendMessage(finalChatId, finalThreadId);
-        
-        // Backup to admin
-        if (finalChatId !== adminChatId) {
-            await sendMessage(adminChatId, adminThreadId);
-        }
+        const result = await sendMessage(targetChatId, targetThreadId);
+        if (targetChatId !== adminChatId) await sendMessage(adminChatId, adminThreadId);
 
-        if (result.ok) {
-            return { statusCode: 200, body: JSON.stringify({ status: "success" }) };
-        } else {
-            console.error("Telegram error:", result.data);
-            return { statusCode: 500, body: JSON.stringify({ error: result.data }) };
-        }
+        return { statusCode: 200, body: JSON.stringify({ status: "success", result }) };
 
     } catch (error: any) {
-        console.error("HANDLER ERROR:", error);
         return { statusCode: 500, body: JSON.stringify({ error: error.message }) };
     }
 };
