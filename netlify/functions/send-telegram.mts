@@ -22,11 +22,11 @@ const handler: Handler = async (event) => {
             const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ chat_id: adminChatId, message_thread_id: adminThreadId, text: "🏠 <b>Diagnostic Test</b>\nReal-world formatting check.", parse_mode: 'HTML' }),
+                body: JSON.stringify({ chat_id: adminChatId, message_thread_id: adminThreadId, text: "🏠 <b>Diagnostic Test</b>\nSystem is fully operational.", parse_mode: 'HTML' }),
             });
             return { statusCode: 200, body: JSON.stringify(await res.json()) };
         }
-        return { statusCode: 200, body: "Bot is Alive. Use POST for leads." };
+        return { statusCode: 200, body: "Bot is Alive." };
     }
 
     if (event.httpMethod !== "POST" || !token) return { statusCode: 405, body: "Not Allowed" };
@@ -34,13 +34,13 @@ const handler: Handler = async (event) => {
     try {
         const payload = JSON.parse(event.body || "{}");
         
-        // Handle Telegram Webhook (ID Check)
+        // Handle Telegram Webhook
         if (payload.message || payload.callback_query) {
             if (payload.message?.text?.toLowerCase().includes("id")) {
                 await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ chat_id: payload.message.chat.id, message_thread_id: payload.message.message_thread_id, text: `✅ <b>Bot ID Check</b>\nChat: <code>${payload.message.chat.id}</code>`, parse_mode: 'HTML' }),
+                    body: JSON.stringify({ chat_id: payload.message.chat.id, message_thread_id: payload.message.message_thread_id, text: `✅ <b>ID Check</b>\nChat: <code>${payload.message.chat.id}</code>`, parse_mode: 'HTML' }),
                 });
             }
             return { statusCode: 200, body: JSON.stringify({ ok: true }) };
@@ -60,38 +60,56 @@ const handler: Handler = async (event) => {
             const email = escapeHTML(payload.email || "N/A");
             const phone = escapeHTML(payload.phone || "N/A");
             const interest = escapeHTML(payload.interest || "N/A");
+            const location = escapeHTML(payload.location || "N/A");
+            const method = escapeHTML(payload.method || "");
+            const date = escapeHTML(payload.date || "");
             const msg = escapeHTML(payload.message || "None");
             
-            text = `🏠 <b>New Website Enquiry</b>\n\n👤 <b>Name:</b> ${fName} ${lName}\n📧 <b>Email:</b> ${email}\n📞 <b>Phone:</b> ${phone}\n🎯 <b>Interest:</b> ${interest}\n💬 <b>Message:</b> ${msg}`;
+            const lines = [
+                `🏠 <b>New Website Enquiry</b>`,
+                ``,
+                `👤 <b>Name:</b> ${fName} ${lName}`,
+                `📧 <b>Email:</b> ${email}`,
+                `📞 <b>Phone:</b> ${phone}`,
+                `🎯 <b>Interest:</b> ${interest}`,
+                location !== "N/A" ? `📍 <b>Location:</b> ${location}` : null,
+                method ? `📬 <b>Preferred Contact:</b> ${method}` : null,
+                date ? `🗓 <b>Date/Time:</b> ${date}` : null,
+                ``,
+                `💬 <b>Message:</b> ${msg}`
+            ].filter(line => line !== null);
+
+            text = lines.join('\n');
         }
 
         if (agentId) text = `🔔 <b>FOR: ${agentId.toUpperCase()}</b>\n\n${text}`;
 
-        const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                chat_id: targetChatId,
-                message_thread_id: targetThreadId,
-                text: text,
-                parse_mode: 'HTML',
-                reply_markup: { inline_keyboard: [[{ text: "✅ Attended", callback_data: "handled" }]] }
-            }),
-        });
-        
-        const result = await res.json();
-        
-        // Final fallback if the keyboard causes an error
+        const sendMessage = async (cid: string, tid?: number) => {
+            const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: cid,
+                    message_thread_id: tid,
+                    text: text,
+                    parse_mode: 'HTML',
+                    reply_markup: { inline_keyboard: [[{ text: "✅ Mark as Attended", callback_data: "handled" }]] }
+                }),
+            });
+            return await res.json();
+        };
+
+        const result = await sendMessage(targetChatId, targetThreadId);
         if (!result.ok) {
-            const retry = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+            // Fallback without keyboard
+            await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ chat_id: targetChatId, message_thread_id: targetThreadId, text: text, parse_mode: 'HTML' }),
             });
-            return { statusCode: 200, body: JSON.stringify(await retry.json()) };
         }
 
-        return { statusCode: 200, body: JSON.stringify({ status: "success", telegram: result }) };
+        return { statusCode: 200, body: JSON.stringify({ status: "success" }) };
 
     } catch (error: any) {
         return { statusCode: 500, body: JSON.stringify({ error: error.message }) };
