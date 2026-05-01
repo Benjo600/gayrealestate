@@ -19,27 +19,19 @@ const handler: Handler = async (event) => {
     const protocol = event.headers["x-forwarded-proto"] || "https";
     const currentUrl = `${protocol}://${host}/.netlify/functions/send-telegram`;
 
-    // ════════════════════════════════════════════════════════════════════════
-    // SELF-HEALING / DIAGNOSTICS (GET)
-    // ════════════════════════════════════════════════════════════════════════
     if (event.httpMethod === "GET") {
         const query = event.queryStringParameters || {};
-        
-        // 🛠️ SPECIAL: SET WEBHOOK
         if (query.setWebhook === "true") {
             if (!token) return { statusCode: 500, body: "Missing Token" };
             const res = await fetch(`https://api.telegram.org/bot${token}/setWebhook?url=${encodeURIComponent(currentUrl)}`);
             const data = await res.json();
             return { statusCode: 200, body: JSON.stringify({ action: "setWebhook", url: currentUrl, result: data }) };
         }
-
         return { 
             statusCode: 200, 
             body: JSON.stringify({ 
                 status: "alive", 
-                webhookUrl: currentUrl,
-                config: { hasToken: !!token, adminChatId, adminThreadId },
-                hint: "To fix the bot connection, add ?setWebhook=true to this URL"
+                config: { hasToken: !!token, adminChatId, adminThreadId }
             }) 
         };
     }
@@ -50,9 +42,8 @@ const handler: Handler = async (event) => {
 
     try {
         const payload = JSON.parse(event.body || "{}");
-
-        // 1. WEBHOOK UPDATE
         const isTelegram = !!(payload.update_id || payload.message || payload.callback_query);
+
         if (isTelegram) {
             if (payload.callback_query) {
                 const cb = payload.callback_query;
@@ -75,20 +66,13 @@ const handler: Handler = async (event) => {
                 const text = payload.message.text.toLowerCase();
 
                 if (text.includes("id") || text.includes("start") || text.includes("ping")) {
-                    const responseText = [
-                        `🤖 <b>Bot Connected!</b>`,
-                        `Chat ID: <code>${chatId}</code>`,
-                        threadId ? `Thread ID: <code>${threadId}</code>` : `Topic: General`,
-                        `Config: ${adminChatId === chatId.toString() ? "✅ Matches Admin" : "❌ Different Chat"}`
-                    ].join('\n');
-
                     await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
                             chat_id: chatId,
                             message_thread_id: threadId || undefined,
-                            text: responseText,
+                            text: `🤖 <b>Bot Connected!</b>\nChat ID: <code>${chatId}</code>\nTopic ID: <code>${threadId || 'None'}</code>`,
                             parse_mode: 'HTML'
                         }),
                     });
@@ -97,7 +81,7 @@ const handler: Handler = async (event) => {
             return { statusCode: 200, body: JSON.stringify({ ok: true }) };
         }
 
-        // 2. LEAD SUBMISSION
+        // LEAD SUBMISSION
         const agentId = payload.agentId;
         const privateChatId = agentId ? AGENT_PRIVATE_ID_MAP[agentId.toLowerCase()] : undefined;
         const targetChatId = (privateChatId && privateChatId !== "0") ? privateChatId : adminChatId;
@@ -113,16 +97,7 @@ const handler: Handler = async (event) => {
             const location = escapeHTML(payload.location || "Not specified");
             const msgBody = escapeHTML(typeof payload.message === 'string' ? payload.message : "None");
 
-            messageText = `
-🏠 <b>New Enquiry — Connecticut Real Estate</b>
-
-👤 <b>Name:</b> ${fName} ${lName}
-📧 <b>Email:</b> ${email}
-📞 <b>Phone:</b> ${phone}
-🎯 <b>Interest:</b> ${interest}
-📍 <b>Location:</b> ${location}
-💬 <b>Message:</b> ${msgBody}
-            `.trim();
+            messageText = `🏠 <b>New Enquiry — Connecticut Real Estate</b>\n\n👤 <b>Name:</b> ${fName} ${lName}\n📧 <b>Email:</b> ${email}\n📞 <b>Phone:</b> ${phone}\n🎯 <b>Interest:</b> ${interest}\n📍 <b>Location:</b> ${location}\n💬 <b>Message:</b> ${msgBody}`;
         }
 
         if (agentId) messageText = `🔔 <b>FOR AGENT:</b> ${escapeHTML(agentId.toUpperCase())}\n\n${messageText}`;
@@ -145,9 +120,31 @@ const handler: Handler = async (event) => {
         };
 
         const result = await sendMessage(targetChatId, targetThreadId);
-        if (targetChatId !== adminChatId) await sendMessage(adminChatId, adminThreadId);
-
-        return { statusCode: 200, body: JSON.stringify({ status: "success", result }) };
+        
+        if (result.ok) {
+            if (targetChatId !== adminChatId) await sendMessage(adminChatId, adminThreadId);
+            return { statusCode: 200, body: JSON.stringify({ status: "success" }) };
+        } else {
+            console.error("TELEGRAM ERROR:", result);
+            // Fallback: Try sending WITHOUT the inline keyboard (some groups block them)
+            const retryRes = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: targetChatId,
+                    message_thread_id: targetThreadId,
+                    text: messageText + "\n\n(Note: Keyboard disabled due to group restrictions)",
+                    parse_mode: 'HTML'
+                }),
+            });
+            const retryData = await retryRes.json();
+            
+            if (retryData.ok) {
+                return { statusCode: 200, body: JSON.stringify({ status: "success", note: "Sent without keyboard" }) };
+            }
+            
+            return { statusCode: 500, body: JSON.stringify({ error: result.description || "Telegram Delivery Failed" }) };
+        }
 
     } catch (error: any) {
         return { statusCode: 500, body: JSON.stringify({ error: error.message }) };
