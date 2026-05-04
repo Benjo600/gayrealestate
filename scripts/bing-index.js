@@ -5,7 +5,10 @@ import xml2js from 'xml2js';
 const HOST = 'www.gayrealestatect.net';
 const KEY = 'a3d7b2c9e1f84a5b9c2d1e0f7a6b5c4d';
 const SITEMAP_FILE = './public/sitemap.xml';
-const INDEXNOW_URL = 'https://api.indexnow.org/indexnow';
+const INDEXNOW_URLS = [
+  'https://api.indexnow.org/indexnow',
+  'https://indexnow.org/indexnow'
+];
 
 async function indexBing() {
   console.log('\n🔵 GAYREALESTATECT.NET | Bing IndexNow Script');
@@ -27,26 +30,30 @@ async function indexBing() {
 
   // 2. Submit URLs via POST
   try {
-    console.log('🚀 Sending request to IndexNow...');
-    const response = await fetch(INDEXNOW_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json; charset=utf-8'
-      },
-      body: JSON.stringify({
-        host: HOST,
-        key: KEY,
-        keyLocation: `https://${HOST}/${KEY}.txt`,
-        urlList: urls
-      })
-    });
+    console.log('🚀 Sending requests to IndexNow endpoints...');
+    
+    for (const endpoint of INDEXNOW_URLS) {
+      console.log(`   └─ Submitting to ${endpoint}...`);
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8'
+        },
+        body: JSON.stringify({
+          host: HOST,
+          key: KEY,
+          keyLocation: `https://${HOST}/${KEY}.txt`,
+          urlList: urls
+        })
+      });
 
-    if (response.ok) {
-      console.log('✅ Success! Bing and other IndexNow engines have received the URLs.');
-    } else {
-      const errorText = await response.text();
-      console.log(`⚠️ Received status ${response.status}: ${response.statusText}`);
-      console.error(`   └─ Details: ${errorText}`);
+      if (response.ok) {
+        console.log(`✅ Success! Received by ${endpoint}`);
+      } else {
+        const errorText = await response.text();
+        console.log(`⚠️ Received status ${response.status}: ${response.statusText} from ${endpoint}`);
+        console.error(`   └─ Details: ${errorText}`);
+      }
     }
   } catch (error) {
     console.log('❌ FAIL');

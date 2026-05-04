@@ -126,6 +126,12 @@ export default async (request: Request, context: Context) => {
     return;
   }
 
+  const BOT_PATTERNS = ['Googlebot', 'bingbot', 'Slurp', 'DuckDuckBot', 'Baiduspider', 'facebookexternalhit', 'Twitterbot', 'LinkedInBot', 'Pinterestbot', 'Applebot'];
+  const ua = request.headers.get('user-agent') || '';
+  if (BOT_PATTERNS.some(bot => ua.toLowerCase().includes(bot.toLowerCase()))) {
+    return; // Netlify prerender service handles bot requests
+  }
+
   // Only intercept page requests
   if (path.includes(".") && !path.endsWith(".html")) {
     return;
@@ -203,20 +209,7 @@ export default async (request: Request, context: Context) => {
   `;
   text = text.replace("</head>", `${metaTags}</head>`);
   
-  // 3. Inject Rich Page Content into the root div for crawlers
-  // Using a more robust regex for the replacement
-  const richHtml = `
-    <div id="root">
-      <div class="sr-only" style="display:none;">
-        <h1>${title}</h1>
-        <p>${description}</p>
-        <div>${pageContent}</div>
-      </div>
-    </div>
-  `;
-  
-  // Replace the empty root div regardless of whitespace
-  text = text.replace(/<div id="root">\s*<\/div>/, richHtml);
+
 
   return new Response(text, {
     headers: response.headers
