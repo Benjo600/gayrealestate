@@ -126,11 +126,9 @@ export default async (request: Request, context: Context) => {
     return;
   }
 
-  const BOT_PATTERNS = ['Googlebot', 'bingbot', 'Slurp', 'DuckDuckBot', 'Baiduspider', 'facebookexternalhit', 'Twitterbot', 'LinkedInBot', 'Pinterestbot', 'Applebot'];
-  const ua = request.headers.get('user-agent') || '';
-  if (BOT_PATTERNS.some(bot => ua.toLowerCase().includes(bot.toLowerCase()))) {
-    return; // Netlify prerender service handles bot requests
-  }
+  // Note: Bots are NOT bypassed — they receive the same injected meta tags as regular visitors.
+  // This ensures crawlers (Googlebot, Bingbot, etc.) see proper <title>, <meta description>,
+  // and OG tags without needing to execute JavaScript.
 
   // Only intercept page requests
   if (path.includes(".") && !path.endsWith(".html")) {

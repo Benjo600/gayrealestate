@@ -3,6 +3,13 @@ import { ArrowRight, Calendar, Clock, BookOpen, MapPin, Sparkles, GraduationCap,
 import { Link } from 'react-router-dom';
 import { BLOG_POSTS } from '../data/blogs';
 
+/** Format ISO date (2026-02-22) to display format (FEBRUARY 22, 2026) */
+const formatDate = (isoDate: string): string => {
+    const [year, month, day] = isoDate.split('-').map(Number);
+    const date = new Date(year, month - 1, day);
+    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }).toUpperCase();
+};
+
 const Resources: React.FC = () => {
   const [activeTab, setActiveTab] = useState('ALL');
 
@@ -111,7 +118,7 @@ const Resources: React.FC = () => {
                   <div className="absolute bottom-5 left-5 z-20 text-white opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0 flex items-center gap-4">
                     <span className="flex items-center gap-1.5 text-[10px] font-medium tracking-wider uppercase">
                       <Calendar className="w-3.5 h-3.5 text-brand-400" />
-                      {post.date}
+                      {formatDate(post.date)}
                     </span>
                     <span className="flex items-center gap-1.5 text-[10px] font-medium tracking-wider uppercase">
                       <Clock className="w-3.5 h-3.5 text-brand-400" />

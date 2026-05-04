@@ -85,8 +85,8 @@ const HomePage: React.FC = () => {
                 description="Find trusted, LGBTQ+ friendly real estate agents, mortgage lenders, and attorneys in Connecticut. GayRealEstateCT.net — your one-stop shop for inclusive home buying and selling."
                 canonical={`${BASE_URL}/`}
                 ogType="website"
-                ogImage="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=60&w=1200&auto=format&fit=crop"
-                ogImageAlt="Modern luxury home — GayRealEstateCT.net"
+                ogImage="https://www.gayrealestatect.net/hero-house.png"
+                ogImageAlt="GayRealEstateCT.net — LGBTQ+ Friendly Real Estate in Connecticut"
                 keywords="LGBTQ real estate, gay friendly realtor, Connecticut real estate agents, inclusive housing, LGBTQ mortgage lender, LGBTQ attorney, buy home Connecticut"
                 structuredData={homepageStructuredData}
             />

@@ -56,6 +56,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
 
             {/* Twitter Card */}
             <meta name="twitter:card" content={twitterCard} />
+            <meta name="twitter:site" content="@GayRealEstateCT" />
             <meta name="twitter:title" content={title} />
             <meta name="twitter:description" content={description} />
             {ogImage && <meta name="twitter:image" content={ogImage} />}

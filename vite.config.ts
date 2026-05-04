@@ -1,13 +1,9 @@
 import path from 'path';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import sitemap from 'vite-plugin-sitemap';
 
-import { BLOG_POSTS } from './data/blogs';
-import { agents } from './data/agents';
-
-const blogRoutes = BLOG_POSTS.map(post => `/blog/${post.slug}`);
-const agentRoutes = Object.keys(agents).map(id => `/agent/${id}`);
+// Sitemap is managed manually via public/sitemap.xml
+// (includes changefreq, priority, and lastmod values)
 
 export default defineConfig({
   server: {
@@ -17,25 +13,6 @@ export default defineConfig({
   },
   plugins: [
     react(),
-    sitemap({
-      hostname: 'https://www.gayrealestatect.net',
-      dynamicRoutes: [
-        '/', 
-        '/about', 
-        '/community',
-        '/buyers-guide', 
-        '/sellers-guide', 
-        '/first-time-buyers', 
-        '/home-valuation', 
-        '/relocation-services', 
-        '/marketing-your-home', 
-        '/mortgage-calculator', 
-        '/reviews',
-        '/privacy-policy',
-        ...blogRoutes,
-        ...agentRoutes
-      ]
-    })
   ],
   resolve: {
     alias: {

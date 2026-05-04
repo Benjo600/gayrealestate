@@ -62,7 +62,7 @@ export const BLOG_POSTS: BlogPost[] = [
     `,
     image: "/ct_lgbtq_places.png",
     category: "LGBTQ+ LIVING GUIDE",
-    date: "FEBRUARY 22, 2026",
+    date: "2026-02-22",
     readTime: "8 MIN READ",
     author: "Arek Wtulich",
     authorRole: "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance"
@@ -108,7 +108,7 @@ export const BLOG_POSTS: BlogPost[] = [
     `,
     image: "/west_hartford_lgbtq.png",
     category: "LOCAL SPOTLIGHT",
-    date: "FEBRUARY 18, 2026",
+    date: "2026-02-18",
     readTime: "7 MIN READ",
     author: "Arek Wtulich",
     authorRole: "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance"
@@ -154,7 +154,7 @@ export const BLOG_POSTS: BlogPost[] = [
     `,
     image: "/gay_couple_moving_ct.png",
     category: "RELOCATION GUIDE",
-    date: "FEBRUARY 15, 2026",
+    date: "2026-02-15",
     readTime: "9 MIN READ",
     author: "Arek Wtulich",
     authorRole: "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance"
@@ -218,7 +218,7 @@ export const BLOG_POSTS: BlogPost[] = [
     `,
     image: "/inclusive_schools_ct.png",
     category: "FAMILY GUIDE",
-    date: "FEBRUARY 10, 2026",
+    date: "2026-02-10",
     readTime: "10 MIN READ",
     author: "Abby Dudarewicz",
     authorRole: "Licensed CT Realtor & LGBTQ+ Community Advocate"
@@ -287,7 +287,7 @@ export const BLOG_POSTS: BlogPost[] = [
     `,
     image: "/nyc_vs_ct_real_estate.png",
     category: "MARKET COMPARISON",
-    date: "FEBRUARY 5, 2026",
+    date: "2026-02-05",
     readTime: "9 MIN READ",
     author: "Jake Earl",
     authorRole: "Senior Vice President | Top 1% Mortgage Lender Nationwide"
@@ -347,7 +347,7 @@ export const BLOG_POSTS: BlogPost[] = [
     `,
     image: "/lgbtq_events_ct.png",
     category: "COMMUNITY EVENTS",
-    date: "MARCH 1, 2026",
+    date: "2026-03-01",
     readTime: "6 MIN READ",
     author: "Arek Wtulich",
     authorRole: "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance"
@@ -393,7 +393,7 @@ export const BLOG_POSTS: BlogPost[] = [
     `,
     image: "/lgbtq_first_time_buyer.png",
     category: "LITCHFIELD COUNTY GUIDE",
-    date: "FEBRUARY 12, 2026",
+    date: "2026-02-12",
     readTime: "7 MIN READ",
     author: "Travis Lipinski",
     authorRole: "Licensed CT Realtor | Litchfield County Specialist"
@@ -434,7 +434,7 @@ Lakefront properties here are rare, fiercely held, and range from rustic seasona
     `,
     image: "/inclusive_neighborhoods.png",
     category: "LITCHFIELD COUNTY SPOTLIGHT",
-    date: "JANUARY 28, 2026",
+    date: "2026-01-28",
     readTime: "8 MIN READ",
     author: "Travis Lipinski",
     authorRole: "Licensed CT Realtor | Litchfield County Specialist"
@@ -482,7 +482,7 @@ Lakefront properties here are rare, fiercely held, and range from rustic seasona
     `,
     image: "/generational_wealth_real_estate.png",
     category: "LEGAL GUIDE",
-    date: "FEBRUARY 8, 2026",
+    date: "2026-02-08",
     readTime: "9 MIN READ",
     author: "Carolyn Futtner",
     authorRole: "Real Estate Attorney | Founding Partner, MPF Law"
@@ -516,7 +516,7 @@ Lakefront properties here are rare, fiercely held, and range from rustic seasona
     `,
     image: "/trans_moving_ct.png",
     category: "RELOCATION GUIDE",
-    date: "MARCH 28, 2026",
+    date: "2026-03-28",
     readTime: "7 MIN READ",
     author: "Abby Dudarewicz",
     authorRole: "Licensed CT Realtor & LGBTQ+ Community Advocate"
@@ -544,7 +544,7 @@ Lakefront properties here are rare, fiercely held, and range from rustic seasona
     `,
     image: "/lgbtq_small_towns_ct.png",
     category: "LOCAL SPOTLIGHT",
-    date: "MARCH 25, 2026",
+    date: "2026-03-25",
     readTime: "8 MIN READ",
     author: "Travis Lipinski",
     authorRole: "Licensed CT Realtor | Litchfield County Specialist"
@@ -569,7 +569,7 @@ Lakefront properties here are rare, fiercely held, and range from rustic seasona
     `,
     image: "/new_haven_wooster.png",
     category: "LOCAL SPOTLIGHT",
-    date: "MARCH 20, 2026",
+    date: "2026-03-20",
     readTime: "7 MIN READ",
     author: "Arek Wtulich",
     authorRole: "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance"
@@ -594,7 +594,7 @@ Lakefront properties here are rare, fiercely held, and range from rustic seasona
     `,
     image: "/chester_ct_family.png",
     category: "FAMILY GUIDE",
-    date: "MARCH 15, 2026",
+    date: "2026-03-15",
     readTime: "8 MIN READ",
     author: "Abby Dudarewicz",
     authorRole: "Licensed CT Realtor & LGBTQ+ Community Advocate"
@@ -619,7 +619,7 @@ Lakefront properties here are rare, fiercely held, and range from rustic seasona
     `,
     image: "/new_haven_neighborhoods.png",
     category: "LOCAL SPOTLIGHT",
-    date: "MARCH 10, 2026",
+    date: "2026-03-10",
     readTime: "8 MIN READ",
     author: "Arek Wtulich",
     authorRole: "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance"
@@ -641,7 +641,7 @@ Lakefront properties here are rare, fiercely held, and range from rustic seasona
     `,
     image: "/gay_realtor_guide.png",
     category: "EXPERT ADVICE",
-    date: "MARCH 5, 2026",
+    date: "2026-03-05",
     readTime: "6 MIN READ",
     author: "Arek Wtulich",
     authorRole: "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance"

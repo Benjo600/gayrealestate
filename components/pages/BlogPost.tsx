@@ -35,6 +35,13 @@ const AUTHOR_AGENT_MAP: Record<string, string> = {
     'Carolyn Futtner': 'carolyn',
 };
 
+/** Format ISO date (2026-02-22) to display format (February 22, 2026) */
+const formatDate = (isoDate: string): string => {
+    const [year, month, day] = isoDate.split('-').map(Number);
+    const date = new Date(year, month - 1, day);
+    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }).toUpperCase();
+};
+
 // ─── Inline Blog CTA Form ────────────────────────────────────────────────────
 type FormStatus = 'idle' | 'submitting' | 'success' | 'error';
 
@@ -188,6 +195,7 @@ const BlogPost: React.FC = () => {
                     description: post.excerpt,
                     image: post.image,
                     datePublished: post.date,
+                    dateModified: post.date,
                     author: { '@type': 'Person', name: post.author, jobTitle: post.authorRole },
                     publisher: { '@type': 'Organization', name: 'GayRealEstateCT.net', url: BASE_URL },
                 }
@@ -287,7 +295,7 @@ const BlogPost: React.FC = () => {
                             
                             <div className="flex flex-col">
                                 <span className="text-slate-400 text-[10px] font-black uppercase tracking-widest mb-1.5">Published</span>
-                                <span className="text-slate-900 font-bold text-lg">{post.date}</span>
+                                <span className="text-slate-900 font-bold text-lg">{formatDate(post.date)}</span>
                             </div>
                         </motion.div>
                     </div>
