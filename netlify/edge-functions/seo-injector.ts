@@ -126,6 +126,13 @@ export default async (request: Request, context: Context) => {
     return;
   }
 
+  // Let Netlify's prerender service handle known search engine crawlers
+  const BOT_PATTERNS = ['Googlebot', 'bingbot', 'Slurp', 'DuckDuckBot', 'Baiduspider', 'facebookexternalhit', 'Twitterbot', 'LinkedInBot', 'Pinterestbot', 'Applebot'];
+  const ua = request.headers.get('user-agent') || '';
+  if (BOT_PATTERNS.some(bot => ua.toLowerCase().includes(bot.toLowerCase()))) {
+    return;
+  }
+
   // Only intercept page requests
   if (path.includes(".") && !path.endsWith(".html")) {
     return;
@@ -143,7 +150,6 @@ export default async (request: Request, context: Context) => {
   
   let title = "GayRealEstateCT.net | LGBTQ+ Friendly Real Estate in Connecticut";
   let description = "Find trusted, LGBTQ+ friendly real estate agents, mortgage lenders, and attorneys in Connecticut.";
-  let pageContent = "Your one-stop shop for inclusive home buying, selling, and relocation in CT.";
 
   // Blog Logic
   if (path.startsWith("/blog/")) {
@@ -151,16 +157,14 @@ export default async (request: Request, context: Context) => {
     if (BLOG_DATA[slug]) {
       title = `${BLOG_DATA[slug].title} | Gay Real Estate CT`;
       description = BLOG_DATA[slug].description;
-      pageContent = BLOG_DATA[slug].content || description;
     }
-  } 
+  }
   // Agent Logic
   else if (path.startsWith("/agent/")) {
     const id = path.replace("/agent/", "");
     if (AGENT_DATA[id]) {
       title = `${AGENT_DATA[id].title} | Gay Real Estate CT`;
       description = AGENT_DATA[id].description;
-      pageContent = `${AGENT_DATA[id].bio} Specializing in: ${AGENT_DATA[id].specialties.join(", ")}.`;
     }
   }
   // Core Informational Pages
@@ -171,7 +175,6 @@ export default async (request: Request, context: Context) => {
   else if (path === "/about") {
     title = "About Us | GayRealEstateCT.net";
     description = "Meet the team dedicated to inclusive real estate in Connecticut.";
-    pageContent = "We connect the LGBTQ+ community with trusted, inclusive real estate professionals across the Nutmeg State.";
   }
   else if (path === "/first-time-buyers") {
     title = "First-Time Homebuyer Guide for LGBTQ+ Buyers in CT | GayRealEstateCT.net";
@@ -203,21 +206,6 @@ export default async (request: Request, context: Context) => {
   `;
   text = text.replace("</head>", `${metaTags}</head>`);
   
-  // 3. Inject Rich Page Content into the root div for crawlers
-  // Using a more robust regex for the replacement
-  const richHtml = `
-    <div id="root">
-      <div class="sr-only" style="display:none;">
-        <h1>${title}</h1>
-        <p>${description}</p>
-        <div>${pageContent}</div>
-      </div>
-    </div>
-  `;
-  
-  // Replace the empty root div regardless of whitespace
-  text = text.replace(/<div id="root">\s*<\/div>/, richHtml);
-
   return new Response(text, {
     headers: response.headers
   });
