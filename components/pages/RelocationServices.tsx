@@ -83,6 +83,8 @@ const RelocationServices: React.FC = () => {
                 canonical="https://www.gayrealestatect.net/relocation-services"
                 keywords="LGBTQ relocation Connecticut, gay couple moving to CT, relocating to Connecticut services, moving to Connecticut LGBTQ support"
                 structuredData={relocationSchema}
+                ogImage="https://www.gayrealestatect.net/gay_couple_moving_ct.png"
+                ogImageAlt="LGBTQ+ Relocation Services in Connecticut"
             />
 
 

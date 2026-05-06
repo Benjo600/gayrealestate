@@ -116,6 +116,8 @@ const MortgageCalculator: React.FC = () => {
                 description="Estimate your monthly mortgage payment for Connecticut homes. Includes principal, interest, taxes, insurance, PMI, and HOA. LGBTQ+-friendly mortgage guidance included."
                 canonical="https://www.gayrealestatect.net/mortgage-calculator"
                 keywords="Connecticut mortgage calculator, CT home loan calculator, LGBTQ mortgage estimate, monthly mortgage payment calculator Connecticut"
+                ogImage="https://www.gayrealestatect.net/hero-house.png"
+                ogImageAlt="GayRealEstateCT.net - LGBTQ+ Friendly Real Estate in Connecticut"
             />
 
             {/* Back Nav */}

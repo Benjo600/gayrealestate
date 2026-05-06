@@ -17,6 +17,8 @@ const CommunityEvents: React.FC = () => {
                 title="Community Hub | Premium LGBTQ+ Events & Culture in CT"
                 description="Join the vibrant heart of Connecticut's LGBTQ+ community. Explore legendary venues, iconic drag performances, and exclusive local events curated by GayRealEstateCT.net."
                 canonical="https://www.gayrealestatect.net/community"
+                ogImage="https://www.gayrealestatect.net/images/events/community-hero.png"
+                ogImageAlt="LGBTQ+ Community Events in Connecticut"
             />
 
             {/* Premium Soft Pink & Rainbow Radial Background */}

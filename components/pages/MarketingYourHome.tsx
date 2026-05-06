@@ -55,6 +55,8 @@ const MarketingYourHome: React.FC = () => {
                 description="See how we market your Connecticut home to get top dollar — professional photography, MLS syndication, social media targeting, and LGBTQ+ buyer network outreach."
                 canonical="https://www.gayrealestatect.net/marketing-your-home"
                 keywords="how to market your home Connecticut, sell home fast CT, real estate marketing Connecticut, LGBTQ real estate marketing CT"
+                ogImage="https://www.gayrealestatect.net/hero-house.png"
+                ogImageAlt="Marketing Your Home in Connecticut - GayRealEstateCT.net"
             />
 
             {/* Back Nav */}

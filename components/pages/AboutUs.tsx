@@ -38,6 +38,8 @@ const AboutUs: React.FC = () => {
                 title="About GayRealEstateCT.net | LGBTQ+ Real Estate"
                 description="Learn about our mission to help the LGBTQ+ community find homes where they truly belong in Connecticut."
                 canonical="https://www.gayrealestatect.net/about"
+                ogImage="https://www.gayrealestatect.net/hero-house.png"
+                ogImageAlt="GayRealEstateCT.net - LGBTQ+ Friendly Real Estate in Connecticut"
             />
 
             <nav className="absolute top-0 left-0 right-0 p-4 z-10">

@@ -157,6 +157,8 @@ const Reviews: React.FC = () => {
                 description="Client testimonials for our real estate professionals."
                 canonical="https://www.gayrealestatect.net/reviews"
                 ogType="website"
+                ogImage="https://www.gayrealestatect.net/hero-house.png"
+                ogImageAlt="GayRealEstateCT.net - LGBTQ+ Friendly Real Estate in Connecticut"
             />
             <Header />
             <main className="relative z-10">

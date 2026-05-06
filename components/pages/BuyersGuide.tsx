@@ -107,6 +107,8 @@ const BuyersGuide: React.FC = () => {
                 title="LGBTQ+ Buyer's Guide | GayRealEstateCT.net"
                 description="Complete Connecticut buyer's guide for LGBTQ+ home buyers."
                 canonical="https://www.gayrealestatect.net/buyers-guide"
+                ogImage="https://www.gayrealestatect.net/lgbtq_first_time_buyer.png"
+                ogImageAlt="LGBTQ+ Home Buyer's Guide for Connecticut"
             />
 
             {/* Back Nav */}

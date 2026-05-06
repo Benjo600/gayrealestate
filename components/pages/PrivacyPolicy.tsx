@@ -59,6 +59,8 @@ const PrivacyPolicy: React.FC = () => {
                 title="Privacy Policy & Data Protection | GayRealEstateCT.net"
                 description="Our premium commitment to your privacy. Learn how we protect your data with a specific focus on LGBTQ+ security and non-disclosure."
                 canonical="https://www.gayrealestatect.net/privacy-policy"
+                ogImage="https://www.gayrealestatect.net/hero-house.png"
+                ogImageAlt="GayRealEstateCT.net - LGBTQ+ Friendly Real Estate in Connecticut"
             />
 
             {/* Back Nav */}
