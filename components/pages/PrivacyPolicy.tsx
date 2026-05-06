@@ -4,6 +4,27 @@ import { ArrowLeft, ArrowRight, Shield, Lock, Eye, FileText, Trash2, CheckCircle
 import Footer from '../Footer';
 import SEOHead from '../SEOHead';
 
+const BASE_URL = 'https://www.gayrealestatect.net';
+
+const privacyStructuredData = [
+    {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        name: 'Privacy Policy — GayRealEstateCT.net',
+        description: 'GayRealEstateCT.net privacy policy detailing data collection, use, and LGBTQ+ specific confidentiality commitments.',
+        url: `${BASE_URL}/privacy-policy`,
+        isPartOf: { '@type': 'WebSite', url: BASE_URL },
+    },
+    {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: `${BASE_URL}/` },
+            { '@type': 'ListItem', position: 2, name: 'Privacy Policy', item: `${BASE_URL}/privacy-policy` },
+        ],
+    },
+];
+
 const PrivacyPolicy: React.FC = () => {
     useEffect(() => { window.scrollTo(0, 0); }, []);
 
@@ -57,10 +78,12 @@ const PrivacyPolicy: React.FC = () => {
         >
             <SEOHead
                 title="Privacy Policy & Data Protection | GayRealEstateCT.net"
-                description="Our premium commitment to your privacy. Learn how we protect your data with a specific focus on LGBTQ+ security and non-disclosure."
-                canonical="https://www.gayrealestatect.net/privacy-policy"
-                ogImage="https://www.gayrealestatect.net/hero-house.png"
+                description="Our premium commitment to your privacy. Learn how we protect your data with a specific focus on LGBTQ+ security and non-disclosure for the LGBTQ+ community in Connecticut."
+                canonical={`${BASE_URL}/privacy-policy`}
+                keywords="privacy policy GayRealEstateCT, LGBTQ data privacy Connecticut, real estate data protection"
+                ogImage={`${BASE_URL}/hero-house.png`}
                 ogImageAlt="GayRealEstateCT.net - LGBTQ+ Friendly Real Estate in Connecticut"
+                structuredData={privacyStructuredData}
             />
 
             {/* Back Nav */}

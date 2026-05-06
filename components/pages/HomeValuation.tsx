@@ -11,6 +11,33 @@ const benefits = [
     { title: `Your Personal Agent Review`, desc: `Unlike automated tools, your valuation comes with a real agent walkthrough — explaining the comps, adjustments, and what we'd do to maximize your number.` },
 ];
 
+const BASE_URL = 'https://www.gayrealestatect.net';
+
+const homeValuationStructuredData = [
+    {
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        name: 'Free Home Valuation Connecticut',
+        description: 'Get a free, accurate home valuation from LGBTQ+-allied Connecticut real estate agents. Real local comps, no algorithms, no pressure.',
+        provider: {
+            '@type': 'RealEstateAgent',
+            name: 'GayRealEstateCT.net',
+            url: BASE_URL,
+        },
+        areaServed: { '@type': 'State', name: 'Connecticut' },
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD', description: 'Free home valuation with no obligation.' },
+    },
+    {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: `${BASE_URL}/` },
+            { '@type': 'ListItem', position: 2, name: 'For Sellers', item: `${BASE_URL}/sellers-guide` },
+            { '@type': 'ListItem', position: 3, name: 'Free Home Valuation', item: `${BASE_URL}/home-valuation` },
+        ],
+    },
+];
+
 const HomeValuation: React.FC = () => {
     const [form, setForm] = useState({ name: '', email: '', phone: '', address: '', bedrooms: '', bathrooms: '', sqft: '', updates: '', timeline: '', notes: '' });
     const [submitted, setSubmitted] = useState(false);
@@ -39,10 +66,11 @@ const HomeValuation: React.FC = () => {
             <SEOHead
                 title="Free Home Valuation in Connecticut | GayRealEstateCT.net"
                 description="Get a free, accurate home valuation from LGBTQ+-allied Connecticut real estate agents. Know what your home is worth with real local comps — no algorithms, no pressure."
-                canonical="https://www.gayrealestatect.net/home-valuation"
+                canonical={`${BASE_URL}/home-valuation`}
                 keywords="free home valuation Connecticut, what is my home worth CT, Connecticut home value estimate LGBTQ, sell my Connecticut home"
-                ogImage="https://www.gayrealestatect.net/hero-house.png"
+                ogImage={`${BASE_URL}/hero-house.png`}
                 ogImageAlt="Free Home Valuation in Connecticut"
+                structuredData={homeValuationStructuredData}
             />
 
             {/* Back Nav */}

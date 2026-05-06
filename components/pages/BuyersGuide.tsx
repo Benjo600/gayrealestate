@@ -82,10 +82,74 @@ const chapters = [
     },
 ];
 
+const BASE_URL = 'https://www.gayrealestatect.net';
+
+const buyersGuideStructuredData = [
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What should I do before looking at homes in Connecticut?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Before looking at listings, run your credit report from all three bureaus and fix any errors. Build savings for a down payment (3–20%), closing costs (2–5%), and reserves. Set your non-negotiables and nice-to-haves before touring."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is CHFA and how does it help Connecticut home buyers?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "CHFA (Connecticut Housing Finance Authority) offers competitive rate programs for first-time buyers, including below-market interest rates and down payment assistance. You must complete CHFA's mandatory homebuyer education class if using a state-funded loan."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What inspections are especially important for Connecticut homes?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Beyond the general home inspection ($400–$600), Connecticut homes often need radon testing (many homes test high), sewer scope inspection (older homes may have clay or cast iron pipes), and oil tank sweeps if the home was ever heated by oil."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do I need a real estate attorney to buy a home in Connecticut?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. Connecticut is an attorney state — a real estate attorney must be present at closing. They handle title issues, deed preparation, and estate planning. This is especially important for LGBTQ+ couples to ensure title is held correctly."
+                }
+            }
+        ]
+    },
+    {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": "How to Buy a Home in Connecticut as an LGBTQ+ Buyer",
+        "description": "A 6-chapter masterclass covering every stage of the Connecticut home buying process for LGBTQ+ buyers.",
+        "step": chapters.map((ch, i) => ({
+            "@type": "HowToStep",
+            "position": i + 1,
+            "name": ch.title,
+            "text": ch.insight,
+        })),
+        "totalTime": "P3M",
+    },
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": `${BASE_URL}/` },
+            { "@type": "ListItem", "position": 2, "name": "Buyer's Guide", "item": `${BASE_URL}/buyers-guide` },
+        ],
+    },
+];
+
 const BuyersGuide: React.FC = () => {
     const [activePhase, setActivePhase] = useState(0);
     const [expandedChapter, setExpandedChapter] = useState<number | null>(0);
-    
+
     useEffect(() => { window.scrollTo(0, 0); }, []);
 
     const toggleChapter = (index: number) => {
@@ -99,54 +163,18 @@ const BuyersGuide: React.FC = () => {
     ];
 
     return (
-        <div 
+        <div
             className="min-h-screen font-sans relative selection:bg-purple-500/10"
             style={{ background: 'linear-gradient(160deg, #fdf4ff 0%, #fff7f0 25%, #f0f9ff 50%, #f7fff4 75%, #fdf4ff 100%)' }}
         >
             <SEOHead
-                title="LGBTQ+ Buyer's Guide | GayRealEstateCT.net"
-                description="Complete Connecticut buyer's guide for LGBTQ+ home buyers."
+                title="Complete LGBTQ+ Buyer's Guide for Connecticut | GayRealEstateCT.net"
+                description="A 6-chapter masterclass covering financing, neighborhood selection, making winning offers, inspections, and legal protections for LGBTQ+ home buyers in Connecticut."
                 canonical="https://www.gayrealestatect.net/buyers-guide"
                 ogImage="https://www.gayrealestatect.net/lgbtq_first_time_buyer.png"
                 ogImageAlt="LGBTQ+ Home Buyer's Guide for Connecticut"
-                structuredData={{
-                    "@context": "https://schema.org",
-                    "@type": "FAQPage",
-                    "mainEntity": [
-                        {
-                            "@type": "Question",
-                            "name": "What should I do before looking at homes in Connecticut?",
-                            "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": "Before looking at listings, run your credit report from all three bureaus and fix any errors. Build savings for a down payment (3–20%), closing costs (2–5%), and reserves. Set your non-negotiables and nice-to-haves before touring."
-                            }
-                        },
-                        {
-                            "@type": "Question",
-                            "name": "What is CHFA and how does it help Connecticut home buyers?",
-                            "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": "CHFA (Connecticut Housing Finance Authority) offers competitive rate programs for first-time buyers, including below-market interest rates and down payment assistance. You must complete CHFA's mandatory homebuyer education class if using a state-funded loan."
-                            }
-                        },
-                        {
-                            "@type": "Question",
-                            "name": "What inspections are especially important for Connecticut homes?",
-                            "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": "Beyond the general home inspection ($400–$600), Connecticut homes often need radon testing (many homes test high), sewer scope inspection (older homes may have clay or cast iron pipes), and oil tank sweeps if the home was ever heated by oil."
-                            }
-                        },
-                        {
-                            "@type": "Question",
-                            "name": "Do I need a real estate attorney to buy a home in Connecticut?",
-                            "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": "Yes. Connecticut is an attorney state — a real estate attorney must be present at closing. They handle title issues, deed preparation, and estate planning. This is especially important for LGBTQ+ couples to ensure title is held correctly."
-                            }
-                        }
-                    ]
-                }}
+                keywords="LGBTQ home buyers guide Connecticut, gay home buying CT, home buying steps Connecticut LGBTQ, CHFA Connecticut LGBTQ"
+                structuredData={buyersGuideStructuredData}
             />
 
             {/* Back Nav */}

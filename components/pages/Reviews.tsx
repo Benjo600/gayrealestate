@@ -146,19 +146,46 @@ const AgentReviewSection: React.FC<AgentSectionProps> = ({ name, title, image, r
    MAIN REVIEWS PAGE
    ────────────────────────────────────────────── */
 
+const BASE_URL = 'https://www.gayrealestatect.net';
+
+const reviewsStructuredData = [
+    {
+        '@context': 'https://schema.org',
+        '@type': 'RealEstateAgent',
+        name: 'GayRealEstateCT.net',
+        url: BASE_URL,
+        aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: '5',
+            bestRating: '5',
+            worstRating: '1',
+            ratingCount: '250',
+        },
+    },
+    {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: `${BASE_URL}/` },
+            { '@type': 'ListItem', position: 2, name: 'Client Reviews', item: `${BASE_URL}/reviews` },
+        ],
+    },
+];
+
 const Reviews: React.FC = () => {
     return (
-        <div 
+        <div
             className="h-auto font-sans relative selection:bg-purple-500/20"
             style={{ background: 'linear-gradient(160deg, #fdf4ff 0%, #fff7f0 25%, #f0f9ff 50%, #f7fff4 75%, #fdf4ff 100%)' }}
         >
             <SEOHead
-                title="Reviews | GayRealEstateCT.net"
-                description="Client testimonials for our real estate professionals."
+                title="Client Reviews | GayRealEstateCT.net — 250+ Five-Star LGBTQ+ Real Estate Reviews"
+                description="Read 250+ five-star reviews from LGBTQ+ buyers and sellers across Connecticut. See what clients say about Arek, Abby, Travis, Jake, and Carolyn."
                 canonical="https://www.gayrealestatect.net/reviews"
                 ogType="website"
                 ogImage="https://www.gayrealestatect.net/hero-house.png"
-                ogImageAlt="GayRealEstateCT.net - LGBTQ+ Friendly Real Estate in Connecticut"
+                ogImageAlt="GayRealEstateCT.net Client Reviews"
+                structuredData={reviewsStructuredData}
             />
             <Header />
             <main className="relative z-10">

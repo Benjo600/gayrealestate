@@ -28,6 +28,27 @@ const values = [
     },
 ];
 
+const BASE_URL = 'https://www.gayrealestatect.net';
+
+const aboutStructuredData = [
+    {
+        '@context': 'https://schema.org',
+        '@type': 'AboutPage',
+        name: 'About GayRealEstateCT.net',
+        description: 'GayRealEstateCT.net connects the LGBTQ+ community with trusted, inclusive real estate professionals across Connecticut.',
+        url: `${BASE_URL}/about`,
+        isPartOf: { '@type': 'WebSite', url: BASE_URL },
+    },
+    {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: `${BASE_URL}/` },
+            { '@type': 'ListItem', position: 2, name: 'About Us', item: `${BASE_URL}/about` },
+        ],
+    },
+];
+
 const AboutUs: React.FC = () => {
     useEffect(() => { window.scrollTo(0, 0); }, []);
     const teamList = Object.values(agents);
@@ -35,11 +56,13 @@ const AboutUs: React.FC = () => {
     return (
         <div className="min-h-screen selection:bg-purple-500/10" style={{ background: 'linear-gradient(160deg, #fdf4ff 0%, #fff7f0 25%, #f0f9ff 50%, #f7fff4 75%, #fdf4ff 100%)' }}>
             <SEOHead
-                title="About GayRealEstateCT.net | LGBTQ+ Real Estate"
-                description="Learn about our mission to help the LGBTQ+ community find homes where they truly belong in Connecticut."
+                title="About GayRealEstateCT.net | LGBTQ+ Inclusive Real Estate in Connecticut"
+                description="Meet the LGBTQ+-led team connecting buyers and sellers with trusted, inclusive real estate agents, mortgage lenders, and attorneys across Connecticut."
                 canonical="https://www.gayrealestatect.net/about"
                 ogImage="https://www.gayrealestatect.net/hero-house.png"
                 ogImageAlt="GayRealEstateCT.net - LGBTQ+ Friendly Real Estate in Connecticut"
+                keywords="about GayRealEstateCT, LGBTQ real estate team Connecticut, gay realtor team CT"
+                structuredData={aboutStructuredData}
             />
 
             <nav className="absolute top-0 left-0 right-0 p-4 z-10">

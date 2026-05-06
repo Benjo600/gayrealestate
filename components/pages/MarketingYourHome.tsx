@@ -42,6 +42,40 @@ const strategies = [
     },
 ];
 
+const BASE_URL = 'https://www.gayrealestatect.net';
+
+const marketingStructuredData = [
+    {
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        name: 'Home Marketing Services Connecticut',
+        description: 'Professional home marketing services for Connecticut sellers — professional photography, MLS syndication, targeted social media advertising, and LGBTQ+ buyer network outreach.',
+        provider: {
+            '@type': 'RealEstateAgent',
+            name: 'GayRealEstateCT.net',
+            url: BASE_URL,
+        },
+        areaServed: { '@type': 'State', name: 'Connecticut' },
+        hasOfferCatalog: {
+            '@type': 'OfferCatalog',
+            name: 'Marketing Strategies',
+            itemListElement: strategies.map(s => ({
+                '@type': 'Offer',
+                itemOffered: { '@type': 'Service', name: s.title, description: s.description },
+            })),
+        },
+    },
+    {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: `${BASE_URL}/` },
+            { '@type': 'ListItem', position: 2, name: 'For Sellers', item: `${BASE_URL}/sellers-guide` },
+            { '@type': 'ListItem', position: 3, name: 'Marketing Your Home', item: `${BASE_URL}/marketing-your-home` },
+        ],
+    },
+];
+
 const MarketingYourHome: React.FC = () => {
     useEffect(() => { window.scrollTo(0, 0); }, []);
 
@@ -53,10 +87,11 @@ const MarketingYourHome: React.FC = () => {
             <SEOHead
                 title="Marketing Your Home in Connecticut | GayRealEstateCT.net"
                 description="See how we market your Connecticut home to get top dollar — professional photography, MLS syndication, social media targeting, and LGBTQ+ buyer network outreach."
-                canonical="https://www.gayrealestatect.net/marketing-your-home"
+                canonical={`${BASE_URL}/marketing-your-home`}
                 keywords="how to market your home Connecticut, sell home fast CT, real estate marketing Connecticut, LGBTQ real estate marketing CT"
-                ogImage="https://www.gayrealestatect.net/hero-house.png"
+                ogImage={`${BASE_URL}/hero-house.png`}
                 ogImageAlt="Marketing Your Home in Connecticut - GayRealEstateCT.net"
+                structuredData={marketingStructuredData}
             />
 
             {/* Back Nav */}
