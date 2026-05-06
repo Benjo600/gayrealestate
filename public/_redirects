@@ -7,5 +7,6 @@ https://gayrealestatect.net/*    https://www.gayrealestatect.net/:splat  301!
 /agents.html   /about    301
 /reviews.html         /reviews      301
 /relocation-services  /relocation   301
+/community-events     /community    301
 # SPA routing (must be last)
 /*  /index.html  200
