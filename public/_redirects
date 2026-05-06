@@ -1,13 +1,10 @@
-# Redirect non-www to www and force HTTPS
-https://gayrealestatect.net/* https://www.gayrealestatect.net/:splat 301!
-
-# Legacy Static Page Redirects
+# Force HTTPS + non-www to www (must be first)
+http://gayrealestatect.net/*     https://www.gayrealestatect.net/:splat  301!
+http://www.gayrealestatect.net/* https://www.gayrealestatect.net/:splat  301!
+https://gayrealestatect.net/*    https://www.gayrealestatect.net/:splat  301!
+# Legacy redirects
 /agents        /about    301
 /agents.html   /about    301
 /reviews.html  /reviews  301
-
-# Remove trailing slashes (prevent duplicate content)
-/:splat/  /:splat  301
-
-# Essential routing for SPA
+# SPA routing (must be last)
 /*  /index.html  200
