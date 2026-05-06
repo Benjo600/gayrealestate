@@ -42,7 +42,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
             <meta name="description" content={description} />
             {keywords && <meta name="keywords" content={keywords} />}
             {author && <meta name="author" content={author} />}
-            {noIndex && <meta name="robots" content="noindex, nofollow" />}
+            <meta name="robots" content={noIndex ? "noindex, nofollow" : "index, follow"} />
             {canonical && <link rel="canonical" href={canonical} />}
 
             {/* Open Graph */}
