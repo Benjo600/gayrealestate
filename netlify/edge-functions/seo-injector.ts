@@ -127,6 +127,16 @@ export default async (request: Request, context: Context) => {
     return;
   }
 
+  // Return 404 for blog slugs that don't exist so Google removes them from index
+  // instead of seeing a 200+noindex from the NotFound component.
+  // Keep this list in sync with BLOG_DATA above.
+  if (path.startsWith("/blog/")) {
+    const slug = path.replace("/blog/", "");
+    if (slug && !BLOG_DATA[slug]) {
+      return new Response("Not Found", { status: 404, headers: { "Content-Type": "text/plain" } });
+    }
+  }
+
   const response = await context.next();
   const contentType = response.headers.get("content-type");
 
