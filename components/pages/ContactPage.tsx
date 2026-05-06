@@ -19,15 +19,7 @@ const contactStructuredData = [
             '@type': 'RealEstateAgent',
             name: 'GayRealEstateCT.net',
             url: BASE_URL,
-            telephone: '+18606185544',
-            email: 'arek@gayrealestatect.net',
             areaServed: { '@type': 'State', name: 'Connecticut' },
-            address: {
-                '@type': 'PostalAddress',
-                addressLocality: 'West Hartford',
-                addressRegion: 'CT',
-                addressCountry: 'US',
-            },
         },
     },
     {
