@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import { useParams, Navigate, Link } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import Footer from '../Footer';
+import NotFound from './NotFound';
 import { ScrollToTop } from '../ui/scroll-to-top';
 import { ContactModal } from '../ui/ContactModal';
 import SEOHead from '../SEOHead';
@@ -101,7 +102,7 @@ const RealtorProfile: React.FC = () => {
     }, [agent]);
 
     if (!agent) {
-        return <Navigate to="/" replace />;
+        return <NotFound />;
     }
 
     const paragraphs = agent.bio.split('\n\n').filter(p => p.trim());

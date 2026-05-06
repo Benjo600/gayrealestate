@@ -22,6 +22,7 @@ import {
 import { BLOG_POSTS } from '../../data/blogs';
 import Footer from '../Footer';
 import SEOHead from '../SEOHead';
+import NotFound from './NotFound';
 import { agents } from '../../data/agents';
 import { sendGenericTelegram } from '../../services/telegramService';
 
@@ -203,7 +204,7 @@ const BlogPost: React.FC = () => {
         };
     }, [post]);
 
-    if (!post) return <div className="text-center p-20">Article Not Found</div>;
+    if (!post) return <NotFound />;
 
     return (
         <div className="min-h-screen bg-white selection:bg-brand-100 selection:text-brand-900 font-sans">
