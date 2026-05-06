@@ -9,6 +9,7 @@ import RealtorProfile from './components/pages/RealtorProfile';
 import BlogPost from './components/pages/BlogPost';
 
 // Resource Pages - Keep Lazy
+const BlogIndex = lazy(() => import('./components/pages/BlogIndex'));
 const FirstTimeBuyers = lazy(() => import('./components/pages/FirstTimeBuyers'));
 const MortgageCalculator = lazy(() => import('./components/pages/MortgageCalculator'));
 const RelocationServices = lazy(() => import('./components/pages/RelocationServices'));
@@ -58,6 +59,7 @@ const App: React.FC = () => {
           <Route path="/reviews" element={<Reviews />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/community" element={<CommunityEvents />} />
+          <Route path="/blog" element={<BlogIndex />} />
           {/* Fallback */}
           <Route path="*" element={<NotFound />} />
         </Routes>
