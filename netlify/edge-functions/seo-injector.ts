@@ -127,11 +127,27 @@ export default async (request: Request, context: Context) => {
     return;
   }
 
-  // Return 404 for blog slugs that don't exist so Google removes them from index
-  // instead of seeing a 200+noindex from the NotFound component.
-  // Keep this list in sync with BLOG_DATA above.
+  // 301 redirects for old blog slugs — must be handled here because edge functions
+  // run before Netlify _redirects rules in the request pipeline.
+  const BLOG_REDIRECTS: Record<string, string> = {
+    "lgbtq-home-buying-connecticut-guide": "/blog/best-places-to-live-in-connecticut-lgbtq",
+    "west-hartford-lgbtq-neighborhood-guide": "/blog/why-west-hartford-is-lgbtq-friendly-connecticut",
+    "connecticut-lgbtq-friendly-towns": "/blog/lgbtq-friendly-small-towns-connecticut",
+    "gay-friendly-realtors-connecticut": "/blog/gay-realtor-connecticut-guide",
+    "lgbtq-first-time-homebuyer-ct": "/first-time-buyers",
+    "connecticut-mortgage-lgbtq-buyers": "/mortgage-calculator",
+    "new-haven-lgbtq-real-estate": "/blog/best-lgbtq-neighborhoods-new-haven-ct",
+    "lgbtq-relocation-connecticut": "/relocation",
+    "selling-home-connecticut-lgbtq": "/sellers-guide",
+  };
+
   if (path.startsWith("/blog/")) {
     const slug = path.replace("/blog/", "");
+    if (slug && BLOG_REDIRECTS[slug]) {
+      return Response.redirect(`${BASE_DOMAIN}${BLOG_REDIRECTS[slug]}`, 301);
+    }
+    // Return 404 for any other unknown blog slug so Google deindexes it
+    // instead of seeing a 200+noindex from the NotFound component.
     if (slug && !BLOG_DATA[slug]) {
       return new Response("Not Found", { status: 404, headers: { "Content-Type": "text/plain" } });
     }
