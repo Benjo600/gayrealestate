@@ -121,7 +121,15 @@ const RelocationServices: React.FC = () => {
                 description="Relocating to Connecticut? Our LGBTQ+-led team provides full-service relocation support — neighborhood matching, community integration, vendor introductions, and remote closing support."
                 canonical="https://www.gayrealestatect.net/relocation"
                 keywords="LGBTQ relocation Connecticut, gay couple moving to CT, relocating to Connecticut services, moving to Connecticut LGBTQ support"
-                structuredData={[relocationSchema, relocationFaqSchema]}
+                structuredData={[relocationSchema, relocationFaqSchema, {
+                    '@context': 'https://schema.org',
+                    '@type': 'BreadcrumbList',
+                    itemListElement: [
+                        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.gayrealestatect.net/' },
+                        { '@type': 'ListItem', position: 2, name: 'For Buyers', item: 'https://www.gayrealestatect.net/first-time-buyers' },
+                        { '@type': 'ListItem', position: 3, name: 'Relocation Services', item: 'https://www.gayrealestatect.net/relocation' },
+                    ],
+                }]}
                 ogImage="https://www.gayrealestatect.net/gay_couple_moving_ct.png"
                 ogImageAlt="LGBTQ+ Relocation Services in Connecticut"
             />

@@ -44,10 +44,74 @@ const phases = [
     },
 ];
 
+const BASE_URL = 'https://www.gayrealestatect.net';
+
+const sellersGuideStructuredData = [
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is the biggest mistake Connecticut sellers make?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Overpricing is the #1 mistake CT sellers make. An overpriced home sits, collects days-on-market stigma, and ultimately sells for less than a correctly priced home would have. A Comparative Market Analysis (CMA) and strategic pricing session are essential from day one."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How long does it take to sell a home in Connecticut?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The average Connecticut home currently spends about 11 days on market with a list-to-sale ratio of 102%. From listing to closing, the typical timeline is approximately 35 days, though this varies by market conditions and pricing strategy."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How is my home marketed to LGBTQ+ buyers?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Your home will be marketed not just on the MLS, but across digital channels where serious buyers search — including Zillow, Realtor.com premium placement, targeted social media advertising, and the LGBTQ+ Real Estate Alliance network."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What happens after I accept an offer on my Connecticut home?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Once under contract, significant work remains: inspection negotiations, appraisal management, buyer financing verification, title search, attorney coordination, and final walkthrough preparation. Your agent manages every step to ensure a smooth closing."
+                }
+            }
+        ]
+    },
+    {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": "How to Sell Your Connecticut Home for Maximum Value",
+        "description": "A 5-phase strategy for pricing, staging, marketing, and closing your Connecticut home sale.",
+        "step": phases.map((phase, i) => ({
+            "@type": "HowToStep",
+            "position": i + 1,
+            "name": phase.title,
+            "text": phase.body,
+        })),
+        "totalTime": "P35D",
+    },
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": `${BASE_URL}/` },
+            { "@type": "ListItem", "position": 2, "name": "Seller's Guide", "item": `${BASE_URL}/sellers-guide` },
+        ],
+    },
+];
+
 const SellersGuide: React.FC = () => {
     const [activeStage, setActiveStage] = useState(0);
     const [expandedPhase, setExpandedPhase] = useState<number | null>(0);
-    
+
     useEffect(() => { window.scrollTo(0, 0); }, []);
 
     const togglePhase = (index: number) => {
@@ -61,54 +125,18 @@ const SellersGuide: React.FC = () => {
     ];
 
     return (
-        <div 
+        <div
             className="min-h-screen font-sans relative selection:bg-purple-500/10"
             style={{ background: 'linear-gradient(160deg, #fdf4ff 0%, #fff7f0 25%, #f0f9ff 50%, #f7fff4 75%, #fdf4ff 100%)' }}
         >
             <SEOHead
-                title="Connecticut Seller's Guide | GayRealEstateCT.net"
-                description="Complete guide to selling your Connecticut home — pricing, staging, marketing, and closing."
+                title="Connecticut Home Seller's Guide | GayRealEstateCT.net"
+                description="A 5-phase strategy for Connecticut home sellers — pricing, staging, premium marketing, offers, and closing. LGBTQ+-led agents who know how to get you top dollar."
                 canonical="https://www.gayrealestatect.net/sellers-guide"
                 ogImage="https://www.gayrealestatect.net/hero-house.png"
-                ogImageAlt="GayRealEstateCT.net - LGBTQ+ Friendly Real Estate in Connecticut"
-                structuredData={{
-                    "@context": "https://schema.org",
-                    "@type": "FAQPage",
-                    "mainEntity": [
-                        {
-                            "@type": "Question",
-                            "name": "What is the biggest mistake Connecticut sellers make?",
-                            "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": "Overpricing is the #1 mistake CT sellers make. An overpriced home sits, collects days-on-market stigma, and ultimately sells for less than a correctly priced home would have. A Comparative Market Analysis (CMA) and strategic pricing session are essential from day one."
-                            }
-                        },
-                        {
-                            "@type": "Question",
-                            "name": "How long does it take to sell a home in Connecticut?",
-                            "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": "The average Connecticut home currently spends about 11 days on market with a list-to-sale ratio of 102%. From listing to closing, the typical timeline is approximately 35 days, though this varies by market conditions and pricing strategy."
-                            }
-                        },
-                        {
-                            "@type": "Question",
-                            "name": "How is my home marketed to LGBTQ+ buyers?",
-                            "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": "Your home will be marketed not just on the MLS, but across digital channels where serious buyers search — including Zillow, Realtor.com premium placement, targeted social media advertising, and the LGBTQ+ Real Estate Alliance network."
-                            }
-                        },
-                        {
-                            "@type": "Question",
-                            "name": "What happens after I accept an offer on my Connecticut home?",
-                            "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": "Once under contract, significant work remains: inspection negotiations, appraisal management, buyer financing verification, title search, attorney coordination, and final walkthrough preparation. Your agent manages every step to ensure a smooth closing."
-                            }
-                        }
-                    ]
-                }}
+                ogImageAlt="Connecticut Home Seller's Guide — GayRealEstateCT.net"
+                keywords="sell home Connecticut, Connecticut home selling guide, LGBTQ realtor seller Connecticut, how to sell home CT"
+                structuredData={sellersGuideStructuredData}
             />
 
             <nav className="absolute top-0 left-0 right-0 p-4 z-10">

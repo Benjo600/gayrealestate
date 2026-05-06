@@ -28,7 +28,7 @@ const Header: React.FC = () => {
     },
     {
       name: "For Buyers",
-      link: "/about#team",
+      link: "/first-time-buyers",
       icon: <ShoppingBag className="h-4 w-4 text-neutral-500 dark:text-white" />,
       isDropdown: true,
       dropdownItems: [
@@ -40,7 +40,7 @@ const Header: React.FC = () => {
     },
     {
       name: "For Sellers",
-      link: "/about#team",
+      link: "/sellers-guide",
       icon: <Tag className="h-4 w-4 text-neutral-500 dark:text-white" />,
       isDropdown: true,
       dropdownItems: [
