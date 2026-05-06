@@ -186,10 +186,13 @@ export default async (request: Request, context: Context) => {
     description = "See what LGBTQ+ clients say about our Connecticut real estate services.";
   }
 
-  // 1. Remove existing meta/canonical to prevent duplicates
+  // 1. Remove existing meta to prevent duplicates
+  // NOTE: canonical is intentionally NOT removed or re-injected here.
+  // react-helmet-async sets the canonical client-side, and Googlebot executes JS.
+  // Injecting a second canonical server-side causes "Duplicate, Google chose different
+  // canonical than user" because Googlebot ends up seeing two <link rel="canonical"> tags.
   text = text.replace(/<title>.*?<\/title>/, "");
   text = text.replace(/<meta name="description" content=".*?" \/>/g, "");
-  text = text.replace(/<link rel="canonical" href=".*?" \/>/g, "");
   text = text.replace(/<meta property="og:title" content=".*?" \/>/g, "");
   text = text.replace(/<meta property="og:description" content=".*?" \/>/g, "");
   text = text.replace(/<meta property="og:url" content=".*?" \/>/g, "");
@@ -199,7 +202,6 @@ export default async (request: Request, context: Context) => {
   const metaTags = `
     <title>${title}</title>
     <meta name="description" content="${description}" />
-    <link rel="canonical" href="${canonicalUrl}" />
     <meta property="og:title" content="${title}" />
     <meta property="og:description" content="${description}" />
     <meta property="og:url" content="${canonicalUrl}" />
