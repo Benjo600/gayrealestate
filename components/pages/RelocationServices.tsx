@@ -72,6 +72,45 @@ const RelocationServices: React.FC = () => {
         }
     };
 
+    const relocationFaqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What LGBTQ+-friendly neighborhoods are in Connecticut?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Top LGBTQ+-friendly areas include West Hartford (walkable, vibrant downtown — the #1 LGBTQ+-friendly suburb in CT), New Haven (Yale-anchored arts scene, strong queer community), Glastonbury (top-rated schools, welcoming community), and Litchfield County (privacy, land, and a longstanding LGBTQ+ second-home community)."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I buy a home in Connecticut without being there in person?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. For clients moving from NYC, Boston, or beyond, we handle virtual tours with a live agent, remote offer and document signing, third-party inspection management, and full closing support. You don't have to be in Connecticut until the day you pick up your keys."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do you help LGBTQ+ relocators integrate into Connecticut communities?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We make introductions to local LGBTQ+ organizations, events, and community groups from day one. Our services include LGBTQ+ community group introductions, local event calendars, professional networking connections, and ongoing check-ins post-move."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What does a typical Connecticut relocation cost?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Home prices vary by area: West Hartford ($380k–$800k), Glastonbury ($320k–$650k), New Haven ($250k–$700k), Farmington Valley ($400k–$900k), and Fairfield County ($500k–$3M+). Our relocation consultation is complimentary — we help match you to the right community and price range."
+                }
+            }
+        ]
+    };
+
     return (
         <div 
             className="min-h-screen font-sans relative selection:bg-purple-500/20"
@@ -82,7 +121,7 @@ const RelocationServices: React.FC = () => {
                 description="Relocating to Connecticut? Our LGBTQ+-led team provides full-service relocation support — neighborhood matching, community integration, vendor introductions, and remote closing support."
                 canonical="https://www.gayrealestatect.net/relocation-services"
                 keywords="LGBTQ relocation Connecticut, gay couple moving to CT, relocating to Connecticut services, moving to Connecticut LGBTQ support"
-                structuredData={relocationSchema}
+                structuredData={[relocationSchema, relocationFaqSchema]}
                 ogImage="https://www.gayrealestatect.net/gay_couple_moving_ct.png"
                 ogImageAlt="LGBTQ+ Relocation Services in Connecticut"
             />

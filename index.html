@@ -38,10 +38,15 @@
     "name": "GayRealEstateCT.net",
     "description": "Connecting the LGBTQ+ community with trusted, inclusive real estate agents, mortgage lenders, and attorneys in Connecticut.",
     "url": "https://www.gayrealestatect.net/",
+    "logo": "https://www.gayrealestatect.net/logo.png",
+    "image": "https://www.gayrealestatect.net/hero-house.png",
     "areaServed": {
       "@type": "State",
       "name": "Connecticut"
-    }
+    },
+    "sameAs": [
+      "https://twitter.com/GayRealEstateCT"
+    ]
   }
   </script>
 
@@ -86,14 +91,17 @@
 <body class="bg-slate-50 text-slate-900 antialiased selection:bg-brand-100 selection:text-brand-900">
   <div id="root"></div>
 
-  <!-- Google Analytics — TODO: Replace G-XXXXXXXXXX with your real GA4 Measurement ID -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
-  </script>
+  <!--
+    Google Analytics — DISABLED: No valid GA4 Measurement ID configured.
+    TODO: REPLACE WITH REAL GA4 ID — uncomment and replace G-XXXXXXXXXX below:
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+  -->
 
   <script type="module" src="/index.tsx"></script>
 

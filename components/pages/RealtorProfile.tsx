@@ -61,7 +61,7 @@ const RealtorProfile: React.FC = () => {
                 image: imageUrl,
                 url: canonicalUrl,
                 worksFor: {
-                    '@type': 'Organization',
+                    '@type': 'RealEstateAgent',
                     name: 'GayRealEstateCT.net',
                     url: BASE_URL,
                 },
