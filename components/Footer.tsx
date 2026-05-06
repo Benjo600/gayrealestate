@@ -58,7 +58,7 @@ const Footer: React.FC = () => {
               {[
                 { label: 'First-Time Home Buying', href: '/first-time-buyers' },
                 { label: 'Mortgage Calculator', href: '/mortgage-calculator' },
-                { label: 'Relocation Services', href: '/relocation-services' },
+                { label: 'Relocation Services', href: '/relocation' },
                 { label: "Buyer's Guide", href: '/buyers-guide' }
               ].map(({ label, href }, i) => (
                 <li key={i}>

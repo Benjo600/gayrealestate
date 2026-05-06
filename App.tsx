@@ -49,7 +49,7 @@ const App: React.FC = () => {
           {/* Resource Pages */}
           <Route path="/first-time-buyers" element={<FirstTimeBuyers />} />
           <Route path="/mortgage-calculator" element={<MortgageCalculator />} />
-          <Route path="/relocation-services" element={<RelocationServices />} />
+          <Route path="/relocation" element={<RelocationServices />} />
           <Route path="/buyers-guide" element={<BuyersGuide />} />
           <Route path="/home-valuation" element={<HomeValuation />} />
           <Route path="/sellers-guide" element={<SellersGuide />} />

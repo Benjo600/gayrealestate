@@ -179,7 +179,7 @@ export default async (request: Request, context: Context) => {
   } else if (path === "/mortgage-calculator") {
     title = "Connecticut Mortgage Calculator | LGBTQ+ Home Buying | GayRealEstateCT.net";
     description = "Estimate your monthly mortgage payment for Connecticut homes. Includes principal, interest, taxes, insurance, PMI, and HOA.";
-  } else if (path === "/relocation-services") {
+  } else if (path === "/relocation") {
     title = "LGBTQ+ Relocation Services in Connecticut | GayRealEstateCT.net";
     description = "Relocating to Connecticut? Our LGBTQ+-led team provides full-service relocation support — neighborhood matching, community integration, and remote closing support.";
   } else if (path === "/home-valuation") {
