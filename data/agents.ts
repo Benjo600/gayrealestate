@@ -114,7 +114,7 @@ export const agents: Record<string, Agent> = {
         name: "Jake Earl",
         title: "VP, Mortgage Banker | Total Mortgage",
         tagline: "Top 1% Lender turning complex finances into approvals.",
-        image: "/images/jake.jpg?v=2",
+        image: "/images/jake.jpg",
         heroImageStyle: { objectFit: 'cover', objectPosition: 'top center' },
         bio: "With over 15 years in the mortgage industry, Jake Earl has earned a reputation as a top-tier professional, recognized in the Top 1% of Mortgage Lenders Nationwide and ranked as the #2 Lender at Total Mortgage in 2024. Since beginning his career in 2010, Jake has consistently delivered smart, tailored home loan solutions—particularly for high-achieving professionals and first-time homebuyers.\n\nJake's success stems from his client-first philosophy. He takes a highly personalized approach, carefully assessing each borrower's unique financial picture to recommend mortgage programs that align with both short-term goals and long-term plans. His dedication to ethical practices, integrity, and transparency has helped him build a business driven almost entirely by word-of-mouth referrals.\n\nKnown for his ability to navigate even the most complex loan scenarios, Jake is relentless in finding solutions. Whether guiding a first-time buyer through their first home purchase or assisting clients with challenging financial backgrounds, he is committed to going the extra mile to deliver results.",
         role: "lender",
