@@ -80,32 +80,32 @@ const BLOG_DATA: Record<string, { title: string; description: string; content?: 
 };
 
 const AGENT_DATA: Record<string, { title: string; description: string; bio: string; specialties: string[] }> = {
-  "arek": { 
-    title: "Arek Wtulich | LGBTQ+ Real Estate Agent in CT", 
+  "arek": {
+    title: "Arek Wtulich | LGBTQ+ Real Estate Agent in CT",
     description: "Expert real estate guidance from the co-founder of the CT LGBTQ+ Real Estate Alliance.",
     bio: "Arek Wtulich is a full-time, licensed CT Realtor who proudly serves the LGBTQ+ community and allies. Since 2020, Arek has helped buyers and sellers across the state with optimism and clear communication.",
     specialties: ["First-Time Homebuyers", "LGBTQ+ Relocation", "Listing Specialist", "Multi-family Homes"]
   },
-  "abby": { 
-    title: "Abby Dudarewicz | Inclusive Realtor in Connecticut", 
+  "abby": {
+    title: "Abby Dudarewicz | Inclusive Realtor in Connecticut",
     description: "Helping LGBTQ+ families and individuals find their perfect home in CT.",
     bio: "Abby Dudarewicz is a Connecticut Realtor with SERHANT. CT. She is passionate about helping LGBTQ+ buyers, sellers, and families feel informed and confident.",
     specialties: ["Residential Sales", "Buyer Representation", "LGBTQ+ Families", "Hartford & Tolland Counties"]
   },
-  "travis": { 
-    title: "Travis Lipinski | Litchfield County Real Estate Expert", 
+  "travis": {
+    title: "Travis Lipinski | Litchfield County Real Estate Expert",
     description: "Specializing in second homes and weekend retreats in Litchfield County.",
     bio: "Travis Lipinski is a Litchfield County expert with over a decade of experience in property management and real estate sales in Northwestern CT.",
     specialties: ["Residential and Commercial RE", "Airbnb host", "Leases", "Second Home Properties"]
   },
-  "jake": { 
-    title: "Jake Earl | LGBTQ+ Friendly Mortgage Expert", 
+  "jake": {
+    title: "Jake Earl | LGBTQ+ Friendly Mortgage Expert",
     description: "Top 1% mortgage lender helping you navigate your CT home purchase.",
     bio: "Jake Earl is a Top 1% Mortgage Lender nationwide with over 15 years of experience turning complex finances into approvals for CT home buyers.",
     specialties: ["Complex Loan Scenarios", "First-Time Homebuyers", "High-Achieving Professionals", "Tailored Mortgage Solutions"]
   },
-  "carolyn": { 
-    title: "Carolyn Futtner | LGBTQ+ Real Estate Attorney", 
+  "carolyn": {
+    title: "Carolyn Futtner | LGBTQ+ Real Estate Attorney",
     description: "Protecting your home and your relationship with expert legal guidance in CT.",
     bio: "Carolyn Futtner is a highly experienced real estate attorney specializing in closings, trusts, and estates to protect LGBTQ+ families.",
     specialties: ["Real Estate Transactions", "Wills", "Trusts & Estates", "Probate & Business Planning"]
@@ -115,7 +115,7 @@ const AGENT_DATA: Record<string, { title: string; description: string; bio: stri
 export default async (request: Request, context: Context) => {
   const url = new URL(request.url);
   let path = url.pathname;
-  
+
   // Normalize path: remove trailing slash for consistency
   if (path.length > 1 && path.endsWith("/")) {
     path = path.slice(0, -1);
@@ -144,7 +144,7 @@ export default async (request: Request, context: Context) => {
 
   let text = await response.text();
   const BASE_DOMAIN = "https://www.gayrealestatect.net";
-  
+
   let title = "GayRealEstateCT.net | LGBTQ+ Friendly Real Estate in Connecticut";
   let description = "Find trusted, LGBTQ+ friendly real estate agents, mortgage lenders, and attorneys in Connecticut.";
   let pageContent = "Your one-stop shop for inclusive home buying, selling, and relocation in CT.";
@@ -157,7 +157,7 @@ export default async (request: Request, context: Context) => {
       description = BLOG_DATA[slug].description;
       pageContent = BLOG_DATA[slug].content || description;
     }
-  } 
+  }
   // Agent Logic
   else if (path.startsWith("/agent/")) {
     const id = path.replace("/agent/", "");
@@ -201,6 +201,7 @@ export default async (request: Request, context: Context) => {
   const canonicalUrl = `${BASE_DOMAIN}${path}`;
   const metaTags = `
     <title>${title}</title>
+    <link rel="canonical" href="${canonicalUrl}" />
     <meta name="description" content="${description}" />
     <meta property="og:title" content="${title}" />
     <meta property="og:description" content="${description}" />
@@ -208,7 +209,7 @@ export default async (request: Request, context: Context) => {
     <meta property="og:type" content="${path.startsWith("/blog/") ? "article" : "website"}" />
   `;
   text = text.replace("</head>", `${metaTags}</head>`);
-  
+
 
 
   return new Response(text, {
