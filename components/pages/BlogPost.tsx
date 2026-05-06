@@ -194,7 +194,7 @@ const BlogPost: React.FC = () => {
                     '@type': 'Article',
                     headline: post.title,
                     description: post.excerpt,
-                    image: post.image,
+                    image: post.image.startsWith('http') ? post.image : `${BASE_URL}${post.image}`,
                     datePublished: post.date,
                     dateModified: post.date,
                     author: { '@type': 'Person', name: post.author, jobTitle: post.authorRole },

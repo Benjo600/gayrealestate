@@ -208,22 +208,35 @@ export default async (request: Request, context: Context) => {
   // "Duplicate, Google chose different canonical than user" GSC error.
   text = text.replace(/<title>.*?<\/title>/, "");
   text = text.replace(/<meta name="description" content=".*?" \/>/g, "");
+  text = text.replace(/<meta property="og:type" content=".*?" \/>/g, "");
   text = text.replace(/<meta property="og:title" content=".*?" \/>/g, "");
   text = text.replace(/<meta property="og:description" content=".*?" \/>/g, "");
   text = text.replace(/<meta property="og:url" content=".*?" \/>/g, "");
   text = text.replace(/<meta property="og:image" content=".*?" \/>/g, "");
   text = text.replace(/<meta property="og:image:alt" content=".*?" \/>/g, "");
+  text = text.replace(/<meta name="twitter:card" content=".*?" \/>/g, "");
+  text = text.replace(/<meta name="twitter:title" content=".*?" \/>/g, "");
+  text = text.replace(/<meta name="twitter:description" content=".*?" \/>/g, "");
+  text = text.replace(/<meta name="twitter:image" content=".*?" \/>/g, "");
+  text = text.replace(/<meta name="twitter:image:alt" content=".*?" \/>/g, "");
 
   const canonicalUrl = `${BASE_DOMAIN}${path}`;
+  const ogType = path.startsWith("/blog/") ? "article" : "website";
   const metaTags = `
     <title>${title}</title>
     <meta name="description" content="${description}" />
+    <meta property="og:type" content="${ogType}" />
     <meta property="og:title" content="${title}" />
     <meta property="og:description" content="${description}" />
     <meta property="og:url" content="${canonicalUrl}" />
-    <meta property="og:type" content="${path.startsWith("/blog/") ? "article" : "website"}" />
     <meta property="og:image" content="${ogImage}" />
     <meta property="og:image:alt" content="${ogImageAlt}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@GayRealEstateCT" />
+    <meta name="twitter:title" content="${title}" />
+    <meta name="twitter:description" content="${description}" />
+    <meta name="twitter:image" content="${ogImage}" />
+    <meta name="twitter:image:alt" content="${ogImageAlt}" />
   `;
   text = text.replace("</head>", `${metaTags}</head>`);
 
