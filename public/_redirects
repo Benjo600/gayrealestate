@@ -1,10 +1,6 @@
 # Redirect non-www to www and force HTTPS
 https://gayrealestatect.net/* https://www.gayrealestatect.net/:splat 301!
 
-# Remove trailing slashes (except root) to keep canonical URLs consistent
-# Must come before the SPA catch-all so Netlify evaluates it first
-/:path/  /:path  301!
-
 # Legacy Static Page Redirects
 /agents        /about    301
 /agents.html   /about    301
