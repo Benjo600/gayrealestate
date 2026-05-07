@@ -125,6 +125,8 @@ const FirstTimeBuyers: React.FC = () => {
                 title="First-Time Home Buying Guide for LGBTQ+ Buyers in Connecticut | GayRealEstateCT.net"
                 description="Your comprehensive step-by-step guide to buying your first home in Connecticut as an LGBTQ+ buyer. Learn about financing, finding inclusive agents, legal protections, and protecting your investment."
                 canonical="https://www.gayrealestatect.net/first-time-buyers"
+                ogImage="https://www.gayrealestatect.net/lgbtq_first_time_buyer.png"
+                ogImageAlt="LGBTQ+ First-Time Home Buyer Guide for Connecticut"
                 keywords="first time home buyer Connecticut LGBTQ, LGBTQ first time buyer guide CT, gay couple buying first home Connecticut, home buying steps Connecticut"
                 structuredData={structuredData}
             />

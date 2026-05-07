@@ -200,7 +200,12 @@ const BlogPost: React.FC = () => {
                     image: absoluteImage,
                     datePublished: post.date,
                     dateModified: post.date,
-                    author: { '@type': 'Person', name: post.author, jobTitle: post.authorRole },
+                    author: {
+                        '@type': 'Person',
+                        name: post.author,
+                        jobTitle: post.authorRole,
+                        ...(agentId ? { url: `${BASE_URL}/agent/${agentId}` } : {}),
+                    },
                     publisher: {
                         '@type': 'Organization',
                         name: 'GayRealEstateCT.net',

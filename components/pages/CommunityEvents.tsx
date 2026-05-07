@@ -15,6 +15,9 @@ const communityStructuredData = [
         '@type': 'Event',
         name: 'Monthly Legends Drag Revue at Chez Est',
         description: 'Join the legendary House of Chez for a spectacular showcase of local and national drag excellence in a luxury setting.',
+        startDate: '2026-06-07T21:00:00-04:00',
+        eventStatus: 'https://schema.org/EventScheduled',
+        eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
         eventSchedule: {
             '@type': 'Schedule',
             repeatFrequency: 'P1M',
@@ -41,6 +44,9 @@ const communityStructuredData = [
         '@type': 'Event',
         name: 'Sky Casper Drag Brunches',
         description: 'The ultimate Sunday experience. Gourmet dining paired with world-class performances in Connecticut\'s most beautiful venues.',
+        startDate: '2026-06-08T11:00:00-04:00',
+        eventStatus: 'https://schema.org/EventScheduled',
+        eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
         location: {
             '@type': 'Place',
             name: 'Various Locations',

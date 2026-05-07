@@ -142,7 +142,7 @@ const MortgageCalculator: React.FC = () => {
                 canonical={`${BASE_URL}/mortgage-calculator`}
                 keywords="Connecticut mortgage calculator, CT home loan calculator, LGBTQ mortgage estimate, monthly mortgage payment calculator Connecticut"
                 ogImage={`${BASE_URL}/hero-house.png`}
-                ogImageAlt="GayRealEstateCT.net - LGBTQ+ Friendly Real Estate in Connecticut"
+                ogImageAlt="Connecticut Mortgage Calculator — LGBTQ+ Home Buying Guide"
                 structuredData={mortgageStructuredData}
             />
 

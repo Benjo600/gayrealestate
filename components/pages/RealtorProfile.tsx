@@ -86,7 +86,7 @@ const RealtorProfile: React.FC = () => {
                         '@type': 'ListItem',
                         position: 2,
                         name: 'Our Team',
-                        item: `${BASE_URL}/about#team`,
+                        item: `${BASE_URL}/about`,
                     },
                     {
                         '@type': 'ListItem',
