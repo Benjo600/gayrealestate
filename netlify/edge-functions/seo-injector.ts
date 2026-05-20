@@ -153,14 +153,6 @@ export default async (request: Request, context: Context) => {
     }
   }
 
-  // Pass search engine crawlers through to Netlify's prerender service
-  // (prerender=true in netlify.toml) so they receive fully rendered HTML.
-  const BOT_PATTERNS = ['Googlebot', 'bingbot', 'Slurp', 'DuckDuckBot', 'Baiduspider', 'facebookexternalhit', 'Twitterbot', 'LinkedInBot', 'Pinterestbot', 'Applebot'];
-  const ua = request.headers.get('user-agent') || '';
-  if (BOT_PATTERNS.some(bot => ua.toLowerCase().includes(bot.toLowerCase()))) {
-    return;
-  }
-
   const response = await context.next();
   const contentType = response.headers.get("content-type");
 

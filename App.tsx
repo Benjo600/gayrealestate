@@ -8,8 +8,9 @@ import HomePage from './components/pages/HomePage';
 import RealtorProfile from './components/pages/RealtorProfile';
 import BlogPost from './components/pages/BlogPost';
 
+import BlogIndex from './components/pages/BlogIndex';
+
 // Resource Pages - Keep Lazy
-const BlogIndex = lazy(() => import('./components/pages/BlogIndex'));
 const FirstTimeBuyers = lazy(() => import('./components/pages/FirstTimeBuyers'));
 const MortgageCalculator = lazy(() => import('./components/pages/MortgageCalculator'));
 const RelocationServices = lazy(() => import('./components/pages/RelocationServices'));

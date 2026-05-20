@@ -1,12 +1,11 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ArrowRight, Medal, Target, MapPin, Building2, Quote, BadgeCheck, Star, CheckCircle2, Landmark, Scale, Instagram, Briefcase } from 'lucide-react';
 import { agents } from '../data/agents';
 import { motion } from 'framer-motion';
 import { ExploreProfileButton } from './ui/explore-profile-button';
 
 const AgentFinder: React.FC = () => {
-  const navigate = useNavigate();
   const allMembers = Object.values(agents);
 
   // Separate agents (top row) from support professionals (bottom row)
@@ -124,10 +123,9 @@ const AgentFinder: React.FC = () => {
 
               {/* Action Button */}
               <div className="pt-2">
-                <ExploreProfileButton
-                  label="View Full Profile"
-                  onClick={() => navigate(`/agent/${agent.id}`)}
-                />
+                <Link to={`/agent/${agent.id}`} className="block">
+                  <ExploreProfileButton label="View Full Profile" />
+                </Link>
               </div>
             </div>
           </div>
