@@ -1,4 +1,5 @@
 import type { Context } from "@netlify/edge-functions";
+import { SSR_BLOG_POSTS, SSR_AGENTS } from "./_ssr-data.ts";
 
 const BASE_DOMAIN = "https://www.gayrealestatect.net";
 const DEFAULT_IMAGE = `${BASE_DOMAIN}/hero-house.png`;
@@ -153,6 +154,29 @@ export default async (request: Request, context: Context) => {
     }
   }
 
+  const BOT_PATTERNS = ["Googlebot", "bingbot", "Slurp", "DuckDuckBot", "Baiduspider", "facebookexternalhit", "Twitterbot", "LinkedInBot", "Pinterestbot", "Applebot"];
+  const ua = request.headers.get("user-agent") || "";
+  const isBot = BOT_PATTERNS.some(bot => ua.toLowerCase().includes(bot.toLowerCase()));
+
+  if (isBot) {
+    if (path.startsWith("/blog/")) {
+      const slug = path.replace("/blog/", "");
+      const post = SSR_BLOG_POSTS[slug];
+      if (post) {
+        const meta = BLOG_DATA[slug];
+        return buildBlogSsrResponse(post, `${BASE_DOMAIN}${path}`, meta?.description ?? post.title);
+      }
+    }
+    if (path.startsWith("/agent/")) {
+      const id = path.replace("/agent/", "");
+      const agent = SSR_AGENTS[id];
+      if (agent) {
+        const meta = AGENT_DATA[id];
+        return buildAgentSsrResponse(agent, `${BASE_DOMAIN}${path}`, meta?.description ?? agent.title);
+      }
+    }
+  }
+
   const response = await context.next();
   const contentType = response.headers.get("content-type");
 
@@ -288,6 +312,146 @@ export default async (request: Request, context: Context) => {
     headers: response.headers,
   });
 };
+
+const SSR_STYLES = `
+  *{box-sizing:border-box}
+  body{font-family:Georgia,serif;max-width:820px;margin:0 auto;padding:1.5rem 1.25rem;color:#1a1a1a;background:#fff;line-height:1.7}
+  nav{font-family:sans-serif;font-size:.9rem;margin-bottom:1.5rem}
+  nav a{color:#7c3aed;text-decoration:none}
+  h1{font-size:1.9rem;line-height:1.25;margin:0 0 .5rem;color:#111}
+  h2{font-size:1.3rem;margin:2rem 0 .5rem;color:#222}
+  h3{font-size:1.1rem;margin:1.5rem 0 .4rem;color:#333}
+  p{margin:0 0 1rem}
+  ul,ol{padding-left:1.4rem;margin:0 0 1rem}
+  li{margin-bottom:.4rem}
+  strong{color:#111}
+  a{color:#7c3aed}
+  .meta{font-family:sans-serif;font-size:.85rem;color:#666;margin-bottom:1.5rem}
+  .hero-img{width:100%;height:auto;border-radius:8px;margin-bottom:1.5rem}
+  .lead-paragraph{font-size:1.1rem;font-weight:500;color:#333}
+  .cta{background:#f3e8ff;border-left:4px solid #7c3aed;padding:1rem 1.25rem;margin:2rem 0;border-radius:0 6px 6px 0;font-family:sans-serif}
+  .cta a{color:#7c3aed;font-weight:600}
+  .tag{display:inline-block;background:#f3e8ff;color:#5b006b;font-size:.75rem;font-weight:600;padding:.2rem .6rem;border-radius:99px;margin:.2rem .2rem 0 0;font-family:sans-serif}
+  .stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:.75rem;margin:1rem 0}
+  .stat{background:#f8f4ff;border:1px solid #e9d5ff;border-radius:8px;padding:.75rem;font-family:sans-serif}
+  .stat-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:#7c3aed;font-weight:700}
+  .stat-value{font-size:.9rem;font-weight:600;color:#1a1a1a;margin-top:.2rem}
+  footer{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid #e5e7eb;font-family:sans-serif;font-size:.875rem;color:#555}
+  footer a{color:#7c3aed;text-decoration:none;font-weight:600}
+`;
+
+function ssrHead(title: string, description: string, canonicalUrl: string, ogImage: string, type: "article" | "website" = "website", jsonLd?: string): string {
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>${escHtml(title)}</title>
+<meta name="description" content="${escHtml(description)}">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<link rel="canonical" href="${canonicalUrl}">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="${type}">
+<meta property="og:title" content="${escHtml(title)}">
+<meta property="og:description" content="${escHtml(description)}">
+<meta property="og:url" content="${canonicalUrl}">
+<meta property="og:image" content="${ogImage}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="GayRealEstateCT.net">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@GayRealEstateCT">
+<meta name="twitter:title" content="${escHtml(title)}">
+<meta name="twitter:description" content="${escHtml(description)}">
+<meta name="twitter:image" content="${ogImage}">
+${jsonLd ? `<script type="application/ld+json">${jsonLd}</script>` : ""}
+<style>${SSR_STYLES}</style>
+</head>
+<body>`;
+}
+
+function escHtml(s: string): string {
+  return s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+function formatDate(iso: string): string {
+  const [y, m, d] = iso.split("-").map(Number);
+  return new Date(y, m - 1, d).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+}
+
+function buildBlogSsrResponse(post: import("./_ssr-data.ts").SsrBlogPost, canonicalUrl: string, description: string): Response {
+  const jsonLd = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": post.title,
+    "author": { "@type": "Person", "name": post.author },
+    "datePublished": post.date,
+    "image": post.image,
+    "publisher": { "@type": "Organization", "name": "GayRealEstateCT.net", "url": BASE_DOMAIN },
+  });
+
+  const html = ssrHead(`${post.title} | Gay Real Estate CT`, description, canonicalUrl, post.image, "article", jsonLd)
+    + `<nav><a href="/">← GayRealEstateCT.net</a></nav>
+<article>
+<img class="hero-img" src="${post.image}" alt="${escHtml(post.title)}" width="820" height="430" loading="eager">
+<h1>${escHtml(post.title)}</h1>
+<div class="meta">${escHtml(post.author)} &nbsp;·&nbsp; ${formatDate(post.date)} &nbsp;·&nbsp; ${escHtml(post.readTime)}</div>
+${post.content}
+</article>
+<div class="cta">
+  <strong>Ready to find your LGBTQ+-welcoming home in Connecticut?</strong><br>
+  <a href="/">Connect with our team →</a>
+</div>
+<footer>
+  <p><a href="/">GayRealEstateCT.net</a> &nbsp;·&nbsp; LGBTQ+ Friendly Real Estate in Connecticut</p>
+  <p><a href="/blog">← Back to Blog</a></p>
+</footer>
+</body></html>`;
+
+  return new Response(html, { headers: { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "public, max-age=3600" } });
+}
+
+function buildAgentSsrResponse(agent: import("./_ssr-data.ts").SsrAgent, canonicalUrl: string, description: string): Response {
+  const credHtml = agent.credentials.map(c => `<li>${escHtml(c.label)}</li>`).join("\n");
+  const specHtml = agent.specialties.map(s => `<span class="tag">${escHtml(s)}</span>`).join(" ");
+  const statsHtml = agent.stats.map(s =>
+    `<div class="stat"><div class="stat-label">${escHtml(s.label)}</div><div class="stat-value">${escHtml(s.value)}</div></div>`
+  ).join("\n");
+  const bioHtml = agent.bio.split("\n\n").map(p => `<p>${escHtml(p)}</p>`).join("\n");
+
+  const jsonLd = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": agent.name,
+    "jobTitle": agent.title,
+    "image": agent.image,
+    "url": canonicalUrl,
+    "worksFor": { "@type": "Organization", "name": "GayRealEstateCT.net" },
+  });
+
+  const html = ssrHead(`${agent.name} | Gay Real Estate CT`, description, canonicalUrl, agent.image, "website", jsonLd)
+    + `<nav><a href="/">← GayRealEstateCT.net</a></nav>
+<article>
+<img class="hero-img" src="${agent.image}" alt="${escHtml(agent.name)}" width="820" height="500" loading="eager">
+<h1>${escHtml(agent.name)}</h1>
+<p class="meta">${escHtml(agent.title)}</p>
+<div class="stat-row">${statsHtml}</div>
+<h2>About</h2>
+${bioHtml}
+<h2>Specialties</h2>
+<p>${specHtml}</p>
+<h2>Credentials</h2>
+<ul>${credHtml}</ul>
+${agent.bookingLink ? `<div class="cta"><strong>Ready to get started?</strong><br><a href="${agent.bookingLink}">Book a consultation with ${escHtml(agent.name)} →</a></div>` : `<div class="cta"><strong>Have questions?</strong><br><a href="/contact">Contact our team →</a></div>`}
+</article>
+<footer>
+  <p><a href="/">GayRealEstateCT.net</a> &nbsp;·&nbsp; LGBTQ+ Friendly Real Estate in Connecticut</p>
+  <p><a href="/about">← Meet the full team</a></p>
+</footer>
+</body></html>`;
+
+  return new Response(html, { headers: { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "public, max-age=3600" } });
+}
 
 export const config = {
   path: "/*",
