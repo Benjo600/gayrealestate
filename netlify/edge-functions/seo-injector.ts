@@ -153,6 +153,15 @@ export default async (request: Request, context: Context) => {
     }
   }
 
+  // Pass search engine crawlers through to Netlify's prerender service
+  // (enabled in Site Settings → Build & Deploy → Prerendering in the Netlify dashboard)
+  // so they receive fully rendered HTML instead of the SPA shell.
+  const BOT_PATTERNS = ['Googlebot', 'bingbot', 'Slurp', 'DuckDuckBot', 'Baiduspider', 'facebookexternalhit', 'Twitterbot', 'LinkedInBot', 'Pinterestbot', 'Applebot'];
+  const ua = request.headers.get('user-agent') || '';
+  if (BOT_PATTERNS.some(bot => ua.toLowerCase().includes(bot.toLowerCase()))) {
+    return;
+  }
+
   const response = await context.next();
   const contentType = response.headers.get("content-type");
 
@@ -185,6 +194,9 @@ export default async (request: Request, context: Context) => {
       ogImage = agent.image;
       ogImageAlt = agent.title;
     }
+  } else if (path === "/blog") {
+    title = "LGBTQ+ Real Estate Blog | GayRealEstateCT.net";
+    description = "Expert guides, neighborhood spotlights, and market insights for LGBTQ+ home buyers and sellers in Connecticut.";
   } else if (path === "/") {
     title = "GayRealEstateCT.net | LGBTQ+ Friendly Real Estate Agents in Connecticut";
     description = "Find trusted, LGBTQ+ friendly real estate agents, mortgage lenders, and attorneys in Connecticut. Your one-stop shop for inclusive home buying.";
@@ -225,38 +237,53 @@ export default async (request: Request, context: Context) => {
   } else if (path === "/privacy-policy") {
     title = "Privacy Policy & Data Protection | GayRealEstateCT.net";
     description = "Our commitment to your privacy. Learn how we protect your data with a focus on LGBTQ+ security and non-disclosure.";
+  } else if (path === "/contact") {
+    title = "Contact Us | GayRealEstateCT.net — LGBTQ+ Real Estate Connecticut";
+    description = "Get in touch with our LGBTQ+-led Connecticut real estate team. Connect with a trusted agent, mortgage lender, or attorney who understands your community.";
   }
 
-  // Remove existing meta tags to prevent duplicates.
-  // NOTE: canonical is intentionally NOT removed or re-injected here.
-  // react-helmet-async injects canonical client-side, and Googlebot executes JS.
-  // A server-side canonical would create a duplicate that triggers the
-  // "Duplicate, Google chose different canonical than user" GSC error.
+  // Remove existing meta tags to prevent duplicates before re-injecting.
   text = text.replace(/<title>.*?<\/title>/, "");
   text = text.replace(/<meta name="description" content=".*?" \/>/g, "");
+  text = text.replace(/<meta name="robots" content=".*?" \/>/g, "");
+  text = text.replace(/<link rel="canonical" href=".*?" \/>/g, "");
+  text = text.replace(/<meta property="og:locale" content=".*?" \/>/g, "");
   text = text.replace(/<meta property="og:type" content=".*?" \/>/g, "");
   text = text.replace(/<meta property="og:title" content=".*?" \/>/g, "");
   text = text.replace(/<meta property="og:description" content=".*?" \/>/g, "");
   text = text.replace(/<meta property="og:url" content=".*?" \/>/g, "");
   text = text.replace(/<meta property="og:image" content=".*?" \/>/g, "");
+  text = text.replace(/<meta property="og:image:width" content=".*?" \/>/g, "");
+  text = text.replace(/<meta property="og:image:height" content=".*?" \/>/g, "");
   text = text.replace(/<meta property="og:image:alt" content=".*?" \/>/g, "");
+  text = text.replace(/<meta property="og:site_name" content=".*?" \/>/g, "");
   text = text.replace(/<meta name="twitter:card" content=".*?" \/>/g, "");
   text = text.replace(/<meta name="twitter:title" content=".*?" \/>/g, "");
   text = text.replace(/<meta name="twitter:description" content=".*?" \/>/g, "");
   text = text.replace(/<meta name="twitter:image" content=".*?" \/>/g, "");
   text = text.replace(/<meta name="twitter:image:alt" content=".*?" \/>/g, "");
 
+  const NOINDEX_PATHS = new Set(["/blog/lgbtq-events-connecticut-march-2026"]);
   const canonicalUrl = `${BASE_DOMAIN}${path}`;
   const ogType = path.startsWith("/blog/") ? "article" : "website";
+  const robotsContent = NOINDEX_PATHS.has(path)
+    ? "noindex, nofollow"
+    : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1";
   const metaTags = `
     <title>${title}</title>
     <meta name="description" content="${description}" />
+    <meta name="robots" content="${robotsContent}" />
+    <link rel="canonical" href="${canonicalUrl}" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="${ogType}" />
     <meta property="og:title" content="${title}" />
     <meta property="og:description" content="${description}" />
     <meta property="og:url" content="${canonicalUrl}" />
     <meta property="og:image" content="${ogImage}" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="${ogImageAlt}" />
+    <meta property="og:site_name" content="GayRealEstateCT.net" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@GayRealEstateCT" />
     <meta name="twitter:title" content="${title}" />

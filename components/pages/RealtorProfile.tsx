@@ -86,7 +86,7 @@ const RealtorProfile: React.FC = () => {
                         '@type': 'ListItem',
                         position: 2,
                         name: 'Our Team',
-                        item: `${BASE_URL}/about#team`,
+                        item: `${BASE_URL}/about`,
                     },
                     {
                         '@type': 'ListItem',
@@ -116,7 +116,7 @@ const RealtorProfile: React.FC = () => {
                     title={agentSEOData.pageTitle}
                     description={agentSEOData.pageDescription}
                     canonical={agentSEOData.canonicalUrl}
-                    ogType="profile"
+                    ogType="website"
                     ogImage={agentSEOData.imageUrl}
                     ogImageAlt={`${agent.name} — ${agent.title}`}
                     keywords={`${agent.name}, ${agent.title}, ${agent.specialties.join(', ')}, LGBTQ realtor Connecticut`}
@@ -223,8 +223,9 @@ const RealtorProfile: React.FC = () => {
                             {agent.instagram && (
                                 <div className="mb-6 px-1">
                                     <a 
-                                        href={`https://instagram.com/${agent.instagram.replace('@', '')}`} 
-                                        target="_blank" 
+                                        href={`https://instagram.com/${agent.instagram.replace('@', '')}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                         className="flex items-center gap-3 py-3 px-4 bg-white/5 rounded-2xl border border-white/10 text-white/90 hover:bg-white/10 transition-all"
                                     >
                                         <Instagram className="w-4 h-4 text-purple-400" />
@@ -287,7 +288,7 @@ const RealtorProfile: React.FC = () => {
                                         {agent.instagram && (
                                             <div className="mt-10 pt-6 border-t border-slate-100">
                                                 <p className="text-[10px] uppercase font-black tracking-widest text-slate-400 mb-4">Instagram</p>
-                                                <a href={`https://instagram.com/${agent.instagram.replace('@', '')}`} target="_blank" className="flex items-center gap-3 text-slate-700 font-semibold text-sm">
+                                                <a href={`https://instagram.com/${agent.instagram.replace('@', '')}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-slate-700 font-semibold text-sm">
                                                     <div className="w-8 h-8 rounded-lg bg-pink-50 flex items-center justify-center">
                                                         <Instagram className="w-4 h-4 text-pink-600" />
                                                     </div>
@@ -367,7 +368,7 @@ const RealtorProfile: React.FC = () => {
                                 {agent.instagram && (
                                     <div>
                                         <p className="text-[10px] uppercase font-bold tracking-widest text-slate-400 mb-4">Instagram</p>
-                                        <a href={`https://instagram.com/${agent.instagram.replace('@', '')}`} target="_blank" className="flex items-center gap-3 text-slate-600 hover:text-purple-600 transition-colors">
+                                        <a href={`https://instagram.com/${agent.instagram.replace('@', '')}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-slate-600 hover:text-purple-600 transition-colors">
                                             <Instagram className="w-5 h-5" />
                                             <span className="text-sm font-light">{agent.instagram}</span>
                                         </a>

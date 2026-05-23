@@ -21,6 +21,7 @@ const PrivacyPolicy = lazy(() => import('./components/pages/PrivacyPolicy'));
 const Reviews = lazy(() => import('./components/pages/Reviews'));
 const AboutUs = lazy(() => import('./components/pages/AboutUs'));
 const CommunityEvents = lazy(() => import('./components/pages/CommunityEvents'));
+const ContactPage = lazy(() => import('./components/pages/ContactPage'));
 const NotFound = lazy(() => import('./components/pages/NotFound'));
 
 // Global loading fallback
@@ -60,6 +61,7 @@ const App: React.FC = () => {
           <Route path="/about" element={<AboutUs />} />
           <Route path="/community" element={<CommunityEvents />} />
           <Route path="/blog" element={<BlogIndex />} />
+          <Route path="/contact" element={<ContactPage />} />
           {/* Fallback */}
           <Route path="*" element={<NotFound />} />
         </Routes>

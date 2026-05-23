@@ -7,6 +7,65 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { MapPin, ExternalLink, Sparkles, Users, Clock, ArrowUpRight, Star } from 'lucide-react';
 
+const BASE_URL = 'https://www.gayrealestatect.net';
+
+const communityStructuredData = [
+    {
+        '@context': 'https://schema.org',
+        '@type': 'Event',
+        name: 'Monthly Legends Drag Revue at Chez Est',
+        description: 'Join the legendary House of Chez for a spectacular showcase of local and national drag excellence in a luxury setting.',
+        startDate: '2026-06-07T21:00:00-04:00',
+        eventStatus: 'https://schema.org/EventScheduled',
+        eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+        eventSchedule: {
+            '@type': 'Schedule',
+            repeatFrequency: 'P1M',
+            byDay: 'https://schema.org/Saturday',
+        },
+        location: {
+            '@type': 'Place',
+            name: 'Chez Est',
+            address: {
+                '@type': 'PostalAddress',
+                streetAddress: '458 Wethersfield Avenue',
+                addressLocality: 'Hartford',
+                addressRegion: 'CT',
+                postalCode: '06114',
+                addressCountry: 'US',
+            },
+        },
+        organizer: { '@type': 'Organization', name: 'Chez Est', url: 'https://chezest.com' },
+        url: 'https://chezest.com/events-calendar',
+        audience: { '@type': 'Audience', audienceType: 'LGBTQ+ Community' },
+    },
+    {
+        '@context': 'https://schema.org',
+        '@type': 'Event',
+        name: 'Sky Casper Drag Brunches',
+        description: 'The ultimate Sunday experience. Gourmet dining paired with world-class performances in Connecticut\'s most beautiful venues.',
+        startDate: '2026-06-08T11:00:00-04:00',
+        eventStatus: 'https://schema.org/EventScheduled',
+        eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+        location: {
+            '@type': 'Place',
+            name: 'Various Locations',
+            address: { '@type': 'PostalAddress', addressRegion: 'CT', addressCountry: 'US' },
+        },
+        organizer: { '@type': 'Organization', name: 'Sky Casper Entertainment', url: 'https://skycasper.com' },
+        url: 'https://skycasper.com/events/',
+        audience: { '@type': 'Audience', audienceType: 'LGBTQ+ Community' },
+    },
+    {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: `${BASE_URL}/` },
+            { '@type': 'ListItem', position: 2, name: 'Community Hub', item: `${BASE_URL}/community` },
+        ],
+    },
+];
+
 const CommunityEvents: React.FC = () => {
     const featuredEvents = recentEvents.filter(e => e.featured);
     const regularEvents = recentEvents.filter(e => !e.featured);
@@ -14,11 +73,13 @@ const CommunityEvents: React.FC = () => {
     return (
         <div className="min-h-screen bg-[#fdf4ff] font-sans relative overflow-x-hidden text-slate-900 mt-12 transition-colors duration-700">
             <SEOHead
-                title="Community Hub | Premium LGBTQ+ Events & Culture in CT"
-                description="Join the vibrant heart of Connecticut's LGBTQ+ community. Explore legendary venues, iconic drag performances, and exclusive local events curated by GayRealEstateCT.net."
+                title="Community Hub | LGBTQ+ Events & Culture in Connecticut"
+                description="Explore Connecticut's best LGBTQ+ venues, legendary drag performances, and community events. Your guide to inclusive nightlife and culture in CT."
                 canonical="https://www.gayrealestatect.net/community"
                 ogImage="https://www.gayrealestatect.net/images/events/community-hero.png"
                 ogImageAlt="LGBTQ+ Community Events in Connecticut"
+                keywords="LGBTQ events Connecticut, gay bars Hartford CT, drag shows Connecticut, LGBTQ community CT, queer nightlife Connecticut"
+                structuredData={communityStructuredData}
             />
 
             {/* Premium Soft Pink & Rainbow Radial Background */}

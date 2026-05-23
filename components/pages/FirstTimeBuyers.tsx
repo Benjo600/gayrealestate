@@ -78,21 +78,43 @@ const faqs = [
     },
 ];
 
+const BASE_URL = 'https://www.gayrealestatect.net';
+
 const FirstTimeBuyers: React.FC = () => {
     useEffect(() => { window.scrollTo(0, 0); }, []);
 
-    const faqSchema = {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": faqs.map(faq => ({
-            "@type": "Question",
-            "name": faq.q,
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": faq.a
-            }
-        }))
-    };
+    const structuredData = [
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqs.map(faq => ({
+                "@type": "Question",
+                "name": faq.q,
+                "acceptedAnswer": { "@type": "Answer", "text": faq.a }
+            }))
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "HowTo",
+            "name": "How to Buy Your First Home in Connecticut as an LGBTQ+ Buyer",
+            "description": "A step-by-step guide to buying your first home in Connecticut — written specifically for LGBTQ+ buyers.",
+            "step": steps.map((step, i) => ({
+                "@type": "HowToStep",
+                "position": i + 1,
+                "name": step.title,
+                "text": step.description,
+            })),
+            "totalTime": "P3M",
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": `${BASE_URL}/` },
+                { "@type": "ListItem", "position": 2, "name": "First-Time Buyers", "item": `${BASE_URL}/first-time-buyers` },
+            ],
+        },
+    ];
 
     return (
         <div
@@ -101,10 +123,12 @@ const FirstTimeBuyers: React.FC = () => {
         >
             <SEOHead
                 title="First-Time Home Buying Guide for LGBTQ+ Buyers in Connecticut | GayRealEstateCT.net"
-                description="Your comprehensive step-by-step guide to buying your first home in Connecticut as an LGBTQ+ buyer. Learn about financing, finding inclusive agents, and protecting your investment."
+                description="Your comprehensive step-by-step guide to buying your first home in Connecticut as an LGBTQ+ buyer. Learn about financing, finding inclusive agents, legal protections, and protecting your investment."
                 canonical="https://www.gayrealestatect.net/first-time-buyers"
+                ogImage="https://www.gayrealestatect.net/lgbtq_first_time_buyer.png"
+                ogImageAlt="LGBTQ+ First-Time Home Buyer Guide for Connecticut"
                 keywords="first time home buyer Connecticut LGBTQ, LGBTQ first time buyer guide CT, gay couple buying first home Connecticut, home buying steps Connecticut"
-                structuredData={faqSchema}
+                structuredData={structuredData}
             />
 
 

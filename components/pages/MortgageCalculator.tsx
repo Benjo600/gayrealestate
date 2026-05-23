@@ -49,6 +49,31 @@ const SliderInput: React.FC<{
     </div>
 );
 
+const BASE_URL = 'https://www.gayrealestatect.net';
+
+const mortgageStructuredData = [
+    {
+        '@context': 'https://schema.org',
+        '@type': 'WebApplication',
+        name: 'Connecticut Mortgage Calculator',
+        description: 'Estimate your monthly mortgage payment for Connecticut homes. Includes principal, interest, taxes, insurance, PMI, and HOA.',
+        url: `${BASE_URL}/mortgage-calculator`,
+        applicationCategory: 'FinanceApplication',
+        operatingSystem: 'Web',
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+        provider: { '@type': 'RealEstateAgent', name: 'GayRealEstateCT.net', url: BASE_URL },
+    },
+    {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: `${BASE_URL}/` },
+            { '@type': 'ListItem', position: 2, name: 'For Buyers', item: `${BASE_URL}/first-time-buyers` },
+            { '@type': 'ListItem', position: 3, name: 'Mortgage Calculator', item: `${BASE_URL}/mortgage-calculator` },
+        ],
+    },
+];
+
 const MortgageCalculator: React.FC = () => {
     const [homePrice, setHomePrice] = useState(450000);
     const [downPayPct, setDownPayPct] = useState(20);
@@ -114,10 +139,11 @@ const MortgageCalculator: React.FC = () => {
             <SEOHead
                 title="Connecticut Mortgage Calculator | LGBTQ+ Home Buying | GayRealEstateCT.net"
                 description="Estimate your monthly mortgage payment for Connecticut homes. Includes principal, interest, taxes, insurance, PMI, and HOA. LGBTQ+-friendly mortgage guidance included."
-                canonical="https://www.gayrealestatect.net/mortgage-calculator"
+                canonical={`${BASE_URL}/mortgage-calculator`}
                 keywords="Connecticut mortgage calculator, CT home loan calculator, LGBTQ mortgage estimate, monthly mortgage payment calculator Connecticut"
-                ogImage="https://www.gayrealestatect.net/hero-house.png"
-                ogImageAlt="GayRealEstateCT.net - LGBTQ+ Friendly Real Estate in Connecticut"
+                ogImage={`${BASE_URL}/hero-house.png`}
+                ogImageAlt="Connecticut Mortgage Calculator — LGBTQ+ Home Buying Guide"
+                structuredData={mortgageStructuredData}
             />
 
             {/* Back Nav */}

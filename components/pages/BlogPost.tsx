@@ -184,22 +184,55 @@ const BlogPost: React.FC = () => {
 
     const blogSEOData = useMemo(() => {
         if (!post) return null;
+        const canonicalUrl = `${BASE_URL}/blog/${post.slug}`;
+        const absoluteImage = post.image.startsWith('http') ? post.image : `${BASE_URL}${post.image}`;
         return {
             title: `${post.title} | Gay Real Estate CT`,
             description: post.excerpt,
-            canonical: `${BASE_URL}/blog/${post.slug}`,
+            canonical: canonicalUrl,
             structuredData: [
                 {
                     '@context': 'https://schema.org',
-                    '@type': 'Article',
+                    '@type': 'BlogPosting',
+                    '@id': canonicalUrl,
+                    mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalUrl },
                     headline: post.title,
                     description: post.excerpt,
-                    image: post.image.startsWith('http') ? post.image : `${BASE_URL}${post.image}`,
+                    image: absoluteImage,
                     datePublished: post.date,
                     dateModified: post.date,
-                    author: { '@type': 'Person', name: post.author, jobTitle: post.authorRole },
-                    publisher: { '@type': 'Organization', name: 'GayRealEstateCT.net', url: BASE_URL },
-                }
+                    articleSection: post.category,
+                    author: {
+                        '@type': 'Person',
+                        name: post.author,
+                        jobTitle: post.authorRole,
+                        ...(agentId ? { url: `${BASE_URL}/agent/${agentId}` } : {}),
+                    },
+                    publisher: {
+                        '@type': 'Organization',
+                        name: 'GayRealEstateCT.net',
+                        url: BASE_URL,
+                        logo: { '@type': 'ImageObject', url: `${BASE_URL}/logo.png` },
+                    },
+                },
+                {
+                    '@context': 'https://schema.org',
+                    '@type': 'BreadcrumbList',
+                    itemListElement: [
+                        { '@type': 'ListItem', position: 1, name: 'Home', item: `${BASE_URL}/` },
+                        { '@type': 'ListItem', position: 2, name: 'Blog', item: `${BASE_URL}/blog` },
+                        { '@type': 'ListItem', position: 3, name: post.title, item: canonicalUrl },
+                    ],
+                },
+                ...(post.faq ? [{
+                    '@context': 'https://schema.org',
+                    '@type': 'FAQPage',
+                    mainEntity: post.faq.map(({ question, answer }) => ({
+                        '@type': 'Question',
+                        name: question,
+                        acceptedAnswer: { '@type': 'Answer', text: answer },
+                    })),
+                }] : []),
             ]
         };
     }, [post]);
@@ -208,7 +241,17 @@ const BlogPost: React.FC = () => {
 
     return (
         <div className="min-h-screen bg-white selection:bg-brand-100 selection:text-brand-900 font-sans">
-            {blogSEOData && <SEOHead {...blogSEOData} ogType="article" ogImage={post.image} ogImageAlt={post.title} keywords={post.seoKeywords} />}
+            {blogSEOData && (
+                <SEOHead
+                    {...blogSEOData}
+                    ogType="article"
+                    ogImage={post.image.startsWith('http') ? post.image : `${BASE_URL}${post.image}`}
+                    ogImageAlt={post.title}
+                    keywords={post.seoKeywords}
+                    author={post.author}
+                    twitterCreator="@GayRealEstateCT"
+                />
+            )}
 
             {/* Sticky Progress Bar */}
             <div className="fixed top-0 left-0 right-0 h-1.5 z-[100] bg-slate-100/50 backdrop-blur-sm origin-left">
@@ -311,7 +354,7 @@ const BlogPost: React.FC = () => {
                     transition={{ duration: 0.8, delay: 0.3 }}
                     className="relative aspect-[16/9] md:aspect-[21/9] w-full rounded-[2.5rem] overflow-hidden shadow-2xl shadow-slate-200 border-8 border-white"
                 >
-                    <img src={post.image} alt={post.title} className="w-full h-full object-cover" />
+                    <img src={post.image} alt={post.title} className="w-full h-full object-cover" fetchPriority="high" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                 </motion.div>
             </div>
@@ -448,10 +491,14 @@ const BlogPost: React.FC = () => {
                     </div>
                     
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16">
-                        {BLOG_POSTS.filter(p => p.id !== post.id).slice(0, 3).map((p) => (
+                        {(() => {
+                            const sameCategory = BLOG_POSTS.filter(p => p.id !== post.id && p.category === post.category);
+                            const others = BLOG_POSTS.filter(p => p.id !== post.id && p.category !== post.category);
+                            return [...sameCategory, ...others].slice(0, 3);
+                        })().map((p) => (
                             <Link key={p.id} to={`/blog/${p.slug}`} className="group block">
                                 <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden mb-8 shadow-lg">
-                                    <img src={p.image} alt={p.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+                                    <img src={p.image} alt={p.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" loading="lazy" />
                                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                                 </div>
                                 <div className="space-y-4 px-2">

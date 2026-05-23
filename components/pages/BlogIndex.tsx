@@ -4,13 +4,36 @@ import { ArrowLeft, Calendar, Clock, User } from 'lucide-react';
 import SEOHead from '../SEOHead';
 import { BLOG_POSTS } from '../../data/blogs';
 
+const BASE_URL = 'https://www.gayrealestatect.net';
+
+const blogIndexStructuredData = [
+    {
+        '@context': 'https://schema.org',
+        '@type': 'Blog',
+        name: 'LGBTQ+ Real Estate Blog | GayRealEstateCT.net',
+        description: 'Expert guides, neighborhood spotlights, and market insights for LGBTQ+ home buyers and sellers in Connecticut.',
+        url: `${BASE_URL}/blog`,
+        publisher: { '@type': 'Organization', name: 'GayRealEstateCT.net', url: BASE_URL },
+    },
+    {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: `${BASE_URL}/` },
+            { '@type': 'ListItem', position: 2, name: 'Blog', item: `${BASE_URL}/blog` },
+        ],
+    },
+];
+
 const BlogIndex: React.FC = () => {
     return (
         <div className="min-h-screen bg-slate-50 font-sans selection:bg-purple-100 selection:text-purple-900">
             <SEOHead
                 title="LGBTQ+ Real Estate Blog | GayRealEstateCT.net"
-                description="Expert advice for LGBTQ+ home buyers and sellers in Connecticut. Browse guides, neighborhood spotlights, and market insights."
+                description="Expert guides, neighborhood spotlights, and market insights for LGBTQ+ home buyers and sellers in Connecticut. Browse all 30 in-depth articles."
                 canonical="https://www.gayrealestatect.net/blog"
+                keywords="LGBTQ real estate blog Connecticut, gay home buying guide CT, LGBTQ neighborhood guide Connecticut"
+                structuredData={blogIndexStructuredData}
             />
 
             <nav className="absolute top-0 left-0 right-0 p-4 z-10">
@@ -41,10 +64,11 @@ const BlogIndex: React.FC = () => {
                             className="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-slate-100 flex flex-col h-full"
                         >
                             <div className="relative aspect-[16/9] overflow-hidden bg-slate-100">
-                                <img 
-                                    src={post.image} 
+                                <img
+                                    src={post.image}
                                     alt={post.title}
                                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                    loading="lazy"
                                 />
                                 <div className="absolute top-4 left-4 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
                                     {post.category}

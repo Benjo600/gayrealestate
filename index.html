@@ -8,27 +8,16 @@
   <link rel="icon" type="image/png" href="/logo.png" />
   <link rel="apple-touch-icon" href="/logo.png" />
 
-  <!-- Primary SEO Meta -->
-  <meta name="description" content="LGBTQ+ Friendly Real Estate in Connecticut." />
-  <meta name="keywords" content="GayRealEstateCT, Connecticut LGBTQ+ Real Estate, Gay Friendly Realtors CT" />
-  <meta name="author" content="GayRealEstateCT.net" />
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <!-- Primary SEO Meta — title/description/robots managed per-page by react-helmet-async -->
   <meta name="theme-color" content="#7c3aed" />
   <meta name="google-site-verification" content="JqGiKUOBd3CmBXudvPW2Jm0O0MdsuS0ErU1CdPNjV5E" />
 
   <!-- Answer Engine Optimization (AEO) -->
   <link rel="llms-txt" href="/llms.txt" />
+  <link rel="llms-full-txt" href="/llms-full.txt" />
   <link rel="alternate" type="application/xml" title="Sitemap" href="/sitemap.xml" />
 
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="GayRealEstateCT.net | LGBTQ+ Friendly Real Estate Agents in Connecticut" />
-  <meta property="og:description" content="Find trusted, LGBTQ+ friendly real estate agents, mortgage lenders, and attorneys in Connecticut. Your one-stop shop for inclusive home buying and selling." />
-  <meta property="og:site_name" content="GayRealEstateCT.net" />
-  <meta property="og:locale" content="en_US" />
-  <meta property="og:url" content="https://www.gayrealestatect.net/" />
-  <meta property="og:image" content="https://www.gayrealestatect.net/hero-house.png" />
-  <meta property="og:image:alt" content="GayRealEstateCT.net - LGBTQ+ Friendly Real Estate in Connecticut" />
+  <!-- Open Graph / Facebook — managed per-page by react-helmet-async and the edge function -->
 
   <!-- Structured Data: Organization -->
   <script type="application/ld+json">
@@ -40,12 +29,21 @@
     "url": "https://www.gayrealestatect.net/",
     "logo": "https://www.gayrealestatect.net/logo.png",
     "image": "https://www.gayrealestatect.net/hero-house.png",
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "CT",
+      "addressCountry": "US"
+    },
     "areaServed": {
       "@type": "State",
       "name": "Connecticut"
     },
+    "knowsAbout": ["LGBTQ+ Real Estate", "Connecticut Real Estate", "Home Buying", "Home Selling", "Relocation Services", "Mortgage Lending", "Real Estate Law"],
     "sameAs": [
-      "https://twitter.com/GayRealEstateCT"
+      "https://twitter.com/GayRealEstateCT",
+      "https://www.instagram.com/gayrealestatect",
+      "https://www.facebook.com/gayrealestatect",
+      "https://www.linkedin.com/company/gayrealestatect"
     ]
   }
   </script>
