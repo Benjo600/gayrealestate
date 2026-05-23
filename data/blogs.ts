@@ -851,6 +851,206 @@ Lakefront properties here are rare, fiercely held, and range from rustic seasona
     readTime: "5 MIN READ",
     author: "Carolyn Futtner",
     authorRole: "Real Estate Attorney | MPF Law"
+  },
+  {
+    id: 27,
+    slug: "best-lgbtq-mortgage-lenders-connecticut",
+    title: "Best LGBTQ Mortgage Lenders in Connecticut",
+    excerpt: "Not all mortgage lenders are equally welcoming. Here's what to look for in an LGBTQ-affirming lender in Connecticut, and which questions to ask before you apply.",
+    seoKeywords: "LGBTQ mortgage lenders Connecticut, gay friendly mortgage broker CT, LGBT real estate agent lender referral, gay realtor recommended lenders CT, same sex mortgage lender CT",
+    content: `
+<p>Getting a mortgage is the biggest financial transaction most people will ever make. For LGBTQ+ buyers, the choice of lender carries an extra dimension: you want someone who is not just legally compliant with fair housing rules, but actively experienced with the documentation realities, communication sensitivities, and financial structures specific to our community.</p>
+<p>Jake Earl, VP and Mortgage Banker at Total Mortgage (Connecticut's largest mortgage lender), breaks down exactly what to look for — and the questions to ask before you commit to a lender. Your gay realtor or LGBT real estate agent should also be a key resource here: experienced gay real estate agents maintain relationships with affirming lenders and can refer you to someone they've worked with successfully on LGBTQ+ transactions before.</p>
+<h2>What Makes a Mortgage Lender Truly LGBTQ-Affirming?</h2>
+<p>Legal compliance is the floor, not the ceiling. Every mortgage lender in Connecticut is legally prohibited from discriminating based on sexual orientation or gender identity under both state law and the federal Fair Housing Act. But "won't discriminate" is different from "actively serves."</p>
+<p>An LGBTQ-affirming mortgage lender goes further:</p>
+<ul>
+<li>Understands domestic partnership income documentation, including how to handle income from partners who aren't yet legally married.</li>
+<li>Has a clear, respectful protocol for trans clients whose legal name may differ from their preferred name — and doesn't make this more complicated than it needs to be.</li>
+<li>Knows which LGBTQ-specific down payment assistance programs exist and proactively discusses them.</li>
+<li>Has a team that uses correct pronouns, doesn't make assumptions about family structure, and treats your relationship as normal — because it is.</li>
+</ul>
+<p>When in doubt, ask your gay realtor or LGBT real estate agent who they trust. Gay real estate agents who work frequently with LGBTQ+ buyers develop firsthand knowledge of which lenders perform well and which don't — that referral is worth more than any online review.</p>
+<h2>5 Questions to Ask a Mortgage Lender Before Applying</h2>
+<ol>
+<li><strong>Do you have experience working with same-sex and unmarried couples?</strong> This is a baseline question that reveals whether the lender has done this before or is figuring it out as they go. Experienced lenders can name specific documentation considerations and walk you through the process clearly.</li>
+<li><strong>How do you handle income documentation for domestic partners?</strong> If you and your partner are unmarried, your income will be combined for the application. Ask how they document this — some lenders have cleaner processes than others, and a rough experience here can delay your closing.</li>
+<li><strong>Are you familiar with CHFA programs and other Connecticut first-time buyer assistance?</strong> Connecticut's CHFA offers below-market rates and down payment assistance that can substantially reduce upfront costs. A good lender should know these programs cold and be able to walk you through eligibility in your first conversation.</li>
+<li><strong>What is your process for trans borrowers with name discrepancies?</strong> A lender who has navigated this before will answer this question smoothly and specifically. A lender who pauses, seems uncertain, or says "that's a title company question" may not have the experience you need.</li>
+<li><strong>What is your typical timeline from application to clear-to-close in Connecticut?</strong> This is a practical question that reveals operational competence. In a competitive market, a lender who takes 60 days to close when competitors close in 30 will cost you offers. Connecticut closing timelines average 30–45 days — know what you're agreeing to.</li>
+</ol>
+<h2>Connecticut-Specific Mortgage Programs Worth Knowing</h2>
+<ul>
+<li><strong>CHFA First-Time Homebuyer Program:</strong> The Connecticut Housing Finance Authority offers 30-year fixed-rate loans at below-market rates for first-time buyers meeting income and purchase price limits. Available statewide, with no restriction on sexual orientation or gender identity.</li>
+<li><strong>CHFA DAP (Down Payment Assistance Program):</strong> Up to $20,000 in zero-interest assistance, repayable when you sell or refinance. This can be the difference between being able to buy and not being able to buy for many first-time LGBTQ+ buyers.</li>
+<li><strong>USDA Loans (Rural Areas):</strong> If you're considering a home in Connecticut's more rural markets (Litchfield County, Eastern CT), USDA loans offer zero down payment for eligible properties. Income limits apply.</li>
+<li><strong>FHA Loans:</strong> 3.5% down payment minimum, more flexible credit requirements. Explicit fair housing protections apply — FHA explicitly prohibits LGBTQ+ discrimination.</li>
+</ul>
+<h2>Why Working With a Local Lender Often Beats a National Bank</h2>
+<p>Large national banks have LGBTQ+ inclusion policies and compliance training. But local Connecticut mortgage bankers often have operational advantages: they know the local appraisal market, have established relationships with Connecticut title companies and closing attorneys, and can often move faster than a national bank's pipeline.</p>
+<p>Total Mortgage, as Connecticut's largest lender with offices across the state, offers the scale of a large operation with local market knowledge. Jake Earl has closed LGBTQ+ client transactions across Hartford, New Haven, and Fairfield counties, and understands the specific nuances of each market. Our gay realtors and LGBT real estate agents regularly refer clients to Jake specifically because of his track record with LGBTQ+ buyers.</p>
+<h2>Red Flags to Watch For</h2>
+<ul>
+<li>A lender who seems unfamiliar with CHFA programs despite you being a first-time buyer.</li>
+<li>Uncomfortable or overly clinical responses to questions about domestic partnership income.</li>
+<li>Lenders who pressure you to decide before you've reviewed the Loan Estimate carefully.</li>
+<li>Unusually long estimated closing timelines without explanation.</li>
+</ul>
+<p>The right lender makes this process straightforward. You shouldn't have to educate your mortgage professional about your situation — they should be educating you. If something feels off, consult your gay realtor or LGBT real estate agent before proceeding.</p>
+    `,
+    image: "/generational_wealth_real_estate.png",
+    category: "FINANCE",
+    date: "2026-05-01",
+    readTime: "7 MIN READ",
+    author: "Jake Earl",
+    authorRole: "VP, Mortgage Banker | Total Mortgage"
+  },
+  {
+    id: 28,
+    slug: "best-places-to-live-for-gay-couples-new-england",
+    title: "Best Places to Live for Gay Couples in New England (2026)",
+    excerpt: "Comparing Connecticut, Massachusetts, Rhode Island, and Vermont for LGBTQ+ couples — with honest assessments of price, community, legal protections, and quality of life.",
+    seoKeywords: "best places to live for gay couples, gay realtor New England, gay real estate agent New England, LGBT real estate agent Connecticut, LGBT realtor Connecticut vs Massachusetts, LGBTQ places to live New England",
+    content: `
+<p>New England as a region punches above its weight for LGBTQ+ livability. All six states have strong legal protections, none of them are hostile territory, and several have been leading the country on LGBTQ+ rights for decades. But New England is not monolithic — and if you're choosing where to plant roots as a gay couple, the differences between states matter enormously.</p>
+<p>This guide compares Connecticut, Massachusetts, Rhode Island, Vermont, Maine, and New Hampshire across the factors that actually matter: legal protections, housing costs, community density, and quality of life.</p>
+<h2>Connecticut: The Best Value Proposition in New England</h2>
+<p>Connecticut has the strongest combination of legal protections, genuine LGBTQ+ community density, and relative affordability compared to the other states LGBTQ+ buyers consistently consider. Its legal framework is among the most comprehensive in the country — prohibiting discrimination in housing, employment, and public accommodations based on sexual orientation and gender identity since 1991.</p>
+<p>The key advantage: Connecticut's most LGBTQ+-welcoming markets (West Hartford, New Haven, Middletown) are significantly more affordable than comparable markets in Massachusetts. A home that would cost $900,000 in Newton, Massachusetts costs $500,000 in West Hartford — often with comparable schools and a similar LGBTQ+ community presence.</p>
+<p>For couples relocating from NYC, Connecticut also wins on commute time. West Hartford is a 2.5-hour drive to Manhattan; New Haven is 90 minutes by train. And Connecticut has an exceptionally strong network of gay realtors and LGBT real estate agents — particularly through the LGBTQ+ Real Estate Alliance's active Connecticut chapter — which makes the buying process smoother than in states with fewer specialist gay real estate agents.</p>
+<h2>Massachusetts: The Iconic Option</h2>
+<p>Massachusetts has a near-mythic status in LGBTQ+ history — it was the first state in the nation to legalize same-sex marriage in 2004. Its LGBTQ+ community is large, deeply established, and visible across multiple markets. Boston's South End and Jamaica Plain are among the most iconic gay neighborhoods in America. Northampton, in Western Massachusetts, has one of the highest per-capita LGBTQ+ populations of any city in the country.</p>
+<p>The tradeoff is cost. Boston-area real estate is among the most expensive in the nation — median single-family prices in communities comparable to West Hartford easily exceed $800,000. Northampton is more accessible but still running ahead of Connecticut's rural markets. For buyers with substantial budgets or significant coastal city equity to deploy, Massachusetts offers the deepest LGBTQ+ community roots in New England.</p>
+<h2>Rhode Island: Providence's Hidden LGBTQ+ Scene</h2>
+<p>Providence is an underrated LGBTQ+ destination. Brown University and RISD anchor a progressive, creative culture. The Fox Point neighborhood has a visible queer presence. Providence's housing costs are lower than Boston but trending upward rapidly. Newport is also worth noting — it has a quiet, established LGBTQ+ community, particularly among the second-home crowd. The state is small, which means community density is concentrated and social circles are tighter.</p>
+<h2>Vermont: The Liberal Sanctuary</h2>
+<p>Vermont was the first state to legalize civil unions (2000) and consistently ranks among the most LGBTQ+-affirming states in the country by every metric. Burlington has a visible queer scene that punches above its weight for a small city. Brattleboro and Woodstock attract LGBTQ+ buyers looking for rural small-town living.</p>
+<p>The limitation: Vermont is expensive for what you get. Housing stock is older, winters are more severe, and economic opportunity is more limited than in Connecticut or Massachusetts. It's an excellent choice for couples who prioritize a specific lifestyle — rural, community-oriented, low-density — over career proximity or urban amenities.</p>
+<h2>New Hampshire: Individual Freedom, Mixed Culture</h2>
+<p>New Hampshire lives by its "Live Free or Die" ethos, which translates to minimal government interference and lower taxes — but a more mixed community culture. Manchester and Portsmouth have growing LGBTQ+ communities, but the state doesn't have the same institutional commitment to inclusion that Connecticut or Massachusetts have built over decades. For buyers drawn by New Hampshire's tax advantages, the tradeoff is a less consistently affirming environment outside the urban centers.</p>
+<h2>Maine: The Destination, Not the Base</h2>
+<p>Maine is stunning and genuinely welcoming, but its geography and economic realities make it better suited to second-home buyers and remote workers with maximum flexibility. Portland has a vibrant LGBTQ+ scene and relatively accessible home prices. The rest of the state is vast, rural, and in some areas more conservative.</p>
+<h2>The Verdict for Most Gay Couples</h2>
+<p>For couples balancing legal protection, community density, housing affordability, and career access: Connecticut wins the calculus for most buyers. For those who prioritize historical LGBTQ+ community roots above all else and have the budget: Massachusetts. For those chasing lifestyle above economics: Vermont or Maine.</p>
+<p>Our team focuses on Connecticut, but we're happy to refer you to Alliance-affiliated gay realtors and LGBT real estate agents in any New England state if another market is a better fit for your situation. Whatever you decide, working with a gay real estate agent or LGBT realtor who knows the specific market will make an enormous difference in how smoothly the process goes.</p>
+    `,
+    image: "/inclusive_neighborhoods.png",
+    category: "NEIGHBORHOODS",
+    date: "2026-05-05",
+    readTime: "7 MIN READ",
+    author: "Jake Earl",
+    authorRole: "VP, Mortgage Banker | Total Mortgage"
+  },
+  {
+    id: 29,
+    slug: "lgbtq-down-payment-assistance-programs-connecticut",
+    title: "LGBTQ Down Payment Assistance Programs: Connecticut 2026",
+    excerpt: "A complete breakdown of down payment assistance programs available to LGBTQ+ buyers in Connecticut — including CHFA grants, national programs, and how to apply.",
+    seoKeywords: "LGBTQ down payment assistance, gay real estate agent down payment programs, LGBT realtor CHFA Connecticut, gay realtor assistance programs CT, CHFA down payment assistance Connecticut",
+    content: `
+<p>The down payment is the single biggest barrier to homeownership for most first-time buyers — and LGBTQ+ buyers, who face documented income disparities and higher rates of student debt, often carry this burden more acutely. The good news: there is real assistance available. The bad news: most buyers never hear about it.</p>
+<p>This guide covers every meaningful down payment assistance program available to LGBTQ+ buyers in Connecticut — what they are, how much they offer, and exactly how to access them. One of the most underrated advantages of working with an experienced gay realtor or LGBT real estate agent is that they know these programs and will proactively connect you with the right lender and resources before you even start your search.</p>
+<h2>Connecticut's CHFA Down Payment Assistance Program (DAP)</h2>
+<p>The Connecticut Housing Finance Authority's Down Payment Assistance Program is the most significant resource available to first-time buyers in the state. Here's what it actually offers:</p>
+<ul>
+<li><strong>Assistance amount:</strong> Up to $20,000 toward your down payment and closing costs.</li>
+<li><strong>Interest rate:</strong> 0% — no interest accrues on the assistance.</li>
+<li><strong>Repayment terms:</strong> The assistance is repaid when you sell the home, refinance, or pay off your mortgage. It is not a monthly payment obligation.</li>
+<li><strong>Eligibility:</strong> Must be a first-time buyer (or not have owned a home in the past three years). Income limits apply by county and household size. There is no restriction based on sexual orientation or gender identity.</li>
+</ul>
+<p>For a buyer purchasing a $350,000 home with a 5% down payment requirement, CHFA assistance can cover a significant portion of the required $17,500 down payment — potentially enabling a purchase that would otherwise be out of reach.</p>
+<h2>CHFA First-Time Homebuyer Program: The Rate Advantage</h2>
+<p>Separate from the down payment assistance, CHFA also offers below-market interest rates on 30-year fixed mortgages for first-time buyers. The rate discount is typically 0.25% to 0.75% below market — which translates to meaningful savings over the life of the loan.</p>
+<p>Using the CHFA first-time buyer rate in combination with the DAP is allowed and common. Ask your lender to stack these programs when modeling your options. Your gay realtor or LGBT real estate agent should be raising this conversation with you in your first meeting — not leaving it to the lender to discover.</p>
+<h2>National Programs Available to Connecticut LGBTQ+ Buyers</h2>
+<ul>
+<li><strong>FHA Loans:</strong> 3.5% minimum down payment for buyers with credit scores of 580+. FHA explicitly prohibits discrimination based on sexual orientation and gender identity.</li>
+<li><strong>Fannie Mae HomeReady:</strong> 3% down payment for buyers at or below 80% of area median income. Allows non-traditional income documentation, which can benefit domestic partners whose finances aren't legally combined.</li>
+<li><strong>Freddie Mac Home Possible:</strong> Similar to HomeReady — 3% down, income limits apply. Both programs are available through participating lenders across Connecticut.</li>
+<li><strong>USDA Rural Development Loans:</strong> Zero down payment for eligible properties in rural and suburban areas. Parts of Litchfield County, Eastern Connecticut, and Northern Connecticut qualify. Income limits apply.</li>
+</ul>
+<h2>LGBTQ+-Specific Financial Assistance Organizations</h2>
+<p>While most down payment programs are open to all eligible buyers and don't discriminate, a small number of organizations specifically prioritize LGBTQ+ homeownership:</p>
+<ul>
+<li><strong>National LGBTQ Task Force:</strong> Periodically administers homeownership assistance grants in partnership with housing nonprofits.</li>
+<li><strong>Connecticut Fair Housing Center (ctfairhousing.org):</strong> Provides counseling and, in some cases, connects buyers with targeted assistance programs. Their counselors are familiar with LGBTQ+ buyer needs.</li>
+<li><strong>Community Development Financial Institutions (CDFIs):</strong> Several CDFIs operating in Connecticut offer flexible mortgage products and targeted assistance for underserved buyers, including LGBTQ+ individuals.</li>
+</ul>
+<h2>How to Apply: Step by Step</h2>
+<ol>
+<li><strong>Complete a HUD-approved homeownership counseling course.</strong> This is required for CHFA program eligibility and takes approximately 6–8 hours (available online).</li>
+<li><strong>Get pre-approved with a CHFA-participating lender.</strong> Not all lenders offer CHFA programs — ask specifically. Total Mortgage is a CHFA-participating lender.</li>
+<li><strong>Apply for CHFA DAP at the same time as your mortgage application.</strong> Your lender will submit this on your behalf — it is not a separate application process.</li>
+<li><strong>Provide income documentation.</strong> CHFA will verify that your household income falls within their county-specific limits.</li>
+<li><strong>Close on your home.</strong> Assistance funds are disbursed at closing, reducing the cash you need to bring to the table.</li>
+</ol>
+<h2>Common Mistakes to Avoid</h2>
+<ul>
+<li><strong>Assuming you don't qualify.</strong> Income limits are higher than many buyers expect — particularly in lower-cost counties. Always check before ruling yourself out.</li>
+<li><strong>Not asking your lender about CHFA.</strong> Many lenders don't proactively discuss assistance programs. If they don't raise it, you should — and your gay real estate agent or LGBT realtor should be prompting this conversation.</li>
+<li><strong>Waiting until you find a house.</strong> Pre-approval and CHFA eligibility verification should happen before you start actively searching. Assistance approval takes time, and you don't want to lose a home because of paperwork.</li>
+<li><strong>Ignoring closing cost assistance.</strong> CHFA DAP covers closing costs in addition to down payment. These can add up to $5,000–$10,000 in a Connecticut transaction — don't overlook them.</li>
+</ul>
+    `,
+    image: "/lgbtq_first_time_buyer.png",
+    category: "FINANCE",
+    date: "2026-05-08",
+    readTime: "7 MIN READ",
+    author: "Jake Earl",
+    authorRole: "VP, Mortgage Banker | Total Mortgage"
+  },
+  {
+    id: 30,
+    slug: "what-is-the-lgbtq-real-estate-alliance",
+    title: "What Is the LGBTQ+ Real Estate Alliance?",
+    excerpt: "The LGBTQ+ Real Estate Alliance certifies gay realtors and LGBT real estate agents across the US. Here's what it does, why it matters, and how to find certified agents in Connecticut.",
+    seoKeywords: "LGBTQ real estate alliance, gay realtor certification, gay real estate agent organization, LGBT realtor certification Connecticut, LGBT real estate agent alliance, LGBTQ realtor training",
+    content: `
+<p>When you search for a gay realtor or LGBT real estate agent, the LGBTQ+ Real Estate Alliance is the most credible place to start. Founded in 2019, the Alliance is a professional trade organization with over 3,000 members across the United States dedicated to advancing LGBTQ+ homeownership, fighting housing discrimination, and professionalizing inclusive real estate practice.</p>
+<p>But what does Alliance membership actually mean for a gay real estate agent — and why should it matter when you're choosing an LGBT realtor in Connecticut?</p>
+<h2>What the LGBTQ+ Real Estate Alliance Does</h2>
+<p>The Alliance functions on two levels: advocacy and education. On the advocacy side, it engages with legislators, fair housing organizations, and industry groups to push for stronger protections for LGBTQ+ homebuyers and renters. It publishes research on LGBTQ+ homeownership gaps, tracks discrimination trends, and contributes to policy conversations at the national level.</p>
+<p>On the education side, it trains and certifies gay realtors and LGBT real estate agents in LGBTQ+ cultural competency — covering fair housing law, the specific needs of same-sex couples, trans-inclusive documentation practices, community considerations, and affirming communication. This training separates gay real estate agents who have made a deliberate investment in serving this community from those who simply market themselves with a rainbow flag.</p>
+<h2>Why Alliance Certification Matters for Connecticut Buyers</h2>
+<p>Connecticut has robust state-level protections for LGBTQ+ buyers — the state has prohibited housing discrimination based on sexual orientation since 1991 and gender identity since the same period. But legal protection and practical expertise are different things.</p>
+<p>An Alliance-certified gay realtor or LGBT real estate agent in Connecticut understands the legal landscape, yes — but they also know which Fairfield County towns have historically strong queer communities, which Greater Hartford neighborhoods have the most visible LGBTQ+ culture, how to navigate a closing when a trans client's legal name is still in transition, and which lenders in the state have explicit LGBTQ+ inclusion programs.</p>
+<p>That institutional knowledge isn't just nice to have. For many buyers, it's the difference between finding the right home quickly and spending a year feeling like a square peg. That's why Alliance certification is the clearest signal when evaluating a gay real estate agent or LGBT realtor.</p>
+<h2>How the Alliance Screens Its Members</h2>
+<p>Alliance membership isn't automatic. Members must complete training, agree to a code of conduct, and affirm their commitment to LGBTQ+ inclusion. The organization publishes a searchable directory at realestatealliance.org that lets buyers filter by state and specialty.</p>
+<p>In Connecticut, Alliance members include gay realtors and LGBT real estate agents specializing in Hartford County, New Haven County, Litchfield County, and the Fairfield County border with New York. Coverage is strong — particularly in the markets most popular with LGBTQ+ buyers.</p>
+<h2>The Alliance's Annual Report: LGBTQ+ Homeownership in America</h2>
+<p>Each year, the Alliance releases research on LGBTQ+ homeownership trends. The most recent data points to a persistent homeownership gap: LGBTQ+ Americans own homes at lower rates than comparable non-LGBTQ+ populations, driven by discrimination experiences, income disparities rooted in workplace discrimination, and lack of access to LGBTQ+-affirming financial professionals.</p>
+<p>Connecticut consistently performs above the national average for LGBTQ+ homeownership, in part because of its legal protections and in part because of the strong advocacy ecosystem — including the Alliance's active local chapter.</p>
+<h2>GayRealEstateCT and the Alliance</h2>
+<p>Our team at GayRealEstateCT.net is directly affiliated with the LGBTQ+ Real Estate Alliance. Arek Wtulich co-founded the Connecticut chapter and has been an active member since the organization's founding. Our gay realtors and LGBT real estate agents have collectively completed the Alliance's training programs and adhere to its professional standards.</p>
+<p>When you work with our team, you're getting gay real estate agents who have invested in this expertise — not agents who happen to be friendly to LGBTQ+ clients. That distinction shows up in every part of the process, from the first neighborhood conversation to the closing table.</p>
+<h2>Frequently Asked Questions</h2>
+<ul>
+<li><strong>Q: Is the LGBTQ+ Real Estate Alliance a government organization?</strong> No. It's a private professional trade organization, similar to the National Association of Realtors. It has no regulatory authority but functions as the clearest quality signal when evaluating a gay realtor or LGBT real estate agent.</li>
+<li><strong>Q: Do I have to use an Alliance member to be protected from discrimination?</strong> No. Connecticut law protects you regardless of who your agent is. But an Alliance-certified gay real estate agent or LGBT realtor brings specific training and commitment that goes beyond the legal minimum.</li>
+<li><strong>Q: How do I find Alliance-certified gay realtors or LGBT real estate agents in Connecticut?</strong> Visit realestatealliance.org and search by state. You can also contact our team directly — our gay realtors and LGBT real estate agents are all Alliance-affiliated and can connect you with the right specialist for your situation.</li>
+</ul>
+    `,
+    faq: [
+      {
+        question: "Is the LGBTQ+ Real Estate Alliance a government organization?",
+        answer: "No. It's a private professional trade organization, similar to the National Association of Realtors. It has no regulatory authority but functions as the clearest quality signal when evaluating a gay realtor or LGBT real estate agent."
+      },
+      {
+        question: "Do I have to use an Alliance member to be protected from housing discrimination?",
+        answer: "No. Connecticut law protects you regardless of who your agent is. But an Alliance-certified gay real estate agent or LGBT realtor brings specific training and commitment that goes beyond the legal minimum."
+      },
+      {
+        question: "How do I find Alliance-certified gay realtors or LGBT real estate agents in Connecticut?",
+        answer: "Visit realestatealliance.org and search by state. You can also contact our team directly — our gay realtors and LGBT real estate agents are all Alliance-affiliated and can connect you with the right specialist for your situation."
+      }
+    ],
+    image: "/gay_realtor_guide.png",
+    category: "GUIDES",
+    date: "2026-05-12",
+    readTime: "6 MIN READ",
+    author: "Jake Earl",
+    authorRole: "VP, Mortgage Banker | Total Mortgage"
   }
 ];
 
