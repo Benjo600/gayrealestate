@@ -12,6 +12,7 @@ export interface BlogPost {
   author: string;
   authorRole: string;
   seoKeywords?: string;
+  faq?: { question: string; answer: string }[];
 }
 
 export const BLOG_POSTS: BlogPost[] = [
@@ -659,7 +660,7 @@ Lakefront properties here are rare, fiercely held, and range from rustic seasona
     image: "/lgbtq_small_towns_ct.png",
     category: "RETIREMENT GUIDE",
     date: "2026-04-02",
-    readTime: "4 MIN READ",
+    readTime: "6 MIN READ",
     author: "Abby Dudarewicz",
     authorRole: "Licensed CT Realtor & LGBTQ+ Community Advocate"
   },
@@ -675,7 +676,7 @@ Lakefront properties here are rare, fiercely held, and range from rustic seasona
     image: "/nyc_vs_ct_real_estate.png",
     category: "MARKET COMPARISON",
     date: "2026-04-05",
-    readTime: "4 MIN READ",
+    readTime: "6 MIN READ",
     author: "Jake Earl",
     authorRole: "VP, Mortgage Banker | Total Mortgage"
   },
@@ -691,9 +692,9 @@ Lakefront properties here are rare, fiercely held, and range from rustic seasona
     image: "/ct_lgbtq_places.png",
     category: "MARKET TRENDS",
     date: "2026-04-08",
-    readTime: "4 MIN READ",
+    readTime: "6 MIN READ",
     author: "Arek Wtulich",
-    authorRole: "Licensed CT Realtor & Co — Founder, CT LGBTQ+ Real Estate Alliance"
+    authorRole: "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance"
   },
   {
     id: 19,
@@ -725,7 +726,7 @@ Lakefront properties here are rare, fiercely held, and range from rustic seasona
     date: "2026-04-14",
     readTime: "5 MIN READ",
     author: "Arek Wtulich",
-    authorRole: "Licensed CT Realtor & Co — Founder, CT LGBTQ+ Real Estate Alliance"
+    authorRole: "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance"
   },
   {
     id: 21,
@@ -741,7 +742,7 @@ Lakefront properties here are rare, fiercely held, and range from rustic seasona
     date: "2026-04-17",
     readTime: "5 MIN READ",
     author: "Arek Wtulich",
-    authorRole: "Licensed CT Realtor & Co — Founder, CT LGBTQ+ Real Estate Alliance"
+    authorRole: "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance"
   },
   {
     id: 22,
@@ -752,12 +753,26 @@ Lakefront properties here are rare, fiercely held, and range from rustic seasona
     content: `
 <p>Choosing a real estate agent is one of the most consequential decisions in a home search. For LGBTQ+ buyers, it carries an extra layer: you need a gay realtor or LGBT real estate agent who doesn't just tolerate your relationship or identity, someone who actively understands the unique legal, neighborhood, and community considerations that matter to you. The difference between a general agent and a truly affirming gay real estate agent can save you from the wrong neighborhood, the wrong lender, or a legally vulnerable closing.</p><p>This guide covers exactly what to look for, what to ask, and what red flags should send you walking out the door when you're searching for the right LGBT realtor in Connecticut.</p><h2>Why Your Gay Realtor's LGBTQ+ Competency Actually Matters</h2><p>Most realtors will tell you they're welcoming to all clients. That's a baseline, not a credential. A true gay realtor or LGBT real estate agent goes further. They know which neighborhoods in Connecticut have strong queer communities versus which are merely "tolerant." They understand the specific title and deed considerations for unmarried same-sex couples. They know which local lenders are welcoming and which have a history of subtle bias. They've worked with trans clients and understand name discrepancy issues in mortgage and title documentation.</p><p>These aren't hypothetical concerns. They're the everyday details that determine whether your home-buying experience is empowering or exhausting, and they're what separates a general agent from a genuine gay real estate agent.</p><h2>Red Flags: When to Walk Away From a Gay Realtor or LGBT Real Estate Agent</h2><ul><li>They use wrong pronouns after being corrected, or seem uncomfortable with your family structure.</li><li>They can't name any LGBTQ+-specific resources, organizations, or lenders in Connecticut.</li><li>They respond to LGBTQ+ questions with "I treat everyone the same", a well-meaning statement that avoids the specific expertise you actually need from a gay realtor.</li><li>They hesitate to discuss which neighborhoods have stronger versus weaker queer communities.</li><li>They have no verifiable LGBTQ+ client references.</li></ul><h2>Frequently Asked Questions</h2><ul><li><strong>Q:</strong> Is it legal for a realtor to discriminate against LGBTQ+ buyers in Connecticut?</li></ul><p>No. Connecticut has some of the strongest LGBTQ+ housing protections in the country, prohibiting discrimination based on sexual orientation and gender identity. File a complaint with the CT Commission on Human Rights and Opportunities (CHRO) if you experience bias, and reach out to a gay realtor or LGBT real estate agent who can advocate for you.</p><ul><li><strong>Q:</strong> Do I have to use a gay realtor to be protected?</li></ul><p>No, legal protections apply regardless of your agent. But working with an affirming gay real estate agent or LGBT realtor maximizes your experience and ensures you're getting guidance tailored to your actual needs.</p><ul><li><strong>Q:</strong> Can a straight realtor be a good LGBTQ+ ally?</li></ul><p>Absolutely. Allyship is about knowledge, commitment, and action, not identity. The tips above will help reveal whether any agent, regardless of their own identity, is genuinely equipped to serve as an effective LGBT real estate agent for your needs.</p>
     `,
+    faq: [
+      {
+        question: "Is it legal for a realtor to discriminate against LGBTQ+ buyers in Connecticut?",
+        answer: "No. Connecticut has some of the strongest LGBTQ+ housing protections in the country, prohibiting discrimination based on sexual orientation and gender identity. File a complaint with the CT Commission on Human Rights and Opportunities (CHRO) if you experience bias, and reach out to a gay realtor or LGBT real estate agent who can advocate for you."
+      },
+      {
+        question: "Do I have to use a gay realtor to be protected?",
+        answer: "No, legal protections apply regardless of your agent. But working with an affirming gay real estate agent or LGBT realtor maximizes your experience and ensures you're getting guidance tailored to your actual needs."
+      },
+      {
+        question: "Can a straight realtor be a good LGBTQ+ ally?",
+        answer: "Absolutely. Allyship is about knowledge, commitment, and action, not identity. The right questions will reveal whether any agent, regardless of their own identity, is genuinely equipped to serve as an effective LGBT real estate agent for your needs."
+      },
+    ],
     image: "/gay_realtor_guide.png",
     category: "EXPERT ADVICE",
     date: "2026-04-20",
     readTime: "3 MIN READ",
     author: "Arek Wtulich",
-    authorRole: "Licensed CT Realtor & Co — Founder, CT LGBTQ+ Real Estate Alliance"
+    authorRole: "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance"
   },
   {
     id: 23,
@@ -768,6 +783,20 @@ Lakefront properties here are rare, fiercely held, and range from rustic seasona
     content: `
 <p>Buying your first home in Connecticut as an LGBTQ+ person is genuinely exciting, and also genuinely complex. This guide walks you through every step of the process, with attention to the considerations that matter specifically to our community: legal protections, title decisions for unmarried couples, LGBTQ-affirming lenders, and the neighborhoods worth knowing.</p><p>This is not a generic home buying 101. This is the guide written specifically for you, and it covers why finding the right gay realtor or LGBT real estate agent is one of the most important steps in the entire process.</p><h2>Step 1: Know Your Legal Protections Before You Start</h2><p>Connecticut has prohibited housing discrimination based on sexual orientation since 1991, one of the earliest and strongest state-level protections in the country. Gender identity has been protected since the same period. This means:</p><ul><li>A seller cannot refuse to sell to you because you're LGBTQ+.</li><li>A landlord cannot refuse to rent to you because you're LGBTQ+.</li><li>A lender cannot deny you a mortgage because you're LGBTQ+.</li></ul><p>If you experience discrimination, the Connecticut Commission on Human Rights and Opportunities (CHRO) is your first point of contact. File a complaint at portal.ct.gov/CHRO. Federal Fair Housing Act protections also apply, though Connecticut's state-level protections have historically been stronger.</p><h2>Step 2: Get Your Finances Pre-Approved With an Affirming Lender</h2><p>Pre-approval before house hunting is non-negotiable. But for LGBTQ+ buyers, the choice of lender matters beyond just rate shopping. An LGBTQ-affirming lender understands:</p><ul><li>Domestic partnership income documentation, not all lenders handle this smoothly.</li><li>Name discrepancies on documents for trans buyers, a competent lender has a clear protocol.</li><li>LGBTQ-specific down payment assistance programs that may be available to you.</li></ul><p>Connecticut's CHFA (Connecticut Housing Finance Authority) offers down payment assistance programs available to first-time buyers regardless of sexual orientation or gender identity. The current CHFA First-Time Homebuyer Program called Time to Own offers below-market interest rates and down payment/closing costs assistance up to \$25,000. Ask your lender specifically about CHFA eligibility on your first call.</p><h2>Step 3: Understand Title and Deed Decisions for Couples</h2><p>If you're buying with a partner, the most important legal decision you'll make isn't the purchase price, it's how you hold title on the deed. Two options:</p><ul><li><strong>Option A:</strong> Joint Tenancy with Right of Survivorship: Each partner owns 100% of the property. If one dies, the other automatically inherits, regardless of any will. This is generally the stronger protection for LGBTQ+ couples.</li><li><strong>Option B:</strong> Tenancy in Common: Each partner owns a defined share. If one partner dies, their share goes to whoever is named in their will or estate plan, not automatically to you. For unmarried couples without updated estate planning, this can create complications.</li></ul><p>Connecticut requires attorneys to be present at closings, which is an advantage, your closing attorney should review your title options with you. If your agent doesn't raise this question, raise it yourself.</p><h2>Step 4: Find a Gay Realtor or LGBT Real Estate Agent Who Knows Your Community</h2><p>Your agent is your primary advocate throughout this process, and for LGBTQ+ first-time buyers, working with a gay realtor or LGBT real estate agent isn't just a preference, it's a strategic advantage. The right gay real estate agent brings knowledge that a general agent simply doesn't have: which neighborhoods are genuinely affirming versus merely tolerant, which HOA communities have active LGBTQ+ residents, and how to navigate situations where implicit bias may be affecting your transaction.</p><p>Look for a gay realtor or LGBT real estate agent who:</p><ul><li>Has specific experience with LGBTQ+ buyers and can provide community references.</li><li>Knows which neighborhoods align with your lifestyle and priorities, not just which ones are legally permissible.</li><li>Will proactively raise the legal and financial considerations specific to LGBTQ+ buyers.</li></ul><p>Our team at GayRealEstateCT.net includes certified gay realtors and LGBT real estate agents across Hartford County, New Haven County, and Litchfield County. Every agent on our team has community-specific experience and credentials, not just goodwill.</p><h2>Step 5: Understand Connecticut's First-Time Buyer Programs</h2><p>Connecticut has multiple first-time buyer programs that can significantly reduce your upfront costs:</p><ul><li>CHFA Time to Own: Up to \$25,000 in a form of forgivable loan toward your down payment.</li><li>HUD-Approved Housing Counseling: Free and low-cost counseling services from HUD-approved agencies in Connecticut help buyers understand their options, including LGBTQ+ buyers who want a confidential conversation about their specific situation.</li></ul><h2>Step 6: What to Expect at a Connecticut Closing</h2><p>Connecticut is one of a small number of states where a licensed attorney must oversee every real estate closing. This is buyer protection, but only if you have an attorney who is actually acting in your interest.</p><p>At the closing table, you'll sign the deed (which should reflect the title structure you've chosen), the mortgage documents, and a stack of disclosure and certification forms. The attorney should be able to answer every question you have, including questions about how your deed language protects your relationship, not just how it transfers the property.</p><h2>Frequently Asked Questions</h2><ul><li><strong>Q:</strong> Can my same-sex partner and I get a joint mortgage in Connecticut?</li></ul><p>Yes, absolutely. Connecticut lenders cannot discriminate based on sexual orientation. You and your partner are evaluated together on income, debt, and credit, the same as any couple.</p><ul><li><strong>Q:</strong> What if I'm trans and my legal name is different from my preferred name?</li></ul><p>This is a documentation question that comes up in mortgage and title processes. Work with a lender and closing attorney who have explicit experience with trans clients, your gay realtor or LGBT real estate agent should be able to refer you to the right professionals.</p><ul><li><strong>Q:</strong> Is there a minimum down payment required in Connecticut?</li></ul><p>With a conventional loan, the minimum is typically 3-5% down. FHA loans require 3.5%. CHFA programs can supplement your down payment. Work with your lender to find the combination that works for your situation.</p>
     `,
+    faq: [
+      {
+        question: "Can my same-sex partner and I get a joint mortgage in Connecticut?",
+        answer: "Yes, absolutely. Connecticut lenders cannot discriminate based on sexual orientation. You and your partner are evaluated together on income, debt, and credit, the same as any couple."
+      },
+      {
+        question: "What if I'm trans and my legal name is different from my preferred name?",
+        answer: "This is a documentation question that comes up in mortgage and title processes. Work with a lender and closing attorney who have explicit experience with trans clients. Your gay realtor or LGBT real estate agent should be able to refer you to the right professionals."
+      },
+      {
+        question: "Is there a minimum down payment required in Connecticut?",
+        answer: "With a conventional loan, the minimum is typically 3-5% down. FHA loans require 3.5%. CHFA programs can supplement your down payment. Work with your lender to find the combination that works for your situation."
+      },
+    ],
     image: "/lgbtq_first_time_buyer.png",
     category: "FIRST-TIME BUYERS",
     date: "2026-04-22",

@@ -30,7 +30,7 @@ const BlogIndex: React.FC = () => {
         <div className="min-h-screen bg-slate-50 font-sans selection:bg-purple-100 selection:text-purple-900">
             <SEOHead
                 title="LGBTQ+ Real Estate Blog | GayRealEstateCT.net"
-                description="Expert guides, neighborhood spotlights, and market insights for LGBTQ+ home buyers and sellers in Connecticut. Browse 15+ in-depth articles."
+                description="Expert guides, neighborhood spotlights, and market insights for LGBTQ+ home buyers and sellers in Connecticut. Browse 25+ in-depth articles."
                 canonical="https://www.gayrealestatect.net/blog"
                 keywords="LGBTQ real estate blog Connecticut, gay home buying guide CT, LGBTQ neighborhood guide Connecticut"
                 structuredData={blogIndexStructuredData}

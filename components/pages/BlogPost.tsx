@@ -194,12 +194,14 @@ const BlogPost: React.FC = () => {
                 {
                     '@context': 'https://schema.org',
                     '@type': 'BlogPosting',
+                    '@id': canonicalUrl,
                     mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalUrl },
                     headline: post.title,
                     description: post.excerpt,
                     image: absoluteImage,
                     datePublished: post.date,
                     dateModified: post.date,
+                    articleSection: post.category,
                     author: {
                         '@type': 'Person',
                         name: post.author,
@@ -222,6 +224,15 @@ const BlogPost: React.FC = () => {
                         { '@type': 'ListItem', position: 3, name: post.title, item: canonicalUrl },
                     ],
                 },
+                ...(post.faq ? [{
+                    '@context': 'https://schema.org',
+                    '@type': 'FAQPage',
+                    mainEntity: post.faq.map(({ question, answer }) => ({
+                        '@type': 'Question',
+                        name: question,
+                        acceptedAnswer: { '@type': 'Answer', text: answer },
+                    })),
+                }] : []),
             ]
         };
     }, [post]);
@@ -480,7 +491,11 @@ const BlogPost: React.FC = () => {
                     </div>
                     
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16">
-                        {BLOG_POSTS.filter(p => p.id !== post.id).slice(0, 3).map((p) => (
+                        {(() => {
+                            const sameCategory = BLOG_POSTS.filter(p => p.id !== post.id && p.category === post.category);
+                            const others = BLOG_POSTS.filter(p => p.id !== post.id && p.category !== post.category);
+                            return [...sameCategory, ...others].slice(0, 3);
+                        })().map((p) => (
                             <Link key={p.id} to={`/blog/${p.slug}`} className="group block">
                                 <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden mb-8 shadow-lg">
                                     <img src={p.image} alt={p.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" loading="lazy" />
