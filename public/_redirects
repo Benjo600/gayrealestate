@@ -8,15 +8,5 @@ https://gayrealestatect.net/*    https://www.gayrealestatect.net/:splat  301!
 /reviews.html         /reviews      301
 /relocation-services  /relocation   301
 /community-events     /community    301
-# Old blog slugs that were submitted to GSC before slugs were updated
-/blog/lgbtq-home-buying-connecticut-guide     /blog/best-places-to-live-in-connecticut-lgbtq                301
-/blog/west-hartford-lgbtq-neighborhood-guide  /blog/why-west-hartford-is-lgbtq-friendly-connecticut          301
-/blog/connecticut-lgbtq-friendly-towns        /blog/lgbtq-friendly-small-towns-connecticut                   301
-/blog/gay-friendly-realtors-connecticut       /blog/gay-realtor-connecticut-guide                            301
-/blog/lgbtq-first-time-homebuyer-ct           /first-time-buyers                                             301
-/blog/connecticut-mortgage-lgbtq-buyers       /mortgage-calculator                                           301
-/blog/new-haven-lgbtq-real-estate             /blog/best-lgbtq-neighborhoods-new-haven-ct                    301
-/blog/lgbtq-relocation-connecticut            /relocation                                                    301
-/blog/selling-home-connecticut-lgbtq          /sellers-guide                                                 301
 # SPA routing (must be last)
 /*  /index.html  200

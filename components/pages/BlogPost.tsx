@@ -200,7 +200,7 @@ const BlogPost: React.FC = () => {
                     description: post.excerpt,
                     image: absoluteImage,
                     datePublished: post.date,
-                    dateModified: post.date,
+                    dateModified: post.updatedDate ?? post.date,
                     articleSection: post.category,
                     author: {
                         '@type': 'Person',

@@ -8,6 +8,7 @@ export interface BlogPost {
   image: string;
   category: string;
   date: string;
+  updatedDate?: string;
   readTime: string;
   author: string;
   authorRole: string;
