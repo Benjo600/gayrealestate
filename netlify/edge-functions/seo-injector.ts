@@ -231,7 +231,15 @@ export default async (request: Request, context: Context) => {
   // Pass search engine crawlers through to Netlify's prerender service
   // (enabled in Site Settings → Build & Deploy → Prerendering in the Netlify dashboard)
   // so they receive fully rendered HTML instead of the SPA shell.
-  const BOT_PATTERNS = ['Googlebot', 'bingbot', 'Slurp', 'DuckDuckBot', 'Baiduspider', 'facebookexternalhit', 'Twitterbot', 'LinkedInBot', 'Pinterestbot', 'Applebot'];
+  const BOT_PATTERNS = [
+    // Traditional search engines
+    'Googlebot', 'bingbot', 'Slurp', 'DuckDuckBot', 'Baiduspider', 'Applebot',
+    // Social media crawlers (Open Graph)
+    'facebookexternalhit', 'Twitterbot', 'LinkedInBot', 'Pinterestbot',
+    // AI answer engines (AEO)
+    'GPTBot', 'ChatGPT-User', 'anthropic-ai', 'ClaudeBot', 'PerplexityBot',
+    'Bytespider', 'YouBot', 'cohere-ai', 'AI2Bot', 'Diffbot',
+  ];
   const ua = request.headers.get('user-agent') || '';
   if (BOT_PATTERNS.some(bot => ua.toLowerCase().includes(bot.toLowerCase()))) {
     return;
