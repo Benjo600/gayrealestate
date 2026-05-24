@@ -231,12 +231,17 @@ export default async (request: Request, context: Context) => {
   // Pass search engine crawlers through to Netlify's prerender service
   // (enabled in Site Settings → Build & Deploy → Prerendering in the Netlify dashboard)
   // so they receive fully rendered HTML instead of the SPA shell.
+  // Bots passed to Netlify's prerender service (can't execute JavaScript themselves).
+  // Googlebot and Bingbot are intentionally excluded here — they support JS rendering
+  // and Netlify's "Skip user-agents supporting JavaScript" setting routes them directly
+  // to the SPA. By NOT returning early for them, the edge function injects correct
+  // per-page meta tags into their first-pass HTML crawl.
   const BOT_PATTERNS = [
-    // Traditional search engines
-    'Googlebot', 'bingbot', 'Slurp', 'DuckDuckBot', 'Baiduspider', 'Applebot',
-    // Social media crawlers (Open Graph)
+    // Search engines that cannot render JS
+    'Slurp', 'DuckDuckBot', 'Baiduspider', 'Applebot',
+    // Social media crawlers (Open Graph previews)
     'facebookexternalhit', 'Twitterbot', 'LinkedInBot', 'Pinterestbot',
-    // AI answer engines (AEO)
+    // AI answer engines (AEO) — cannot execute JavaScript
     'GPTBot', 'ChatGPT-User', 'anthropic-ai', 'ClaudeBot', 'PerplexityBot',
     'Bytespider', 'YouBot', 'cohere-ai', 'AI2Bot', 'Diffbot',
   ];
