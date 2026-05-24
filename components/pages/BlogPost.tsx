@@ -364,17 +364,17 @@ const BlogPost: React.FC = () => {
                 
                 {/* Article Content */}
                 <article className="relative">
-                    <p className="text-2xl md:text-3xl text-slate-900 font-serif italic leading-relaxed mb-16 md:mb-24 relative">
+                    <p className="text-xl md:text-2xl text-slate-900 font-serif italic leading-relaxed mb-16 md:mb-24 relative">
                         <span className="absolute -left-10 top-0 text-7xl text-brand-100 font-serif leading-none opacity-50">"</span>
                         {post.excerpt}
                     </p>
 
                     <div 
                         ref={contentRef}
-                        className="blog-content prose prose-2xl prose-slate max-w-none 
+                        className="blog-content prose prose-lg prose-slate max-w-none 
                         prose-headings:font-display prose-headings:font-bold prose-headings:text-slate-900
-                        prose-h2:text-4xl md:prose-h2:text-5xl prose-h2:mt-24 prose-h2:mb-10 prose-h2:tracking-tight
-                        prose-p:text-slate-600 prose-p:leading-relaxed prose-p:mb-10 prose-p:text-lg md:prose-p:text-xl md:prose-p:font-light
+                        prose-h2:text-3xl md:prose-h2:text-4xl prose-h2:mt-24 prose-h2:mb-10 prose-h2:tracking-tight
+                        prose-p:text-slate-600 prose-p:leading-relaxed prose-p:mb-10 prose-p:text-base md:prose-p:text-lg md:prose-p:font-light
                         prose-strong:text-slate-900 prose-strong:font-bold
                         prose-a:text-brand-600 prose-a:no-underline prose-a:font-bold hover:prose-a:text-brand-800 transition-colors border-b border-brand-200/50
                         prose-ul:list-none prose-ul:pl-0 prose-li:pl-0 prose-li:mb-6
