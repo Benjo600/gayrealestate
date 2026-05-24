@@ -80,6 +80,81 @@ const BLOG_DATA: Record<string, { title: string; description: string; image: str
     description: "Why working with an agent who 'gets it' matters for LGBTQ+ home buyers in CT.",
     image: `${BASE_DOMAIN}/gay_realtor_guide.png`,
   },
+  "best-gay-friendly-places-to-retire-in-connecticut": {
+    title: "Best Gay-Friendly Places to Retire in Connecticut",
+    description: "Planning LGBTQ+ retirement in Connecticut? Here's where to look — from active adult communities to quiet shoreline towns — with honest notes on healthcare, community, and cost.",
+    image: `${BASE_DOMAIN}/lgbtq_small_towns_ct.png`,
+  },
+  "cheapest-gay-friendly-cities-in-connecticut": {
+    title: "Cheapest Gay-Friendly Cities in Connecticut",
+    description: "Budget-conscious LGBTQ+ buyer? Here are the most affordable gay-friendly cities in Connecticut — with real median prices and honest community assessments.",
+    image: `${BASE_DOMAIN}/nyc_vs_ct_real_estate.png`,
+  },
+  "connecticut-is-1-in-the-us-for-lgbtq-real-estate-searches-here-s-why": {
+    title: "Connecticut Is #1 in the US for LGBTQ Real Estate Searches - Here's Why",
+    description: "Google Trends data shows Connecticut ranks #1 nationally for LGBTQ real estate search volume — including \"gay realtor CT\" and \"gay real estate agent Connecticut.\" Here's what's driving it.",
+    image: `${BASE_DOMAIN}/ct_lgbtq_places.png`,
+  },
+  "do-you-need-an-lgbtq-real-estate-attorney": {
+    title: "Do You Need an LGBTQ Real Estate Attorney?",
+    description: "When does an LGBTQ+ buyer or seller need a specialized real estate attorney — and what does one actually do differently? A Connecticut attorney explains.",
+    image: `${BASE_DOMAIN}/generational_wealth_real_estate.png`,
+  },
+  "gay-areas-in-connecticut-neighborhood-by-neighborhood-guide": {
+    title: "Gay Areas in Connecticut: Neighborhood-by-Neighborhood Guide",
+    description: "A real, specific guide to the most LGBTQ+ welcoming neighborhoods in Connecticut — from West Hartford's Blue Back Square to New Haven's Wooster Square and beyond.",
+    image: `${BASE_DOMAIN}/inclusive_neighborhoods.png`,
+  },
+  "gay-friendly-towns-in-connecticut-2026-ranked-guide": {
+    title: "Gay Friendly Towns in Connecticut: 2026 Ranked Guide",
+    description: "Our 2026 ranking of the most LGBTQ-friendly towns in Connecticut — based on legal protections, community fabric, school district policies, and real estate value.",
+    image: `${BASE_DOMAIN}/new_haven_neighborhoods.png`,
+  },
+  "how-to-choose-a-gay-friendly-realtor-2026-guide": {
+    title: "How to Choose a Gay Realtor or LGBT Real Estate Agent (2026 Guide)",
+    description: "Not every realtor understands LGBTQ+ buyers. Learn what questions to ask, what credentials matter, and how to find a truly affirming gay realtor or LGBT real estate agent in Connecticut.",
+    image: `${BASE_DOMAIN}/gay_realtor_guide.png`,
+  },
+  "lgbtq-first-time-home-buyer-guide-connecticut-edition": {
+    title: "LGBTQ+ First-Time Home Buyer Guide (Connecticut Edition)",
+    description: "A complete guide for LGBTQ+ first-time home buyers in Connecticut — from pre-approval to closing, with CT programs, gay realtors, LGBT real estate agents, and legal protections.",
+    image: `${BASE_DOMAIN}/lgbtq_first_time_buyer.png`,
+  },
+  "lgbtq-housing-discrimination-statistics-2026": {
+    title: "LGBTQ Housing Discrimination Statistics 2026",
+    description: "Current data on LGBTQ housing discrimination in the United States and Connecticut — plus what to do if you experience it and which protections apply to you.",
+    image: `${BASE_DOMAIN}/inclusive_schools_ct.png`,
+  },
+  "same-sex-couples-buying-a-home-7-things-to-know-before-you-sign": {
+    title: "Same-Sex Couples Buying a Home: 7 Things to Know Before You Sign",
+    description: "Buying a home as a same-sex couple? Here are 7 critical legal, financial, and practical considerations before you close — from a Connecticut real estate attorney.",
+    image: `${BASE_DOMAIN}/gay_couple_moving_ct.png`,
+  },
+  "transgender-housing-rights-what-connecticut-law-says": {
+    title: "Transgender Housing Rights: What Connecticut Law Says",
+    description: "A complete guide to transgender housing rights in Connecticut — including what state law prohibits, how to file a discrimination complaint, and practical tips for trans home buyers.",
+    image: `${BASE_DOMAIN}/trans_moving_ct.png`,
+  },
+  "best-lgbtq-mortgage-lenders-connecticut": {
+    title: "Best LGBTQ Mortgage Lenders in Connecticut",
+    description: "Not all mortgage lenders are equally welcoming. Here's what to look for in an LGBTQ-affirming lender in Connecticut, and which questions to ask before you apply.",
+    image: `${BASE_DOMAIN}/generational_wealth_real_estate.png`,
+  },
+  "best-places-to-live-for-gay-couples-new-england": {
+    title: "Best Places to Live for Gay Couples in New England (2026)",
+    description: "Comparing Connecticut, Massachusetts, Rhode Island, and Vermont for LGBTQ+ couples — with honest assessments of price, community, legal protections, and quality of life.",
+    image: `${BASE_DOMAIN}/inclusive_neighborhoods.png`,
+  },
+  "lgbtq-down-payment-assistance-programs-connecticut": {
+    title: "LGBTQ Down Payment Assistance Programs: Connecticut 2026",
+    description: "A complete breakdown of down payment assistance programs available to LGBTQ+ buyers in Connecticut — including CHFA grants, national programs, and how to apply.",
+    image: `${BASE_DOMAIN}/lgbtq_first_time_buyer.png`,
+  },
+  "what-is-the-lgbtq-real-estate-alliance": {
+    title: "What Is the LGBTQ+ Real Estate Alliance?",
+    description: "The LGBTQ+ Real Estate Alliance certifies gay realtors and LGBT real estate agents across the US. Here's what it does, why it matters, and how to find certified agents in Connecticut.",
+    image: `${BASE_DOMAIN}/gay_realtor_guide.png`,
+  },
 };
 
 const AGENT_DATA: Record<string, { title: string; description: string; image: string }> = {
