@@ -61,6 +61,13 @@ export const BLOG_POSTS: BlogPost[] = [
       <p>You can read rankings all day, but the most important insight comes from people who have lived this experience themselves - who have navigated Connecticut's market not just as realtors, but as members of the community they're helping you find. That's the difference we offer.</p>
       <p>Our team includes licensed agents who are part of the LGBTQ+ Real Estate Alliance, who live in these communities, and who have helped hundreds of LGBTQ+ buyers find exactly what they were looking for - not just a house, but a home where they genuinely belong.</p>
     `,
+    faq: [
+      { question: "What are the best places to live in Connecticut for LGBTQ+ people?", answer: "West Hartford consistently tops LGBTQ+ livability rankings in Connecticut due to its decades-long inclusive policies, walkable community, and strong school district. New Haven, Hartford's Parkville neighborhood, and Litchfield County also have established LGBTQ+ communities with distinct characters and price points." },
+      { question: "Is Connecticut a good state for LGBTQ+ people to live?", answer: "Yes. Connecticut was the second state in the nation to legalize same-sex marriage (2008) and has had comprehensive non-discrimination laws covering housing, employment, and public accommodations since 1991. Legal protection is backed by genuine community culture in its top towns." },
+      { question: "How much does a home cost in West Hartford, CT?", answer: "The median price for single-family homes in West Hartford is approximately $540,000, with condos and townhomes available from the mid-$300s. It's one of the most competitive markets in Connecticut, with desirable homes often going under contract in under two weeks." },
+      { question: "Are there LGBTQ+ communities in rural Connecticut?", answer: "Yes. Litchfield County in Northwestern Connecticut has a long-established, understated LGBTQ+ community of second-home owners, retirees, and weekenders from NYC and Boston. Towns like Washington, Warren, and Litchfield are well-known within the community for their welcoming culture." },
+      { question: "What should LGBTQ+ buyers look for when evaluating a Connecticut town?", answer: "Key factors include whether the school district explicitly names sexual orientation and gender identity in anti-bullying policies, whether local government has passed non-discrimination ordinances, the presence of PFLAG chapters and LGBTQ+ centers, visible business community support, and proximity to affirming healthcare providers." },
+    ],
     image: "/ct_lgbtq_places.png",
     category: "LGBTQ+ LIVING GUIDE",
     date: "2026-02-22",
@@ -107,6 +114,13 @@ export const BLOG_POSTS: BlogPost[] = [
       <p>It may not be ideal for: Buyers on very tight budgets who need maximum square footage for minimum cost (look at Elmwood section or nearby towns instead). People seeking a quieter, more rural lifestyle (consider Litchfield County). Those who need to be in proximity to a different employment hub.</p>
       <p>The honest assessment: West Hartford has earned its reputation. But no single town is right for every buyer, and the best move you can make is talking to someone who knows the full CT market — not just one neighborhood.</p>
     `,
+    faq: [
+      { question: "Is West Hartford safe for gay couples?", answer: "Yes. West Hartford has been actively and explicitly pro-LGBTQ+ for over two decades, going well beyond passive tolerance. The town government has passed LGBTQ+ non-discrimination protections, flies Pride flags on town property each June, and has a community culture where same-sex couples are fully visible and welcome." },
+      { question: "What are the home prices in West Hartford, CT?", answer: "Condos and townhomes in West Hartford have a median price around $345,000, making them the most accessible entry point. Single-family homes average around $542,000, with premium neighborhoods near Blue Back Square often exceeding $700,000. The market is competitive, with desirable homes frequently selling in under two weeks." },
+      { question: "Are West Hartford schools good for LGBTQ+ families?", answer: "Yes. West Hartford Public Schools are consistently among Connecticut's top-rated districts and have explicit, named anti-bullying protections for LGBTQ+ students. Both high schools have active GSA programs and teachers receive training on affirming practices, making it a top choice for LGBTQ+ families with children." },
+      { question: "What is Blue Back Square in West Hartford?", answer: "Blue Back Square is the vibrant commercial and social heart of West Hartford Center, featuring walkable restaurants, boutiques, a movie theater, and bars within easy reach of residential neighborhoods. It has a strong queer-friendly social scene with multiple establishments that have long histories of welcoming LGBTQ+ clientele." },
+      { question: "Is West Hartford good for LGBTQ+ first-time buyers?", answer: "West Hartford is a strong option for first-time buyers who prioritize community and walkability. The Elmwood neighborhood within West Hartford offers more affordable home prices with the same inclusive community culture, making it a particularly good entry point for LGBTQ+ buyers stretching their budget." },
+    ],
     image: "/west_hartford_lgbtq.png",
     category: "LOCAL SPOTLIGHT",
     date: "2026-02-18",
@@ -153,6 +167,13 @@ export const BLOG_POSTS: BlogPost[] = [
       <h2>Our Team Has Lived This</h2>
       <p>Arek Wtulich, our lead agent, was a Co-Founder and Vice President of the Connecticut Chapter of the LGBTQ+ Real Estate Alliance. He's not just an agent who serves this community — he is a part of the community. When you work with our team, you're working with people who understand the nuances of this kind of move from the inside, not from a brochure.</p>
     `,
+    faq: [
+      { question: "Is Connecticut a good place to live as a gay couple?", answer: "Yes. Connecticut has had marriage equality since 2008 and robust non-discrimination laws protecting LGBTQ+ people in housing, employment, and public life. In communities like West Hartford, New Haven's East Rock, and Litchfield County's second-home communities, daily life as a same-sex couple is normalized and genuinely celebrated." },
+      { question: "How do same-sex couples hold title on a home in Connecticut?", answer: "Same-sex couples can choose between joint tenancy with right of survivorship (each partner owns 100% and automatically inherits if the other dies) or tenancy in common (each owns a defined share that passes by will). For unmarried couples especially, joint tenancy with right of survivorship typically provides stronger legal protection for the surviving partner." },
+      { question: "What is the LGBTQ+ community like in Connecticut compared to NYC?", answer: "Connecticut's queer scene is smaller and more community-oriented than New York City's. You gain space, equity, and significantly lower cost of living, while trading some of the density of nightlife and the volume of queer spaces. Many couples find the community-oriented social fabric of West Hartford or New Haven preferable after adjustment." },
+      { question: "Can a gay couple get a mortgage together in Connecticut?", answer: "Yes. Connecticut lenders cannot discriminate based on sexual orientation. Both partners' incomes, credit scores, and financial histories are considered together. Working with a lender experienced with same-sex couples ensures accurate guidance tailored to your household structure rather than assumptions based on traditional models." },
+      { question: "Is it easy to commute from Connecticut to New York City?", answer: "Fairfield County towns offer a 55–80 minute Metro-North commute to Grand Central, making them workable for hybrid workers. New Haven to Grand Central runs about 1 hour 45 minutes by train. For those going into the city 2–3 days a week, the Connecticut commute is genuinely manageable given the dramatic lifestyle and cost improvements." },
+    ],
     image: "/gay_couple_moving_ct.png",
     category: "RELOCATION GUIDE",
     date: "2026-02-15",
@@ -217,6 +238,13 @@ export const BLOG_POSTS: BlogPost[] = [
         <li>Talk to us — we've helped LGBTQ+ families navigate these exact conversations and can give you the unfiltered reality</li>
       </ol>
     `,
+    faq: [
+      { question: "Which Connecticut school districts are most inclusive for LGBTQ+ families?", answer: "West Hartford Public Schools consistently rank as the top LGBTQ+-inclusive district in Connecticut, with formal protections for students, active GSA clubs at both high schools, and administrator participation in LGBTQ+ events. Glastonbury and New Haven are also Tier 1 districts with strong records of inclusion." },
+      { question: "What does an LGBTQ+-inclusive school district actually look like in Connecticut?", answer: "A genuinely inclusive district has explicit LGBTQ+ protections named in anti-bullying and non-discrimination policies, clear transgender student policies covering bathroom access and pronoun use, active GSA clubs, trained staff, and curriculum that includes LGBTQ+ history as required by Connecticut's 2021 LGBTQ+ Equity Act." },
+      { question: "Does Connecticut law require schools to teach LGBTQ+ history?", answer: "Yes. Connecticut passed landmark legislation in 2021 requiring all public schools to include LGBTQ+ history in their curriculum. This makes Connecticut one of a small number of states with this legal mandate, providing a baseline of LGBTQ+ representation in classrooms statewide." },
+      { question: "Are Glastonbury schools good for LGBTQ+ families?", answer: "Yes. Glastonbury's schools have some of the strongest LGBTQ+ student protections in Connecticut and are often overlooked because they don't have West Hartford's profile. The town is also more affordable than West Hartford, making it a strong value option for LGBTQ+ families prioritizing school quality." },
+      { question: "How do I research whether a Connecticut school district is truly LGBTQ+ inclusive?", answer: "Request the district's specific non-discrimination policy and look for explicit LGBTQ+ language. Ask about active GSA clubs, speak with the school counselor to gauge familiarity with LGBTQ+ youth resources, and connect with other LGBTQ+ families in the district through community organizations for unfiltered reality." },
+    ],
     image: "/inclusive_schools_ct.png",
     category: "FAMILY GUIDE",
     date: "2026-02-10",
@@ -286,6 +314,13 @@ export const BLOG_POSTS: BlogPost[] = [
       <p>A million dollars in New York City is a compromise. A million dollars in Connecticut is a life. We're not telling you to leave New York — we're telling you to do the math with real numbers, with a team that knows both markets, before you decide you can't afford Connecticut.</p>
       <p>You might be surprised what you can actually afford — and what you've been paying for that you don't have to anymore.</p>
     `,
+    faq: [
+      { question: "What does $1 million buy in Connecticut vs NYC?", answer: "In New York City, $1 million typically buys a 1–2 bedroom condo under 900 sq ft with monthly maintenance fees of $1,500–$4,000 and no outdoor space. In West Hartford, Connecticut, the same budget gets a beautifully renovated 4–5 bedroom single-family home with a yard and 2-car garage in one of the state's best school districts." },
+      { question: "Is it cheaper to live in Connecticut or New York City?", answer: "Connecticut is significantly cheaper for homeowners. Modeling comparable $950,000 purchases, a West Hartford home runs approximately $5,900/month (mortgage plus property taxes) versus $7,300+/month for a NYC condo when maintenance fees are included — a difference of roughly $1,400/month or $168,000 over 10 years, before accounting for property appreciation differences." },
+      { question: "How long is the commute from Connecticut to New York City?", answer: "Fairfield County to Grand Central is 55–80 minutes via Metro-North. New Haven to Grand Central runs about 1 hour 45 minutes. Hartford to NYC is roughly 2.5 hours by Amtrak. For hybrid workers going in 2–3 days per week, the Fairfield County commute is very manageable." },
+      { question: "Is Connecticut real estate a good investment compared to NYC?", answer: "Connecticut has shown historically stronger property value appreciation relative to NYC in recent years, particularly since 2019 when NYC appreciation significantly slowed. Connecticut homeowners also build equity rather than paying rent or co-op maintenance fees, and the ability to customize the property adds long-term value." },
+      { question: "Why are LGBTQ+ buyers moving from NYC to Connecticut?", answer: "LGBTQ+ buyers are moving to Connecticut primarily for the dramatic improvement in space, value, and community. A home that costs $1 million in NYC buys a far smaller, less comfortable space than in West Hartford or New Haven. With remote work now permanent for many, the calculus has shifted decisively toward Connecticut's LGBTQ+-welcoming communities." },
+    ],
     image: "/nyc_vs_ct_real_estate.png",
     category: "MARKET COMPARISON",
     date: "2026-02-05",
@@ -346,6 +381,13 @@ export const BLOG_POSTS: BlogPost[] = [
       <p>The LGBTQ+ community in Connecticut is tight-knit precisely because the state is small enough that communities overlap. Once you find your entry point — a professional network, a book club, a regular bar night, a community organization — you'll find the connections compound quickly. The people we help buy homes here consistently tell us that building community was faster and easier than they expected.</p>
       <p>Want introductions? That's part of what we do. When you work with our team, you're not just getting a real estate transaction — you're getting people who are embedded in these communities and can make the right connections at the right time. It's one of the less-talked-about but most valuable parts of working with agents who are genuinely part of the community they serve.</p>
     `,
+    faq: [
+      { question: "What LGBTQ+ events are happening in Connecticut in March 2026?", answer: "March 2026 highlights include the Hartford LGBTQ+ Professional Networking Mixer (March 7), the New Haven Queer Film Series (March 14), a West Hartford Pride Committee planning session (March 19), the CT LGBTQ+ Real Estate Alliance buyer panel (March 22), and the Litchfield Hills LGBTQ+ Book Club (March 28)." },
+      { question: "What is True Colors Inc. in Hartford?", answer: "True Colors, Inc. is Connecticut's premier LGBTQ+ youth organization, based in Hartford. It runs ongoing programming, support groups, and community events throughout the year and is an excellent resource for LGBTQ+ families evaluating schools and youth support infrastructure in the state." },
+      { question: "Does Connecticut have LGBTQ+ nightlife?", answer: "Yes. Hartford has consistent queer nightlife, including The Anchor, a longstanding queer bar that hosts themed nights, drag shows, and community events. New Haven and West Hartford also have LGBTQ+-friendly dining and social scenes, though Connecticut's queer nightlife is more community-oriented than major city scenes." },
+      { question: "When is Connecticut Pride?", answer: "Connecticut's Pride season runs primarily through June and into July, with events across multiple cities. Hartford Pride and New Haven Pride are the largest celebrations, along with West Hartford events and gatherings in Litchfield County and Fairfield County. Specific dates are announced in spring each year." },
+      { question: "How can I connect with the LGBTQ+ community after moving to Connecticut?", answer: "Connecticut's LGBTQ+ community is tight-knit and has many entry points: professional networking events, PFLAG chapters, community centers, queer nightlife, book clubs, and sports leagues. Organizations like OutRight Connecticut and True Colors maintain active event calendars, and our real estate team can make personal introductions within the communities we serve." },
+    ],
     image: "/lgbtq_events_ct.png",
     category: "COMMUNITY EVENTS",
     date: "2026-03-01",
