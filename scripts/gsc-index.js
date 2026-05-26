@@ -19,7 +19,6 @@ const URLS = [
   'https://www.gayrealestatect.net/blog/moving-to-connecticut-as-a-gay-couple',
   'https://www.gayrealestatect.net/blog/most-lgbtq-inclusive-school-districts-connecticut',
   'https://www.gayrealestatect.net/blog/1-million-nyc-vs-connecticut-what-do-you-get',
-  'https://www.gayrealestatect.net/blog/lgbtq-events-connecticut-march-2026',
   'https://www.gayrealestatect.net/blog/litchfield-county-second-homes-lgbtq-buyers',
   'https://www.gayrealestatect.net/blog/litchfield-county-towns-for-weekenders',
   'https://www.gayrealestatect.net/blog/legal-protections-lgbtq-real-estate-connecticut',
