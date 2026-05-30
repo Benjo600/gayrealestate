@@ -384,15 +384,13 @@ export default async (request: Request, context: Context) => {
     return new Response(text, { status: 404, headers: safeHeaders(response.headers) });
   }
 
-  // Known route. Pass search-engine crawlers through to Netlify's prerender
-  // service (Site Settings → Build & Deploy → Prerendering) so they receive
-  // fully rendered HTML instead of the SPA shell.
-  const BOT_PATTERNS = ['Googlebot', 'bingbot', 'Slurp', 'DuckDuckBot', 'Baiduspider', 'facebookexternalhit', 'Twitterbot', 'LinkedInBot', 'Pinterestbot', 'Applebot'];
-  const ua = request.headers.get('user-agent') || '';
-  if (BOT_PATTERNS.some((bot) => ua.toLowerCase().includes(bot.toLowerCase()))) {
-    return;
-  }
-
+  // Known route. Inject per-page SEO meta for EVERY request — including search
+  // and social crawlers. We no longer bypass bots to Netlify's (deprecated)
+  // Prerendering service: doing so left non-JS crawlers (Bing, Facebook,
+  // LinkedIn, Twitter/X) with the bare SPA shell — a generic title and no
+  // description/canonical/OG tags. Injecting the tags here guarantees correct
+  // metadata regardless of any dashboard setting, and Googlebot still renders
+  // the JS body on top of it.
   const response = await context.next();
   const contentType = response.headers.get("content-type");
   if (!contentType || !contentType.includes("text/html")) {
