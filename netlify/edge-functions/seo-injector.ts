@@ -1,9 +1,37 @@
 import type { Context } from "@netlify/edge-functions";
+import { BLOG_POSTS } from "../../data/blogs.ts";
+import { agents } from "../../data/agents.ts";
 
 const BASE_DOMAIN = "https://www.gayrealestatect.net";
 const DEFAULT_IMAGE = `${BASE_DOMAIN}/hero-house.png`;
 const DEFAULT_IMAGE_ALT = "GayRealEstateCT.net - LGBTQ+ Friendly Real Estate in Connecticut";
 
+// Source-of-truth sets derived from the canonical data files so the edge
+// function never drifts out of sync with the published content. (Previously a
+// hardcoded BLOG_DATA map doubled as the "does this post exist?" gate, which
+// silently 404'd every blog post that wasn't manually copied in here.)
+const KNOWN_BLOG_SLUGS = new Set(BLOG_POSTS.map((p) => p.slug));
+const KNOWN_AGENT_IDS = new Set(Object.keys(agents));
+const KNOWN_STATIC_PATHS = new Set([
+  "/",
+  "/about",
+  "/first-time-buyers",
+  "/mortgage-calculator",
+  "/relocation",
+  "/buyers-guide",
+  "/home-valuation",
+  "/sellers-guide",
+  "/marketing-your-home",
+  "/privacy-policy",
+  "/reviews",
+  "/community",
+  "/blog",
+  "/contact",
+]);
+
+// Curated, hand-tuned meta for the highest-value pages. Anything not listed
+// here falls back to the data file (title + excerpt + image), so new posts get
+// correct meta automatically.
 const BLOG_DATA: Record<string, { title: string; description: string; image: string }> = {
   "best-places-to-live-in-connecticut-lgbtq": {
     title: "Best Places to Live in Connecticut for LGBTQ+ People (2026 Guide)",
@@ -110,67 +138,43 @@ const AGENT_DATA: Record<string, { title: string; description: string; image: st
   },
 };
 
-export default async (request: Request, context: Context) => {
-  const url = new URL(request.url);
-  let path = url.pathname;
+const BLOG_REDIRECTS: Record<string, string> = {
+  "lgbtq-home-buying-connecticut-guide": "/blog/best-places-to-live-in-connecticut-lgbtq",
+  "west-hartford-lgbtq-neighborhood-guide": "/blog/why-west-hartford-is-lgbtq-friendly-connecticut",
+  "connecticut-lgbtq-friendly-towns": "/blog/lgbtq-friendly-small-towns-connecticut",
+  "gay-friendly-realtors-connecticut": "/blog/gay-realtor-connecticut-guide",
+  "lgbtq-first-time-homebuyer-ct": "/first-time-buyers",
+  "connecticut-mortgage-lgbtq-buyers": "/mortgage-calculator",
+  "new-haven-lgbtq-real-estate": "/blog/best-lgbtq-neighborhoods-new-haven-ct",
+  "lgbtq-relocation-connecticut": "/relocation",
+  "selling-home-connecticut-lgbtq": "/sellers-guide",
+};
 
-  // Normalize path: remove trailing slash for consistency
-  if (path.length > 1 && path.endsWith("/")) {
-    path = path.slice(0, -1);
-  }
+const NOINDEX_PATHS = new Set(["/blog/lgbtq-events-connecticut-march-2026"]);
 
-  if (path.startsWith("/api/")) {
-    return;
-  }
+/** Escape a string for safe injection into an HTML attribute value. */
+const esc = (s: string): string =>
+  s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
-  if (path.includes(".") && !path.endsWith(".html")) {
-    return;
-  }
+/** Ensure an image path is an absolute, URL-encoded URL. */
+const toAbsoluteImage = (img: string): string => {
+  if (img.startsWith("http")) return img;
+  // encodeURI preserves "/" but escapes spaces and other unsafe chars.
+  return `${BASE_DOMAIN}${encodeURI(img)}`;
+};
 
-  // 301 redirects for old blog slugs — must be handled here because edge functions
-  // run before Netlify _redirects rules in the request pipeline.
-  const BLOG_REDIRECTS: Record<string, string> = {
-    "lgbtq-home-buying-connecticut-guide": "/blog/best-places-to-live-in-connecticut-lgbtq",
-    "west-hartford-lgbtq-neighborhood-guide": "/blog/why-west-hartford-is-lgbtq-friendly-connecticut",
-    "connecticut-lgbtq-friendly-towns": "/blog/lgbtq-friendly-small-towns-connecticut",
-    "gay-friendly-realtors-connecticut": "/blog/gay-realtor-connecticut-guide",
-    "lgbtq-first-time-homebuyer-ct": "/first-time-buyers",
-    "connecticut-mortgage-lgbtq-buyers": "/mortgage-calculator",
-    "new-haven-lgbtq-real-estate": "/blog/best-lgbtq-neighborhoods-new-haven-ct",
-    "lgbtq-relocation-connecticut": "/relocation",
-    "selling-home-connecticut-lgbtq": "/sellers-guide",
-  };
+const truncate = (s: string, max = 160): string =>
+  s.length > max ? `${s.slice(0, max - 1).trimEnd()}…` : s;
 
-  if (path.startsWith("/blog/")) {
-    const slug = path.replace("/blog/", "");
-    if (slug && BLOG_REDIRECTS[slug]) {
-      return Response.redirect(`${BASE_DOMAIN}${BLOG_REDIRECTS[slug]}`, 301);
-    }
-    // Return 404 for any other unknown blog slug so Google deindexes it
-    // instead of seeing a 200+noindex from the NotFound component.
-    if (slug && !BLOG_DATA[slug]) {
-      return new Response("Not Found", { status: 404, headers: { "Content-Type": "text/plain" } });
-    }
-  }
+interface PageMeta {
+  title: string;
+  description: string;
+  ogImage: string;
+  ogImageAlt: string;
+}
 
-  // Pass search engine crawlers through to Netlify's prerender service
-  // (enabled in Site Settings → Build & Deploy → Prerendering in the Netlify dashboard)
-  // so they receive fully rendered HTML instead of the SPA shell.
-  const BOT_PATTERNS = ['Googlebot', 'bingbot', 'Slurp', 'DuckDuckBot', 'Baiduspider', 'facebookexternalhit', 'Twitterbot', 'LinkedInBot', 'Pinterestbot', 'Applebot'];
-  const ua = request.headers.get('user-agent') || '';
-  if (BOT_PATTERNS.some(bot => ua.toLowerCase().includes(bot.toLowerCase()))) {
-    return;
-  }
-
-  const response = await context.next();
-  const contentType = response.headers.get("content-type");
-
-  if (!contentType || !contentType.includes("text/html")) {
-    return response;
-  }
-
-  let text = await response.text();
-
+/** Resolve the SEO meta for a given path. */
+function resolveMeta(path: string): PageMeta {
   let title = "GayRealEstateCT.net | LGBTQ+ Friendly Real Estate in Connecticut";
   let description = "Find trusted, LGBTQ+ friendly real estate agents, mortgage lenders, and attorneys in Connecticut.";
   let ogImage = DEFAULT_IMAGE;
@@ -178,21 +182,37 @@ export default async (request: Request, context: Context) => {
 
   if (path.startsWith("/blog/")) {
     const slug = path.replace("/blog/", "");
-    const blog = BLOG_DATA[slug];
-    if (blog) {
-      title = `${blog.title} | Gay Real Estate CT`;
-      description = blog.description;
-      ogImage = blog.image;
-      ogImageAlt = blog.title;
+    const curated = BLOG_DATA[slug];
+    if (curated) {
+      title = `${curated.title} | Gay Real Estate CT`;
+      description = curated.description;
+      ogImage = curated.image;
+      ogImageAlt = curated.title;
+    } else {
+      const post = BLOG_POSTS.find((p) => p.slug === slug);
+      if (post) {
+        title = `${post.title} | Gay Real Estate CT`;
+        description = truncate(post.excerpt);
+        ogImage = toAbsoluteImage(post.image);
+        ogImageAlt = post.title;
+      }
     }
   } else if (path.startsWith("/agent/")) {
     const id = path.replace("/agent/", "");
-    const agent = AGENT_DATA[id];
-    if (agent) {
-      title = `${agent.title} | Gay Real Estate CT`;
-      description = agent.description;
-      ogImage = agent.image;
-      ogImageAlt = agent.title;
+    const curated = AGENT_DATA[id];
+    if (curated) {
+      title = `${curated.title} | Gay Real Estate CT`;
+      description = curated.description;
+      ogImage = curated.image;
+      ogImageAlt = curated.title;
+    } else {
+      const agent = agents[id];
+      if (agent) {
+        title = `${agent.name} | ${agent.title} | Gay Real Estate CT`;
+        description = truncate(agent.tagline || agent.bio);
+        ogImage = toAbsoluteImage(agent.image);
+        ogImageAlt = `${agent.name} — ${agent.title}`;
+      }
     }
   } else if (path === "/blog") {
     title = "LGBTQ+ Real Estate Blog | GayRealEstateCT.net";
@@ -242,34 +262,31 @@ export default async (request: Request, context: Context) => {
     description = "Get in touch with our LGBTQ+-led Connecticut real estate team. Connect with a trusted agent, mortgage lender, or attorney who understands your community.";
   }
 
-  // Remove existing meta tags to prevent duplicates before re-injecting.
-  text = text.replace(/<title>.*?<\/title>/, "");
-  text = text.replace(/<meta name="description" content=".*?" \/>/g, "");
-  text = text.replace(/<meta name="robots" content=".*?" \/>/g, "");
-  text = text.replace(/<link rel="canonical" href=".*?" \/>/g, "");
-  text = text.replace(/<meta property="og:locale" content=".*?" \/>/g, "");
-  text = text.replace(/<meta property="og:type" content=".*?" \/>/g, "");
-  text = text.replace(/<meta property="og:title" content=".*?" \/>/g, "");
-  text = text.replace(/<meta property="og:description" content=".*?" \/>/g, "");
-  text = text.replace(/<meta property="og:url" content=".*?" \/>/g, "");
-  text = text.replace(/<meta property="og:image" content=".*?" \/>/g, "");
-  text = text.replace(/<meta property="og:image:width" content=".*?" \/>/g, "");
-  text = text.replace(/<meta property="og:image:height" content=".*?" \/>/g, "");
-  text = text.replace(/<meta property="og:image:alt" content=".*?" \/>/g, "");
-  text = text.replace(/<meta property="og:site_name" content=".*?" \/>/g, "");
-  text = text.replace(/<meta name="twitter:card" content=".*?" \/>/g, "");
-  text = text.replace(/<meta name="twitter:title" content=".*?" \/>/g, "");
-  text = text.replace(/<meta name="twitter:description" content=".*?" \/>/g, "");
-  text = text.replace(/<meta name="twitter:image" content=".*?" \/>/g, "");
-  text = text.replace(/<meta name="twitter:image:alt" content=".*?" \/>/g, "");
+  return { title, description, ogImage, ogImageAlt };
+}
 
-  const NOINDEX_PATHS = new Set(["/blog/lgbtq-events-connecticut-march-2026"]);
+/** Strip any existing SEO tags from the shell so we never emit duplicates. */
+function stripExistingTags(text: string): string {
+  return text
+    .replace(/<title>.*?<\/title>/, "")
+    .replace(/<meta name="description" content=".*?" \/>/g, "")
+    .replace(/<meta name="robots" content=".*?" \/>/g, "")
+    .replace(/<link rel="canonical" href=".*?" \/>/g, "")
+    .replace(/<meta property="og:[^"]*" content=".*?" \/>/g, "")
+    .replace(/<meta name="twitter:[^"]*" content=".*?" \/>/g, "");
+}
+
+/** Build the per-page meta tag block. */
+function buildMetaTags(path: string, meta: PageMeta, noindex: boolean): string {
   const canonicalUrl = `${BASE_DOMAIN}${path}`;
   const ogType = path.startsWith("/blog/") ? "article" : "website";
-  const robotsContent = NOINDEX_PATHS.has(path)
+  const robotsContent = noindex
     ? "noindex, nofollow"
     : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1";
-  const metaTags = `
+  const title = esc(meta.title);
+  const description = esc(meta.description);
+  const ogImageAlt = esc(meta.ogImageAlt);
+  return `
     <title>${title}</title>
     <meta name="description" content="${description}" />
     <meta name="robots" content="${robotsContent}" />
@@ -279,7 +296,7 @@ export default async (request: Request, context: Context) => {
     <meta property="og:title" content="${title}" />
     <meta property="og:description" content="${description}" />
     <meta property="og:url" content="${canonicalUrl}" />
-    <meta property="og:image" content="${ogImage}" />
+    <meta property="og:image" content="${meta.ogImage}" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="${ogImageAlt}" />
@@ -288,13 +305,106 @@ export default async (request: Request, context: Context) => {
     <meta name="twitter:site" content="@GayRealEstateCT" />
     <meta name="twitter:title" content="${title}" />
     <meta name="twitter:description" content="${description}" />
-    <meta name="twitter:image" content="${ogImage}" />
+    <meta name="twitter:image" content="${meta.ogImage}" />
     <meta name="twitter:image:alt" content="${ogImageAlt}" />
   `;
-  text = text.replace("</head>", `${metaTags}</head>`);
+}
+
+/**
+ * Return a copy of the upstream headers safe to send with a transformed body.
+ * Content-Length / Content-Encoding / ETag describe the *original* bytes; if we
+ * forward them alongside a longer (meta-injected) body the response can be
+ * truncated or rejected.
+ */
+function safeHeaders(source: Headers): Headers {
+  const headers = new Headers(source);
+  headers.delete("content-length");
+  headers.delete("content-encoding");
+  headers.delete("etag");
+  return headers;
+}
+
+export default async (request: Request, context: Context) => {
+  const url = new URL(request.url);
+  let path = url.pathname;
+
+  // Normalize path: remove trailing slash for consistency
+  if (path.length > 1 && path.endsWith("/")) {
+    path = path.slice(0, -1);
+  }
+
+  if (path.startsWith("/api/")) {
+    return;
+  }
+
+  // Non-HTML assets (anything with a file extension that isn't .html) pass through.
+  if (path.includes(".") && !path.endsWith(".html")) {
+    return;
+  }
+
+  // 301 redirects for old blog slugs — must be handled here because edge functions
+  // run before Netlify _redirects rules in the request pipeline.
+  if (path.startsWith("/blog/")) {
+    const slug = path.replace("/blog/", "");
+    if (slug && BLOG_REDIRECTS[slug]) {
+      return Response.redirect(`${BASE_DOMAIN}${BLOG_REDIRECTS[slug]}`, 301);
+    }
+  }
+
+  // Determine whether this is a real route. Unknown routes must return a true
+  // HTTP 404 (not a 200 "soft 404") so search engines drop them instead of
+  // indexing a thin error page. We still serve the styled SPA shell so humans
+  // see the nice 404 page.
+  let isNotFound = false;
+  if (path.startsWith("/blog/")) {
+    const slug = path.replace("/blog/", "");
+    isNotFound = !KNOWN_BLOG_SLUGS.has(slug);
+  } else if (path.startsWith("/agent/")) {
+    const id = path.replace("/agent/", "");
+    isNotFound = !KNOWN_AGENT_IDS.has(id);
+  } else {
+    isNotFound = !KNOWN_STATIC_PATHS.has(path);
+  }
+
+  if (isNotFound) {
+    const response = await context.next();
+    const contentType = response.headers.get("content-type");
+    if (!contentType || !contentType.includes("text/html")) {
+      return new Response(response.body, { status: 404, headers: safeHeaders(response.headers) });
+    }
+    let text = await response.text();
+    text = stripExistingTags(text);
+    const meta: PageMeta = {
+      title: "Page Not Found | GayRealEstateCT.net",
+      description: "The page you are looking for could not be found.",
+      ogImage: DEFAULT_IMAGE,
+      ogImageAlt: DEFAULT_IMAGE_ALT,
+    };
+    text = text.replace("</head>", `${buildMetaTags(path, meta, true)}</head>`);
+    return new Response(text, { status: 404, headers: safeHeaders(response.headers) });
+  }
+
+  // Known route. Inject per-page SEO meta for EVERY request — including search
+  // and social crawlers. We no longer bypass bots to Netlify's (deprecated)
+  // Prerendering service: doing so left non-JS crawlers (Bing, Facebook,
+  // LinkedIn, Twitter/X) with the bare SPA shell — a generic title and no
+  // description/canonical/OG tags. Injecting the tags here guarantees correct
+  // metadata regardless of any dashboard setting, and Googlebot still renders
+  // the JS body on top of it.
+  const response = await context.next();
+  const contentType = response.headers.get("content-type");
+  if (!contentType || !contentType.includes("text/html")) {
+    return response;
+  }
+
+  let text = await response.text();
+  text = stripExistingTags(text);
+  const meta = resolveMeta(path);
+  const noindex = NOINDEX_PATHS.has(path);
+  text = text.replace("</head>", `${buildMetaTags(path, meta, noindex)}</head>`);
 
   return new Response(text, {
-    headers: response.headers,
+    headers: safeHeaders(response.headers),
   });
 };
 
