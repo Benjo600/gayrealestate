@@ -17,6 +17,19 @@ const blogIndexStructuredData = [
     },
     {
         '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        name: 'LGBTQ+ Real Estate Blog — All Articles',
+        url: `${BASE_URL}/blog`,
+        numberOfItems: BLOG_POSTS.length,
+        itemListElement: BLOG_POSTS.map((post, index) => ({
+            '@type': 'ListItem',
+            position: index + 1,
+            url: `${BASE_URL}/blog/${post.slug}`,
+            name: post.title,
+        })),
+    },
+    {
+        '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',
         itemListElement: [
             { '@type': 'ListItem', position: 1, name: 'Home', item: `${BASE_URL}/` },
