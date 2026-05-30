@@ -51,6 +51,17 @@ const RealtorProfile: React.FC = () => {
         const canonicalUrl = `${BASE_URL}/agent/${agent.id}`;
         const imageUrl = agent.image.startsWith('http') ? agent.image : `${BASE_URL}${agent.image}`;
 
+        const agentReviews = allReviews[agent.id as keyof typeof allReviews] || [];
+        const aggregateRating = agentReviews.length > 0 ? {
+            aggregateRating: {
+                '@type': 'AggregateRating',
+                ratingValue: '5.0',
+                reviewCount: agentReviews.length,
+                bestRating: '5',
+                worstRating: '1',
+            },
+        } : {};
+
         const structuredData = [
             {
                 '@context': 'https://schema.org',
@@ -71,6 +82,7 @@ const RealtorProfile: React.FC = () => {
                     credentialCategory: cred.type,
                     name: cred.label,
                 })),
+                ...aggregateRating,
             },
             {
                 '@context': 'https://schema.org',
