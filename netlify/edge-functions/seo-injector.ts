@@ -150,6 +150,17 @@ const BLOG_REDIRECTS: Record<string, string> = {
   "selling-home-connecticut-lgbtq": "/sellers-guide",
 };
 
+// Legacy non-blog paths that must 301 to their current location. Handled here
+// (mirroring the public/_redirects rules) so they always emit a clean 301 and
+// are never caught by the unknown-route 404 logic below.
+const STATIC_REDIRECTS: Record<string, string> = {
+  "/agents": "/about",
+  "/agents.html": "/about",
+  "/reviews.html": "/reviews",
+  "/relocation-services": "/relocation",
+  "/community-events": "/community",
+};
+
 const NOINDEX_PATHS = new Set(["/blog/lgbtq-events-connecticut-march-2026"]);
 
 /** Escape a string for safe injection into an HTML attribute value. */
@@ -351,6 +362,11 @@ export default async (request: Request, context: Context) => {
     }
   }
 
+  // 301 redirects for legacy non-blog paths (e.g. /agents -> /about).
+  if (STATIC_REDIRECTS[path]) {
+    return Response.redirect(`${BASE_DOMAIN}${STATIC_REDIRECTS[path]}`, 301);
+  }
+
   // Determine whether this is a real route. Unknown routes must return a true
   // HTTP 404 (not a 200 "soft 404") so search engines drop them instead of
   // indexing a thin error page. We still serve the styled SPA shell so humans
@@ -368,9 +384,15 @@ export default async (request: Request, context: Context) => {
 
   if (isNotFound) {
     const response = await context.next();
+    // Never rewrite a redirect into a 404. If the pipeline already produced a
+    // 3xx (e.g. a _redirects rule), honor it as-is — returning a 404 that still
+    // carries a Location header is what Google reports as a "Redirect error".
+    if (response.status >= 300 && response.status < 400) {
+      return response;
+    }
     const contentType = response.headers.get("content-type");
     if (!contentType || !contentType.includes("text/html")) {
-      return new Response(response.body, { status: 404, headers: safeHeaders(response.headers) });
+      return response;
     }
     let text = await response.text();
     text = stripExistingTags(text);
