@@ -3,6 +3,10 @@ import { BLOG_POSTS } from "../../data/blogs.ts";
 import { agents } from "../../data/agents.ts";
 
 const BASE_DOMAIN = "https://www.gayrealestatect.net";
+// The only host that should ever be indexed. Every other host that serves this
+// app (the *.netlify.app subdomain and deploy-preview URLs) must be marked
+// noindex so it can't compete with the real domain for canonical / ranking.
+const PRODUCTION_HOST = "www.gayrealestatect.net";
 const DEFAULT_IMAGE = `${BASE_DOMAIN}/hero-house.png`;
 const DEFAULT_IMAGE_ALT = "GayRealEstateCT.net - LGBTQ+ Friendly Real Estate in Connecticut";
 
@@ -339,6 +343,10 @@ export default async (request: Request, context: Context) => {
   const url = new URL(request.url);
   let path = url.pathname;
 
+  // Anything not served from the canonical production host (e.g. the
+  // *.netlify.app URL or a deploy preview) must never be indexed.
+  const isProductionHost = url.hostname === PRODUCTION_HOST;
+
   // Normalize path: remove trailing slash for consistency
   if (path.length > 1 && path.endsWith("/")) {
     path = path.slice(0, -1);
@@ -403,7 +411,9 @@ export default async (request: Request, context: Context) => {
       ogImageAlt: DEFAULT_IMAGE_ALT,
     };
     text = text.replace("</head>", `${buildMetaTags(path, meta, true)}</head>`);
-    return new Response(text, { status: 404, headers: safeHeaders(response.headers) });
+    const headers404 = safeHeaders(response.headers);
+    if (!isProductionHost) headers404.set("X-Robots-Tag", "noindex, nofollow");
+    return new Response(text, { status: 404, headers: headers404 });
   }
 
   // Known route. Inject per-page SEO meta for EVERY request — including search
@@ -422,11 +432,16 @@ export default async (request: Request, context: Context) => {
   let text = await response.text();
   text = stripExistingTags(text);
   const meta = resolveMeta(path);
-  const noindex = NOINDEX_PATHS.has(path);
+  // Force noindex on non-production hosts so the *.netlify.app / preview copies
+  // never get indexed alongside the real domain.
+  const noindex = NOINDEX_PATHS.has(path) || !isProductionHost;
   text = text.replace("</head>", `${buildMetaTags(path, meta, noindex)}</head>`);
 
+  const outHeaders = safeHeaders(response.headers);
+  if (!isProductionHost) outHeaders.set("X-Robots-Tag", "noindex, nofollow");
+
   return new Response(text, {
-    headers: safeHeaders(response.headers),
+    headers: outHeaders,
   });
 };
 
