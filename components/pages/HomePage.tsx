@@ -1,4 +1,5 @@
 import React, { Suspense, lazy } from 'react';
+import { Link } from 'react-router-dom';
 import { HeroGeometric } from '../ui/shape-landing-hero';
 import Header from '../Header';
 import AnimatedGradientBackground from '../ui/animated-gradient-background';
@@ -10,7 +11,8 @@ const CommunitySpotlight = lazy(() => import('../CommunitySpotlight'));
 const EnquiryForm = lazy(() => import('../EnquiryForm'));
 import Footer from '../Footer';
 import SEOHead from '../SEOHead';
-import { Home, Search, Heart, BookOpen } from 'lucide-react';
+import { Home, Search, Heart, BookOpen, ArrowRight } from 'lucide-react';
+import { BLOG_POSTS } from '../../data/blogs';
 
 // Loading skeleton for lazy components
 const SectionLoader = () => (
@@ -134,6 +136,46 @@ const HomePage: React.FC = () => {
                         <CommunitySpotlight />
                     </div>
                 </Suspense>
+
+                {/* Featured Pride Month 2026 Guide — placed right after Community Spotlight */}
+                {(() => {
+                    const post = BLOG_POSTS.find(p => p.id === 29);
+                    if (!post) return null;
+                    return (
+                        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+                            <Link
+                                to={`/blog/${post.slug}`}
+                                className="group flex flex-col md:flex-row bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-2xl hover:border-purple-300/60 transition-all duration-500 hover:-translate-y-1"
+                            >
+                                <div className="relative md:w-2/5 h-64 md:h-auto overflow-hidden">
+                                    <img
+                                        src={post.image}
+                                        alt={post.title}
+                                        className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                                    />
+                                    <div className="absolute top-5 left-5">
+                                        <span className="px-4 py-2 bg-white/95 backdrop-blur-sm text-[10px] font-bold uppercase tracking-widest text-brand-700 rounded-lg shadow-sm border border-brand-100">
+                                            {post.category}
+                                        </span>
+                                    </div>
+                                </div>
+                                <div className="p-8 md:p-12 flex flex-col justify-center md:w-3/5">
+                                    <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-purple-500 mb-3">Featured Guide · {post.readTime}</p>
+                                    <h3 className="text-2xl md:text-3xl font-display font-bold text-slate-900 mb-4 group-hover:text-purple-700 transition-colors duration-300 leading-tight">
+                                        {post.title}
+                                    </h3>
+                                    <p className="text-slate-600 leading-relaxed mb-8 font-light">
+                                        {post.excerpt}
+                                    </p>
+                                    <span className="inline-flex items-center gap-2 text-[11px] font-black tracking-widest text-brand-500 uppercase group-hover:text-brand-700 transition-colors">
+                                        Read the Full Guide
+                                        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                                    </span>
+                                </div>
+                            </Link>
+                        </div>
+                    );
+                })()}
 
                 <Suspense fallback={<SectionLoader />}>
                     <div className="content-auto">

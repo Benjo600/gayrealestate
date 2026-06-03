@@ -22,9 +22,7 @@ const Resources: React.FC = () => {
   ];
 
   const filteredPosts = useMemo(() => {
-    if (activeTab === 'ALL') return BLOG_POSTS;
-    
-    return BLOG_POSTS.filter(post => {
+    const basePosts = activeTab === 'ALL' ? BLOG_POSTS : BLOG_POSTS.filter(post => {
       const category = post.category.toUpperCase();
       if (activeTab === 'RELOCATION') return category.includes('RELOCATION') || category.includes('LIVING GUIDE') || category.includes('EVENTS');
       if (activeTab === 'NEIGHBORHOODS') return category.includes('LOCAL') || category.includes('SPOTLIGHT') || category.includes('LITCHFIELD');
@@ -32,6 +30,16 @@ const Resources: React.FC = () => {
       if (activeTab === 'ADVICE') return category.includes('LEGAL') || category.includes('MARKET') || category.includes('EXPERT');
       return true;
     });
+
+    // Ensure Pride Month 2026 guide (id 29) appears right after the March Events post (id 9)
+    const posts = [...basePosts];
+    const marchIdx = posts.findIndex(p => p.id === 9);
+    const prideIdx = posts.findIndex(p => p.id === 29);
+    if (marchIdx !== -1 && prideIdx !== -1 && prideIdx !== marchIdx + 1) {
+      const [pridePost] = posts.splice(prideIdx, 1);
+      posts.splice(marchIdx + 1, 0, pridePost);
+    }
+    return posts;
   }, [activeTab]);
 
   return (

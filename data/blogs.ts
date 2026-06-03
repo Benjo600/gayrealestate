@@ -376,7 +376,7 @@ export const BLOG_POSTS: BlogPost[] = [
       </ul>
 
       <h2>Pride Month Preview: Summer 2026</h2>
-      <p>It's not too early to plan. Connecticut's Pride season is robust: Hartford Pride, New Haven Pride, West Hartford celebrations, and events in Litchfield County and Fairfield County. Multiple parades, festivals, and community gatherings throughout June and into July. More details in our April and May guides.</p>
+      <p>It's not too early to plan. Connecticut's Pride season is robust: Hartford Pride, New Haven Pride, West Hartford celebrations, and events in Litchfield County and Fairfield County. Multiple parades, festivals, and community gatherings throughout June and into July. See our full <a href="/blog/connecticut-pride-month-2026-guide" class="text-brand-600 hover:underline font-bold">Connecticut Pride Month 2026 guide</a> for dates, venues, and highlights across the state.</p>
 
       <h2>New to Connecticut? Here's How to Connect Faster</h2>
       <p>The LGBTQ+ community in Connecticut is tight-knit precisely because the state is small enough that communities overlap. Once you find your entry point — a professional network, a book club, a regular bar night, a community organization — you'll find the connections compound quickly. The people we help buy homes here consistently tell us that building community was faster and easier than they expected.</p>
@@ -1504,5 +1504,215 @@ Lakefront properties here are rare, fiercely held, and range from rustic seasona
     author: "Jake Earl",
     authorRole: "VP, Mortgage Banker | Total Mortgage"
   },
+  {
+    id: 29,
+    slug: "connecticut-pride-month-2026-guide",
+    title: "Connecticut Pride Month 2026: The Ultimate Guide to LGBTQ+ Events Across Connecticut",
+    excerpt: "Your chronological guide to Connecticut Pride Month 2026 — parades, festivals, film screenings, drag shows, and community events from Fairfield County to Mystic.",
+    seoKeywords: "Connecticut Pride Month 2026, LGBTQ events Connecticut June, Hartford Pride 2026, Connecticut Pride festivals, gay events Connecticut",
+    content: `
+      <p class="lead-paragraph">Pride Month is here, and Connecticut is celebrating with a packed calendar of festivals, parades, drag shows, film screenings, dance parties, community gatherings, and family-friendly events from Fairfield County to Mystic.</p>
+      <p>Whether you’re looking for a massive Pride festival, a drag brunch, a queer film festival, or a late-night dance party, here’s your chronological guide to the biggest LGBTQ+ events happening across Connecticut this June.</p>
+
+            <h2>June 5–6</h2>
+
+            <h3>Mohegan Sun Pride Weekend</h3>
+      <p><strong>Uncasville</strong></p>
+      <p>Mohegan Sun hosts one of Connecticut’s largest Pride celebrations featuring:</p>
+
+            <ul><li>Pride on the Sun Patio</li><li>Drag performances</li><li>Pride @ Night celebrations</li><li>Dance parties</li><li>Lipstick, Lashes &amp; Lies drag spectacular</li><li>Avalon Nightclub events</li></ul>
+      <p>Website: <a href="https://mohegansun.com" target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:underline">mohegansun.com</a></p>
+
+            <h2>June 6</h2>
+
+            <h3>Middletown PrideFEST</h3>
+      <p><strong>Downtown Middletown</strong></p>
+      <p>Connecticut’s largest Pride celebration returns with:</p>
+
+            <ul><li>Pride March</li><li>Community Rally</li><li>Live entertainment</li><li>Food trucks</li><li>Vendors</li><li>Tea Dance</li><li>Family activities</li><li>Evening celebrations</li></ul>
+      <p>Website: <a href="https://www.middletownpride.org" target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:underline">middletownpride.org</a></p>
+
+            <h3>Party with Pride at Mystic Aquarium</h3>
+      <p><strong>Mystic</strong></p>
+      <p>Celebrate Pride among sharks, sea lions, and marine exhibits while enjoying entertainment, drag performances, educational programming, and family-friendly activities.</p>
+      <p>Website: <a href="https://www.mysticaquarium.org" target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:underline">mysticaquarium.org</a></p>
+
+            <h3>Ridgefield Pride in the Park</h3>
+      <p><strong>Ridgefield</strong></p>
+      <p>A community-focused Pride event featuring live entertainment, family activities, vendors, and educational resources.</p>
+      <p>Website: <a href="https://ridgefieldctpride.com" target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:underline">ridgefieldctpride.com</a></p>
+
+            <h3>Pride After Party Featuring Manila Luzon</h3>
+      <p><strong>Chez Est – Hartford</strong></p>
+      <p>After Middletown Pride, continue the celebration with RuPaul’s Drag Race star Manila Luzon and one of Connecticut’s most anticipated Pride nightlife events.</p>
+      <p>Website: <a href="https://chezest.com" target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:underline">chezest.com</a></p>
+
+            <h2>June 7</h2>
+
+            <h3>Watertown Pride Party</h3>
+      <p><strong>Watertown</strong></p>
+      <p>This family-friendly event features:</p>
+
+            <ul><li>Tie-dye activities</li><li>Bracelet making</li><li>Food vendors</li><li>Community organizations</li><li>Raffles and silent auctions</li><li>LGBTQ+ resources</li></ul>
+
+            <h2>June 12</h2>
+
+            <h3>WüF Pride Pre-Party</h3>
+      <p><strong>Chez Est – Hartford</strong></p>
+      <p>One of Connecticut’s biggest LGBTQ+ dance parties kicks off Capital City Pride weekend with DJs, dancing, and Pride-themed performances.</p>
+      <p>Website: <a href="https://chezest.com" target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:underline">chezest.com</a></p>
+
+            <h3>Connecticut LGBTQ Film Festival Opening Night</h3>
+      <p><strong>Hartford</strong></p>
+      <p>The annual Out Film CT festival begins, bringing together filmmakers, artists, and audiences for one of New England’s longest-running LGBTQ+ film festivals.</p>
+      <p>Website: <a href="https://www.outfilmct.org" target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:underline">outfilmct.org</a></p>
+
+            <h2>June 13</h2>
+
+            <h3>Capital City Pride</h3>
+      <p><strong>Hartford</strong></p>
+      <p>Hartford’s signature Pride celebration includes:</p>
+
+            <ul><li>Pride on Pratt</li><li>Riverfront PrideFest</li><li>Live music</li><li>Performers</li><li>Community organizations</li><li>Food vendors</li><li>Family-friendly activities</li></ul>
+      <p>Website: <a href="https://riverfront.org" target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:underline">riverfront.org</a></p>
+
+            <h3>Fairfield County Pride in the Park</h3>
+      <p><strong>Fairfield</strong></p>
+      <p>One of the state’s largest family-oriented Pride celebrations featuring entertainment, community organizations, speakers, and local businesses.</p>
+      <p>Website: <a href="https://fairfieldcountypride.com" target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:underline">fairfieldcountypride.com</a></p>
+
+            <h3>Capital City Pride Official After Party</h3>
+      <p><strong>Chez Est – Hartford</strong></p>
+      <p>Following PrideFest, Hartford’s LGBTQ+ community gathers for drag performances, dancing, and special guest appearances.</p>
+      <p>Website: <a href="https://chezest.com" target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:underline">chezest.com</a></p>
+
+            <h2>June 14</h2>
+
+            <h3>Glastonbury Pride Festival</h3>
+      <p><strong>Glastonbury</strong></p>
+      <p>An afternoon of live music, food trucks, games, vendors, and LGBTQ+ community organizations.</p>
+      <p>Website: <a href="https://glastonburypride.org" target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:underline">glastonburypride.org</a></p>
+
+            <h3>Picnic for Pride</h3>
+      <p><strong>New Milford</strong></p>
+      <p>Enjoy a relaxed community gathering featuring live music, art activities, local organizations, and family-friendly fun on the Town Green.</p>
+
+            <h2>June 12–20</h2>
+
+            <h3>Connecticut LGBTQ Film Festival (Out Film CT)</h3>
+      <p><strong>Hartford</strong></p>
+      <p>Throughout the week, audiences can enjoy:</p>
+
+            <ul><li>Feature films</li><li>Documentaries</li><li>International cinema</li><li>Short films</li><li>Filmmaker discussions</li><li>Opening and closing receptions</li></ul>
+      <p>The festival remains one of Connecticut’s most important LGBTQ+ cultural events.</p>
+      <p>Website: <a href="https://www.outfilmct.org" target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:underline">outfilmct.org</a></p>
+
+            <h2>June 20</h2>
+
+            <h3>Greater Bridgeport Pride</h3>
+      <p><strong>Bridgeport</strong></p>
+      <p>The celebration includes:</p>
+
+            <ul><li>Pride March</li><li>Unity in the Park</li><li>Live entertainment</li><li>Vendors</li><li>Community organizations</li><li>Family activities</li></ul>
+      <p>Website: <a href="https://greaterbridgeportpride.org" target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:underline">greaterbridgeportpride.org</a></p>
+
+            <h3>Lipstick, Lashes &amp; Lies</h3>
+      <p><strong>Mohegan Sun</strong></p>
+      <p>One of Connecticut’s most popular drag productions returns as part of Pride Month festivities.</p>
+      <p>Website: <a href="https://mohegansun.com" target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:underline">mohegansun.com</a></p>
+
+            <h3>Connecticut LGBTQ Film Festival Closing Night</h3>
+      <p><strong>Hartford</strong></p>
+      <p>The festival concludes with a closing film, reception, and celebration of LGBTQ+ storytelling and cinema.</p>
+      <p>Website: <a href="https://www.outfilmct.org" target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:underline">outfilmct.org</a></p>
+
+            <h2>June 21–28</h2>
+
+            <h3>Out Film CT Virtual Encore</h3>
+      <p><strong>Online</strong></p>
+      <p>Many festival selections become available for streaming during the Virtual Encore week.</p>
+      <p>Website: <a href="https://www.outfilmct.org" target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:underline">outfilmct.org</a></p>
+
+            <h2>June 26–28</h2>
+
+            <h3>SHAG Festival</h3>
+      <p><strong>Washington, Connecticut</strong></p>
+      <p>A unique LGBTQ+ festival blending:</p>
+
+            <ul><li>Music</li><li>Art</li><li>Wellness programming</li><li>Community experiences</li><li>Outdoor activities</li><li>Camping and social events</li></ul>
+      <p>Website: <a href="https://shagfest.com" target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:underline">shagfest.com</a></p>
+
+            <h2>June 27</h2>
+
+            <h3>West Hartford Pride Festival</h3>
+      <p><strong>West Hartford</strong></p>
+      <p>One of Connecticut’s fastest-growing Pride celebrations featuring:</p>
+
+            <ul><li>Vendors</li><li>Entertainment</li><li>Family activities</li><li>Community organizations</li><li>Pride marketplace</li><li>Live performances</li></ul>
+      <p>Website: <a href="https://westhartfordpride.org" target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:underline">westhartfordpride.org</a></p>
+
+            <h3>Mystic Pride – Love Out Loud</h3>
+      <p><strong>Mystic</strong></p>
+      <p>This shoreline celebration features:</p>
+
+            <ul><li>Waterfront festivities</li><li>Live music</li><li>Drag performances</li><li>Vendors</li><li>Family activities</li><li>Community programming</li></ul>
+      <p>Website: <a href="https://mysticpride.org" target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:underline">mysticpride.org</a></p>
+
+            <h3>Enfield Pride Celebration</h3>
+      <p><strong>Enfield</strong></p>
+      <p>A free community event featuring entertainment, vendors, performers, and local organizations.</p>
+
+            <h2>Throughout June</h2>
+
+            <h3>Chez Est Pride Month Programming</h3>
+      <p><strong>Hartford</strong></p>
+      <p>Connecticut’s most iconic LGBTQ+ venue hosts:</p>
+
+            <ul><li>Weekly drag shows</li><li>Pride dance parties</li><li>Theme nights</li><li>Official Pride after-parties</li><li>Special guest performers</li></ul>
+      <p>Website: <a href="https://chezest.com" target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:underline">chezest.com</a></p>
+
+            <h3>Sky Casper Entertainment Pride Events</h3>
+      <p><strong>Statewide</strong></p>
+      <p>Sky Casper Entertainment produces and hosts numerous Pride-related events throughout Connecticut, including appearances at West Hartford Pride, Southington Pride, drag brunches, community celebrations, and special performances.</p>
+      <p>Website: <a href="https://skycasper.com/pride-events" target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:underline">skycasper.com</a></p>
+
+            <h3>International Festival of Arts &amp; Ideas</h3>
+      <p><strong>New Haven</strong></p>
+      <p>While not exclusively a Pride event, this internationally recognized festival features numerous LGBTQ+ artists, performers, discussions, and cultural programming throughout May and June.</p>
+      <p>Website: <a href="https://artidea.org" target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:underline">artidea.org</a></p>
+
+            <h2>Other Connecticut Pride Celebrations to Watch</h2>
+      <p>Many towns continue to add Pride programming throughout June, including:</p>
+
+            <ul><li>Stamford Pride</li><li>Norwalk Pride</li><li>Southington Pride</li><li>Milford Pride</li><li>North Haven Pride</li><li>Cromwell Pride</li><li>Bridgeport Pride</li><li>New Haven Pride events</li></ul>
+      <p>Check local organizers and community calendars for the latest schedules and announcements.</p>
+
+            <h2>Pride Month 2026 Highlights</h2>
+      <p>If you’re only attending a few events this year, make these your priority:</p>
+
+            <ol><li>Middletown PrideFEST</li><li>Capital City Pride Hartford</li><li>Connecticut LGBTQ Film Festival</li><li>Mystic Pride – Love Out Loud</li><li>West Hartford Pride</li><li>Mohegan Sun Pride Weekend</li><li>Chez Est Pride Month Events</li></ol>
+      <p>From large-scale festivals to intimate community gatherings, Connecticut offers something for everyone during Pride Month. Whether you’re celebrating with family, supporting local LGBTQ+ organizations, or dancing until last call, Pride Month 2026 is shaping up to be one of the state’s biggest and most diverse celebrations yet.</p>
+
+            
+            <h2>New to Connecticut? Connect With the Community</h2>
+
+            <p>Many people discover Connecticut through Pride — and stay because the community feels like home. If you're exploring a move after festival season, our guide to the <a href="/blog/best-places-to-live-in-connecticut-lgbtq" class="text-brand-600 hover:underline font-bold">best places to live in Connecticut for LGBTQ+ people</a> is the place to start. <a href="/blog/why-west-hartford-is-lgbtq-friendly-connecticut" class="text-brand-600 hover:underline font-bold">West Hartford</a> hosts one of the state's fastest-growing Pride celebrations, and our <a href="/blog/moving-to-connecticut-as-a-gay-couple" class="text-brand-600 hover:underline font-bold">guide to moving to Connecticut as a gay couple</a> covers the practical steps when you're ready to make it official.</p>
+
+            <p>Want introductions to neighborhoods and community networks beyond the festival calendar? That's part of what we do when you work with our team.</p>
+    `,
+    faq: [
+      { question: "When is Connecticut Pride Month 2026?", answer: "Connecticut Pride Month runs throughout June 2026, with major festivals, parades, and community events from early June through late June and into early July. Highlights include Middletown PrideFEST (June 6), Capital City Pride in Hartford (June 13), West Hartford Pride (June 27), and ongoing programming at Chez Est and Out Film CT." },
+      { question: "What are the biggest Pride festivals in Connecticut in 2026?", answer: "The largest 2026 celebrations include Middletown PrideFEST, Capital City Pride Hartford, Fairfield County Pride in the Park, Mohegan Sun Pride Weekend, West Hartford Pride Festival, Greater Bridgeport Pride, and Mystic Pride – Love Out Loud." },
+      { question: "When is Hartford Pride / Capital City Pride 2026?", answer: "Capital City Pride takes place June 13, 2026 in Hartford, featuring Pride on Pratt, Riverfront PrideFest, live music, performers, community organizations, and family-friendly activities. Pride weekend also includes the WüF Pre-Party on June 12 and official after-parties at Chez Est." },
+      { question: "Is there a Pride event in West Hartford in 2026?", answer: "Yes. West Hartford Pride Festival is scheduled for June 27, 2026, with vendors, entertainment, family activities, community organizations, a Pride marketplace, and live performances. Details are at westhartfordpride.org." },
+      { question: "When is the Connecticut LGBTQ Film Festival (Out Film CT) in 2026?", answer: "Out Film CT runs June 12–20, 2026 in Hartford, with opening night June 12, closing night June 20, and a Virtual Encore streaming week June 21–28. It is one of New England's longest-running LGBTQ+ film festivals." },
+    ],
+    image: "/lgbtq_events_ct.png",
+    category: "COMMUNITY EVENTS",
+    date: "2026-06-01",
+    readTime: "5 MIN READ",
+    author: "Arek Wtulich",
+    authorRole: "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance"
+  }
 ];
 
