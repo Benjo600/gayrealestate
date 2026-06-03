@@ -20,8 +20,8 @@ export function ExploreProfileButton({
             onClick={onClick}
             className={cn(
                 "group relative overflow-hidden w-full",
-                "text-white font-semibold text-base",
-                "rounded-xl h-14",
+                "text-white font-semibold text-sm md:text-base",
+                "rounded-xl h-10 md:h-14",
                 "border border-white/20",
                 "shadow-lg hover:shadow-purple-500/30 transition-all duration-500",
                 "hover:-translate-y-0.5",

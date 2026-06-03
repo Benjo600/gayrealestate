@@ -40,7 +40,7 @@ const AgentFinder: React.FC = () => {
         <div className="relative glass-dark rounded-[2rem] shadow-2xl backdrop-blur-2xl border border-white/5 hover:border-white/10 transition-all duration-500 overflow-hidden flex flex-col h-full">
 
           {/* Agent Image Area */}
-          <div className="relative h-64 sm:h-72 md:h-80 overflow-hidden">
+          <div className="relative h-48 sm:h-60 md:h-80 overflow-hidden">
             <img
               src={agent.image}
               alt={agent.name}
@@ -157,7 +157,7 @@ const AgentFinder: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-display font-semibold text-slate-900 tracking-tight leading-[1.1]">
+            className="text-2xl md:text-6xl lg:text-7xl font-display font-semibold text-slate-900 tracking-tight leading-[1.1]">
             Meet the{' '}
             <span style={{
               background: 'linear-gradient(90deg, #E50000, #FF8D00, #FFEE00, #028121, #004CFF, #770088)',
