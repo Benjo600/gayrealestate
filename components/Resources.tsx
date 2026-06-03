@@ -31,15 +31,7 @@ const Resources: React.FC = () => {
       return true;
     });
 
-    // Ensure Pride Month 2026 guide (id 29) appears right after the March Events post (id 9)
-    const posts = [...basePosts];
-    const marchIdx = posts.findIndex(p => p.id === 9);
-    const prideIdx = posts.findIndex(p => p.id === 29);
-    if (marchIdx !== -1 && prideIdx !== -1 && prideIdx !== marchIdx + 1) {
-      const [pridePost] = posts.splice(prideIdx, 1);
-      posts.splice(marchIdx + 1, 0, pridePost);
-    }
-    return posts;
+    return [...basePosts].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   }, [activeTab]);
 
   return (
