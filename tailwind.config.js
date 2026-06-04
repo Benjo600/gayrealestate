@@ -13,8 +13,8 @@ export default {
       fontFamily: {
         sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
         serif: ['"Playfair Display"', 'Georgia', 'serif'],
-        display: ['"Playfair Display"', 'Georgia', 'serif'],
-        prose: ['"Lora"', 'Georgia', 'serif'],
+        display: ['"DM Sans"', 'system-ui', 'sans-serif'],
+        prose: ['"DM Sans"', 'system-ui', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
