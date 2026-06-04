@@ -40,7 +40,7 @@ const AgentFinder: React.FC = () => {
         <div className="relative glass-dark rounded-2xl md:rounded-[2rem] shadow-2xl backdrop-blur-2xl border border-white/5 hover:border-white/10 transition-all duration-500 overflow-hidden flex flex-col h-full">
 
           {/* Agent Image Area */}
-          <div className="relative h-44 sm:h-56 md:h-80 overflow-hidden">
+          <div className="relative h-56 sm:h-64 md:h-80 overflow-hidden">
             <img
               src={agent.image}
               alt={agent.name}
