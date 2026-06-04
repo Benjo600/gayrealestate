@@ -371,10 +371,10 @@ const BlogPost: React.FC = () => {
 
                     <div 
                         ref={contentRef}
-                        className="blog-content prose prose-lg prose-slate max-w-none 
+                        className="blog-content prose prose-lg prose-slate max-w-none font-prose
                         prose-headings:font-display prose-headings:font-bold prose-headings:text-slate-900
                         prose-h2:text-3xl md:prose-h2:text-4xl prose-h2:mt-24 prose-h2:mb-10 prose-h2:tracking-tight
-                        prose-p:text-slate-600 prose-p:leading-relaxed prose-p:mb-10 prose-p:text-base md:prose-p:text-lg md:prose-p:font-light
+                        prose-p:text-slate-600 prose-p:leading-relaxed prose-p:mb-10 prose-p:text-base md:prose-p:text-lg prose-p:font-normal
                         prose-strong:text-slate-900 prose-strong:font-bold
                         prose-a:text-brand-600 prose-a:no-underline prose-a:font-bold hover:prose-a:text-brand-800 transition-colors border-b border-brand-200/50
                         prose-ul:list-none prose-ul:pl-0 prose-li:pl-0 prose-li:mb-6
