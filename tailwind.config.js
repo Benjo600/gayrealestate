@@ -11,7 +11,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+        sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
         serif: ['"Playfair Display"', 'Georgia', 'serif'],
         display: ['"DM Sans"', 'system-ui', 'sans-serif'],
         prose: ['"DM Sans"', 'system-ui', 'sans-serif'],
