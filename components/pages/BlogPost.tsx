@@ -455,21 +455,21 @@ const BlogPost: React.FC = () => {
             </main>
 
             {/* Next Step Section - Ultra Modern */}
-            <section className="bg-white pb-32 px-6">
+            <section className="bg-white pb-16 md:pb-32 px-4 md:px-6">
                  <div className="max-w-7xl mx-auto">
-                    <div className="relative bg-slate-50 rounded-[4rem] p-10 md:p-24 overflow-hidden border border-slate-200/50">
+                    <div className="relative bg-slate-50 rounded-2xl md:rounded-[4rem] p-6 sm:p-8 md:p-24 overflow-hidden border border-slate-200/50">
                         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-300 via-brand-600 to-brand-800" />
-                        
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
                             <div>
-                                <h2 className="text-4xl md:text-6xl font-display font-bold text-slate-900 mb-8 leading-[1.1] tracking-tight">
+                                <h2 className="text-2xl sm:text-4xl md:text-6xl font-display font-bold text-slate-900 mb-4 md:mb-8 leading-[1.1] tracking-tight">
                                     Reach out to <span className="pride-gradient-text italic">{post.author.split(' ')[0]}</span> Today.
                                 </h2>
-                                <p className="text-lg text-slate-500 font-light leading-relaxed mb-4 max-w-lg">
+                                <p className="text-base md:text-lg text-slate-500 font-light leading-relaxed mb-4 max-w-lg">
                                     Have questions about this article? Connect with {post.author.split(' ')[0]} for expert, LGBTQ+ inclusive real estate guidance in Connecticut.
                                 </p>
                             </div>
-                            <div className="bg-white/80 backdrop-blur-xl rounded-[3rem] p-8 md:p-12 shadow-2xl shadow-slate-200 border border-white">
+                            <div className="bg-white/80 backdrop-blur-xl rounded-xl md:rounded-[3rem] p-5 md:p-12 shadow-xl shadow-slate-200 border border-white">
                                 <BlogCTAForm postTitle={post.title} authorName={post.author} agentId={agentId} />
                             </div>
                         </div>
