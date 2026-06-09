@@ -152,6 +152,10 @@ const BLOG_REDIRECTS: Record<string, string> = {
   "new-haven-lgbtq-real-estate": "/blog/best-lgbtq-neighborhoods-new-haven-ct",
   "lgbtq-relocation-connecticut": "/relocation",
   "selling-home-connecticut-lgbtq": "/sellers-guide",
+  "how-to-choose-a-gay-friendly-realtor-2026-guide": "/blog/gay-realtor-connecticut-guide",
+  "litchfield-county-towns-for-weekenders": "/blog/litchfield-county-second-homes-lgbtq-buyers",
+  "gay-friendly-towns-in-connecticut-2026-ranked-guide": "/blog/best-places-to-live-in-connecticut-lgbtq",
+  "wooster-square-new-haven-lgbtq-neighborhood": "/blog/best-lgbtq-neighborhoods-new-haven-ct",
 };
 
 // Legacy non-blog paths that must 301 to their current location. Handled here
@@ -165,7 +169,7 @@ const STATIC_REDIRECTS: Record<string, string> = {
   "/community-events": "/community",
 };
 
-const NOINDEX_PATHS = new Set(["/blog/lgbtq-events-connecticut-march-2026"]);
+const NOINDEX_PATHS = new Set<string>();
 
 /** Escape a string for safe injection into an HTML attribute value. */
 const esc = (s: string): string =>
