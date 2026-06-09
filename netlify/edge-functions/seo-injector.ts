@@ -152,6 +152,10 @@ const BLOG_REDIRECTS: Record<string, string> = {
   "new-haven-lgbtq-real-estate": "/blog/best-lgbtq-neighborhoods-new-haven-ct",
   "lgbtq-relocation-connecticut": "/relocation",
   "selling-home-connecticut-lgbtq": "/sellers-guide",
+  "how-to-choose-a-gay-friendly-realtor-2026-guide": "/blog/gay-realtor-connecticut-guide",
+  "litchfield-county-towns-for-weekenders": "/blog/litchfield-county-second-homes-lgbtq-buyers",
+  "gay-friendly-towns-in-connecticut-2026-ranked-guide": "/blog/best-places-to-live-in-connecticut-lgbtq",
+  "wooster-square-new-haven-lgbtq-neighborhood": "/blog/best-lgbtq-neighborhoods-new-haven-ct",
 };
 
 // Legacy non-blog paths that must 301 to their current location. Handled here
