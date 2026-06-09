@@ -165,7 +165,7 @@ const STATIC_REDIRECTS: Record<string, string> = {
   "/community-events": "/community",
 };
 
-const NOINDEX_PATHS = new Set(["/blog/lgbtq-events-connecticut-march-2026"]);
+const NOINDEX_PATHS = new Set<string>();
 
 /** Escape a string for safe injection into an HTML attribute value. */
 const esc = (s: string): string =>

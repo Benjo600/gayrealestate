@@ -11,7 +11,7 @@ const ROOT = path.resolve(__dirname, '..');
 const BASE = 'https://www.gayrealestatect.net';
 
 // Pages that should never appear in the sitemap (e.g. time-limited noindex pages).
-const NOINDEX_SLUGS = new Set(['lgbtq-events-connecticut-march-2026']);
+const NOINDEX_SLUGS = new Set([]);
 
 const blogsSrc = fs.readFileSync(path.join(ROOT, 'data', 'blogs.ts'), 'utf8');
 const agentsSrc = fs.readFileSync(path.join(ROOT, 'data', 'agents.ts'), 'utf8');
