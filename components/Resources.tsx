@@ -34,6 +34,19 @@ const Resources: React.FC = () => {
     return [...basePosts].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   }, [activeTab]);
 
+  const totalForTab = useMemo(() => {
+    if (activeTab === 'ALL') return BLOG_POSTS.length;
+    
+    return BLOG_POSTS.filter(post => {
+      const category = post.category.toUpperCase();
+      if (activeTab === 'RELOCATION') return category.includes('RELOCATION') || category.includes('LIVING GUIDE') || category.includes('EVENTS');
+      if (activeTab === 'NEIGHBORHOODS') return category.includes('LOCAL') || category.includes('SPOTLIGHT') || category.includes('LITCHFIELD');
+      if (activeTab === 'FAMILY') return category.includes('FAMILY') || category.includes('SCHOOL');
+      if (activeTab === 'ADVICE') return category.includes('LEGAL') || category.includes('MARKET') || category.includes('EXPERT');
+      return true;
+    }).length;
+  }, [activeTab]);
+
   return (
     <section id="resources" className="py-12 md:py-24 lg:py-32 relative overflow-hidden" style={{ background: 'linear-gradient(160deg, #fdf4ff 0%, #fff7f0 25%, #f0f9ff 50%, #f7fff4 75%, #fdf4ff 100%)' }}>
       {/* LGBTQ-toned radial washes */}
@@ -105,6 +118,7 @@ const Resources: React.FC = () => {
                     src={post.image}
                     alt={post.title}
                     className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                    style={{ objectPosition: 'center 30%' }}
                   />
                   
                   {/* Category Tag */}
@@ -168,7 +182,7 @@ const Resources: React.FC = () => {
         {/* Results Counter */}
         <div className="mt-12 text-center">
             <p className="text-slate-400 text-sm font-medium">
-              Showing {filteredPosts.length} of {BLOG_POSTS.length} expert articles
+              Showing {filteredPosts.length} of {totalForTab} articles
             </p>
         </div>
 

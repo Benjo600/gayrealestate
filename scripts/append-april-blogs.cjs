@@ -21,18 +21,18 @@ const dates = [
 
 function getImage(filename) {
   const fn = filename.toLowerCase();
-  if (fn.includes('retire')) return '/lgbtq_small_towns_ct.png';
-  if (fn.includes('cheapest')) return '/nyc_vs_ct_real_estate.png';
-  if (fn.includes('search')) return '/ct_lgbtq_places.png';
-  if (fn.includes('attorney')) return '/generational_wealth_real_estate.png';
-  if (fn.includes('areas')) return '/inclusive_neighborhoods.png';
-  if (fn.includes('towns')) return '/new_haven_neighborhoods.png';
-  if (fn.includes('realtor')) return '/gay_realtor_guide.png';
-  if (fn.includes('first-time') || fn.includes('buyer')) return '/lgbtq_first_time_buyer.png';
-  if (fn.includes('discrimination')) return '/inclusive_schools_ct.png';
-  if (fn.includes('couples') || fn.includes('same-sex')) return '/gay_couple_moving_ct.png';
-  if (fn.includes('transgender') || fn.includes('rights')) return '/trans_moving_ct.png';
-  return '/ct_lgbtq_places.png';
+  if (fn.includes('retire')) return '/lgbtq-small-towns-hero.jpg';
+  if (fn.includes('cheapest')) return '/nyc-vs-ct-value-hero.jpg';
+  if (fn.includes('search')) return '/ct-lgbtq-places-hero.jpg';
+  if (fn.includes('attorney')) return '/generational-wealth-ct-hero.jpg';
+  if (fn.includes('areas')) return '/inclusive-ct-neighborhoods-hero.jpg';
+  if (fn.includes('towns')) return '/new-haven-neighborhoods-hero.jpg';
+  if (fn.includes('realtor')) return '/gay-realtor-ct-hero.jpg';
+  if (fn.includes('first-time') || fn.includes('buyer')) return '/lgbtq-first-time-buyer-hero.jpg';
+  if (fn.includes('discrimination')) return '/lgbtq-inclusive-schools-hero.jpg';
+  if (fn.includes('couples') || fn.includes('same-sex')) return '/gay-couple-moving-ct-hero.jpg';
+  if (fn.includes('transgender') || fn.includes('rights')) return '/trans-inclusive-ct-hero.jpg';
+  return '/ct-lgbtq-places-hero.jpg';
 }
 
 function getCategory(filename) {

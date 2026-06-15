@@ -40,77 +40,77 @@ const BLOG_DATA: Record<string, { title: string; description: string; image: str
   "best-places-to-live-in-connecticut-lgbtq": {
     title: "Best Places to Live in Connecticut for LGBTQ+ People (2026 Guide)",
     description: "Connecticut is more welcoming than you think — find your definitive guide to finding your people and your place.",
-    image: `${BASE_DOMAIN}/ct_lgbtq_places.png`,
+    image: `${BASE_DOMAIN}/ct-lgbtq-places-hero.jpg`,
   },
   "why-west-hartford-is-lgbtq-friendly-connecticut": {
     title: "Why West Hartford Is One of the Most LGBTQ+-Friendly Towns in Connecticut",
     description: "A deep dive into why West Hartford consistently tops the list for inclusive living.",
-    image: `${BASE_DOMAIN}/west_hartford_lgbtq.png`,
+    image: `${BASE_DOMAIN}/west-hartford-lgbtq-hero.jpg`,
   },
   "moving-to-connecticut-as-a-gay-couple": {
     title: "Moving to Connecticut as a Gay Couple: What No One Tells You",
     description: "Real-world advice for same-sex couples relocating to CT.",
-    image: `${BASE_DOMAIN}/gay_couple_moving_ct.png`,
+    image: `${BASE_DOMAIN}/gay-couple-moving-ct-hero.jpg`,
   },
   "most-lgbtq-inclusive-school-districts-connecticut": {
     title: "The Most LGBTQ+-Inclusive School Districts in Connecticut (2026)",
     description: "Essential research for LGBTQ+ families with children in CT.",
-    image: `${BASE_DOMAIN}/inclusive_schools_ct.png`,
+    image: `${BASE_DOMAIN}/lgbtq-inclusive-schools-hero.jpg`,
   },
   "1-million-nyc-vs-connecticut-what-do-you-get": {
     title: "$1 Million in NYC vs. $1 Million in Connecticut",
     description: "The stark contrast in quality of life and space between NYC and CT real estate.",
-    image: `${BASE_DOMAIN}/nyc_vs_ct_real_estate.png`,
+    image: `${BASE_DOMAIN}/nyc-vs-ct-value-hero.jpg`,
   },
   "lgbtq-events-connecticut-march-2026": {
     title: "LGBTQ+ Events in Connecticut – March 2026",
     description: "Your monthly guide to the best LGBTQ+ events, community gatherings, and Pride celebrations in CT.",
-    image: `${BASE_DOMAIN}/lgbtq_events_ct.png`,
+    image: `${BASE_DOMAIN}/ct-pride-events-hero.jpg`,
   },
   "litchfield-county-second-homes-lgbtq-buyers": {
     title: "Litchfield County's Best-Kept Secret: Second Homes for LGBTQ+ Buyers",
     description: "Northwestern Connecticut's retreat for LGBTQ+ professionals and creatives.",
-    image: `${BASE_DOMAIN}/lgbtq_first_time_buyer.png`,
+    image: `${BASE_DOMAIN}/lgbtq-first-time-buyer-hero.jpg`,
   },
   "litchfield-county-towns-for-weekenders": {
     title: "Lake Waramaug, Washington, & Beyond: Litchfield County Guide",
     description: "Town-by-town guide to the hidden corners of LGBTQ+ friendly Litchfield County.",
-    image: `${BASE_DOMAIN}/inclusive_neighborhoods.png`,
+    image: `${BASE_DOMAIN}/inclusive-ct-neighborhoods-hero.jpg`,
   },
   "legal-protections-lgbtq-real-estate-connecticut": {
     title: "Protecting Your Home & Relationship: LGBTQ+ Legal Guide",
     description: "What LGBTQ+ buyers need to know about title, deeds, and legal protections in CT.",
-    image: `${BASE_DOMAIN}/generational_wealth_real_estate.png`,
+    image: `${BASE_DOMAIN}/generational-wealth-ct-hero.jpg`,
   },
   "trans-moving-connecticut-guide": {
     title: "Trans Moving to Connecticut: What to Actually Know Before You Relocate",
     description: "Essential guide for trans individuals and families relocating to Connecticut.",
-    image: `${BASE_DOMAIN}/trans_moving_ct.png`,
+    image: `${BASE_DOMAIN}/trans-inclusive-ct-hero.jpg`,
   },
   "lgbtq-friendly-small-towns-connecticut": {
     title: "LGBTQ-Friendly Small Towns in Connecticut: An Honest Guide",
     description: "Beyond the cities — the small towns in CT that are genuinely welcoming to the LGBTQ+ community.",
-    image: `${BASE_DOMAIN}/lgbtq_small_towns_ct.png`,
+    image: `${BASE_DOMAIN}/lgbtq-small-towns-hero.jpg`,
   },
   "wooster-square-new-haven-lgbtq-neighborhood": {
     title: "Wooster Square New Haven: Is It Still the Best LGBTQ Neighborhood?",
     description: "Deep dive into New Haven's most famous LGBTQ-concentrated neighborhood.",
-    image: `${BASE_DOMAIN}/new_haven_wooster.png`,
+    image: `${BASE_DOMAIN}/new-haven-neighborhoods-hero.jpg`,
   },
   "chester-ct-lgbtq-family-guide": {
     title: "Chester, CT for LGBTQ Families: Is This Small Town Worth It?",
     description: "An artsy, welcoming small town in the CT River Valley for LGBTQ+ families.",
-    image: `${BASE_DOMAIN}/chester_ct_family.png`,
+    image: `${BASE_DOMAIN}/ct-family-home-hero.jpg`,
   },
   "best-lgbtq-neighborhoods-new-haven-ct": {
     title: "Best LGBTQ Neighborhoods in New Haven, CT: A Real Breakdown",
     description: "Comparing East Rock, Wooster Square, and Westville for LGBTQ+ residents.",
-    image: `${BASE_DOMAIN}/new_haven_neighborhoods.png`,
+    image: `${BASE_DOMAIN}/new-haven-neighborhoods-hero.jpg`,
   },
   "gay-realtor-connecticut-guide": {
     title: "Gay Realtor in Connecticut: How to Find One That Actually Helps",
     description: "Why working with an agent who 'gets it' matters for LGBTQ+ home buyers in CT.",
-    image: `${BASE_DOMAIN}/gay_realtor_guide.png`,
+    image: `${BASE_DOMAIN}/gay-realtor-ct-hero.jpg`,
   },
 };
 

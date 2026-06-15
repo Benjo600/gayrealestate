@@ -352,9 +352,15 @@ const BlogPost: React.FC = () => {
                     initial={{ opacity: 0, scale: 0.98 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.8, delay: 0.3 }}
-                    className="relative aspect-[16/9] md:aspect-[21/9] w-full rounded-[2.5rem] overflow-hidden shadow-2xl shadow-slate-200 border-8 border-white"
+                    className="relative w-full aspect-[4/3] sm:aspect-[16/9] lg:aspect-[21/9] min-h-[260px] sm:min-h-0 rounded-3xl sm:rounded-[2.5rem] overflow-hidden shadow-xl sm:shadow-2xl shadow-slate-200 border-4 sm:border-8 border-white"
                 >
-                    <img src={post.image} alt={post.title} className="w-full h-full object-cover" fetchPriority="high" />
+                    <img 
+                        src={post.image} 
+                        alt={post.title} 
+                        className="w-full h-full object-cover" 
+                        style={{ objectPosition: 'center 28%' }}
+                        fetchPriority="high" 
+                    />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                 </motion.div>
             </div>
@@ -498,7 +504,7 @@ const BlogPost: React.FC = () => {
                         })().map((p) => (
                             <Link key={p.id} to={`/blog/${p.slug}`} className="group block">
                                 <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden mb-8 shadow-lg">
-                                    <img src={p.image} alt={p.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" loading="lazy" />
+                                    <img src={p.image} alt={p.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" style={{ objectPosition: 'center 30%' }} loading="lazy" />
                                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                                 </div>
                                 <div className="space-y-4 px-2">
