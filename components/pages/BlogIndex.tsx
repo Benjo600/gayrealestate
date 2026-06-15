@@ -81,6 +81,7 @@ const BlogIndex: React.FC = () => {
                                     src={post.image}
                                     alt={post.title}
                                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                    style={{ objectPosition: 'center 30%' }}
                                     loading="lazy"
                                 />
                                 <div className="absolute top-4 left-4 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">

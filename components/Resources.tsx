@@ -118,6 +118,7 @@ const Resources: React.FC = () => {
                     src={post.image}
                     alt={post.title}
                     className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                    style={{ objectPosition: 'center 30%' }}
                   />
                   
                   {/* Category Tag */}
