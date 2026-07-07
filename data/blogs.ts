@@ -1531,6 +1531,67 @@ export const BLOG_POSTS: BlogPost[] = [
     readTime: "5 MIN READ",
     author: "Arek Wtulich",
     authorRole: "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance"
+  },
+  {
+    id: 30,
+    slug: "lgbtq-affirming-healthcare-connecticut",
+    title: "LGBTQ+ Affirming Healthcare in Connecticut: What to Check Before You Move",
+    excerpt: "Access to competent, affirming healthcare is a relocation decision, not an afterthought. Here's what's actually available in Connecticut — by region — and how to factor it into where you buy.",
+    seoKeywords: "LGBTQ healthcare Connecticut, gender affirming care Connecticut, LGBTQ friendly doctors CT, trans healthcare Connecticut, Yale LGBTQ health program",
+    content: `
+      <p class="lead-paragraph">Most relocation guides treat healthcare as a footnote. For LGBTQ+ buyers, especially trans and non-binary people, it should be one of the first things you map, right alongside school districts and commute times. A welcoming town with no affirming provider within an hour's drive is a different proposition than a welcoming town with one five minutes away.</p>
+
+      <p>Here's an honest look at what Connecticut actually offers, organized by region, so you can factor healthcare access into your home search the same way you'd factor in commute time or property taxes.</p>
+
+      <h2>Why This Belongs in Your House-Hunting Checklist</h2>
+      <p>Three things make healthcare access a real estate question, not just a personal one:</p>
+      <ul>
+        <li><strong>Continuity of care matters.</strong> Switching providers mid-transition, or losing an established relationship with a primary care doctor who already knows your history, has real medical and emotional costs.</li>
+        <li><strong>Distance compounds over time.</strong> A 45-minute drive to see a specialist is manageable occasionally. As a recurring appointment for years, it's a quality-of-life factor that belongs in the same conversation as your commute to work.</li>
+        <li><strong>Insurance networks are regional.</strong> Which providers are in-network often depends on where you live and which exchange plan or employer plan you're on, so it's worth checking network overlap before you commit to a town.</li>
+      </ul>
+
+      <h2>Greater Hartford & West Hartford</h2>
+      <p>The Hartford region has some of the state's most established LGBTQ+ healthcare infrastructure. <strong>Hartford HealthCare</strong> has an explicit LGBTQ+ patient care program spanning Hartford Hospital and its network of community health centers, and <strong>UConn Health</strong> in nearby Farmington provides affirming primary and specialty care for the greater Hartford area. This is a meaningful factor in why <a href="/blog/why-west-hartford-is-lgbtq-friendly-connecticut" class="text-brand-600 hover:underline font-bold">West Hartford consistently ranks as Connecticut's most LGBTQ+-friendly town</a>: strong healthcare access sits on top of strong schools and community infrastructure.</p>
+
+      <h2>New Haven & Shoreline</h2>
+      <p><strong>Yale Medicine's Gender Program</strong> is one of the most comprehensive LGBTQ+ and gender-affirming care programs in New England, covering primary care, hormone therapy, and surgical referrals in one system. <strong>Yale New Haven Health</strong> also runs PrEP and sexual health services through its community clinics. If you're weighing New Haven against other markets, our guide to the <a href="/blog/best-lgbtq-neighborhoods-new-haven-ct" class="text-brand-600 hover:underline font-bold">best LGBTQ+ neighborhoods in New Haven</a> covers the neighborhood side of that decision.</p>
+
+      <h2>Statewide: Planned Parenthood of Southern New England</h2>
+      <p>For buyers anywhere in Connecticut, <strong>Planned Parenthood of Southern New England</strong> operates multiple locations offering gender-affirming hormone therapy, PrEP, and sexual health services, and is often the most accessible entry point for people who don't yet have a referral to a specialist system.</p>
+
+      <h2>Litchfield County & Rural Markets</h2>
+      <p>This is the honest trade-off of Connecticut's more rural markets. Litchfield County's small towns offer land, privacy, and a genuinely welcoming community, but the nearest comprehensive LGBTQ+ health system is a real drive, typically 45 minutes to an hour to Hartford or Waterbury-area providers. If you're considering a <a href="/blog/litchfield-county-second-homes-lgbtq-buyers" class="text-brand-600 hover:underline font-bold">second home or weekend retreat in Litchfield County</a>, this is worth weighing against how often you'll need in-person specialty care versus routine telehealth.</p>
+
+      <h2>Mental Health & Community Support</h2>
+      <p>Healthcare access isn't only physical. Connecticut has established LGBTQ+ mental health resources including community counseling organizations serving youth and adults, and active <strong>PFLAG</strong> chapters that support both LGBTQ+ individuals and their families, particularly valuable for parents of trans children navigating a new town's school system and medical providers together.</p>
+
+      <h2>Insurance and Affordability</h2>
+      <p><strong>Access Health CT</strong>, the state's insurance exchange, includes plans that cover gender-affirming care, and Connecticut's expanded Medicaid program explicitly covers transition-related care. Before you finalize a move, it's worth confirming which exchange plans have your preferred providers in-network, coverage and networks can shift year to year.</p>
+
+      <h2>How to Actually Vet This When House Hunting</h2>
+      <ul>
+        <li>Map driving distance from any home you're seriously considering to the nearest affirming health system, not just the nearest hospital.</li>
+        <li>Call ahead and ask directly whether the practice has explicit experience with LGBTQ+ patients, don't assume from a website's language alone.</li>
+        <li>Ask your real estate agent what they know about the community's healthcare fabric. An agent who's actually part of the community, not just serving it, usually has this knowledge firsthand rather than from a brochure.</li>
+        <li>Factor telehealth into the calculation for rural markets, many hormone therapy follow-ups and mental health sessions can be handled remotely once you're established with a provider.</li>
+      </ul>
+
+      <h2>Bringing It Back to Where You Buy</h2>
+      <p>None of this means rural Connecticut is off the table, plenty of LGBTQ+ people build good lives there. It means going in with eyes open about the trade-off, the same way you'd weigh a longer commute against a bigger yard. If healthcare proximity is a top priority for you, West Hartford, Hartford, and New Haven are your strongest options. For the complete regional breakdown, see our guide to the <a href="/blog/best-places-to-live-in-connecticut-lgbtq" class="text-brand-600 hover:underline font-bold">best places to live in Connecticut for LGBTQ+ people</a>.</p>
+    `,
+    faq: [
+      { question: "Where can I find LGBTQ+ affirming healthcare in Connecticut?", answer: "Yale Medicine's Gender Program in New Haven and Hartford HealthCare's LGBTQ+ patient care program are the two most comprehensive systems in the state, with UConn Health in Farmington and Planned Parenthood of Southern New England providing additional statewide access to primary care, hormone therapy, and sexual health services." },
+      { question: "Does Connecticut insurance cover gender-affirming care?", answer: "Yes. Access Health CT, the state's insurance exchange, includes plans covering gender-affirming care, and Connecticut's expanded Medicaid program explicitly covers transition-related care. Confirm specific provider networks before finalizing a plan, since coverage details can change year to year." },
+      { question: "Is healthcare access different in rural Connecticut versus West Hartford or New Haven?", answer: "Yes, meaningfully. West Hartford and New Haven sit close to major LGBTQ+-affirming health systems, while Litchfield County and other rural markets can mean a 45-minute to hour drive to the nearest comprehensive provider. Telehealth can cover some follow-up care, but it's a real trade-off worth weighing before buying in a rural area." },
+      { question: "Should healthcare access affect where I buy a home in Connecticut?", answer: "For LGBTQ+ buyers, especially trans and non-binary people, yes. Recurring specialty care and continuity with an established provider are quality-of-life factors similar to commute time or school quality, and are worth mapping against any home you're seriously considering." },
+    ],
+    image: "/ct-lgbtq-places-hero.jpg",
+    category: "HEALTHCARE GUIDE",
+    date: "2026-07-10",
+    readTime: "6 MIN READ",
+    author: "Arek Wtulich",
+    authorRole: "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance"
   }
 ];
 
