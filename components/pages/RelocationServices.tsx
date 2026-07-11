@@ -261,6 +261,24 @@ const RelocationServices: React.FC = () => {
             </section>
 
 
+            <section className="max-w-5xl mx-auto px-5 py-16 md:py-24">
+                <h2 className="text-2xl md:text-3xl font-display font-bold text-slate-900 mb-6 text-center">Relocation Guides</h2>
+                <div className="grid sm:grid-cols-2 gap-4">
+                    {[
+                        { to: '/blog/moving-nyc-to-connecticut-lgbtq', label: 'Moving from NYC to Connecticut — LGBTQ Buyer Guide' },
+                        { to: '/blog/moving-to-connecticut-as-a-gay-couple', label: 'Moving to Connecticut as a Gay Couple' },
+                        { to: '/blog/connecticut-vs-massachusetts-lgbtq-buyers', label: 'Connecticut vs Massachusetts for LGBTQ Buyers' },
+                        { to: '/blog/lgbtq-affirming-healthcare-connecticut', label: 'LGBTQ+ Affirming Healthcare in Connecticut' },
+                        { to: '/blog/stamford-ct-lgbtq-guide', label: 'Stamford CT LGBTQ Guide' },
+                        { to: '/blog/norwalk-ct-lgbtq-guide', label: 'Norwalk CT LGBTQ Guide' },
+                    ].map((item) => (
+                        <Link key={item.to} to={item.to} className="block p-5 rounded-2xl border border-slate-100 bg-white hover:border-brand-200 hover:shadow-md transition-all text-slate-800 font-semibold">
+                            {item.label} <span className="text-brand-600">→</span>
+                        </Link>
+                    ))}
+                </div>
+            </section>
+
             <Footer />
         </div>
 

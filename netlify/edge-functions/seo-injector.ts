@@ -151,7 +151,7 @@ const BLOG_REDIRECTS: Record<string, string> = {
   "connecticut-mortgage-lgbtq-buyers": "/mortgage-calculator",
   "new-haven-lgbtq-real-estate": "/blog/best-lgbtq-neighborhoods-new-haven-ct",
   "lgbtq-relocation-connecticut": "/relocation",
-  "selling-home-connecticut-lgbtq": "/sellers-guide",
+  // NOTE: selling-home-connecticut-lgbtq is a live blog post — do not redirect
   "how-to-choose-a-gay-friendly-realtor-2026-guide": "/blog/gay-realtor-connecticut-guide",
   "litchfield-county-towns-for-weekenders": "/blog/litchfield-county-second-homes-lgbtq-buyers",
   "gay-friendly-towns-in-connecticut-2026-ranked-guide": "/blog/best-places-to-live-in-connecticut-lgbtq",
@@ -295,6 +295,76 @@ function stripExistingTags(text: string): string {
     .replace(/<meta name="twitter:[^"]*" content=".*?" \/>/g, "");
 }
 
+/** Server-side BlogPosting (+ FAQ) JSON-LD so crawlers get schema without JS. */
+function buildBlogJsonLd(path: string): string {
+  if (!path.startsWith("/blog/")) return "";
+  const slug = path.replace("/blog/", "");
+  const post = BLOG_POSTS.find((p) => p.slug === slug);
+  if (!post) return "";
+
+  const canonicalUrl = `${BASE_DOMAIN}/blog/${post.slug}`;
+  const image = toAbsoluteImage(post.image);
+  const blogPosting = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": canonicalUrl,
+    mainEntityOfPage: { "@type": "WebPage", "@id": canonicalUrl },
+    headline: post.title,
+    description: post.excerpt,
+    image,
+    datePublished: post.date,
+    dateModified: post.date,
+    articleSection: post.category,
+    author: {
+      "@type": "Person",
+      name: post.author,
+      jobTitle: post.authorRole,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "GayRealEstateCT.net",
+      url: BASE_DOMAIN,
+      logo: { "@type": "ImageObject", url: `${BASE_DOMAIN}/logo.png` },
+    },
+  };
+
+  const breadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${BASE_DOMAIN}/` },
+      { "@type": "ListItem", position: 2, name: "Blog", item: `${BASE_DOMAIN}/blog` },
+      { "@type": "ListItem", position: 3, name: post.title, item: canonicalUrl },
+    ],
+  };
+
+  const graphs: Record<string, unknown>[] = [blogPosting, breadcrumb];
+
+  if (post.faq && post.faq.length > 0) {
+    graphs.push({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: post.faq.map(({ question, answer }) => ({
+        "@type": "Question",
+        name: question,
+        acceptedAnswer: { "@type": "Answer", text: answer },
+      })),
+    });
+  }
+
+  // noscript teaser helps non-JS crawlers see real article intent in the body
+  const noscript = `<noscript><article><h1>${esc(post.title)}</h1><p>${esc(post.excerpt)}</p><p>Read the full guide at <a href="${canonicalUrl}">${esc(canonicalUrl)}</a>.</p></article></noscript>`;
+
+  return (
+    graphs
+      .map(
+        (g) =>
+          `<script type="application/ld+json">${JSON.stringify(g).replace(/</g, "\\u003c")}</script>`
+      )
+      .join("\n") + noscript
+  );
+}
+
 /** Build the per-page meta tag block. */
 function buildMetaTags(path: string, meta: PageMeta, noindex: boolean): string {
   const canonicalUrl = `${BASE_DOMAIN}${path}`;
@@ -305,9 +375,16 @@ function buildMetaTags(path: string, meta: PageMeta, noindex: boolean): string {
   const title = esc(meta.title);
   const description = esc(meta.description);
   const ogImageAlt = esc(meta.ogImageAlt);
+  const keywordsMeta = (() => {
+    if (!path.startsWith("/blog/")) return "";
+    const slug = path.replace("/blog/", "");
+    const post = BLOG_POSTS.find((p) => p.slug === slug);
+    if (!post?.seoKeywords) return "";
+    return `\n    <meta name="keywords" content="${esc(post.seoKeywords)}" />`;
+  })();
   return `
     <title>${title}</title>
-    <meta name="description" content="${description}" />
+    <meta name="description" content="${description}" />${keywordsMeta}
     <meta name="robots" content="${robotsContent}" />
     <link rel="canonical" href="${canonicalUrl}" />
     <meta property="og:locale" content="en_US" />
@@ -326,6 +403,7 @@ function buildMetaTags(path: string, meta: PageMeta, noindex: boolean): string {
     <meta name="twitter:description" content="${description}" />
     <meta name="twitter:image" content="${meta.ogImage}" />
     <meta name="twitter:image:alt" content="${ogImageAlt}" />
+    ${buildBlogJsonLd(path)}
   `;
 }
 

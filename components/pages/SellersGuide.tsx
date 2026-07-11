@@ -330,6 +330,22 @@ const SellersGuide: React.FC = () => {
                 </div>
             </section>
 
+            <section className="max-w-5xl mx-auto px-5 pb-20">
+                <h2 className="text-2xl md:text-3xl font-display font-bold text-slate-900 mb-6 text-center">Related Seller Guides</h2>
+                <div className="grid sm:grid-cols-2 gap-4">
+                    {[
+                        { to: '/blog/selling-home-connecticut-lgbtq', label: 'Selling a Home in Connecticut 2026: Costs & Timing' },
+                        { to: '/blog/connecticut-lgbtq-real-estate-market-report-2026', label: 'CT LGBTQ Real Estate Market Report 2026' },
+                        { to: '/blog/gay-realtor-connecticut-guide', label: 'How to Find a Gay Realtor in Connecticut' },
+                        { to: '/blog/do-you-need-an-lgbtq-real-estate-attorney', label: 'Do You Need an LGBTQ Real Estate Attorney?' },
+                    ].map((item) => (
+                        <Link key={item.to} to={item.to} className="block p-5 rounded-2xl border border-slate-100 bg-white hover:border-brand-200 hover:shadow-md transition-all text-slate-800 font-semibold">
+                            {item.label} <span className="text-brand-600">→</span>
+                        </Link>
+                    ))}
+                </div>
+            </section>
+
             <Footer />
         </div>
     );

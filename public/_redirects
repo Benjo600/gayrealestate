@@ -17,7 +17,7 @@ https://gayrealestatect.net/*    https://www.gayrealestatect.net/:splat  301!
 /blog/connecticut-mortgage-lgbtq-buyers       /mortgage-calculator                                           301
 /blog/new-haven-lgbtq-real-estate             /blog/best-lgbtq-neighborhoods-new-haven-ct                    301
 /blog/lgbtq-relocation-connecticut            /relocation                                                    301
-/blog/selling-home-connecticut-lgbtq          /sellers-guide                                                 301
+# selling-home-connecticut-lgbtq is a live post — do NOT redirect it
 # Removed blog posts — 301 to preserve link equity
 /blog/lgbtq-down-payment-assistance-programs-connecticut  /first-time-buyers  301
 /blog/what-is-the-lgbtq-real-estate-alliance              /blog/gay-realtor-connecticut-guide  301

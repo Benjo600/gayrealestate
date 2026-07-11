@@ -349,6 +349,22 @@ const BuyersGuide: React.FC = () => {
                 </div>
             </section>
 
+            <section className="max-w-5xl mx-auto px-5 pb-20">
+                <h2 className="text-2xl md:text-3xl font-display font-bold text-slate-900 mb-6 text-center">Related Buyer Guides</h2>
+                <div className="grid sm:grid-cols-2 gap-4">
+                    {[
+                        { to: '/blog/how-to-buy-home-connecticut-lgbtq', label: 'How to Buy a Home in Connecticut as an LGBTQ Buyer' },
+                        { to: '/blog/connecticut-closing-costs', label: 'Connecticut Closing Costs 2026 Breakdown' },
+                        { to: '/blog/connecticut-property-taxes-by-town', label: 'Property Taxes by Town — 2026 Mill Rates' },
+                        { to: '/blog/best-places-to-live-in-connecticut-lgbtq', label: 'Best Places to Live in Connecticut for LGBTQ+ People' },
+                    ].map((item) => (
+                        <Link key={item.to} to={item.to} className="block p-5 rounded-2xl border border-slate-100 bg-white hover:border-brand-200 hover:shadow-md transition-all text-slate-800 font-semibold">
+                            {item.label} <span className="text-brand-600">→</span>
+                        </Link>
+                    ))}
+                </div>
+            </section>
+
             <Footer />
         </div>
     );

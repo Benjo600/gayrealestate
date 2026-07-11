@@ -262,6 +262,22 @@ const FirstTimeBuyers: React.FC = () => {
                 </div>
             </section>
 
+            <section className="max-w-5xl mx-auto px-5 pb-16 md:pb-24">
+                <h2 className="text-2xl md:text-3xl font-display font-bold text-slate-900 mb-6 text-center">Related First-Time Buyer Guides</h2>
+                <div className="grid sm:grid-cols-2 gap-4">
+                    {[
+                        { to: '/blog/lgbtq-first-time-home-buyer-guide-connecticut-edition', label: 'LGBTQ+ First-Time Home Buyer Guide (CT Edition)' },
+                        { to: '/blog/how-to-buy-home-connecticut-lgbtq', label: 'How to Buy a Home in Connecticut as an LGBTQ Buyer' },
+                        { to: '/blog/connecticut-closing-costs', label: 'Connecticut Closing Costs 2026' },
+                        { to: '/blog/best-lgbtq-mortgage-lenders-connecticut', label: 'Best LGBTQ Mortgage Lenders in Connecticut' },
+                    ].map((item) => (
+                        <Link key={item.to} to={item.to} className="block p-5 rounded-2xl border border-slate-100 bg-white hover:border-brand-200 hover:shadow-md transition-all text-slate-800 font-semibold text-sm md:text-base">
+                            {item.label} <span className="text-brand-600">→</span>
+                        </Link>
+                    ))}
+                </div>
+            </section>
+
             <Footer />
         </div>
     );
