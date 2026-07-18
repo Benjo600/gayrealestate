@@ -284,15 +284,19 @@ function resolveMeta(path: string): PageMeta {
   return { title, description, ogImage, ogImageAlt };
 }
 
-/** Strip any existing SEO tags from the shell so we never emit duplicates. */
+/** Strip any existing SEO tags from the shell so we never emit duplicates.
+ * Also strips react-helmet-managed tags (marked data-rh) that survive in
+ * prerendered HTML snapshots, so the edge-injected set is the only one. */
 function stripExistingTags(text: string): string {
   return text
-    .replace(/<title>.*?<\/title>/, "")
+    .replace(/<title[^>]*>.*?<\/title>/, "")
     .replace(/<meta name="description" content=".*?" \/>/g, "")
     .replace(/<meta name="robots" content=".*?" \/>/g, "")
     .replace(/<link rel="canonical" href=".*?" \/>/g, "")
     .replace(/<meta property="og:[^"]*" content=".*?" \/>/g, "")
-    .replace(/<meta name="twitter:[^"]*" content=".*?" \/>/g, "");
+    .replace(/<meta name="twitter:[^"]*" content=".*?" \/>/g, "")
+    .replace(/<script[^>]*\bdata-rh="true"[^>]*>[\s\S]*?<\/script>/g, "")
+    .replace(/<(?:meta|link)[^>]*\bdata-rh="true"[^>]*\/?>/g, "");
 }
 
 /** Server-side BlogPosting (+ FAQ) JSON-LD so crawlers get schema without JS. */
@@ -352,17 +356,42 @@ function buildBlogJsonLd(path: string): string {
     });
   }
 
-  // noscript teaser helps non-JS crawlers see real article intent in the body
-  const noscript = `<noscript><article><h1>${esc(post.title)}</h1><p>${esc(post.excerpt)}</p><p>Read the full guide at <a href="${canonicalUrl}">${esc(canonicalUrl)}</a>.</p></article></noscript>`;
+  return graphs
+    .map(
+      (g) =>
+        `<script type="application/ld+json">${JSON.stringify(g).replace(/</g, "\\u003c")}</script>`
+    )
+    .join("\n");
+}
 
-  return (
-    graphs
-      .map(
-        (g) =>
-          `<script type="application/ld+json">${JSON.stringify(g).replace(/</g, "\\u003c")}</script>`
-      )
-      .join("\n") + noscript
-  );
+/**
+ * Full-content <noscript> fallback for crawlers that don't execute JavaScript
+ * (Bing, DuckDuckGo, most AI crawlers). Blog content and agent bios already
+ * live in the data files this function bundles, so we can serve the complete
+ * article body server-side at no extra cost. Injected just before </body>,
+ * and only when the served HTML is the unrendered SPA shell (a prerendered
+ * page already carries its content in the DOM).
+ */
+function buildNoscriptBody(path: string): string {
+  if (path.startsWith("/blog/")) {
+    const slug = path.replace("/blog/", "");
+    const post = BLOG_POSTS.find((p) => p.slug === slug);
+    if (!post) return "";
+    const canonicalUrl = `${BASE_DOMAIN}/blog/${post.slug}`;
+    return `<noscript><article><h1>${esc(post.title)}</h1><p><em>By ${esc(post.author)} — ${esc(post.date)}</em></p><p>${esc(post.excerpt)}</p>${post.content}<p><a href="${canonicalUrl}">${esc(post.title)}</a> — <a href="${BASE_DOMAIN}/blog">All articles</a> — GayRealEstateCT.net</p></article></noscript>`;
+  }
+  if (path.startsWith("/agent/")) {
+    const agent = agents[path.replace("/agent/", "")];
+    if (!agent) return "";
+    const bioHtml = (agent.bio || "")
+      .split(/\n+/)
+      .filter((p: string) => p.trim())
+      .map((p: string) => `<p>${esc(p)}</p>`)
+      .join("");
+    const specialties = (agent.specialties || []).map((s: string) => `<li>${esc(s)}</li>`).join("");
+    return `<noscript><article><h1>${esc(agent.name)} — ${esc(agent.title)}</h1><p><em>${esc(agent.tagline || "")}</em></p>${bioHtml}${specialties ? `<ul>${specialties}</ul>` : ""}<p><a href="${BASE_DOMAIN}/contact">Contact ${esc(agent.name)}</a> — GayRealEstateCT.net</p></article></noscript>`;
+  }
+  return "";
 }
 
 /** Build the per-page meta tag block. */
@@ -375,6 +404,12 @@ function buildMetaTags(path: string, meta: PageMeta, noindex: boolean): string {
   const title = esc(meta.title);
   const description = esc(meta.description);
   const ogImageAlt = esc(meta.ogImageAlt);
+  // Homepage LCP is the first hero slide (see components/ui/shape-landing-hero.tsx)
+  // — preload it only on "/" so other pages don't waste bandwidth on it.
+  const lcpPreload =
+    path === "/"
+      ? `\n    <link rel="preload" as="image" href="/images/ct-highlights/anastasia-oDpiy4LNyIs-unsplash.jpg" fetchpriority="high" />`
+      : "";
   const keywordsMeta = (() => {
     if (!path.startsWith("/blog/")) return "";
     const slug = path.replace("/blog/", "");
@@ -384,7 +419,7 @@ function buildMetaTags(path: string, meta: PageMeta, noindex: boolean): string {
   })();
   return `
     <title>${title}</title>
-    <meta name="description" content="${description}" />${keywordsMeta}
+    <meta name="description" content="${description}" />${keywordsMeta}${lcpPreload}
     <meta name="robots" content="${robotsContent}" />
     <link rel="canonical" href="${canonicalUrl}" />
     <meta property="og:locale" content="en_US" />
@@ -436,6 +471,13 @@ export default async (request: Request, context: Context) => {
 
   if (path.startsWith("/api/")) {
     return;
+  }
+
+  // 301 trailing-slash page URLs to their canonical non-slash form so search
+  // engines never see two URLs (200) for the same page. Same-origin so deploy
+  // previews keep working; asset paths never end in "/" so they're unaffected.
+  if (url.pathname.length > 1 && url.pathname.endsWith("/") && !path.includes(".")) {
+    return Response.redirect(`${url.origin}${path}${url.search}`, 301);
   }
 
   // Non-HTML assets (anything with a file extension that isn't .html) pass through.
@@ -512,12 +554,21 @@ export default async (request: Request, context: Context) => {
   }
 
   let text = await response.text();
+  // Detect the unrendered SPA shell BEFORE stripping tags: a prerendered page
+  // already contains its content in the DOM and needs no noscript fallback.
+  const isUnrenderedShell = text.includes('<div id="root"></div>');
   text = stripExistingTags(text);
   const meta = resolveMeta(path);
   // Force noindex on non-production hosts so the *.netlify.app / preview copies
   // never get indexed alongside the real domain.
   const noindex = NOINDEX_PATHS.has(path) || !isProductionHost;
   text = text.replace("</head>", `${buildMetaTags(path, meta, noindex)}</head>`);
+  if (isUnrenderedShell) {
+    const noscriptBody = buildNoscriptBody(path);
+    if (noscriptBody) {
+      text = text.replace("</body>", `${noscriptBody}\n</body>`);
+    }
+  }
 
   const outHeaders = safeHeaders(response.headers);
   if (!isProductionHost) outHeaders.set("X-Robots-Tag", "noindex, nofollow");

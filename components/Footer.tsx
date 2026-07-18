@@ -119,8 +119,8 @@ const Footer: React.FC = () => {
                 { label: 'About Us', href: '/about' },
                 { label: 'Client Reviews', href: '/reviews' },
                 { label: 'Community Hub', href: '/community' },
-                { label: 'Blog & News', href: '/#resources' },
-                { label: 'Contact Support', href: '/#contact' },
+                { label: 'Blog & News', href: '/blog' },
+                { label: 'Contact Support', href: '/contact' },
                 { label: 'Privacy Policy', href: '/privacy-policy' }
               ].map(({ label, href }, i) => (
                 <li key={i}>

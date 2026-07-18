@@ -74,7 +74,8 @@ function HeroGeometric({
                     <motion.img
                         key={currentSlide}
                         src={ctHighlightImages[currentSlide]}
-                        alt="CT Scenery"
+                        alt="Connecticut scenery — LGBTQ+ friendly places to live across the state"
+                        fetchPriority="high"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
@@ -96,6 +97,7 @@ function HeroGeometric({
                         {/* Heading */}
                         <motion.div custom={1} variants={fadeUpVariants} initial="hidden" animate="visible">
                             <h1 className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-medium tracking-tighter leading-[1.1] mb-6 md:mb-8">
+                                <span className="sr-only">LGBTQ+ Friendly Real Estate Agents in Connecticut — </span>
                                 <span className="block text-white">{title1}</span>
                                 <span className="block mt-2">
                                     <span className="bg-gradient-to-br from-white via-white to-orange-200 bg-clip-text text-transparent">

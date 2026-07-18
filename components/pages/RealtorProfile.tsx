@@ -215,7 +215,7 @@ const RealtorProfile: React.FC = () => {
                                 <span className="inline-block px-3 py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-[9px] font-bold text-white uppercase tracking-[0.2em] mb-2">
                                     {roleLabel}
                                 </span>
-                                <h1 className="text-3xl font-serif font-bold text-white leading-tight">{agent.name}</h1>
+                                <h2 className="text-3xl font-serif font-bold text-white leading-tight">{agent.name}</h2>
                             </div>
                         </div>
                         

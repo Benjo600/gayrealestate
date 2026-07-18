@@ -124,7 +124,8 @@ const EnquiryFormCard: React.FC = () => {
    );
 };
 
-const EnquiryForm: React.FC = () => {
+const EnquiryForm: React.FC<{ titleAs?: 'h1' | 'h2' }> = ({ titleAs = 'h2' }) => {
+   const TitleTag = titleAs;
    return (
       <section id="contact" className="py-20 md:py-28 relative overflow-hidden" style={{ background: 'linear-gradient(160deg, #fdf4ff 0%, #fff7f0 25%, #f0f9ff 50%, #f7fff4 75%, #fdf4ff 100%)' }}>
       {/* LGBTQ-toned radial washes */}
@@ -137,7 +138,7 @@ const EnquiryForm: React.FC = () => {
          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col md:flex-row items-center gap-12 lg:gap-20">
             {/* Left Column: Copy & Social Proof */}
             <div className="flex-1 text-center md:text-left">
-               <h2 className="text-4xl md:text-5xl font-serif font-bold text-slate-900 leading-tight mb-6">
+               <TitleTag className="text-4xl md:text-5xl font-serif font-bold text-slate-900 leading-tight mb-6">
                   Your Dream Home <br className="hidden md:block"/>
                   <span style={{
                      background: 'linear-gradient(90deg, #E50000, #FF8D00, #FFEE00, #028121, #004CFF, #770088)',
@@ -147,7 +148,7 @@ const EnquiryForm: React.FC = () => {
                      display: 'inline-block',
                      animation: 'pride-hue 4s linear infinite',
                   }}>Awaits</span>
-               </h2>
+               </TitleTag>
                <p className="text-slate-600 text-sm md:text-base leading-relaxed mb-8 max-w-md mx-auto md:mx-0">
                   Connect with our exclusive network of LGBTQ+ friendly real estate professionals across Connecticut.
                </p>

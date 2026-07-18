@@ -4,6 +4,9 @@
 
 [build.environment]
   NODE_VERSION = "22"
+  # Store Playwright's Chromium inside node_modules so Netlify's dependency
+  # cache persists it between builds (used by scripts/prerender.cjs).
+  PLAYWRIGHT_BROWSERS_PATH = "0"
 
 [[edge_functions]]
   path = "/*"

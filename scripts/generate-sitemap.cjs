@@ -38,7 +38,9 @@ while ((m = agentRe.exec(agentsSrc)) !== null) {
   if (!agentIds.includes(m[1])) agentIds.push(m[1]);
 }
 
-const today = new Date().toISOString().slice(0, 10);
+// NOTE: static/agent pages intentionally have no <lastmod>. Stamping them with
+// the build date on every deploy teaches Google to distrust lastmod sitewide;
+// blog posts carry their real publish date instead.
 
 const staticPages = [
   { loc: '/', changefreq: 'weekly', priority: '1.0' },
@@ -57,7 +59,7 @@ const staticPages = [
 ];
 
 const urlBlock = ({ loc, lastmod, changefreq, priority }) =>
-  `  <url>\n    <loc>${BASE}${loc}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`;
+  `  <url>\n    <loc>${BASE}${loc}</loc>\n${lastmod ? `    <lastmod>${lastmod}</lastmod>\n` : ''}    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`;
 
 const parts = [];
 parts.push('<?xml version="1.0" encoding="UTF-8"?>');
@@ -65,22 +67,22 @@ parts.push('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">');
 
 parts.push('  <!-- Core Pages -->');
 for (const p of staticPages) {
-  parts.push(urlBlock({ ...p, lastmod: today }));
+  parts.push(urlBlock(p));
 }
 
 parts.push('  <!-- Agents -->');
 for (const id of agentIds) {
-  parts.push(urlBlock({ loc: `/agent/${id}`, lastmod: today, changefreq: 'monthly', priority: '0.9' }));
+  parts.push(urlBlock({ loc: `/agent/${id}`, changefreq: 'monthly', priority: '0.9' }));
 }
 
 parts.push('  <!-- Blog Index -->');
-parts.push(urlBlock({ loc: '/blog', lastmod: today, changefreq: 'weekly', priority: '0.8' }));
+parts.push(urlBlock({ loc: '/blog', changefreq: 'weekly', priority: '0.8' }));
 
 parts.push('  <!-- Blog Posts -->');
 let included = 0;
 for (const post of posts) {
   if (NOINDEX_SLUGS.has(post.slug)) continue;
-  parts.push(urlBlock({ loc: `/blog/${post.slug}`, lastmod: post.date || today, changefreq: 'yearly', priority: '0.9' }));
+  parts.push(urlBlock({ loc: `/blog/${post.slug}`, lastmod: post.date || undefined, changefreq: 'monthly', priority: '0.9' }));
   included += 1;
 }
 

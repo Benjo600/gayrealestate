@@ -56,7 +56,7 @@ const ContactPage: React.FC = () => {
             </nav>
 
             <div className="pt-16">
-                <EnquiryForm />
+                <EnquiryForm titleAs="h1" />
             </div>
 
             <Footer />

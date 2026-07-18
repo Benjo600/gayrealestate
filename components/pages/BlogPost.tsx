@@ -493,7 +493,7 @@ const BlogPost: React.FC = () => {
                             <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 mb-4">Related Discoveries</h3>
                             <p className="text-3xl font-display font-bold text-slate-900">Recommended for you</p>
                         </div>
-                        <Link to="/#resources" className="flex items-center gap-2 text-sm font-bold text-brand-600 hover:text-brand-800 transition-colors">
+                        <Link to="/blog" className="flex items-center gap-2 text-sm font-bold text-brand-600 hover:text-brand-800 transition-colors">
                             View All Articles <ArrowRight className="w-4 h-4" />
                         </Link>
                     </div>

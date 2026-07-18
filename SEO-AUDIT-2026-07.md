@@ -154,3 +154,40 @@ away naturally if #2 moves to prerendered static pages.
 | 5 | Prerender routes to static HTML at build (#2) — biggest structural win | Days |
 | 6 | Deduplicate edge/Helmet meta (#7), split blog bundle (#8) | Hours |
 | 7 | Sitemap lastmod, stale events URL, meta keywords (#9, #10, #12) | ~1 hr |
+
+---
+
+## Fixes applied on this branch (no visual design changes)
+
+- **#1/#13 Images** — every referenced image recompressed in place (same
+  filenames): `public/` 77 MB → 15 MB; homepage LCP slide 2 MB → 329 KB; the
+  edge function now preloads the first hero slide on `/` only, and the
+  slideshow `<img>` carries `fetchPriority="high"` and descriptive alt text.
+- **#2 Crawlability** — two layers added:
+  1. `scripts/prerender.cjs` (new, runs after `vite build`) renders all 57
+     routes in headless Chromium and maps them to static snapshots via 200
+     rewrites in `_redirects`. Fail-safe: any failure leaves the SPA fallback
+     untouched and never fails the build.
+  2. The edge function now injects the **full article body / agent bio** in
+     `<noscript>` whenever it serves the unrendered shell — so non-JS crawlers
+     get real content even if prerendering is ever unavailable.
+- **#3 Orphans** — Footer "Blog & News" → `/blog`, "Contact Support" →
+  `/contact`, BlogPost "View All Articles" → `/blog`.
+- **#4 H1s** — homepage H1 now begins with a screen-reader-only
+  "LGBTQ+ Friendly Real Estate Agents in Connecticut —" (visible text
+  unchanged); Contact page renders its existing headline as an `<h1>`; the
+  duplicate `<h1>` on agent profiles demoted to `<h2>` (same styling).
+- **#5 Schema** — self-serving `aggregateRating` removed from the sitewide
+  `RealEstateAgent` JSON-LD.
+- **#9 Sitemap** — static/agent pages no longer stamp a fake `lastmod` on
+  every build; blog posts keep their real dates.
+- **#11** — the internal link through a 301 now points directly at
+  `/blog/gay-realtor-connecticut-guide`.
+- **#14** — trailing-slash URLs now 301 to the canonical non-slash URL at the
+  edge.
+- Also: stale "Browse all 30 articles" meta description on `/blog` reworded.
+
+**Still open (needs your input/content):** local-pack schema fields (phone,
+street address — need the real NAP), Google Business Profile verification,
+the stale March events post (#10), edge/Helmet curated-description dedupe for
+15 posts (#7), and splitting `data/blogs.ts` out of the main bundle (#8).
