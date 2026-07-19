@@ -52,7 +52,36 @@ const Features: React.FC = () => {
           </div>
 
           <h2 className="text-5xl md:text-7xl lg:text-8xl font-display font-light text-slate-900 tracking-tight mb-6 md:mb-8 leading-[0.95]">
-            Why Choose <span className="font-serif italic pride-gradient-text">Us</span>
+            Why Choose{" "}
+            <svg
+              aria-hidden="true"
+              className="inline-block h-[0.95em] w-auto align-[-0.08em] overflow-visible"
+              viewBox="0 0 72 56"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <defs>
+                <linearGradient id="why-choose-us-rainbow" x1="0%" y1="50%" x2="100%" y2="50%">
+                  <stop offset="0%" stopColor="#F06E6E" />
+                  <stop offset="20%" stopColor="#F5B05E" />
+                  <stop offset="40%" stopColor="#E8D85E" />
+                  <stop offset="60%" stopColor="#52B86A" />
+                  <stop offset="80%" stopColor="#628AF0" />
+                  <stop offset="100%" stopColor="#B05EC8" />
+                </linearGradient>
+              </defs>
+              <text
+                x="0"
+                y="44"
+                fill="url(#why-choose-us-rainbow)"
+                fontFamily="Georgia, 'Times New Roman', serif"
+                fontStyle="italic"
+                fontWeight="600"
+                fontSize="52"
+              >
+                Us
+              </text>
+            </svg>
+            <span className="sr-only">Us</span>
           </h2>
 
           {/* Refined decorative line */}
