@@ -1781,7 +1781,7 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "FINANCE & MORTGAGES",
     date: "2026-06-09",
     readTime: "8 MIN READ",
-    author: "Arek Garbowicz",
+    author: "Arek Wtulich",
     authorRole: "Licensed CT Realtor | CT LGBTQ+ Real Estate Alliance"
   },
   {
@@ -1805,7 +1805,7 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "BUYING GUIDE",
     date: "2026-06-11",
     readTime: "10 MIN READ",
-    author: "Arek Garbowicz",
+    author: "Arek Wtulich",
     authorRole: "Licensed CT Realtor | CT LGBTQ+ Real Estate Alliance"
   },
   {
@@ -1948,7 +1948,7 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "SELLING GUIDE",
     date: "2026-06-23",
     readTime: "7 MIN READ",
-    author: "Arek Garbowicz",
+    author: "Arek Wtulich",
     authorRole: "Licensed CT Realtor | CT LGBTQ+ Real Estate Alliance"
   },
   {
