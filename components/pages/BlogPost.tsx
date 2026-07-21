@@ -30,8 +30,6 @@ const BASE_URL = 'https://www.gayrealestatect.net';
 
 const AUTHOR_AGENT_MAP: Record<string, string> = {
     'Arek Wtulich': 'arek',
-    // June batch byline; no separate agent profile — map to co-founder's profile for E-E-A-T
-    'Arek Garbowicz': 'arek',
     'Abby Dudarewicz': 'abby',
     'Travis Lipinski': 'travis',
     'Jake Earl': 'jake',
