@@ -1,3 +1,4 @@
+import { JULY_2026_BLOGS } from './julyBlogs2026';
 
 export interface BlogPost {
   id: number;
@@ -1974,6 +1975,7 @@ export const BLOG_POSTS: BlogPost[] = [
     readTime: "7 MIN READ",
     author: "Travis Lipinski",
     authorRole: "Licensed CT Realtor | Litchfield County Specialist"
-  }
+  },
+  ...JULY_2026_BLOGS as BlogPost[],
 ];
 
