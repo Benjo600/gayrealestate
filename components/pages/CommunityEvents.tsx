@@ -123,6 +123,9 @@ const CommunityEvents: React.FC = () => {
                                 <a href="#events" className="btn-gold px-8 py-4 rounded-xl text-slate-900 font-bold shadow-lg flex items-center gap-2 text-sm">
                                     Upcoming Shows
                                 </a>
+                                <Link to="/sky-casper" className="px-8 py-4 rounded-xl bg-white border border-purple-100 text-purple-700 font-bold shadow-sm flex items-center gap-2 text-sm hover:shadow-md transition-all">
+                                    Sky Casper Events
+                                </Link>
                             </div>
                         </motion.div>
                     </div>
@@ -133,8 +136,8 @@ const CommunityEvents: React.FC = () => {
                     <div className="max-w-7xl mx-auto px-4 md:px-6">
                         <div className="flex items-center justify-between mb-8 md:mb-16">
                             <h2 className="text-2xl md:text-5xl font-display font-bold text-slate-900">Main Stage</h2>
-                            <Link to="/" className="text-purple-600 font-bold text-xs uppercase hover:text-purple-700 transition-all flex items-center gap-2">
-                                News Feed <ArrowUpRight className="w-4 h-4" />
+                            <Link to="/sky-casper" className="text-purple-600 font-bold text-xs uppercase hover:text-purple-700 transition-all flex items-center gap-2">
+                                Sky Casper Calendar <ArrowUpRight className="w-4 h-4" />
                             </Link>
                         </div>
 
