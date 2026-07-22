@@ -29,8 +29,8 @@ const HomePage: React.FC = () => {
         { name: 'Why Us', url: '#why-us', icon: Heart }
     ];
 
+    // Breadcrumb only — no FAQPage schema without a visible FAQ UI (GEO/trust)
     const homepageStructuredData = [
-        // BreadcrumbList
         {
             '@context': 'https://schema.org',
             '@type': 'BreadcrumbList',
@@ -40,37 +40,6 @@ const HomePage: React.FC = () => {
                     position: 1,
                     name: 'Home',
                     item: `${BASE_URL}/`,
-                },
-            ],
-        },
-        // FAQPage — helps win rich results for common questions
-        {
-            '@context': 'https://schema.org',
-            '@type': 'FAQPage',
-            mainEntity: [
-                {
-                    '@type': 'Question',
-                    name: 'What is GayRealEstateCT.net?',
-                    acceptedAnswer: {
-                        '@type': 'Answer',
-                        text: 'GayRealEstateCT.net is a one-stop real estate service connecting the LGBTQ+ community with trusted, inclusive agents, mortgage lenders, and attorneys in Connecticut.',
-                    },
-                },
-                {
-                    '@type': 'Question',
-                    name: 'How do I find an LGBTQ+ friendly real estate agent?',
-                    acceptedAnswer: {
-                        '@type': 'Answer',
-                        text: 'Browse our curated network of LGBTQ+ friendly professionals directly on our website. Each agent profile includes credentials, specialties, and community involvement.',
-                    },
-                },
-                {
-                    '@type': 'Question',
-                    name: 'What areas of Connecticut do you serve?',
-                    acceptedAnswer: {
-                        '@type': 'Answer',
-                        text: 'We serve all of Connecticut, with specialized knowledge in areas including Litchfield County, the Farmington Valley, and the greater Hartford area.',
-                    },
                 },
             ],
         },

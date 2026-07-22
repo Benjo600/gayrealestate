@@ -46,6 +46,8 @@ const BlogIndex: React.FC = () => {
                 description="Expert guides, neighborhood spotlights, and market insights for LGBTQ+ home buyers and sellers in Connecticut. Browse our full library of in-depth articles."
                 canonical="https://www.gayrealestatect.net/blog"
                 keywords="LGBTQ real estate blog Connecticut, gay home buying guide CT, LGBTQ neighborhood guide Connecticut"
+                ogImage="/hero-house.png"
+                ogImageAlt="LGBTQ+ Real Estate Blog — Connecticut home insights"
                 structuredData={blogIndexStructuredData}
             />
 

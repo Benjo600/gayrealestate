@@ -29,6 +29,7 @@ export const JULY_2026_BLOGS = [
       <p>Drive time to core LGBTQ+ venues and event calendars is a legitimate variable to discuss with your agent — the same way you would discuss a job or a gym. Over years of living somewhere, social access adds up.</p>
       <p>Our team helps LGBTQ+ buyers match towns to lifestyle, not just list price. If nightlife and community events are part of your "why," tell us up front so we factor them into the search.</p>
       <p><a href="/contact" class="text-brand-600 hover:underline font-bold">Talk with our team</a> · <a href="/sky-casper" class="text-brand-600 hover:underline font-bold">Sky Casper event calendar</a> · <a href="/community" class="text-brand-600 hover:underline font-bold">Community Hub</a></p>
+      <p>Related: <a href="/blog/connecticut-pride-month-2026-guide" class="text-brand-600 hover:underline font-bold">Connecticut Pride Month 2026 guide</a> · <a href="/blog/lgbtq-events-connecticut-march-2026" class="text-brand-600 hover:underline font-bold">LGBTQ+ events in Connecticut (March snapshot)</a> · <a href="/blog/best-places-to-live-in-connecticut-lgbtq" class="text-brand-600 hover:underline font-bold">Best places to live for LGBTQ+ people in CT</a> · <a href="/blog/lgbtq-organizations-connecticut-directory" class="text-brand-600 hover:underline font-bold">LGBTQ organizations directory</a></p>
     `,
     faq: [
       { question: "Are there gay bars in Connecticut?", answer: "Yes. Chez Est in Hartford and Partners Café in New Haven are Connecticut's two longest-running dedicated LGBTQ+ bars, both with regular drag programming and community events." },
@@ -79,9 +80,9 @@ export const JULY_2026_BLOGS = [
   {
     id: 45,
     slug: "selling-your-home-lgbtq-homeowner-connecticut",
-    title: "Selling Your Home as an LGBTQ+ Homeowner in Connecticut",
-    excerpt: "Selling comes with its own legal protections and staging choices. What LGBTQ+ sellers in Connecticut should know before listing.",
-    seoKeywords: "LGBTQ home seller Connecticut, selling house Connecticut, gay realtor listing agent CT, LGBTQ friendly listing",
+    title: "Selling Your Home as an LGBTQ+ Homeowner in Connecticut: Staging & Affirming Agents",
+    excerpt: "LGBTQ+ seller experience in Connecticut — staging without erasing yourself, choosing an affirming listing agent, and legal protections when showings go sideways.",
+    seoKeywords: "LGBTQ seller experience Connecticut, LGBTQ home staging Connecticut, affirming listing agent CT, selling as LGBTQ homeowner Connecticut, LGBTQ seller staging guide",
     content: `
       <p class="lead-paragraph">Most LGBTQ+ real estate content focuses on buyers, but sellers face their own questions: marketing without inviting judgment, vetting buyers' agents, and knowing your legal protections if a showing goes sideways.</p>
       <h2>Your Legal Protections as a Seller</h2>

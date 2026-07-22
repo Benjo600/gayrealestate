@@ -36,12 +36,25 @@ const AUTHOR_AGENT_MAP: Record<string, string> = {
     'Carolyn Futtner': 'carolyn',
 };
 
+/** Agent practice/career start year for author bylines (not a shared brand claim). */
+const AUTHOR_START_YEAR: Record<string, number> = {
+    arek: 2020,
+    abby: 2022,
+    travis: 2021,
+    jake: 2010,
+    carolyn: 2005,
+};
+
 /** Format ISO date (2026-02-22) to display format (February 22, 2026) */
 const formatDate = (isoDate: string): string => {
     const [year, month, day] = isoDate.split('-').map(Number);
     const date = new Date(year, month - 1, day);
     return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }).toUpperCase();
 };
+
+/** Truncate meta description to ~160 chars (matches edge seo-injector) */
+const truncateMeta = (s: string, max = 160): string =>
+    s.length > max ? `${s.slice(0, max - 1).trimEnd()}…` : s;
 
 // ─── Inline Blog CTA Form ────────────────────────────────────────────────────
 type FormStatus = 'idle' | 'submitting' | 'success' | 'error';
@@ -186,9 +199,10 @@ const BlogPost: React.FC = () => {
         if (!post) return null;
         const canonicalUrl = `${BASE_URL}/blog/${post.slug}`;
         const absoluteImage = post.image.startsWith('http') ? post.image : `${BASE_URL}${post.image}`;
+        const description = truncateMeta(post.excerpt);
         return {
             title: `${post.title} | Gay Real Estate CT`,
-            description: post.excerpt,
+            description,
             canonical: canonicalUrl,
             structuredData: [
                 {
@@ -197,8 +211,10 @@ const BlogPost: React.FC = () => {
                     '@id': canonicalUrl,
                     mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalUrl },
                     headline: post.title,
-                    description: post.excerpt,
-                    image: absoluteImage,
+                    description,
+                    url: canonicalUrl,
+                    inLanguage: 'en-US',
+                    image: { '@type': 'ImageObject', url: absoluteImage },
                     datePublished: post.date,
                     dateModified: post.date,
                     articleSection: post.category,
@@ -224,7 +240,7 @@ const BlogPost: React.FC = () => {
                         { '@type': 'ListItem', position: 3, name: post.title, item: canonicalUrl },
                     ],
                 },
-                ...(post.faq ? [{
+                ...(post.faq?.length ? [{
                     '@context': 'https://schema.org',
                     '@type': 'FAQPage',
                     mainEntity: post.faq.map(({ question, answer }) => ({
@@ -235,7 +251,7 @@ const BlogPost: React.FC = () => {
                 }] : []),
             ]
         };
-    }, [post]);
+    }, [post, agentId]);
 
     if (!post) return <NotFound />;
 
@@ -285,6 +301,32 @@ const BlogPost: React.FC = () => {
                 
                 <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
                     <div className="max-w-4xl">
+                        <nav aria-label="Breadcrumb" className="mb-6 md:mb-8">
+                            <ol className="flex flex-wrap items-center gap-1.5 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-slate-400">
+                                <li>
+                                    <Link to="/" className="hover:text-brand-600 transition-colors">
+                                        Home
+                                    </Link>
+                                </li>
+                                <li aria-hidden="true" className="text-slate-300">
+                                    <ChevronRight className="w-3 h-3" />
+                                </li>
+                                <li>
+                                    <Link to="/blog" className="hover:text-brand-600 transition-colors">
+                                        Blog
+                                    </Link>
+                                </li>
+                                <li aria-hidden="true" className="text-slate-300">
+                                    <ChevronRight className="w-3 h-3" />
+                                </li>
+                                <li className="min-w-0">
+                                    <span className="text-slate-600 block max-w-[12rem] sm:max-w-md md:max-w-xl truncate" aria-current="page">
+                                        {post.title}
+                                    </span>
+                                </li>
+                            </ol>
+                        </nav>
+
                         <motion.div 
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -389,6 +431,37 @@ const BlogPost: React.FC = () => {
                         dangerouslySetInnerHTML={{ __html: post.content }}
                     />
 
+                    {post.faq && post.faq.length > 0 && (
+                        <section
+                            aria-labelledby="faq-heading"
+                            className="mt-24 md:mt-32 pt-16 border-t border-slate-100"
+                        >
+                            <h2
+                                id="faq-heading"
+                                className="font-display font-bold text-slate-900 text-3xl md:text-4xl tracking-tight mb-10"
+                            >
+                                Frequently Asked Questions
+                            </h2>
+                            <div className="space-y-4">
+                                {post.faq.map((item, index) => (
+                                    <details
+                                        key={index}
+                                        className="group rounded-2xl border border-slate-100 bg-slate-50/50 open:bg-white open:shadow-sm open:border-slate-200 transition-all"
+                                    >
+                                        <summary className="cursor-pointer list-none flex items-start justify-between gap-4 px-6 py-5 font-display font-bold text-slate-900 text-lg md:text-xl tracking-tight marker:content-none [&::-webkit-details-marker]:hidden">
+                                            <h3 className="text-base md:text-lg font-bold text-slate-900 leading-snug">
+                                                {item.question}
+                                            </h3>
+                                            <ChevronRight className="w-5 h-5 text-slate-400 shrink-0 mt-0.5 transition-transform group-open:rotate-90" />
+                                        </summary>
+                                        <p className="px-6 pb-6 text-slate-600 text-base md:text-lg leading-relaxed font-normal">
+                                            {item.answer}
+                                        </p>
+                                    </details>
+                                ))}
+                            </div>
+                        </section>
+                    )}
 
                 </article>
 
@@ -446,7 +519,10 @@ const BlogPost: React.FC = () => {
                                     </div>
                                 </div>
                                 <p className="text-sm text-white/70 leading-relaxed mb-8 relative z-10 font-light">
-                                   Dedicated to helping the LGBTQ+ community find a place to call home since 2010.
+                                   Dedicated to helping the LGBTQ+ community find a place to call home
+                                   {agentId && AUTHOR_START_YEAR[agentId]
+                                       ? ` since ${AUTHOR_START_YEAR[agentId]}.`
+                                       : '.'}
                                 </p>
                                 <Link to={`/agent/${agent.id}`} className="relative z-10 flex items-center justify-between group/btn px-6 py-4 bg-white/10 hover:bg-white text-white hover:text-slate-900 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all duration-300">
                                     Explore Profile

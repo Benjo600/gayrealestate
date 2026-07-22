@@ -117,7 +117,7 @@ const HomeValuation: React.FC = () => {
                                     <p className="text-slate-600 text-sm md:text-lg max-w-md mx-auto mb-6 md:mb-8">
                                         A member of our team will prepare your home valuation and reach out within <strong>24 hours</strong> — usually same business day.
                                     </p>
-                                    <p className="text-slate-500 text-xs md:text-sm">Questions? <a href="/#contact" className="text-brand-600 hover:underline">Contact us</a></p>
+                                    <p className="text-slate-500 text-xs md:text-sm">Questions? <a href="/contact" className="text-brand-600 hover:underline">Contact us</a></p>
                                 </div>
                             ) : (
                                 <>
@@ -227,7 +227,7 @@ const HomeValuation: React.FC = () => {
 
                         <div className="bg-brand-50 border border-brand-200 rounded-xl md:rounded-2xl p-5 md:p-6">
                             <p className="text-brand-800 font-semibold text-[13px] md:text-sm mb-2 md:mb-3">Prefer to connect directly?</p>
-                            <a href="/#contact" className="inline-flex items-center gap-2 text-brand-700 font-bold hover:text-brand-900 transition-colors mb-2 text-sm md:text-base border border-brand-300 px-4 py-2 rounded-lg bg-white shadow-sm">
+                            <a href="/contact" className="inline-flex items-center gap-2 text-brand-700 font-bold hover:text-brand-900 transition-colors mb-2 text-sm md:text-base border border-brand-300 px-4 py-2 rounded-lg bg-white shadow-sm">
                                 Open Contact Form <ArrowRight className="w-4 h-4 ml-1" />
                             </a>
                         </div>

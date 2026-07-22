@@ -13,23 +13,43 @@ const BASE = 'https://www.gayrealestatect.net';
 // Pages that should never appear in the sitemap (e.g. time-limited noindex pages).
 const NOINDEX_SLUGS = new Set([]);
 
-const blogsSrc = fs.readFileSync(path.join(ROOT, 'data', 'blogs.ts'), 'utf8');
+// Live posts live in blogs.ts (inline objects) plus julyBlogs2026.ts, which is
+// spread into BLOG_POSTS at runtime. A regex over blogs.ts alone misses July
+// posts because they only appear as `...JULY_2026_BLOGS` there.
+const blogSources = [
+  path.join(ROOT, 'data', 'blogs.ts'),
+  path.join(ROOT, 'data', 'julyBlogs2026.ts'),
+];
 const agentsSrc = fs.readFileSync(path.join(ROOT, 'data', 'agents.ts'), 'utf8');
 
-// Extract { slug, date } pairs in document order. The huge `content` field
-// sits between `slug` and `date`, so scan from each slug up to the next one.
-const slugMatches = [];
-const slugRe = /slug:\s*["']([^"']+)["']/g;
-let m;
-while ((m = slugRe.exec(blogsSrc)) !== null) {
-  slugMatches.push({ slug: m[1], index: m.index });
+/** Extract { slug, date } pairs in document order from a TS data file. */
+function extractPostsFromSource(src) {
+  const slugMatches = [];
+  const slugRe = /slug:\s*["']([^"']+)["']/g;
+  let m;
+  while ((m = slugRe.exec(src)) !== null) {
+    slugMatches.push({ slug: m[1], index: m.index });
+  }
+  return slugMatches.map((cur, i) => {
+    const end = i + 1 < slugMatches.length ? slugMatches[i + 1].index : src.length;
+    const objText = src.slice(cur.index, end);
+    const dateMatch = objText.match(/date:\s*["']([0-9]{4}-[0-9]{2}-[0-9]{2})["']/);
+    return { slug: cur.slug, date: dateMatch ? dateMatch[1] : null };
+  });
 }
-const posts = slugMatches.map((cur, i) => {
-  const end = i + 1 < slugMatches.length ? slugMatches[i + 1].index : blogsSrc.length;
-  const objText = blogsSrc.slice(cur.index, end);
-  const dateMatch = objText.match(/date:\s*["']([0-9]{4}-[0-9]{2}-[0-9]{2})["']/);
-  return { slug: cur.slug, date: dateMatch ? dateMatch[1] : null };
-});
+
+const posts = [];
+const seenSlugs = new Set();
+for (const file of blogSources) {
+  if (!fs.existsSync(file)) continue;
+  for (const post of extractPostsFromSource(fs.readFileSync(file, 'utf8'))) {
+    if (seenSlugs.has(post.slug)) continue;
+    seenSlugs.add(post.slug);
+    posts.push(post);
+  }
+}
+
+let m;
 
 // Extract agent ids from `agents: Record<string, Agent> = { arek: { id: "arek", ... } }`.
 const agentIds = [];
@@ -54,6 +74,7 @@ const staticPages = [
   { loc: '/marketing-your-home', changefreq: 'monthly', priority: '0.8' },
   { loc: '/reviews', changefreq: 'monthly', priority: '0.8' },
   { loc: '/community', changefreq: 'weekly', priority: '0.8' },
+  { loc: '/sky-casper', changefreq: 'monthly', priority: '0.7' },
   { loc: '/contact', changefreq: 'yearly', priority: '0.7' },
   { loc: '/privacy-policy', changefreq: 'yearly', priority: '0.5' },
 ];

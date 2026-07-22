@@ -21,5 +21,10 @@ https://gayrealestatect.net/*    https://www.gayrealestatect.net/:splat  301!
 # Removed blog posts — 301 to preserve link equity
 /blog/lgbtq-down-payment-assistance-programs-connecticut  /first-time-buyers  301
 /blog/what-is-the-lgbtq-real-estate-alliance              /blog/gay-realtor-connecticut-guide  301
+# Edge BLOG_REDIRECTS mirror (non-edge hosts / static CDN)
+/blog/how-to-choose-a-gay-friendly-realtor-2026-guide     /blog/gay-realtor-connecticut-guide                  301
+/blog/litchfield-county-towns-for-weekenders              /blog/litchfield-county-second-homes-lgbtq-buyers    301
+/blog/gay-friendly-towns-in-connecticut-2026-ranked-guide /blog/best-places-to-live-in-connecticut-lgbtq       301
+/blog/wooster-square-new-haven-lgbtq-neighborhood         /blog/best-lgbtq-neighborhoods-new-haven-ct          301
 # SPA routing (must be last)
 /*  /index.html  200

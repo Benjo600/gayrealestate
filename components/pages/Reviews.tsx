@@ -13,6 +13,8 @@ import { BookTestimonial } from '../ui/3d-book-testimonial';
 
 import { arekReviews, jakeReviews, abbyReviews, carolynReviews, Review } from '../../data/reviews';
 
+const TOTAL_REVIEW_COUNT =
+    arekReviews.length + jakeReviews.length + abbyReviews.length + carolynReviews.length;
 
 /* ──────────────────────────────────────────────
    AGENT SECTION COMPONENT
@@ -159,7 +161,8 @@ const reviewsStructuredData = [
             ratingValue: '5',
             bestRating: '5',
             worstRating: '1',
-            ratingCount: '250',
+            ratingCount: String(TOTAL_REVIEW_COUNT),
+            reviewCount: String(TOTAL_REVIEW_COUNT),
         },
     },
     {
@@ -179,8 +182,8 @@ const Reviews: React.FC = () => {
             style={{ background: 'linear-gradient(160deg, #fdf4ff 0%, #fff7f0 25%, #f0f9ff 50%, #f7fff4 75%, #fdf4ff 100%)' }}
         >
             <SEOHead
-                title="Client Reviews | GayRealEstateCT.net — 250+ Five-Star LGBTQ+ Real Estate Reviews"
-                description="Read 250+ five-star reviews from LGBTQ+ buyers and sellers across Connecticut. See what clients say about Arek, Abby, Travis, Jake, and Carolyn."
+                title="Client Reviews | GayRealEstateCT.net — LGBTQ+ Real Estate Testimonials"
+                description="Read client reviews from LGBTQ+ buyers and sellers across Connecticut. See what clients say about Arek, Abby, Jake, and Carolyn."
                 canonical="https://www.gayrealestatect.net/reviews"
                 ogType="website"
                 ogImage="https://www.gayrealestatect.net/hero-house.png"

@@ -29,6 +29,13 @@ const toAbsoluteUrl = (url: string): string =>
 
 /**
  * Manages document <head> SEO tags using react-helmet-async.
+ *
+ * Note (SPA dual injection): Netlify edge (`seo-injector.ts`) already injects
+ * title/description/OG/Twitter and blog JSON-LD (scripts marked data-seo-edge)
+ * for crawlers that never run JS. Helmet re-applies the same tags after
+ * hydration for client navigations. That overlap is expected and OK for this
+ * SPA — edge is the non-JS source of truth; Helmet is the client source.
+ * When `structuredData` is provided it is still emitted as-is.
  */
 const SEOHead: React.FC<SEOHeadProps> = ({
     title,

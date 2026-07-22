@@ -129,7 +129,7 @@ function HeroGeometric({
                                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                                 </Link>
                                 <a
-                                    href="/#contact"
+                                    href="/contact"
                                     className="px-8 py-4 bg-white/5 backdrop-blur-md border border-white/10 text-white font-bold rounded-xl hover:bg-white/10 transition-all duration-300 active:scale-95"
                                 >
                                     Get Started

@@ -2,9 +2,28 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '../../lib/utils';
-import { ArrowLeft, ArrowRight, TrendingUp, CheckCircle, Clock, DollarSign, Users, Clipboard, Phone } from 'lucide-react';
+import { ArrowLeft, ArrowRight, TrendingUp, CheckCircle, Clock, DollarSign, Users, Clipboard, Phone, ChevronRight } from 'lucide-react';
 import Footer from '../Footer';
 import SEOHead from '../SEOHead';
+
+const sellerFaqs = [
+    {
+        question: 'What is the biggest mistake Connecticut sellers make?',
+        answer: 'Overpricing is the #1 mistake CT sellers make. An overpriced home sits, collects days-on-market stigma, and ultimately sells for less than a correctly priced home would have. A Comparative Market Analysis (CMA) and strategic pricing session are essential from day one.',
+    },
+    {
+        question: 'How long does it take to sell a home in Connecticut?',
+        answer: 'The average Connecticut home currently spends about 11 days on market with a list-to-sale ratio of 102%. From listing to closing, the typical timeline is approximately 35 days, though this varies by market conditions and pricing strategy.',
+    },
+    {
+        question: 'How is my home marketed to LGBTQ+ buyers?',
+        answer: 'Your home will be marketed not just on the MLS, but across digital channels where serious buyers search — including Zillow, Realtor.com premium placement, targeted social media advertising, and the LGBTQ+ Real Estate Alliance network.',
+    },
+    {
+        question: 'What happens after I accept an offer on my Connecticut home?',
+        answer: 'Once under contract, significant work remains: inspection negotiations, appraisal management, buyer financing verification, title search, attorney coordination, and final walkthrough preparation. Your agent manages every step to ensure a smooth closing.',
+    },
+];
 
 const phases = [
     {
@@ -50,40 +69,14 @@ const sellersGuideStructuredData = [
     {
         "@context": "https://schema.org",
         "@type": "FAQPage",
-        "mainEntity": [
-            {
-                "@type": "Question",
-                "name": "What is the biggest mistake Connecticut sellers make?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Overpricing is the #1 mistake CT sellers make. An overpriced home sits, collects days-on-market stigma, and ultimately sells for less than a correctly priced home would have. A Comparative Market Analysis (CMA) and strategic pricing session are essential from day one."
-                }
+        "mainEntity": sellerFaqs.map(({ question, answer }) => ({
+            "@type": "Question",
+            "name": question,
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": answer,
             },
-            {
-                "@type": "Question",
-                "name": "How long does it take to sell a home in Connecticut?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "The average Connecticut home currently spends about 11 days on market with a list-to-sale ratio of 102%. From listing to closing, the typical timeline is approximately 35 days, though this varies by market conditions and pricing strategy."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "How is my home marketed to LGBTQ+ buyers?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Your home will be marketed not just on the MLS, but across digital channels where serious buyers search — including Zillow, Realtor.com premium placement, targeted social media advertising, and the LGBTQ+ Real Estate Alliance network."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "What happens after I accept an offer on my Connecticut home?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Once under contract, significant work remains: inspection negotiations, appraisal management, buyer financing verification, title search, attorney coordination, and final walkthrough preparation. Your agent manages every step to ensure a smooth closing."
-                }
-            }
-        ]
+        })),
     },
     {
         "@context": "https://schema.org",
@@ -314,16 +307,41 @@ const SellersGuide: React.FC = () => {
                 })}
             </section>
 
+            {/* FAQ — visible Q&A must match FAQPage schema */}
+            <section aria-labelledby="sellers-faq-heading" className="max-w-4xl mx-auto px-4 md:px-6 pb-16">
+                <h2 id="sellers-faq-heading" className="text-2xl md:text-3xl font-display font-bold text-slate-900 mb-6 text-center">
+                    Frequently Asked Questions
+                </h2>
+                <div className="space-y-3">
+                    {sellerFaqs.map((item, index) => (
+                        <details
+                            key={index}
+                            className="group rounded-2xl border border-slate-100 bg-white open:shadow-sm open:border-slate-200 transition-all"
+                        >
+                            <summary className="cursor-pointer list-none flex items-start justify-between gap-4 px-5 py-4 font-bold text-slate-900 marker:content-none [&::-webkit-details-marker]:hidden">
+                                <h3 className="text-sm md:text-base font-bold text-slate-900 leading-snug text-left">
+                                    {item.question}
+                                </h3>
+                                <ChevronRight className="w-5 h-5 text-slate-400 shrink-0 mt-0.5 transition-transform group-open:rotate-90" />
+                            </summary>
+                            <p className="px-5 pb-5 text-slate-600 text-sm md:text-base leading-relaxed">
+                                {item.answer}
+                            </p>
+                        </details>
+                    ))}
+                </div>
+            </section>
+
             <section className="max-w-7xl mx-auto px-5 pb-20">
                 <div className="bg-slate-900 text-white rounded-3xl md:rounded-[4rem] p-10 md:p-32 text-center shadow-2xl overflow-hidden relative">
                     <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,rgba(124,58,237,0.15),transparent_60%)] pointer-events-none" />
                     <h2 className="text-3xl md:text-6xl font-serif font-bold mb-6 relative z-10">Curious about your home's value?</h2>
                     <p className="text-slate-400 text-sm md:text-2xl mb-12 max-w-2xl mx-auto relative z-10">Get a data-backed valuation from a real agent who knows CT, not an algorithm.</p>
                     <div className="flex flex-col sm:flex-row gap-6 justify-center relative z-10">
-                        <a href="/#contact" className="px-10 py-5 bg-white text-slate-900 font-bold rounded-2xl active:scale-95 transition-all text-sm md:text-xl shadow-xl hover:-translate-y-1">
+                        <a href="/contact" className="px-10 py-5 bg-white text-slate-900 font-bold rounded-2xl active:scale-95 transition-all text-sm md:text-xl shadow-xl hover:-translate-y-1">
                             Get Free Valuation
                         </a>
-                        <a href="/#contact" className="px-10 py-5 border border-white/20 text-white font-bold rounded-2xl hover:bg-white/5 transition-all text-sm md:text-xl inline-flex items-center justify-center gap-3">
+                        <a href="/contact" className="px-10 py-5 border border-white/20 text-white font-bold rounded-2xl hover:bg-white/5 transition-all text-sm md:text-xl inline-flex items-center justify-center gap-3">
                             <Phone className="w-5 h-5 md:w-6 md:h-6" /> Message Us
                         </a>
                     </div>

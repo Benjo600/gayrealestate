@@ -162,17 +162,21 @@ const EnquiryForm: React.FC<{ titleAs?: 'h1' | 'h2' }> = ({ titleAs = 'h2' }) =>
                   ))}
                </div>
 
-               {/* Social proof */}
+               {/* Social proof — initials only (no stock photo avatars) */}
                <div className="flex justify-center md:justify-start items-center gap-6 border-t border-slate-200 pt-8">
-                  <div className="flex -space-x-3">
-                     {[1, 2, 3].map((i) => (
-                        <div key={i} className="w-10 h-10 rounded-full border-2 border-white/80 overflow-hidden">
-                           <img src={`https://randomuser.me/api/portraits/${i % 2 === 0 ? 'women' : 'men'}/${30 + i}.jpg`} alt="Client" className="w-full h-full object-cover" />
+                  <div className="flex -space-x-3" aria-hidden="true">
+                     {['A', 'J', 'M'].map((initial, i) => (
+                        <div
+                           key={i}
+                           className="w-10 h-10 rounded-full border-2 border-white flex items-center justify-center text-white text-xs font-bold shadow-sm"
+                           style={{ background: 'linear-gradient(135deg, #C0003A 0%, #6B008A 45%, #0A2FA8 100%)' }}
+                        >
+                           {initial}
                         </div>
                      ))}
                   </div>
                   <div className="text-left">
-                     <p className="text-sm font-semibold text-slate-800">Trusted by 250+ Clients</p>
+                     <p className="text-sm font-semibold text-slate-800">Trusted by LGBTQ+ clients across Connecticut</p>
                      <div className="flex text-amber-500 text-xs mt-1">★★★★★</div>
                   </div>
                </div>

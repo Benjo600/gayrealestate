@@ -23,7 +23,7 @@ const Header: React.FC = () => {
     },
     {
       name: "Insights",
-      link: "/#resources",
+      link: "/blog",
       icon: <BookOpen className="h-4 w-4 text-neutral-500 dark:text-white" />,
     },
     {
@@ -69,7 +69,7 @@ const Header: React.FC = () => {
     },
     {
       name: "Contact",
-      link: "/#contact",
+      link: "/contact",
       icon: <MessageSquare className="h-4 w-4 text-neutral-500 dark:text-white" />,
     },
   ];

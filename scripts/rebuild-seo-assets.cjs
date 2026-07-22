@@ -1,15 +1,24 @@
 /**
- * Rebuild llms.txt + llms-full.txt from live BLOG_POSTS,
- * fix healthcare unique image path if present,
- * inject cross-links from hub posts into new June content.
+ * Rebuild llms.txt + llms-full.txt from live blog sources.
+ *
+ * Live posts live in blogs.ts (inline objects) plus julyBlogs2026.ts, which is
+ * spread into BLOG_POSTS at runtime. A regex over blogs.ts alone misses July
+ * posts because they only appear as `...JULY_2026_BLOGS` there.
+ *
+ * Optional blogs.ts mutations (healthcare image + hub cross-links) are OFF by
+ * default — set MUTATE_BLOGS=1 to enable. Do not enable while another process
+ * is editing blogs.ts.
  */
 const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
 const blogsPath = path.join(ROOT, 'data', 'blogs.ts');
-let blogs = fs.readFileSync(blogsPath, 'utf8');
+const julyPath = path.join(ROOT, 'data', 'julyBlogs2026.ts');
 const BASE = 'https://www.gayrealestatect.net';
+const MUTATE_BLOGS = process.env.MUTATE_BLOGS === '1';
+
+const blogSources = [blogsPath, julyPath];
 
 function extractPosts(src) {
   const posts = [];
@@ -19,7 +28,7 @@ function extractPosts(src) {
     const start = m.index;
     const next = src.indexOf('\n  {\n    id:', start + 10);
     const end = next === -1 ? src.indexOf('\n];', start) : next;
-    const block = src.slice(start, end);
+    const block = src.slice(start, end === -1 ? start + 4000 : end);
     const g = (k) => {
       const r = block.match(new RegExp(k + ':\\s*"([^"]*)"'));
       return r ? r[1] : '';
@@ -31,186 +40,178 @@ function extractPosts(src) {
       category: g('category'),
       date: g('date'),
       image: g('image'),
-      blockStart: start,
-      blockEnd: end,
     });
   }
   return posts;
 }
 
-const posts = extractPosts(blogs);
-console.log('posts', posts.length);
-
-// ─── 1) Healthcare unique image ─────────────────────────────────────────────
-if (blogs.includes('slug: "lgbtq-affirming-healthcare-connecticut"')) {
-  const imgPath = '/lgbtq-affirming-healthcare-ct-hero.jpg';
-  blogs = blogs.replace(
-    /(slug: "lgbtq-affirming-healthcare-connecticut"[\s\S]*?image: ")[^"]+(")/,
-    `$1${imgPath}$2`
-  );
-  console.log('healthcare image ->', imgPath);
+/** Merge posts from all blog source files, unique by slug (first wins). */
+function extractAllPosts() {
+  const posts = [];
+  const seen = new Set();
+  for (const file of blogSources) {
+    if (!fs.existsSync(file)) continue;
+    const src = fs.readFileSync(file, 'utf8');
+    for (const p of extractPosts(src)) {
+      if (seen.has(p.slug)) continue;
+      seen.add(p.slug);
+      posts.push(p);
+    }
+  }
+  return posts;
 }
 
-// ─── 2) Cross-link hub posts (first occurrence of phrases only) ─────────────
-const LINK = 'class="text-brand-600 hover:underline font-bold"';
+let blogs = fs.readFileSync(blogsPath, 'utf8');
+const posts = extractAllPosts();
+console.log('posts', posts.length, '(from blogs.ts + julyBlogs2026.ts)');
 
-function linkFirstInBlock(src, slug, phrase, href) {
-  const token = `slug: "${slug}"`;
-  const start = src.indexOf(token);
-  if (start === -1) return src;
-  const next = src.indexOf('\n  {\n    id:', start + 10);
-  const end = next === -1 ? src.indexOf('\n];', start) : next;
-  let block = src.slice(start, end);
-
-  // Only operate inside content template
-  const cStart = block.indexOf('content: `');
-  const cEnd = block.indexOf('`,\n    faq:') !== -1
-    ? block.indexOf('`,\n    faq:')
-    : block.indexOf('`,\n    image:');
-  if (cStart === -1 || cEnd === -1) return src;
-  let content = block.slice(cStart, cEnd);
-
-  if (content.includes(`href="${href}"`)) {
-    // already has this target somewhere — still try phrase if not linked
+// ─── 1–2) Optional blogs.ts mutations (OFF unless MUTATE_BLOGS=1) ───────────
+if (MUTATE_BLOGS) {
+  // Healthcare unique image
+  if (blogs.includes('slug: "lgbtq-affirming-healthcare-connecticut"')) {
+    const imgPath = '/lgbtq-affirming-healthcare-ct-hero.jpg';
+    blogs = blogs.replace(
+      /(slug: "lgbtq-affirming-healthcare-connecticut"[\s\S]*?image: ")[^"]+(")/,
+      `$1${imgPath}$2`
+    );
+    console.log('healthcare image ->', imgPath);
   }
-  const already = new RegExp(
-    `<a[^>]*>[^<]*${phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}[^<]*</a>`,
-    'i'
-  );
-  if (already.test(content)) {
-    return src;
+
+  const LINK = 'class="text-brand-600 hover:underline font-bold"';
+
+  function linkFirstInBlock(src, slug, phrase, href) {
+    const token = `slug: "${slug}"`;
+    const start = src.indexOf(token);
+    if (start === -1) return src;
+    const next = src.indexOf('\n  {\n    id:', start + 10);
+    const end = next === -1 ? src.indexOf('\n];', start) : next;
+    let block = src.slice(start, end);
+
+    const cStart = block.indexOf('content: `');
+    const cEnd =
+      block.indexOf('`,\n    faq:') !== -1
+        ? block.indexOf('`,\n    faq:')
+        : block.indexOf('`,\n    image:');
+    if (cStart === -1 || cEnd === -1) return src;
+    let content = block.slice(cStart, cEnd);
+
+    if (content.includes(`href="${href}"`)) {
+      // already has this target somewhere — still try phrase if not linked
+    }
+    const already = new RegExp(
+      `<a[^>]*>[^<]*${phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}[^<]*</a>`,
+      'i'
+    );
+    if (already.test(content)) {
+      return src;
+    }
+    const idx = content.indexOf(phrase);
+    if (idx === -1) return src;
+    const before = content.slice(Math.max(0, idx - 30), idx);
+    if (/<a[^>]*$/.test(before)) return src;
+    content =
+      content.slice(0, idx) +
+      `<a href="${href}" ${LINK}>${phrase}</a>` +
+      content.slice(idx + phrase.length);
+    block = block.slice(0, cStart) + content + block.slice(cEnd);
+    return src.slice(0, start) + block + src.slice(end);
   }
-  const idx = content.indexOf(phrase);
-  if (idx === -1) return src;
-  const before = content.slice(Math.max(0, idx - 30), idx);
-  if (/<a[^>]*$/.test(before)) return src;
-  content =
-    content.slice(0, idx) +
-    `<a href="${href}" ${LINK}>${phrase}</a>` +
-    content.slice(idx + phrase.length);
-  block = block.slice(0, cStart) + content + block.slice(cEnd);
-  return src.slice(0, start) + block + src.slice(end);
+
+  const hubLinks = [
+    ['best-places-to-live-in-connecticut-lgbtq', 'Middletown', '/blog/middletown-ct-lgbtq-guide'],
+    ['best-places-to-live-in-connecticut-lgbtq', 'Norwalk', '/blog/norwalk-ct-lgbtq-guide'],
+    ['best-places-to-live-in-connecticut-lgbtq', 'Stamford', '/blog/stamford-ct-lgbtq-guide'],
+    ['best-places-to-live-in-connecticut-lgbtq', 'property taxes', '/blog/connecticut-property-taxes-by-town'],
+    [
+      'lgbtq-first-time-home-buyer-guide-connecticut-edition',
+      'closing costs',
+      '/blog/connecticut-closing-costs',
+    ],
+    [
+      'lgbtq-first-time-home-buyer-guide-connecticut-edition',
+      'how to buy',
+      '/blog/how-to-buy-home-connecticut-lgbtq',
+    ],
+    [
+      'lgbtq-first-time-home-buyer-guide-connecticut-edition',
+      'property taxes',
+      '/blog/connecticut-property-taxes-by-town',
+    ],
+    ['moving-to-connecticut-as-a-gay-couple', 'NYC', '/blog/moving-nyc-to-connecticut-lgbtq'],
+    [
+      'moving-to-connecticut-as-a-gay-couple',
+      'affirming healthcare',
+      '/blog/lgbtq-affirming-healthcare-connecticut',
+    ],
+    ['gay-realtor-connecticut-guide', 'how to buy a home', '/blog/how-to-buy-home-connecticut-lgbtq'],
+    ['gay-realtor-connecticut-guide', 'selling', '/blog/selling-home-connecticut-lgbtq'],
+    ['cheapest-gay-friendly-cities-in-connecticut', 'Middletown', '/blog/middletown-ct-lgbtq-guide'],
+    [
+      'cheapest-gay-friendly-cities-in-connecticut',
+      'property taxes',
+      '/blog/connecticut-property-taxes-by-town',
+    ],
+    [
+      'connecticut-is-1-in-the-us-for-lgbtq-real-estate-searches-here-s-why',
+      'market',
+      '/blog/connecticut-lgbtq-real-estate-market-report-2026',
+    ],
+    [
+      'gay-areas-in-connecticut-neighborhood-by-neighborhood-guide',
+      'Norwalk',
+      '/blog/norwalk-ct-lgbtq-guide',
+    ],
+    [
+      'gay-areas-in-connecticut-neighborhood-by-neighborhood-guide',
+      'Stamford',
+      '/blog/stamford-ct-lgbtq-guide',
+    ],
+    [
+      'gay-areas-in-connecticut-neighborhood-by-neighborhood-guide',
+      'Middletown',
+      '/blog/middletown-ct-lgbtq-guide',
+    ],
+    [
+      '1-million-nyc-vs-connecticut-what-do-you-get',
+      'moving from NYC',
+      '/blog/moving-nyc-to-connecticut-lgbtq',
+    ],
+    [
+      'connecticut-pride-month-2026-guide',
+      'organizations',
+      '/blog/lgbtq-organizations-connecticut-directory',
+    ],
+    [
+      'same-sex-couples-buying-a-home-7-things-to-know-before-you-sign',
+      'closing costs',
+      '/blog/connecticut-closing-costs',
+    ],
+    [
+      'same-sex-couples-buying-a-home-7-things-to-know-before-you-sign',
+      'attorney',
+      '/blog/do-you-need-an-lgbtq-real-estate-attorney',
+    ],
+  ];
+
+  let linkAdds = 0;
+  for (const [slug, phrase, href] of hubLinks) {
+    const before = blogs;
+    blogs = linkFirstInBlock(blogs, slug, phrase, href);
+    if (blogs !== before) {
+      linkAdds++;
+      console.log('linked', slug, '->', phrase, href);
+    } else {
+      console.log('skip', slug, phrase);
+    }
+  }
+  console.log('hub links added', linkAdds);
+  fs.writeFileSync(blogsPath, blogs);
+} else {
+  console.log('skipping blogs.ts mutations (set MUTATE_BLOGS=1 to enable)');
 }
-
-const hubLinks = [
-  // best places hub -> new town guides
-  ['best-places-to-live-in-connecticut-lgbtq', 'Middletown', '/blog/middletown-ct-lgbtq-guide'],
-  ['best-places-to-live-in-connecticut-lgbtq', 'Norwalk', '/blog/norwalk-ct-lgbtq-guide'],
-  ['best-places-to-live-in-connecticut-lgbtq', 'Stamford', '/blog/stamford-ct-lgbtq-guide'],
-  ['best-places-to-live-in-connecticut-lgbtq', 'property taxes', '/blog/connecticut-property-taxes-by-town'],
-  // first-time buyer hub
-  [
-    'lgbtq-first-time-home-buyer-guide-connecticut-edition',
-    'closing costs',
-    '/blog/connecticut-closing-costs',
-  ],
-  [
-    'lgbtq-first-time-home-buyer-guide-connecticut-edition',
-    'how to buy',
-    '/blog/how-to-buy-home-connecticut-lgbtq',
-  ],
-  [
-    'lgbtq-first-time-home-buyer-guide-connecticut-edition',
-    'property taxes',
-    '/blog/connecticut-property-taxes-by-town',
-  ],
-  // moving as gay couple
-  [
-    'moving-to-connecticut-as-a-gay-couple',
-    'NYC',
-    '/blog/moving-nyc-to-connecticut-lgbtq',
-  ],
-  [
-    'moving-to-connecticut-as-a-gay-couple',
-    'affirming healthcare',
-    '/blog/lgbtq-affirming-healthcare-connecticut',
-  ],
-  // gay realtor
-  [
-    'gay-realtor-connecticut-guide',
-    'how to buy a home',
-    '/blog/how-to-buy-home-connecticut-lgbtq',
-  ],
-  [
-    'gay-realtor-connecticut-guide',
-    'selling',
-    '/blog/selling-home-connecticut-lgbtq',
-  ],
-  // cheapest cities
-  [
-    'cheapest-gay-friendly-cities-in-connecticut',
-    'Middletown',
-    '/blog/middletown-ct-lgbtq-guide',
-  ],
-  [
-    'cheapest-gay-friendly-cities-in-connecticut',
-    'property taxes',
-    '/blog/connecticut-property-taxes-by-town',
-  ],
-  // market #1 post
-  [
-    'connecticut-is-1-in-the-us-for-lgbtq-real-estate-searches-here-s-why',
-    'market',
-    '/blog/connecticut-lgbtq-real-estate-market-report-2026',
-  ],
-  // neighborhoods guide
-  [
-    'gay-areas-in-connecticut-neighborhood-by-neighborhood-guide',
-    'Norwalk',
-    '/blog/norwalk-ct-lgbtq-guide',
-  ],
-  [
-    'gay-areas-in-connecticut-neighborhood-by-neighborhood-guide',
-    'Stamford',
-    '/blog/stamford-ct-lgbtq-guide',
-  ],
-  [
-    'gay-areas-in-connecticut-neighborhood-by-neighborhood-guide',
-    'Middletown',
-    '/blog/middletown-ct-lgbtq-guide',
-  ],
-  // NYC vs CT value
-  [
-    '1-million-nyc-vs-connecticut-what-do-you-get',
-    'moving from NYC',
-    '/blog/moving-nyc-to-connecticut-lgbtq',
-  ],
-  // pride month -> orgs
-  [
-    'connecticut-pride-month-2026-guide',
-    'organizations',
-    '/blog/lgbtq-organizations-connecticut-directory',
-  ],
-  // same-sex buying -> how to buy + closing
-  [
-    'same-sex-couples-buying-a-home-7-things-to-know-before-you-sign',
-    'closing costs',
-    '/blog/connecticut-closing-costs',
-  ],
-  [
-    'same-sex-couples-buying-a-home-7-things-to-know-before-you-sign',
-    'attorney',
-    '/blog/do-you-need-an-lgbtq-real-estate-attorney',
-  ],
-];
-
-let linkAdds = 0;
-for (const [slug, phrase, href] of hubLinks) {
-  const before = blogs;
-  blogs = linkFirstInBlock(blogs, slug, phrase, href);
-  if (blogs !== before) {
-    linkAdds++;
-    console.log('linked', slug, '->', phrase, href);
-  } else {
-    console.log('skip', slug, phrase);
-  }
-}
-console.log('hub links added', linkAdds);
-
-fs.writeFileSync(blogsPath, blogs);
 
 // ─── 3) Rebuild llms.txt ────────────────────────────────────────────────────
-const postsFresh = extractPosts(blogs);
+const postsFresh = extractAllPosts();
 
 const byCat = {
   'Neighborhood & Living': [],
@@ -241,10 +242,12 @@ const catMap = (p) => {
     c.includes('RELOCAT') ||
     s.includes('moving') ||
     s.includes('trans-moving') ||
-    s.includes('nyc')
+    s.includes('nyc') ||
+    s.includes('anti-lgbtq-state') ||
+    s.includes('safe-haven')
   )
     return 'Moving & Relocation';
-  if (c.includes('SELL')) return 'Selling';
+  if (c.includes('SELL') || s.includes('selling') || s.includes('downsizing')) return 'Selling';
   if (
     c.includes('FINANCE') ||
     c.includes('BUY') ||
@@ -253,7 +256,13 @@ const catMap = (p) => {
     s.includes('property-tax') ||
     s.includes('how-to-buy') ||
     s.includes('first-time') ||
-    s.includes('mortgage')
+    s.includes('mortgage') ||
+    s.includes('renting-vs-buying') ||
+    s.includes('condo-vs') ||
+    s.includes('house-hacking') ||
+    s.includes('homeowners-insurance') ||
+    s.includes('home-inspections') ||
+    s.includes('hoa-condo')
   )
     return 'Buying & Finance';
   if (
@@ -272,7 +281,12 @@ const catMap = (p) => {
     s.includes('pride') ||
     s.includes('organizations') ||
     s.includes('healthcare') ||
-    s.includes('events')
+    s.includes('events') ||
+    s.includes('nightlife') ||
+    s.includes('home-service') ||
+    s.includes('adoption') ||
+    s.includes('chosen-family') ||
+    s.includes('generational-wealth')
   )
     return 'Community & Healthcare';
   if (
@@ -360,7 +374,6 @@ fs.writeFileSync(path.join(ROOT, 'public', 'llms.txt'), llms);
 
 // ─── 4) Rebuild llms-full.txt (keep team narrative, refresh blog index) ─────
 const fullOld = fs.readFileSync(path.join(ROOT, 'public', 'llms-full.txt'), 'utf8');
-// Keep everything before a blog index section if present, or append fresh catalog
 const splitMarkers = [
   '## Complete Blog Catalog',
   '## Blog Posts',
@@ -375,13 +388,12 @@ for (const marker of splitMarkers) {
   }
 }
 
-// If old file still has obsolete "Blog Posts (30" style sections mid-file, strip from first "## Blog"
 const blogIdx = keep.search(/\n## Blog Posts\b/);
 if (blogIdx !== -1) keep = keep.slice(0, blogIdx).trimEnd();
 
 let catalog = `\n\n## Complete Blog Catalog (${postsFresh.length} live articles)\n\n`;
 catalog += `Every URL below is a live, indexable post on ${BASE}. Dead or redirected slugs have been removed.\n\n`;
-for (const p of postsFresh.sort((a, b) => (a.date < b.date ? 1 : -1))) {
+for (const p of postsFresh.slice().sort((a, b) => (a.date < b.date ? 1 : -1))) {
   catalog += `### ${p.title}\n`;
   catalog += `- **URL:** ${BASE}/blog/${p.slug}\n`;
   catalog += `- **Published:** ${p.date}\n`;
@@ -409,14 +421,7 @@ console.log(
     /"selling-home-connecticut-lgbtq"\s*:\s*"\/sellers-guide"/.test(edge)
 );
 
-// image uniqueness
-const imgs = postsFresh.map((p) => {
-  // re-extract image after healthcare fix
-  const i = blogs.indexOf(`slug: "${p.slug}"`);
-  const n = blogs.indexOf('\n  {\n    id:', i + 10);
-  const b = blogs.slice(i, n > 0 ? n : i + 4000);
-  const im = (b.match(/image: "([^"]+)"/) || [])[1];
-  return im;
-});
+// image uniqueness across all extracted posts
+const imgs = postsFresh.map((p) => p.image).filter(Boolean);
 const dups = imgs.filter((x, i) => imgs.indexOf(x) !== i);
 console.log('dup images after fix', [...new Set(dups)]);

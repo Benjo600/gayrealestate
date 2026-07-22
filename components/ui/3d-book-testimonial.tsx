@@ -73,9 +73,9 @@ export const BookTestimonial = ({ testimonials, agentImage, agentName }: Compone
               </div>
             </div>
 
-            <h1 className="text-3xl font-display font-bold text-center tracking-tight text-white mb-1">
+            <h2 className="text-3xl font-display font-bold text-center tracking-tight text-white mb-1">
               {agentName}
-            </h1>
+            </h2>
             <div className="w-10 h-px bg-gold-500/30 mb-4"></div>
             <h2 className="text-sm font-display font-medium text-gold-500 tracking-[0.2em] uppercase text-center">
               Client Testimonials

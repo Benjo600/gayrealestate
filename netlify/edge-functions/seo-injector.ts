@@ -29,9 +29,19 @@ const KNOWN_STATIC_PATHS = new Set([
   "/privacy-policy",
   "/reviews",
   "/community",
+  "/sky-casper",
   "/blog",
   "/contact",
 ]);
+
+// Maps blog author display names → agent profile ids (same as BlogPost.tsx).
+const AUTHOR_AGENT_MAP: Record<string, string> = {
+  "Arek Wtulich": "arek",
+  "Abby Dudarewicz": "abby",
+  "Travis Lipinski": "travis",
+  "Jake Earl": "jake",
+  "Carolyn Futtner": "carolyn",
+};
 
 // Curated, hand-tuned meta for the highest-value pages. Anything not listed
 // here falls back to the data file (title + excerpt + image), so new posts get
@@ -70,7 +80,7 @@ const BLOG_DATA: Record<string, { title: string; description: string; image: str
   "litchfield-county-second-homes-lgbtq-buyers": {
     title: "Litchfield County's Best-Kept Secret: Second Homes for LGBTQ+ Buyers",
     description: "Northwestern Connecticut's retreat for LGBTQ+ professionals and creatives.",
-    image: `${BASE_DOMAIN}/lgbtq-first-time-buyer-hero.jpg`,
+    image: `${BASE_DOMAIN}/inclusive-ct-neighborhoods-hero.jpg`,
   },
   "litchfield-county-towns-for-weekenders": {
     title: "Lake Waramaug, Washington, & Beyond: Litchfield County Guide",
@@ -80,7 +90,7 @@ const BLOG_DATA: Record<string, { title: string; description: string; image: str
   "legal-protections-lgbtq-real-estate-connecticut": {
     title: "Protecting Your Home & Relationship: LGBTQ+ Legal Guide",
     description: "What LGBTQ+ buyers need to know about title, deeds, and legal protections in CT.",
-    image: `${BASE_DOMAIN}/generational-wealth-ct-hero.jpg`,
+    image: `${BASE_DOMAIN}/generational-wealth-legal-hero.jpg`,
   },
   "trans-moving-connecticut-guide": {
     title: "Trans Moving to Connecticut: What to Actually Know Before You Relocate",
@@ -152,6 +162,9 @@ const BLOG_REDIRECTS: Record<string, string> = {
   "new-haven-lgbtq-real-estate": "/blog/best-lgbtq-neighborhoods-new-haven-ct",
   "lgbtq-relocation-connecticut": "/relocation",
   // NOTE: selling-home-connecticut-lgbtq is a live blog post — do not redirect
+  // Removed posts — preserve link equity (mirrored in public/_redirects)
+  "lgbtq-down-payment-assistance-programs-connecticut": "/first-time-buyers",
+  "what-is-the-lgbtq-real-estate-alliance": "/blog/gay-realtor-connecticut-guide",
   "how-to-choose-a-gay-friendly-realtor-2026-guide": "/blog/gay-realtor-connecticut-guide",
   "litchfield-county-towns-for-weekenders": "/blog/litchfield-county-second-homes-lgbtq-buyers",
   "gay-friendly-towns-in-connecticut-2026-ranked-guide": "/blog/best-places-to-live-in-connecticut-lgbtq",
@@ -201,19 +214,21 @@ function resolveMeta(path: string): PageMeta {
 
   if (path.startsWith("/blog/")) {
     const slug = path.replace("/blog/", "");
-    const curated = BLOG_DATA[slug];
-    if (curated) {
-      title = `${curated.title} | Gay Real Estate CT`;
-      description = curated.description;
-      ogImage = curated.image;
-      ogImageAlt = curated.title;
+    // Prefer live BLOG_POSTS so edge meta matches client excerpts/images.
+    // BLOG_DATA is only a curated fallback if the post is missing from data.
+    const post = BLOG_POSTS.find((p) => p.slug === slug);
+    if (post) {
+      title = `${post.title} | Gay Real Estate CT`;
+      description = truncate(post.excerpt);
+      ogImage = toAbsoluteImage(post.image);
+      ogImageAlt = post.title;
     } else {
-      const post = BLOG_POSTS.find((p) => p.slug === slug);
-      if (post) {
-        title = `${post.title} | Gay Real Estate CT`;
-        description = truncate(post.excerpt);
-        ogImage = toAbsoluteImage(post.image);
-        ogImageAlt = post.title;
+      const curated = BLOG_DATA[slug];
+      if (curated) {
+        title = `${curated.title} | Gay Real Estate CT`;
+        description = curated.description;
+        ogImage = curated.image;
+        ogImageAlt = curated.title;
       }
     }
   } else if (path.startsWith("/agent/")) {
@@ -234,49 +249,70 @@ function resolveMeta(path: string): PageMeta {
       }
     }
   } else if (path === "/blog") {
+    // Matches BlogIndex.tsx SEOHead
     title = "LGBTQ+ Real Estate Blog | GayRealEstateCT.net";
-    description = "Expert guides, neighborhood spotlights, and market insights for LGBTQ+ home buyers and sellers in Connecticut.";
+    description = "Expert guides, neighborhood spotlights, and market insights for LGBTQ+ home buyers and sellers in Connecticut. Browse our full library of in-depth articles.";
   } else if (path === "/") {
+    // Matches HomePage.tsx SEOHead
     title = "GayRealEstateCT.net | LGBTQ+ Friendly Real Estate Agents in Connecticut";
-    description = "Find trusted, LGBTQ+ friendly real estate agents, mortgage lenders, and attorneys in Connecticut. Your one-stop shop for inclusive home buying.";
+    description = "Find trusted, LGBTQ+ friendly real estate agents, mortgage lenders, and attorneys in Connecticut. GayRealEstateCT.net — your one-stop shop for inclusive home buying and selling.";
   } else if (path === "/about") {
-    title = "About Us | GayRealEstateCT.net";
-    description = "Meet the team dedicated to inclusive real estate in Connecticut.";
+    // Matches AboutUs.tsx SEOHead (longer, client-facing title)
+    title = "About GayRealEstateCT.net | LGBTQ+ Inclusive Real Estate in Connecticut";
+    description = "Meet the LGBTQ+-led team connecting buyers and sellers with trusted, inclusive real estate agents, mortgage lenders, and attorneys across Connecticut.";
   } else if (path === "/first-time-buyers") {
-    title = "First-Time Homebuyer Guide for LGBTQ+ Buyers in CT | GayRealEstateCT.net";
-    description = "Everything LGBTQ+ first-time buyers need to know about purchasing a home in Connecticut.";
+    // Matches FirstTimeBuyers.tsx SEOHead
+    title = "First-Time Home Buying Guide for LGBTQ+ Buyers in Connecticut | GayRealEstateCT.net";
+    description = "Your comprehensive step-by-step guide to buying your first home in Connecticut as an LGBTQ+ buyer. Learn about financing, finding inclusive agents, legal protections, and protecting your investment.";
     ogImage = `${BASE_DOMAIN}/lgbtq_first_time_buyer.png`;
     ogImageAlt = "LGBTQ+ First-Time Home Buyer Guide for Connecticut";
   } else if (path === "/buyers-guide") {
-    title = "LGBTQ+ Buyer's Guide | GayRealEstateCT.net";
-    description = "Complete Connecticut buyer's guide for LGBTQ+ home buyers.";
+    // Matches BuyersGuide.tsx SEOHead
+    title = "Complete LGBTQ+ Buyer's Guide for Connecticut | GayRealEstateCT.net";
+    description = "A 6-chapter masterclass covering financing, neighborhood selection, making winning offers, inspections, and legal protections for LGBTQ+ home buyers in Connecticut.";
   } else if (path === "/sellers-guide") {
-    title = "Connecticut Seller's Guide | GayRealEstateCT.net";
-    description = "Complete guide to selling your Connecticut home — pricing, staging, marketing, and closing.";
+    // Matches SellersGuide.tsx SEOHead
+    title = "Connecticut Home Seller's Guide | GayRealEstateCT.net";
+    description = "A 5-phase strategy for Connecticut home sellers — pricing, staging, premium marketing, offers, and closing. LGBTQ+-led agents who know how to get you top dollar.";
   } else if (path === "/mortgage-calculator") {
+    // Matches MortgageCalculator.tsx SEOHead
     title = "Connecticut Mortgage Calculator | LGBTQ+ Home Buying | GayRealEstateCT.net";
-    description = "Estimate your monthly mortgage payment for Connecticut homes. Includes principal, interest, taxes, insurance, PMI, and HOA.";
+    description = "Estimate your monthly mortgage payment for Connecticut homes. Includes principal, interest, taxes, insurance, PMI, and HOA. LGBTQ+-friendly mortgage guidance included.";
   } else if (path === "/relocation") {
+    // Matches RelocationServices.tsx SEOHead
     title = "LGBTQ+ Relocation Services in Connecticut | GayRealEstateCT.net";
-    description = "Relocating to Connecticut? Our LGBTQ+-led team provides full-service relocation support — neighborhood matching, community integration, and remote closing support.";
+    description = "Relocating to Connecticut? Our LGBTQ+-led team provides full-service relocation support — neighborhood matching, community integration, vendor introductions, and remote closing support.";
   } else if (path === "/home-valuation") {
+    // Matches HomeValuation.tsx SEOHead
     title = "Free Home Valuation in Connecticut | GayRealEstateCT.net";
-    description = "Get a free, accurate home valuation from LGBTQ+-allied Connecticut real estate agents. No algorithms, no pressure.";
+    description = "Get a free, accurate home valuation from LGBTQ+-allied Connecticut real estate agents. Know what your home is worth with real local comps — no algorithms, no pressure.";
   } else if (path === "/marketing-your-home") {
+    // Matches MarketingYourHome.tsx SEOHead
     title = "Marketing Your Home in Connecticut | GayRealEstateCT.net";
-    description = "See how we market your Connecticut home to get top dollar — professional photography, MLS syndication, and LGBTQ+ buyer network outreach.";
+    description = "See how we market your Connecticut home to get top dollar — professional photography, MLS syndication, social media targeting, and LGBTQ+ buyer network outreach.";
   } else if (path === "/community") {
-    title = "Community Hub | Premium LGBTQ+ Events & Culture in CT";
-    description = "Join the vibrant heart of Connecticut's LGBTQ+ community. Explore legendary venues, iconic drag performances, and exclusive local events.";
+    // Matches CommunityEvents.tsx SEOHead
+    title = "Community Hub | LGBTQ+ Events & Culture in Connecticut";
+    description = "Explore Connecticut's best LGBTQ+ venues, legendary drag performances, and community events. Your guide to inclusive nightlife and culture in CT.";
     ogImage = `${BASE_DOMAIN}/images/events/community-hero.png`;
     ogImageAlt = "LGBTQ+ Community Events in Connecticut";
+  } else if (path === "/sky-casper") {
+    // Matches SkyCasperEvents.tsx SEOHead — keep in KNOWN_STATIC_PATHS
+    title = "Sky Casper Events | Drag Brunches & LGBTQ+ Nightlife in CT";
+    description =
+      "Explore upcoming Sky Casper Entertainment events across Connecticut — drag brunches, queer nights, beach takeovers, and Pride season shows. Tickets via skycasper.com.";
+    ogImage = `${BASE_DOMAIN}/images/events/sky-casper/ticket-queer-beach.jpg`;
+    ogImageAlt = "Sky Casper Entertainment LGBTQ+ events in Connecticut";
   } else if (path === "/reviews") {
-    title = "Client Reviews | GayRealEstateCT.net";
-    description = "See what LGBTQ+ clients say about our Connecticut real estate services.";
+    // Matches Reviews.tsx SEOHead
+    title = "Client Reviews | GayRealEstateCT.net — LGBTQ+ Real Estate Testimonials";
+    description = "Read client reviews from LGBTQ+ buyers and sellers across Connecticut. See what clients say about Arek, Abby, Jake, and Carolyn.";
   } else if (path === "/privacy-policy") {
+    // Matches PrivacyPolicy.tsx SEOHead
     title = "Privacy Policy & Data Protection | GayRealEstateCT.net";
-    description = "Our commitment to your privacy. Learn how we protect your data with a focus on LGBTQ+ security and non-disclosure.";
+    description = "Our premium commitment to your privacy. Learn how we protect your data with a specific focus on LGBTQ+ security and non-disclosure for the LGBTQ+ community in Connecticut.";
   } else if (path === "/contact") {
+    // Matches ContactPage.tsx SEOHead
     title = "Contact Us | GayRealEstateCT.net — LGBTQ+ Real Estate Connecticut";
     description = "Get in touch with our LGBTQ+-led Connecticut real estate team. Connect with a trusted agent, mortgage lender, or attorney who understands your community.";
   }
@@ -286,17 +322,25 @@ function resolveMeta(path: string): PageMeta {
 
 /** Strip any existing SEO tags from the shell so we never emit duplicates.
  * Also strips react-helmet-managed tags (marked data-rh) that survive in
- * prerendered HTML snapshots, so the edge-injected set is the only one. */
+ * prerendered HTML snapshots, so the edge-injected set is the only one.
+ * Flexible matching: self-closing with or without space before />, or plain >.
+ * Page-specific JSON-LD (BlogPosting / BreadcrumbList / FAQPage) is stripped
+ * so edge-injected schema is not duplicated after hydration; sitewide
+ * WebSite / RealEstateAgent blocks in index.html are left intact. */
 function stripExistingTags(text: string): string {
   return text
-    .replace(/<title[^>]*>.*?<\/title>/, "")
-    .replace(/<meta name="description" content=".*?" \/>/g, "")
-    .replace(/<meta name="robots" content=".*?" \/>/g, "")
-    .replace(/<link rel="canonical" href=".*?" \/>/g, "")
-    .replace(/<meta property="og:[^"]*" content=".*?" \/>/g, "")
-    .replace(/<meta name="twitter:[^"]*" content=".*?" \/>/g, "")
-    .replace(/<script[^>]*\bdata-rh="true"[^>]*>[\s\S]*?<\/script>/g, "")
-    .replace(/<(?:meta|link)[^>]*\bdata-rh="true"[^>]*\/?>/g, "");
+    .replace(/<title\b[^>]*>[\s\S]*?<\/title>/gi, "")
+    .replace(/<meta\b[^>]*\bname=["']description["'][^>]*>/gi, "")
+    .replace(/<meta\b[^>]*\bname=["']robots["'][^>]*>/gi, "")
+    .replace(/<link\b[^>]*\brel=["']canonical["'][^>]*>/gi, "")
+    .replace(/<meta\b[^>]*\bproperty=["']og:[^"']*["'][^>]*>/gi, "")
+    .replace(/<meta\b[^>]*\bname=["']twitter:[^"']*["'][^>]*>/gi, "")
+    .replace(/<script\b[^>]*\bdata-rh=["']true["'][^>]*>[\s\S]*?<\/script>/gi, "")
+    .replace(/<(?:meta|link)\b[^>]*\bdata-rh=["']true["'][^>]*>/gi, "")
+    .replace(
+      /<script\b[^>]*\btype=["']application\/ld\+json["'][^>]*>[\s\S]*?(?:BlogPosting|BreadcrumbList|FAQPage)[\s\S]*?<\/script>/gi,
+      ""
+    );
 }
 
 /** Server-side BlogPosting (+ FAQ) JSON-LD so crawlers get schema without JS. */
@@ -308,21 +352,29 @@ function buildBlogJsonLd(path: string): string {
 
   const canonicalUrl = `${BASE_DOMAIN}/blog/${post.slug}`;
   const image = toAbsoluteImage(post.image);
+  const authorAgentId = AUTHOR_AGENT_MAP[post.author];
+  // Prefer canonical agent.title from data/agents.ts so job titles stay
+  // consistent across posts (authorRole strings drift in blog data).
+  const authorAgent = authorAgentId ? agents[authorAgentId] : undefined;
+  const authorJobTitle = authorAgent?.title || post.authorRole;
   const blogPosting = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "@id": canonicalUrl,
+    url: canonicalUrl,
     mainEntityOfPage: { "@type": "WebPage", "@id": canonicalUrl },
     headline: post.title,
     description: post.excerpt,
-    image,
+    image: { "@type": "ImageObject", url: image },
+    inLanguage: "en-US",
     datePublished: post.date,
     dateModified: post.date,
     articleSection: post.category,
     author: {
       "@type": "Person",
       name: post.author,
-      jobTitle: post.authorRole,
+      jobTitle: authorJobTitle,
+      ...(authorAgentId ? { url: `${BASE_DOMAIN}/agent/${authorAgentId}` } : {}),
     },
     publisher: {
       "@type": "Organization",
@@ -356,10 +408,13 @@ function buildBlogJsonLd(path: string): string {
     });
   }
 
+  // data-seo-edge marks server-injected schema so the client can detect it
+  // (SPA may also inject Helmet JSON-LD after hydration — dual is intentional
+  // for non-JS crawlers; client may skip re-emitting if it sees this attribute).
   return graphs
     .map(
       (g) =>
-        `<script type="application/ld+json">${JSON.stringify(g).replace(/</g, "\\u003c")}</script>`
+        `<script type="application/ld+json" data-seo-edge="true">${JSON.stringify(g).replace(/</g, "\\u003c")}</script>`
     )
     .join("\n");
 }

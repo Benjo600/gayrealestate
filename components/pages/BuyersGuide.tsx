@@ -2,9 +2,28 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '../../lib/utils';
-import { ArrowLeft, ArrowRight, BookOpen, Search, DollarSign, FileText, Home, Shield, Scale, CheckCircle } from 'lucide-react';
+import { ArrowLeft, ArrowRight, BookOpen, Search, DollarSign, FileText, Home, Shield, Scale, CheckCircle, ChevronRight } from 'lucide-react';
 import Footer from '../Footer';
 import SEOHead from '../SEOHead';
+
+const buyerFaqs = [
+    {
+        question: 'What should I do before looking at homes in Connecticut?',
+        answer: 'Before looking at listings, run your credit report from all three bureaus and fix any errors. Build savings for a down payment (3–20%), closing costs (2–5%), and reserves. Set your non-negotiables and nice-to-haves before touring.',
+    },
+    {
+        question: 'What is CHFA and how does it help Connecticut home buyers?',
+        answer: "CHFA (Connecticut Housing Finance Authority) offers competitive rate programs for first-time buyers, including below-market interest rates and down payment assistance. You must complete CHFA's mandatory homebuyer education class if using a state-funded loan.",
+    },
+    {
+        question: 'What inspections are especially important for Connecticut homes?',
+        answer: 'Beyond the general home inspection ($400–$600), Connecticut homes often need radon testing (many homes test high), sewer scope inspection (older homes may have clay or cast iron pipes), and oil tank sweeps if the home was ever heated by oil.',
+    },
+    {
+        question: 'Do I need a real estate attorney to buy a home in Connecticut?',
+        answer: 'Yes. Connecticut is an attorney state — a real estate attorney must be present at closing. They handle title issues, deed preparation, and estate planning. This is especially important for LGBTQ+ couples to ensure title is held correctly.',
+    },
+];
 
 const chapters = [
     {
@@ -88,40 +107,14 @@ const buyersGuideStructuredData = [
     {
         "@context": "https://schema.org",
         "@type": "FAQPage",
-        "mainEntity": [
-            {
-                "@type": "Question",
-                "name": "What should I do before looking at homes in Connecticut?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Before looking at listings, run your credit report from all three bureaus and fix any errors. Build savings for a down payment (3–20%), closing costs (2–5%), and reserves. Set your non-negotiables and nice-to-haves before touring."
-                }
+        "mainEntity": buyerFaqs.map(({ question, answer }) => ({
+            "@type": "Question",
+            "name": question,
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": answer,
             },
-            {
-                "@type": "Question",
-                "name": "What is CHFA and how does it help Connecticut home buyers?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "CHFA (Connecticut Housing Finance Authority) offers competitive rate programs for first-time buyers, including below-market interest rates and down payment assistance. You must complete CHFA's mandatory homebuyer education class if using a state-funded loan."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "What inspections are especially important for Connecticut homes?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Beyond the general home inspection ($400–$600), Connecticut homes often need radon testing (many homes test high), sewer scope inspection (older homes may have clay or cast iron pipes), and oil tank sweeps if the home was ever heated by oil."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Do I need a real estate attorney to buy a home in Connecticut?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes. Connecticut is an attorney state — a real estate attorney must be present at closing. They handle title issues, deed preparation, and estate planning. This is especially important for LGBTQ+ couples to ensure title is held correctly."
-                }
-            }
-        ]
+        })),
     },
     {
         "@context": "https://schema.org",
@@ -334,13 +327,38 @@ const BuyersGuide: React.FC = () => {
                 })}
             </section>
 
+            {/* FAQ — visible Q&A must match FAQPage schema */}
+            <section aria-labelledby="buyers-faq-heading" className="max-w-4xl mx-auto px-4 md:px-6 pb-16">
+                <h2 id="buyers-faq-heading" className="text-2xl md:text-3xl font-display font-bold text-slate-900 mb-6 text-center">
+                    Frequently Asked Questions
+                </h2>
+                <div className="space-y-3">
+                    {buyerFaqs.map((item, index) => (
+                        <details
+                            key={index}
+                            className="group rounded-2xl border border-slate-100 bg-white open:shadow-sm open:border-slate-200 transition-all"
+                        >
+                            <summary className="cursor-pointer list-none flex items-start justify-between gap-4 px-5 py-4 font-bold text-slate-900 marker:content-none [&::-webkit-details-marker]:hidden">
+                                <h3 className="text-sm md:text-base font-bold text-slate-900 leading-snug text-left">
+                                    {item.question}
+                                </h3>
+                                <ChevronRight className="w-5 h-5 text-slate-400 shrink-0 mt-0.5 transition-transform group-open:rotate-90" />
+                            </summary>
+                            <p className="px-5 pb-5 text-slate-600 text-sm md:text-base leading-relaxed">
+                                {item.answer}
+                            </p>
+                        </details>
+                    ))}
+                </div>
+            </section>
+
             {/* CTA */}
             <section className="max-w-7xl mx-auto px-4 md:px-6 pb-20 pt-8">
                 <div className="bg-white/80 backdrop-blur-md rounded-3xl md:rounded-[4rem] border border-purple-100 p-10 md:p-24 text-center shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
                     <h2 className="text-3xl md:text-6xl font-display font-bold text-slate-900 mb-6">Ready to Find Your Home?</h2>
                     <p className="text-slate-600 text-base md:text-2xl mb-8 md:mb-12 max-w-2xl mx-auto">Every buyer's situation is different. Talk to one of our LGBTQ+-allied agents for guidance tailored to your goals, budget, and timeline.</p>
                     <a 
-                        href="/#contact" 
+                        href="/contact" 
                         className="inline-flex items-center justify-center gap-3 px-8 py-4 md:px-12 md:py-6 text-white font-bold rounded-xl md:rounded-3xl shadow-2xl hover:-translate-y-1 transition-all duration-300 text-sm md:text-xl w-full sm:w-auto"
                         style={{ background: 'linear-gradient(135deg, #C0003A 0%, #6B008A 45%, #0A2FA8 100%)' }}
                     >

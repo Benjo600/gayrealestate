@@ -1,8 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, MapPin, Truck, Users, CheckCircle, Star, Phone, Heart } from 'lucide-react';
+import { ArrowLeft, ArrowRight, MapPin, Truck, Users, CheckCircle, Star, Phone, Heart, ChevronRight } from 'lucide-react';
 import Footer from '../Footer';
 import SEOHead from '../SEOHead';
+
+const relocationFaqs = [
+    {
+        question: 'What LGBTQ+-friendly neighborhoods are in Connecticut?',
+        answer: 'Top LGBTQ+-friendly areas include West Hartford (walkable, vibrant downtown — the #1 LGBTQ+-friendly suburb in CT), New Haven (Yale-anchored arts scene, strong queer community), Glastonbury (top-rated schools, welcoming community), and Litchfield County (privacy, land, and a longstanding LGBTQ+ second-home community).',
+    },
+    {
+        question: 'Can I buy a home in Connecticut without being there in person?',
+        answer: "Yes. For clients moving from NYC, Boston, or beyond, we handle virtual tours with a live agent, remote offer and document signing, third-party inspection management, and full closing support. You don't have to be in Connecticut until the day you pick up your keys.",
+    },
+    {
+        question: 'How do you help LGBTQ+ relocators integrate into Connecticut communities?',
+        answer: 'We make introductions to local LGBTQ+ organizations, events, and community groups from day one. Our services include LGBTQ+ community group introductions, local event calendars, professional networking connections, and ongoing check-ins post-move.',
+    },
+    {
+        question: 'What does a typical Connecticut relocation cost?',
+        answer: 'Home prices vary by area: West Hartford ($380k–$800k), Glastonbury ($320k–$650k), New Haven ($250k–$700k), Farmington Valley ($400k–$900k), and Fairfield County ($500k–$3M+). Our relocation consultation is complimentary — we help match you to the right community and price range.',
+    },
+];
 
 const services = [
     {
@@ -75,40 +94,14 @@ const RelocationServices: React.FC = () => {
     const relocationFaqSchema = {
         "@context": "https://schema.org",
         "@type": "FAQPage",
-        "mainEntity": [
-            {
-                "@type": "Question",
-                "name": "What LGBTQ+-friendly neighborhoods are in Connecticut?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Top LGBTQ+-friendly areas include West Hartford (walkable, vibrant downtown — the #1 LGBTQ+-friendly suburb in CT), New Haven (Yale-anchored arts scene, strong queer community), Glastonbury (top-rated schools, welcoming community), and Litchfield County (privacy, land, and a longstanding LGBTQ+ second-home community)."
-                }
+        "mainEntity": relocationFaqs.map(({ question, answer }) => ({
+            "@type": "Question",
+            "name": question,
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": answer,
             },
-            {
-                "@type": "Question",
-                "name": "Can I buy a home in Connecticut without being there in person?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes. For clients moving from NYC, Boston, or beyond, we handle virtual tours with a live agent, remote offer and document signing, third-party inspection management, and full closing support. You don't have to be in Connecticut until the day you pick up your keys."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "How do you help LGBTQ+ relocators integrate into Connecticut communities?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "We make introductions to local LGBTQ+ organizations, events, and community groups from day one. Our services include LGBTQ+ community group introductions, local event calendars, professional networking connections, and ongoing check-ins post-move."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "What does a typical Connecticut relocation cost?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Home prices vary by area: West Hartford ($380k–$800k), Glastonbury ($320k–$650k), New Haven ($250k–$700k), Farmington Valley ($400k–$900k), and Fairfield County ($500k–$3M+). Our relocation consultation is complimentary — we help match you to the right community and price range."
-                }
-            }
-        ]
+        })),
     };
 
     return (
@@ -162,7 +155,7 @@ const RelocationServices: React.FC = () => {
                         We do more than help you find a house — we help you find your community. Our LGBTQ+-led relocation service handles every detail from your first virtual tour to your first neighborhood block party.
                     </p>
                     <div className="flex flex-wrap gap-4 justify-center mt-10">
-                        <a href="/#contact" className="px-8 py-4 text-white font-bold rounded-full shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all inline-flex items-center gap-2" style={{ background: 'linear-gradient(135deg, #C0003A 0%, #6B008A 45%, #0A2FA8 100%)' }}>
+                        <a href="/contact" className="px-8 py-4 text-white font-bold rounded-full shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all inline-flex items-center gap-2" style={{ background: 'linear-gradient(135deg, #C0003A 0%, #6B008A 45%, #0A2FA8 100%)' }}>
                             Start Your Relocation <ArrowRight className="w-4 h-4 ml-1" />
                         </a>
                         <a href="#destinations" className="px-8 py-4 bg-white/60 backdrop-blur-sm border border-purple-200 text-slate-700 font-semibold rounded-full hover:bg-white hover:border-purple-300 shadow-sm transition-all">
@@ -261,7 +254,32 @@ const RelocationServices: React.FC = () => {
             </section>
 
 
-            <section className="max-w-5xl mx-auto px-5 py-16 md:py-24">
+            {/* FAQ — visible Q&A must match FAQPage schema */}
+            <section aria-labelledby="relocation-faq-heading" className="max-w-4xl mx-auto px-4 md:px-6 py-16 md:py-20">
+                <h2 id="relocation-faq-heading" className="text-2xl md:text-3xl font-display font-bold text-slate-900 mb-6 text-center">
+                    Frequently Asked Questions
+                </h2>
+                <div className="space-y-3">
+                    {relocationFaqs.map((item, index) => (
+                        <details
+                            key={index}
+                            className="group rounded-2xl border border-slate-100 bg-white open:shadow-sm open:border-slate-200 transition-all"
+                        >
+                            <summary className="cursor-pointer list-none flex items-start justify-between gap-4 px-5 py-4 font-bold text-slate-900 marker:content-none [&::-webkit-details-marker]:hidden">
+                                <h3 className="text-sm md:text-base font-bold text-slate-900 leading-snug text-left">
+                                    {item.question}
+                                </h3>
+                                <ChevronRight className="w-5 h-5 text-slate-400 shrink-0 mt-0.5 transition-transform group-open:rotate-90" />
+                            </summary>
+                            <p className="px-5 pb-5 text-slate-600 text-sm md:text-base leading-relaxed">
+                                {item.answer}
+                            </p>
+                        </details>
+                    ))}
+                </div>
+            </section>
+
+            <section className="max-w-5xl mx-auto px-5 pb-16 md:pb-24">
                 <h2 className="text-2xl md:text-3xl font-display font-bold text-slate-900 mb-6 text-center">Relocation Guides</h2>
                 <div className="grid sm:grid-cols-2 gap-4">
                     {[
