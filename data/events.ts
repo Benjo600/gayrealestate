@@ -4,6 +4,8 @@ export interface EventVenue {
     address: string;
     description: string;
     websiteUrl: string;
+    /** Optional on-site partner page (e.g. /sky-casper) */
+    pagePath?: string;
     category: 'Nightlife' | 'Entertainment' | 'Community' | 'Culture';
     tags: string[];
     image: string;
@@ -26,9 +28,10 @@ export const communityVenues: EventVenue[] = [
         address: 'Various Locations, CT',
         description: 'The region\'s leading LGBTQ+ production company, bringing high-energy drag spectacles and inclusive social experiences to premium venues across Connecticut. From spectacular brunches to late-night extravaganzas.',
         websiteUrl: 'https://skycasper.com/events/',
+        pagePath: '/sky-casper',
         category: 'Entertainment',
         tags: ['Drag Spectacles', 'Luxury Events', 'Live Shows', 'Inclusive Entertainment'],
-        image: '/images/events/drag-performer-money.jpg'
+        image: '/images/events/sky-casper/ticket-queer-beach.jpg'
     }
 ];
 
@@ -40,6 +43,8 @@ export interface CommunityEvent {
     time?: string;
     description: string;
     link: string;
+    /** When true, open link on this site (React Router) instead of a new tab */
+    internal?: boolean;
     featured?: boolean;
 }
 
@@ -61,7 +66,8 @@ export const recentEvents: CommunityEvent[] = [
         date: 'Various Sundays',
         time: '11:30 AM',
         description: 'The ultimate Sunday experience. Gourmet dining paired with world-class performances in Connecticut\'s most beautiful venues.',
-        link: 'https://skycasper.com/events/',
+        link: '/sky-casper',
+        internal: true,
         featured: true
     },
     {

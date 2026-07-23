@@ -1,15 +1,25 @@
-import React, { useState } from 'react';
-import { Send, Mail, CheckCircle2, Phone, MapPin, Home } from 'lucide-react';
+import React, { useRef, useState } from 'react';
+import { Send, Mail, CheckCircle2, MapPin, Home } from 'lucide-react';
+import type { CountryCode } from 'libphonenumber-js';
 import { sendEnquiryToTelegram } from '../services/telegramService';
+import { checkLead, honeypotStyle, toE164, waitMinSubmitTime } from '../lib/spamGuard';
+import { DEFAULT_PHONE_COUNTRY } from '../lib/phoneCountries';
+import { PhoneInput } from './ui/PhoneInput';
 
 type Status = 'idle' | 'submitting' | 'success' | 'error';
+
+const emptyForm = {
+   firstName: '', lastName: '', email: '', phone: '', interest: '', location: '', message: '',
+   phoneCountry: DEFAULT_PHONE_COUNTRY as CountryCode,
+   /** Honeypot — bots fill this; humans never see it */
+   company: '',
+};
 
 const EnquiryFormCard: React.FC = () => {
    const [status, setStatus] = useState<Status>('idle');
    const [errorMsg, setErrorMsg] = useState('');
-   const [form, setForm] = useState({
-      firstName: '', lastName: '', email: '', phone: '', interest: '', location: '', message: '',
-   });
+   const [form, setForm] = useState(emptyForm);
+   const openedAt = useRef(Date.now());
 
    const field =
       (key: keyof typeof form) =>
@@ -19,10 +29,42 @@ const EnquiryFormCard: React.FC = () => {
    const handleSubmit = async (e: React.FormEvent) => {
       e.preventDefault();
       setStatus('submitting');
+
+      const e164 = toE164(form.phone, form.phoneCountry);
+      const payload = {
+         firstName: form.firstName,
+         lastName: form.lastName,
+         email: form.email,
+         phone: e164,
+         phoneCountry: form.phoneCountry,
+         interest: form.interest,
+         location: form.location,
+         message: form.message,
+         _hp: form.company,
+         _ts: openedAt.current,
+      };
+
+      const check = checkLead(payload, { skipTiming: true });
+      if (check.pass === false) {
+         if (check.drop) {
+            setStatus('success');
+            setForm(emptyForm);
+            openedAt.current = Date.now();
+            setTimeout(() => setStatus('idle'), 5000);
+            return;
+         }
+         setErrorMsg(check.reason);
+         setStatus('error');
+         setTimeout(() => { setStatus('idle'); setErrorMsg(''); }, 5000);
+         return;
+      }
+
       try {
-         await sendEnquiryToTelegram(form);
+         await waitMinSubmitTime(openedAt.current);
+         await sendEnquiryToTelegram(payload);
          setStatus('success');
-         setForm({ firstName: '', lastName: '', email: '', phone: '', interest: '', location: '', message: '' });
+         setForm(emptyForm);
+         openedAt.current = Date.now();
          setTimeout(() => setStatus('idle'), 5000);
       } catch (err: unknown) {
          const msg = err instanceof Error ? err.message : 'Something went wrong.';
@@ -55,32 +97,41 @@ const EnquiryFormCard: React.FC = () => {
    }
 
    return (
-      <form onSubmit={handleSubmit} noValidate className="space-y-4">
+      <form onSubmit={handleSubmit} noValidate className="space-y-4 relative">
+         <div style={honeypotStyle} aria-hidden="true">
+            <label htmlFor="enquiry-company">Company</label>
+            <input id="enquiry-company" name="company" type="text" tabIndex={-1} autoComplete="off" value={form.company} onChange={field('company')} />
+         </div>
          <div className="grid grid-cols-2 gap-4">
             <div className="relative">
-               <input id="firstName" type="text" placeholder=" " required value={form.firstName} onChange={field('firstName')} className={base} />
+               <input id="firstName" type="text" placeholder=" " required autoComplete="given-name" value={form.firstName} onChange={field('firstName')} className={base} />
                <label htmlFor="firstName" className={lbl}>First Name <span className="text-red-500">*</span></label>
             </div>
             <div className="relative">
-               <input id="lastName" type="text" placeholder=" " required value={form.lastName} onChange={field('lastName')} className={base} />
+               <input id="lastName" type="text" placeholder=" " required autoComplete="family-name" value={form.lastName} onChange={field('lastName')} className={base} />
                <label htmlFor="lastName" className={lbl}>Last Name <span className="text-red-500">*</span></label>
             </div>
          </div>
-         <div className="grid grid-cols-2 gap-4">
-            <div className="relative">
-               <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none z-10" />
-               <input id="email" type="email" placeholder=" " value={form.email} onChange={field('email')} className={iconBase} />
-               <label htmlFor="email" className={iconLbl}>Email Address</label>
-            </div>
-            <div className="relative">
-               <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none z-10" />
-               <input id="phone" type="tel" placeholder=" " required value={form.phone} onChange={field('phone')} className={iconBase} />
-               <label htmlFor="phone" className={iconLbl}>Phone <span className="text-red-500">*</span></label>
-            </div>
+         <div className="relative z-0">
+            <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
+            <input id="email" type="email" placeholder=" " value={form.email} onChange={field('email')} className={iconBase} />
+            <label htmlFor="email" className={iconLbl}>Email Address</label>
          </div>
-         <div className="grid grid-cols-2 gap-4">
+         {/* High z so country dropdown covers fields/icons below */}
+         <div className="relative z-40">
+            <PhoneInput
+               id="phone"
+               variant="enquiry"
+               required
+               country={form.phoneCountry}
+               national={form.phone}
+               onCountryChange={(code) => setForm((p) => ({ ...p, phoneCountry: code }))}
+               onNationalChange={(value) => setForm((p) => ({ ...p, phone: value }))}
+            />
+         </div>
+         <div className="grid grid-cols-2 gap-4 relative z-0">
             <div className="relative">
-               <Home className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none z-20" />
+               <Home className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
                <select id="interest" value={form.interest} onChange={field('interest')}
                   className="w-full h-12 pl-11 pr-8 appearance-none bg-white border border-slate-300 rounded-lg text-slate-800 text-sm focus:border-slate-900 focus:text-slate-900 transition-colors duration-150 cursor-pointer">
                   <option value="" disabled>I'm Interested In</option>
@@ -97,7 +148,7 @@ const EnquiryFormCard: React.FC = () => {
                </div>
             </div>
             <div className="relative">
-               <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none z-10" />
+               <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
                <input id="location" type="text" placeholder=" " value={form.location} onChange={field('location')} className={iconBase} />
                <label htmlFor="location" className={iconLbl}>Location</label>
             </div>

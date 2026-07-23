@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Send, CheckCircle2, Phone, Mail, Video, Users } from 'lucide-react';
+import type { CountryCode } from 'libphonenumber-js';
 import { sendGenericTelegram } from '../../services/telegramService';
+import { checkLead, honeypotStyle, toE164, waitMinSubmitTime } from '../../lib/spamGuard';
+import { DEFAULT_PHONE_COUNTRY } from '../../lib/phoneCountries';
+import { PhoneInput } from './PhoneInput';
 
 export type ModalStatus = 'idle' | 'submitting' | 'success' | 'error';
 
@@ -19,11 +23,14 @@ export const ContactModal: React.FC<ContactModalProps> = ({ agentName, agentId, 
     const [form, setForm] = useState({
         name: '',
         phone: '',
+        phoneCountry: DEFAULT_PHONE_COUNTRY as CountryCode,
         email: '',
         method: defaultMethod === 'email' ? 'email' : defaultMethod === 'schedule' ? 'video-call' : 'phone-call',
         date: '',
         message: '',
+        company: '',
     });
+    const openedAt = useRef(Date.now());
 
     const change = (key: keyof typeof form) =>
         (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
@@ -32,6 +39,33 @@ export const ContactModal: React.FC<ContactModalProps> = ({ agentName, agentId, 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setStatus('submitting');
+
+        const requireEmail = form.method === 'email';
+        const e164 = toE164(form.phone, form.phoneCountry);
+        const meta = {
+            name: form.name,
+            phone: e164,
+            phoneCountry: form.phoneCountry,
+            email: form.email,
+            message: form.message,
+            method: form.method,
+            requireEmail,
+            _hp: form.company,
+            _ts: openedAt.current,
+        };
+
+        const check = checkLead(meta, { requireEmail, skipTiming: true });
+        if (check.pass === false) {
+            if (check.drop) {
+                setStatus('success');
+                return;
+            }
+            setErrorMsg(check.reason);
+            setStatus('error');
+            setTimeout(() => { setStatus('idle'); setErrorMsg(''); }, 5000);
+            return;
+        }
+
         try {
             const methodLabels: Record<string, string> = {
                 'phone-call': '📞 Phone Call',
@@ -45,14 +79,15 @@ export const ContactModal: React.FC<ContactModalProps> = ({ agentName, agentId, 
                 `<i>${agentTitle}</i>`,
                 '',
                 `👤 <b>Name:</b> ${form.name}`,
-                `📞 <b>Phone:</b> ${form.phone || 'Not provided'}`,
+                `📞 <b>Phone:</b> ${e164 || 'Not provided'}`,
                 `📧 <b>Email:</b> ${form.email || 'Not provided'}`,
                 `📬 <b>Method:</b> ${methodLabels[form.method] ?? form.method}`,
                 form.date ? `🗓 <b>Date/Time:</b> ${form.date}` : null,
                 `💬 <b>Message:</b> ${form.message || 'None'}`,
             ].filter(Boolean).join('\n');
 
-            await sendGenericTelegram(text, agentId);
+            await waitMinSubmitTime(openedAt.current);
+            await sendGenericTelegram(text, agentId, meta);
             setStatus('success');
         } catch (err: unknown) {
             setErrorMsg(err instanceof Error ? err.message : 'Please try again.');
@@ -137,30 +172,34 @@ export const ContactModal: React.FC<ContactModalProps> = ({ agentName, agentId, 
                                 </button>
                             </motion.div>
                         ) : (
-                            <form onSubmit={handleSubmit} className="space-y-4">
+                            <form onSubmit={handleSubmit} className="space-y-4 relative">
+                                <div style={honeypotStyle} aria-hidden="true">
+                                    <label htmlFor="contact-company">Company</label>
+                                    <input id="contact-company" name="company" type="text" tabIndex={-1} autoComplete="off" value={form.company} onChange={change('company')} />
+                                </div>
 
-                                <div className="grid grid-cols-2 gap-3">
-                                    <div className="space-y-1.5">
-                                        <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider pl-1">Your Name *</label>
-                                        <input
-                                            required
-                                            value={form.name}
-                                            onChange={change('name')}
-                                            placeholder="Jane Smith"
-                                            className={inputCls}
-                                        />
-                                    </div>
-                                    <div className="space-y-1.5">
-                                        <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider pl-1">Phone *</label>
-                                        <input
-                                            required
-                                            type="tel"
-                                            value={form.phone}
-                                            onChange={change('phone')}
-                                            placeholder="(860) 555-0100"
-                                            className={inputCls}
-                                        />
-                                    </div>
+                                <div className="space-y-1.5">
+                                    <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider pl-1">Your Name *</label>
+                                    <input
+                                        required
+                                        value={form.name}
+                                        onChange={change('name')}
+                                        placeholder="Jane Smith"
+                                        autoComplete="name"
+                                        className={inputCls}
+                                    />
+                                </div>
+                                <div className="space-y-1.5 relative z-20">
+                                    <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider pl-1">Phone *</label>
+                                    <PhoneInput
+                                        id="contact-phone"
+                                        variant="modal"
+                                        required
+                                        country={form.phoneCountry}
+                                        national={form.phone}
+                                        onCountryChange={(code) => setForm((p) => ({ ...p, phoneCountry: code }))}
+                                        onNationalChange={(value) => setForm((p) => ({ ...p, phone: value }))}
+                                    />
                                 </div>
 
                                 <div className="space-y-1.5">

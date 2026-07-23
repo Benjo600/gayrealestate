@@ -24,7 +24,11 @@ import Footer from '../Footer';
 import SEOHead from '../SEOHead';
 import NotFound from './NotFound';
 import { agents } from '../../data/agents';
+import type { CountryCode } from 'libphonenumber-js';
 import { sendGenericTelegram } from '../../services/telegramService';
+import { checkLead, honeypotStyle, toE164, waitMinSubmitTime } from '../../lib/spamGuard';
+import { DEFAULT_PHONE_COUNTRY } from '../../lib/phoneCountries';
+import { PhoneInput } from '../ui/PhoneInput';
 
 const BASE_URL = 'https://www.gayrealestatect.net';
 
@@ -68,7 +72,15 @@ interface BlogCTAFormProps {
 const BlogCTAForm: React.FC<BlogCTAFormProps> = ({ postTitle, authorName, agentId }) => {
     const [status, setStatus] = useState<FormStatus>('idle');
     const [errorMsg, setErrorMsg] = useState('');
-    const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
+    const [form, setForm] = useState({
+        name: '',
+        email: '',
+        phone: '',
+        phoneCountry: DEFAULT_PHONE_COUNTRY as CountryCode,
+        message: '',
+        company: '',
+    });
+    const openedAt = useRef(Date.now());
 
     const change = (key: keyof typeof form) =>
         (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
@@ -77,6 +89,31 @@ const BlogCTAForm: React.FC<BlogCTAFormProps> = ({ postTitle, authorName, agentI
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setStatus('submitting');
+
+        const e164 = toE164(form.phone, form.phoneCountry);
+        const meta = {
+            name: form.name,
+            email: form.email,
+            phone: e164,
+            phoneCountry: form.phoneCountry,
+            message: form.message,
+            requireEmail: true,
+            _hp: form.company,
+            _ts: openedAt.current,
+        };
+
+        const check = checkLead(meta, { requireEmail: true, skipTiming: true });
+        if (check.pass === false) {
+            if (check.drop) {
+                setStatus('success');
+                return;
+            }
+            setErrorMsg(check.reason);
+            setStatus('error');
+            setTimeout(() => { setStatus('idle'); setErrorMsg(''); }, 5000);
+            return;
+        }
+
         try {
             const now = new Date().toLocaleString('en-US', {
                 timeZone: 'America/New_York',
@@ -90,16 +127,17 @@ const BlogCTAForm: React.FC<BlogCTAFormProps> = ({ postTitle, authorName, agentI
                 '',
                 `👤 <b>Name:</b> ${form.name}`,
                 `📧 <b>Email:</b> ${form.email}`,
-                `📞 <b>Phone:</b> ${form.phone}`,
+                `📞 <b>Phone:</b> ${e164}`,
                 `💬 <b>Message:</b> ${form.message || 'None'}`,
                 '',
                 `🕐 <i>Received: ${now} ET</i>`,
             ].join('\n');
 
-            await sendGenericTelegram(text, agentId);
+            await waitMinSubmitTime(openedAt.current);
+            await sendGenericTelegram(text, agentId, meta);
             setStatus('success');
         } catch (err: unknown) {
-            setErrorMsg('Something went wrong. Please try again.');
+            setErrorMsg(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
             setStatus('error');
             setTimeout(() => { setStatus('idle'); setErrorMsg(''); }, 5000);
         }
@@ -122,27 +160,37 @@ const BlogCTAForm: React.FC<BlogCTAFormProps> = ({ postTitle, authorName, agentI
     }
 
     return (
-        <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                   <input required value={form.name} onChange={change('name')} placeholder="Full Name *" className={inputCls} />
-                </div>
-                <div>
-                   <input required type="email" value={form.email} onChange={change('email')} placeholder="Email Address *" className={inputCls} />
-                </div>
+        <form onSubmit={handleSubmit} className="space-y-4 relative">
+            <div style={honeypotStyle} aria-hidden="true">
+                <label htmlFor="blog-cta-company">Company</label>
+                <input id="blog-cta-company" name="company" type="text" tabIndex={-1} autoComplete="off" value={form.company} onChange={change('company')} />
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                   <input required type="tel" value={form.phone} onChange={change('phone')} placeholder="Phone Number *" className={inputCls} />
+                   <input required value={form.name} onChange={change('name')} placeholder="Full Name *" autoComplete="name" className={inputCls} />
                 </div>
-                <button
-                    type="submit"
-                    disabled={status === 'submitting'}
-                    className="px-6 py-3 bg-slate-900 text-white font-bold rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70 text-sm"
-                >
-                    {status === 'submitting' ? 'Booking...' : 'Get Free Consultation'}
-                </button>
+                <div>
+                   <input required type="email" value={form.email} onChange={change('email')} placeholder="Email Address *" autoComplete="email" className={inputCls} />
+                </div>
             </div>
+            <div className="relative z-20">
+                <PhoneInput
+                    id="blog-phone"
+                    variant="blog"
+                    required
+                    country={form.phoneCountry}
+                    national={form.phone}
+                    onCountryChange={(code) => setForm((p) => ({ ...p, phoneCountry: code }))}
+                    onNationalChange={(value) => setForm((p) => ({ ...p, phone: value }))}
+                />
+            </div>
+            <button
+                type="submit"
+                disabled={status === 'submitting'}
+                className="w-full px-6 py-3 bg-slate-900 text-white font-bold rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70 text-sm"
+            >
+                {status === 'submitting' ? 'Booking...' : 'Get Free Consultation'}
+            </button>
             {status === 'error' && <p className="text-xs text-red-600">{errorMsg}</p>}
         </form>
     );
