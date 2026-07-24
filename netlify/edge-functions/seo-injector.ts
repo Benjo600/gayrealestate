@@ -1,6 +1,6 @@
 import type { Context } from "@netlify/edge-functions";
-import { BLOG_POSTS } from "../../data/blogs.ts";
-import { agents } from "../../data/agents.ts";
+// Slim meta only — never import data/blogs.ts (full HTML bodies break Netlify edge deploys).
+import { BLOG_META, AGENT_META } from "./_content-meta.ts";
 
 const BASE_DOMAIN = "https://www.gayrealestatect.net";
 // The only host that should ever be indexed. Every other host that serves this
@@ -14,8 +14,8 @@ const DEFAULT_IMAGE_ALT = "GayRealEstateCT.net - LGBTQ+ Friendly Real Estate in 
 // function never drifts out of sync with the published content. (Previously a
 // hardcoded BLOG_DATA map doubled as the "does this post exist?" gate, which
 // silently 404'd every blog post that wasn't manually copied in here.)
-const KNOWN_BLOG_SLUGS = new Set(BLOG_POSTS.map((p) => p.slug));
-const KNOWN_AGENT_IDS = new Set(Object.keys(agents));
+const KNOWN_BLOG_SLUGS = new Set(BLOG_META.map((p) => p.slug));
+const KNOWN_AGENT_IDS = new Set(Object.keys(AGENT_META));
 const KNOWN_STATIC_PATHS = new Set([
   "/",
   "/about",
@@ -214,9 +214,9 @@ function resolveMeta(path: string): PageMeta {
 
   if (path.startsWith("/blog/")) {
     const slug = path.replace("/blog/", "");
-    // Prefer live BLOG_POSTS so edge meta matches client excerpts/images.
+    // Prefer live BLOG_META so edge meta matches client excerpts/images.
     // BLOG_DATA is only a curated fallback if the post is missing from data.
-    const post = BLOG_POSTS.find((p) => p.slug === slug);
+    const post = BLOG_META.find((p) => p.slug === slug);
     if (post) {
       title = `${post.title} | Gay Real Estate CT`;
       description = truncate(post.excerpt);
@@ -240,7 +240,7 @@ function resolveMeta(path: string): PageMeta {
       ogImage = curated.image;
       ogImageAlt = curated.title;
     } else {
-      const agent = agents[id];
+      const agent = AGENT_META[id];
       if (agent) {
         title = `${agent.name} | ${agent.title} | Gay Real Estate CT`;
         description = truncate(agent.tagline || agent.bio);
@@ -347,15 +347,15 @@ function stripExistingTags(text: string): string {
 function buildBlogJsonLd(path: string): string {
   if (!path.startsWith("/blog/")) return "";
   const slug = path.replace("/blog/", "");
-  const post = BLOG_POSTS.find((p) => p.slug === slug);
+  const post = BLOG_META.find((p) => p.slug === slug);
   if (!post) return "";
 
   const canonicalUrl = `${BASE_DOMAIN}/blog/${post.slug}`;
   const image = toAbsoluteImage(post.image);
   const authorAgentId = AUTHOR_AGENT_MAP[post.author];
-  // Prefer canonical agent.title from data/agents.ts so job titles stay
+  // Prefer canonical agent.title from agent meta so job titles stay
   // consistent across posts (authorRole strings drift in blog data).
-  const authorAgent = authorAgentId ? agents[authorAgentId] : undefined;
+  const authorAgent = authorAgentId ? AGENT_META[authorAgentId] : undefined;
   const authorJobTitle = authorAgent?.title || post.authorRole;
   const blogPosting = {
     "@context": "https://schema.org",
@@ -420,23 +420,21 @@ function buildBlogJsonLd(path: string): string {
 }
 
 /**
- * Full-content <noscript> fallback for crawlers that don't execute JavaScript
- * (Bing, DuckDuckGo, most AI crawlers). Blog content and agent bios already
- * live in the data files this function bundles, so we can serve the complete
- * article body server-side at no extra cost. Injected just before </body>,
- * and only when the served HTML is the unrendered SPA shell (a prerendered
- * page already carries its content in the DOM).
+ * <noscript> fallback for crawlers that don't execute JavaScript.
+ * Uses slim meta (title/excerpt/bio) — full HTML bodies are not bundled into
+ * the edge function (that was blowing Netlify edge deploy size/memory limits).
+ * Injected just before </body> only for the unrendered SPA shell.
  */
 function buildNoscriptBody(path: string): string {
   if (path.startsWith("/blog/")) {
     const slug = path.replace("/blog/", "");
-    const post = BLOG_POSTS.find((p) => p.slug === slug);
+    const post = BLOG_META.find((p) => p.slug === slug);
     if (!post) return "";
     const canonicalUrl = `${BASE_DOMAIN}/blog/${post.slug}`;
-    return `<noscript><article><h1>${esc(post.title)}</h1><p><em>By ${esc(post.author)} — ${esc(post.date)}</em></p><p>${esc(post.excerpt)}</p>${post.content}<p><a href="${canonicalUrl}">${esc(post.title)}</a> — <a href="${BASE_DOMAIN}/blog">All articles</a> — GayRealEstateCT.net</p></article></noscript>`;
+    return `<noscript><article><h1>${esc(post.title)}</h1><p><em>By ${esc(post.author)} — ${esc(post.date)}</em></p><p>${esc(post.excerpt)}</p><p><a href="${canonicalUrl}">${esc(post.title)}</a> — <a href="${BASE_DOMAIN}/blog">All articles</a> — GayRealEstateCT.net</p></article></noscript>`;
   }
   if (path.startsWith("/agent/")) {
-    const agent = agents[path.replace("/agent/", "")];
+    const agent = AGENT_META[path.replace("/agent/", "")];
     if (!agent) return "";
     const bioHtml = (agent.bio || "")
       .split(/\n+/)
@@ -468,7 +466,7 @@ function buildMetaTags(path: string, meta: PageMeta, noindex: boolean): string {
   const keywordsMeta = (() => {
     if (!path.startsWith("/blog/")) return "";
     const slug = path.replace("/blog/", "");
-    const post = BLOG_POSTS.find((p) => p.slug === slug);
+    const post = BLOG_META.find((p) => p.slug === slug);
     if (!post?.seoKeywords) return "";
     return `\n    <meta name="keywords" content="${esc(post.seoKeywords)}" />`;
   })();

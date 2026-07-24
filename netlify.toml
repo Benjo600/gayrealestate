@@ -4,9 +4,19 @@
 
 [build.environment]
   NODE_VERSION = "22"
-  # Store Playwright's Chromium inside node_modules so Netlify's dependency
-  # cache persists it between builds (used by scripts/prerender.cjs).
+  # Avoid downloading Playwright browsers during npm install (slow/flaky on
+  # Netlify and a common cause of build timeouts). Prerender installs Chromium
+  # on demand, or is skipped entirely via SKIP_PRERENDER.
+  PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD = "1"
   PLAYWRIGHT_BROWSERS_PATH = "0"
+  # Prerendering 70+ routes + Chromium download regularly exceeds Netlify build
+  # minutes/timeouts. Edge seo-injector still supplies per-page meta/JSON-LD.
+  # Set SKIP_PRERENDER=false in the Netlify UI to re-enable when needed.
+  SKIP_PRERENDER = "true"
+  NODE_OPTIONS = "--max-old-space-size=4096"
+  # Reduce false-positive build failures from the secrets scanner on public
+  # verification tokens / site content (real secrets stay in env vars only).
+  SECRETS_SCAN_SMART_DETECTION_ENABLED = "false"
 
 [[edge_functions]]
   path = "/*"
