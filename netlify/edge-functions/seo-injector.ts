@@ -1,6 +1,6 @@
 import type { Context } from "@netlify/edge-functions";
 // Slim meta only — never import data/blogs.ts (full HTML bodies break Netlify edge deploys).
-import { BLOG_META, AGENT_META } from "./_content-meta.ts";
+import { BLOG_META, AGENT_META } from "./_shared/content-meta.ts";
 
 const BASE_DOMAIN = "https://www.gayrealestatect.net";
 // The only host that should ever be indexed. Every other host that serves this

@@ -13,9 +13,11 @@ const json = (data: unknown, status = 200) =>
 
 export default async (req: Request, _context: Context) => {
   const token = Netlify.env.get("TELEGRAM_BOT_TOKEN");
-  // Do not hardcode chat IDs — Netlify secrets scanning fails the build if
-  // Telegram-looking IDs are committed, and they belong in site env vars.
-  const adminChatId = Netlify.env.get("TELEGRAM_ADMIN_CHAT_ID");
+  // Do not hardcode chat IDs — they belong in site env vars only.
+  // Accept either name: Netlify currently has TELEGRAM_CHAT_ID set.
+  const adminChatId =
+    Netlify.env.get("TELEGRAM_ADMIN_CHAT_ID") ||
+    Netlify.env.get("TELEGRAM_CHAT_ID");
   const adminThreadId = Netlify.env.get("TELEGRAM_THREAD_ID");
 
   if (!token) {
@@ -113,7 +115,7 @@ export default async (req: Request, _context: Context) => {
 
     // ─── STANDARD LEAD SUBMISSION ───
     if (!adminChatId) {
-      return json({ error: "Missing TELEGRAM_ADMIN_CHAT_ID" }, 500);
+      return json({ error: "Missing TELEGRAM_CHAT_ID / TELEGRAM_ADMIN_CHAT_ID" }, 500);
     }
 
     const agentId = payload.agentId || "";
