@@ -13,6 +13,7 @@ import {
     CheckCircle2,
     Calendar,
     Instagram,
+    Globe,
     User,
     Briefcase,
     Award
@@ -232,17 +233,32 @@ const RealtorProfile: React.FC = () => {
                                 ))}
                             </div>
 
-                            {agent.instagram && (
-                                <div className="mb-6 px-1">
-                                    <a 
-                                        href={`https://instagram.com/${agent.instagram.replace('@', '')}`}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="flex items-center gap-3 py-3 px-4 bg-white/5 rounded-2xl border border-white/10 text-white/90 hover:bg-white/10 transition-all"
-                                    >
-                                        <Instagram className="w-4 h-4 text-purple-400" />
-                                        <span className="text-[12px] font-medium tracking-wide">{agent.instagram}</span>
-                                    </a>
+                            {(agent.instagram || agent.website) && (
+                                <div className="mb-6 px-1 space-y-2">
+                                    {agent.instagram && (
+                                        <a 
+                                            href={`https://instagram.com/${agent.instagram.replace('@', '')}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex items-center gap-3 py-3 px-4 bg-white/5 rounded-2xl border border-white/10 text-white/90 hover:bg-white/10 transition-all"
+                                        >
+                                            <Instagram className="w-4 h-4 text-purple-400" />
+                                            <span className="text-[12px] font-medium tracking-wide">{agent.instagram}</span>
+                                        </a>
+                                    )}
+                                    {agent.website && (
+                                        <a 
+                                            href={agent.website}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex items-center gap-3 py-3 px-4 bg-white/5 rounded-2xl border border-white/10 text-white/90 hover:bg-white/10 transition-all"
+                                        >
+                                            <Globe className="w-4 h-4 text-sky-400" />
+                                            <span className="text-[12px] font-medium tracking-wide">
+                                                {agent.website.replace(/^https?:\/\//, '').replace(/\/$/, '')}
+                                            </span>
+                                        </a>
+                                    )}
                                 </div>
                             )}
 
@@ -297,15 +313,30 @@ const RealtorProfile: React.FC = () => {
                                         <div className="space-y-5 text-slate-600 leading-relaxed text-[15px]">
                                             {paragraphs.map((p, i) => <p key={i}>{p}</p>)}
                                         </div>
-                                        {agent.instagram && (
-                                            <div className="mt-10 pt-6 border-t border-slate-100">
-                                                <p className="text-[10px] uppercase font-black tracking-widest text-slate-400 mb-4">Instagram</p>
-                                                <a href={`https://instagram.com/${agent.instagram.replace('@', '')}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-slate-700 font-semibold text-sm">
-                                                    <div className="w-8 h-8 rounded-lg bg-pink-50 flex items-center justify-center">
-                                                        <Instagram className="w-4 h-4 text-pink-600" />
+                                        {(agent.instagram || agent.website) && (
+                                            <div className="mt-10 pt-6 border-t border-slate-100 space-y-4">
+                                                {agent.instagram && (
+                                                    <div>
+                                                        <p className="text-[10px] uppercase font-black tracking-widest text-slate-400 mb-4">Instagram</p>
+                                                        <a href={`https://instagram.com/${agent.instagram.replace('@', '')}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-slate-700 font-semibold text-sm">
+                                                            <div className="w-8 h-8 rounded-lg bg-pink-50 flex items-center justify-center">
+                                                                <Instagram className="w-4 h-4 text-pink-600" />
+                                                            </div>
+                                                            {agent.instagram}
+                                                        </a>
                                                     </div>
-                                                    {agent.instagram}
-                                                </a>
+                                                )}
+                                                {agent.website && (
+                                                    <div>
+                                                        <p className="text-[10px] uppercase font-black tracking-widest text-slate-400 mb-4">Website</p>
+                                                        <a href={agent.website} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-slate-700 font-semibold text-sm">
+                                                            <div className="w-8 h-8 rounded-lg bg-sky-50 flex items-center justify-center">
+                                                                <Globe className="w-4 h-4 text-sky-600" />
+                                                            </div>
+                                                            {agent.website.replace(/^https?:\/\//, '').replace(/\/$/, '')}
+                                                        </a>
+                                                    </div>
+                                                )}
                                             </div>
                                         )}
                                     </motion.div>
@@ -383,6 +414,17 @@ const RealtorProfile: React.FC = () => {
                                         <a href={`https://instagram.com/${agent.instagram.replace('@', '')}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-slate-600 hover:text-purple-600 transition-colors">
                                             <Instagram className="w-5 h-5" />
                                             <span className="text-sm font-light">{agent.instagram}</span>
+                                        </a>
+                                    </div>
+                                )}
+                                {agent.website && (
+                                    <div>
+                                        <p className="text-[10px] uppercase font-bold tracking-widest text-slate-400 mb-4">Website</p>
+                                        <a href={agent.website} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-slate-600 hover:text-purple-600 transition-colors">
+                                            <Globe className="w-5 h-5" />
+                                            <span className="text-sm font-light">
+                                                {agent.website.replace(/^https?:\/\//, '').replace(/\/$/, '')}
+                                            </span>
                                         </a>
                                     </div>
                                 )}

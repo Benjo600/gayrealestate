@@ -14,6 +14,7 @@ export interface Agent {
     credentials: { label: string; type: 'verified' | 'award' | 'achievement' }[];
     whyWorkWithMe: string[];
     instagram?: string;
+    website?: string;
     nmls?: string;
     branchAddress?: string;
     branchNmls?: string;
@@ -49,7 +50,8 @@ export const agents: Record<string, Agent> = {
             "Deep expertise guiding first-time homebuyers",
             "Trusted advocate for LGBTQ+ community and allies"
         ],
-        instagram: "@areksellsre"
+        instagram: "@areksellsre",
+        website: "https://arekwtulich.com/"
     },
     abby: {
         id: "abby",
