@@ -1,144 +1,160 @@
-# Why 5 Pages Are Still Not Indexed — Root-Cause Investigation (July 2026)
+# Why These Pages Are Not Indexed — Root-Cause Investigation (July 2026)
 
-Follow-up to `SEO-AUDIT-2026-07.md`. The earlier audit's discovery fixes (footer
-links, 301s, sitemap generation, edge meta) all landed and verify clean. Five
-pages remain unindexed. This document identifies which five, and why.
+Investigation of the specific URLs Google Search Console reports as not indexed:
 
-**Method:** the site was built (`npm run build`) and all 72 sitemap routes were
-rendered in headless Chromium at Googlebot's mobile viewport (412×892,
-Googlebot smartphone UA). Rendered word counts and the real DOM link graph were
-measured from the rendered output, not inferred from source. GSC itself was not
-reachable from the analysis environment, so the five pages below are derived
-from the code; every number is reproducible from the build.
+1. `https://www.gayrealestatect.net/agents`
+2. `https://www.gayrealestatect.net/blog/west-hartford-lgbtq-neighborhood-guide`
+3. `https://www.gayrealestatect.net/blog/selling-home-connecticut-lgbtq`
+4. `https://www.gayrealestatect.net/agent/travis`
 
----
-
-## The five pages
-
-Ranked by contextual (non-boilerplate) inbound links — the only links Google
-weighs for discovery and indexing priority:
-
-| Page | In-content inbound links | Rendered words (mobile) | Rendered words (desktop) |
-|---|---|---|---|
-| `/buyers-guide` | **0** | 317 | 742 |
-| `/mortgage-calculator` | **0** | 272 | 297 |
-| `/marketing-your-home` | **0** | 633 | 633 |
-| `/privacy-policy` | **0** | 331 | 331 |
-| `/home-valuation` | **1** (from `/marketing-your-home`, itself orphaned) | 391 | 391 |
-
-Every other route clears the bar: `/relocation` has 1 contextual link from an
-indexed blog post, `/sellers-guide` has 2, `/first-time-buyers` has 6,
-`/contact` has 24, `/blog` has 56. No blog post has zero.
-
-These five are not blocked. All five emit `robots: index, follow`, a correct
-self-referencing canonical, a single `<h1>`, and valid JSON-LD. The problem is
-that Google can barely reach them and finds little when it does.
+They split into two groups with completely different causes. Two are working
+exactly as designed and need no fix. Two are real problems, and both trace to
+the same underlying gap: **the site gives Google no freshness signal that would
+trigger a re-crawl.**
 
 ---
 
-## Root cause 1 — the main navigation contains no crawlable link to any resource page
+## Group A — working as designed, no action needed
 
-`components/ui/floating-navbar.tsx:117-161`
+### `/agents` → 301 → `/about`
+`public/_redirects:6` and `netlify/edge-functions/seo-injector.ts:178`.
 
-"For Buyers" and "For Sellers" render as `<button>` elements — **no `href`**.
-Their child links are inside `{hoveredDropdown === navItem.name && (...)}`,
-so the `<Link>`s to `/mortgage-calculator`, `/buyers-guide`, `/home-valuation`,
-`/marketing-your-home`, `/relocation`, `/sellers-guide` and `/first-time-buyers`
-**do not exist in the DOM until a mouse hovers**. Crawlers do not hover.
+### `/blog/west-hartford-lgbtq-neighborhood-guide` → 301 → `/blog/why-west-hartford-is-lgbtq-friendly-connecticut`
+`public/_redirects:13` and `netlify/edge-functions/seo-injector.ts:157`, added in
+`8c91bb5` specifically to clean up old slugs.
 
-`components/Header.tsx:124-201` — the mobile menu is wrapped in
-`{isMobileMenuOpen && ...}`, so its copies of those same links are also absent
-until a user taps the burger button.
+Both are deliberate, single-hop 301s to live, indexable targets. GSC files every
+redirecting URL under **"Page with redirect"**, which sits inside the *Not
+indexed* section of the Pages report. That is the correct and permanent
+classification for a 301 — it is not an error, and it will never move to
+"Indexed". These two are legacy URLs from the pre-React site (note the sibling
+`/agents.html` rule) that Google still has on file.
 
-`components/Header.tsx:103` — the desktop navbar is inside `hidden md:block`,
-which computes to `display: none` at Googlebot's mobile viewport.
+**Action: none.** Chasing these would mean un-doing correct redirects.
 
-Verified against the rendered homepage DOM: for each of the seven resource
-pages there is **exactly one `<a>` on the entire page, and it is in the
-footer**. The two nav items that should point at them are `<button>` elements
-with no destination.
+---
 
-## Root cause 2 — a sitewide footer link is the only thing pointing at them
+## Group B — real problems
 
-Because of cause 1, the footer (`components/Footer.tsx:57-141`) is the sole
-inbound link for all seven resource pages. Footer links are identical on all 72
-pages, so Google classifies them as boilerplate and discounts them heavily for
-ranking and crawl scheduling. Two of the seven are rescued by in-content links
-from blog posts (`/relocation`, `/sellers-guide`); `/first-time-buyers` has six.
-The five above have none — for indexing purposes they are orphans.
+### `/blog/selling-home-connecticut-lgbtq` — a live post that was 301'd away for 66 days
 
-`/home-valuation` is the compounding case: its only two in-content links are
-from `/marketing-your-home` (`components/pages/MarketingYourHome.tsx:128,209`),
-which is itself in this list, and one blog post. Link equity from an unindexed
-page is worth nothing.
+This is a self-inflicted regression:
 
-## Root cause 3 — thin rendered content, and `/buyers-guide` is thinner on mobile than on desktop
+- **2026-05-06** (`8c91bb5`, "add 301 redirects for old blog slugs causing GSC
+  noindex errors") added
+  `/blog/selling-home-connecticut-lgbtq → /sellers-guide 301`. The slug was
+  treated as a dead slug, but it is a **live post**
+  ("Selling a Home in Connecticut 2026: Costs & Timing", 1,592 rendered words).
+- **2026-07-11** (`9c4c217`, "unblock selling blog") removed the rule from both
+  `public/_redirects` and the edge `BLOG_REDIRECTS` map.
 
-`components/pages/BuyersGuide.tsx:240-253` filters chapters on mobile:
+For 66 days Google saw a 301 and recorded "Page with redirect". The page returns
+200 again, but GSC keeps the old verdict until Google re-crawls *and*
+reprocesses the URL.
 
-```js
-const isVisibleMobile = expandedChapter === i;
-className={cn(isVisibleMobile ? "block" : "hidden md:block", ...)}
+**Why the re-crawl has not happened — this is the actual bug.**
+`scripts/generate-sitemap.cjs:99` uses the post's **publish date** as `<lastmod>`:
+
+```
+<loc>https://www.gayrealestatect.net/blog/selling-home-connecticut-lgbtq</loc>
+<lastmod>2026-06-23</lastmod>
 ```
 
-Five of the six chapters carry `hidden` (`display: none`) below the `md`
-breakpoint. Google indexes mobile-first, so it sees **317 words instead of 742
-— 57% of the page's content is invisible to the version that gets indexed**.
-The other four pages are genuinely thin as authored (272–633 words), and
-`/mortgage-calculator` is mostly an interactive widget whose numbers are
-computed at runtime and contribute nothing indexable.
+`2026-06-23` falls *inside* the redirect window and is older than Google's last
+crawl of the URL. Removing the redirect on 2026-07-11 changed no signal Google
+can observe: the sitemap still advertises the page as last modified before the
+crawl that saw the 301. There is nothing telling Google to look again.
 
-Thin + orphaned is precisely the profile Google files under
-"Crawled – currently not indexed."
+Compounding it, the URL is **absent from both**
+`scripts/gsc-index.js` and `scripts/request-indexing.js`, so it was never pushed
+through the Indexing API either.
 
-## Root cause 4 — prerendering is off, so all of this depends on the render queue
+### `/agent/travis` — thin, and with no freshness signal at all
 
-`netlify.toml:17` sets `SKIP_PRERENDER = "true"`, and
-`scripts/prerender.cjs:129` honours it and exits immediately. Every page ships
-as an empty `<div id="root"></div>` plus a 1.36 MB JS bundle.
+No blocker exists in code. Verified by rendering the built page at Googlebot's
+mobile viewport:
 
-The edge function `netlify/edge-functions/seo-injector.ts` injects correct meta
-for all routes, and its `buildNoscriptBody()` (`:428-448`) writes a `<noscript>`
-text fallback — but **only for `/blog/*` and `/agent/*`**. Static pages get no
-body fallback at all. So for these five pages, without JavaScript there is
-literally nothing on the page but meta tags.
+- returns 200, `robots: index, follow`, correct self-referencing canonical
+  (`https://www.gayrealestatect.net/agent/travis`)
+- present in `AGENT_META`, the sitemap, and both indexing scripts
+- has a `<noscript>` body fallback (`seo-injector.ts:436-446` covers `/agent/*`)
+- 8 in-content inbound links — not orphaned
+- 61% of its text is unique to the page, so it is not a duplicate
 
-This does not block Googlebot, which renders JS — but rendering is a deferred,
-budgeted queue, and pages with no contextual inbound links sit at the back of
-it. It does block Bingbot, DuckDuckGo, and AI crawlers outright.
+What is wrong is thinness and staleness:
+
+- **310 rendered words total**, and the only substantial unique content is the
+  bio. No listings, no reviews, no market or town-level content. That is well
+  inside "Crawled – currently not indexed" territory for a profile page.
+- **Agent URLs carry no `<lastmod>` at all.** `scripts/generate-sitemap.cjs:66-68`
+  deliberately omits it for static and agent pages. The reasoning (don't stamp
+  build dates on unchanged pages) is sound, but the result is that an agent page
+  can never signal a genuine content update.
+- `data/agents.ts` sets `image: "/Travis Lipinski headshot.jpg"` — with spaces.
+  `SEOHead.tsx:27` concatenates without encoding, so the rendered tag is
+  `og:image = "https://www.gayrealestatect.net/Travis Lipinski headshot.jpg"`,
+  an invalid URL. (The edge function encodes it correctly at
+  `seo-injector.ts:141`, but Helmet overwrites it after hydration.) Cosmetic for
+  indexing, but it breaks social previews and reads as a quality defect.
 
 ---
 
-## Why the earlier fixes did not resolve these
+## Secondary bug found: the indexing scripts submit dead URLs
 
-`SEO-AUDIT-2026-07.md` finding #3 correctly identified `/blog` and `/contact` as
-orphans and fixed them by adding footer links. That worked for those two because
-they also picked up in-content links (56 and 24 respectively). The same footer
-fix was applied to the resource pages, but a footer link alone was never going
-to be enough — and the navigation dropdown, which is where those pages are
-supposed to be linked from, has never emitted a crawlable link.
+`scripts/gsc-index.js` and `scripts/request-indexing.js` carry **hardcoded** URL
+lists that have drifted from the sitemap:
+
+| Script | Hardcoded URLs | Now 301 redirects | Live URLs missing |
+|---|---|---|---|
+| `gsc-index.js` | 47 | 4 | 29 |
+| `request-indexing.js` | 32 | 2 | 42 |
+
+The four stale entries — `litchfield-county-towns-for-weekenders`,
+`wooster-square-new-haven-lgbtq-neighborhood`,
+`gay-friendly-towns-in-connecticut-2026-ranked-guide`,
+`how-to-choose-a-gay-friendly-realtor-2026-guide` — are all in the edge
+`BLOG_REDIRECTS` map. Every run asks Google to index URLs that 301, which is
+exactly how redirect URLs stay warm in the Pages report. Meanwhile 29–42 live
+URLs, including `/blog/selling-home-connecticut-lgbtq`, are never submitted.
+
+Both scripts should read `public/sitemap.xml` the way `scripts/index-site.js`
+and `scripts/bing-index.js` already do, instead of keeping a manual list.
 
 ---
 
-## Recommended fixes, in order of impact
+## Recommended fixes
 
-1. **Make the nav dropdowns crawlable.** Render the dropdown `<Link>`s
-   unconditionally and hide them with CSS (`opacity`/`pointer-events`) instead
-   of unmounting them, and give "For Buyers"/"For Sellers" a real `href`
-   (`/buyers-guide`, `/sellers-guide`) instead of `<button>`. Same for the
-   mobile menu.
-2. **Add in-content links to all five.** From `/first-time-buyers` and buyer
-   blog posts → `/mortgage-calculator` and `/buyers-guide`; from
-   `/sellers-guide` and seller posts → `/home-valuation` and
-   `/marketing-your-home`. Two or three contextual links each is enough.
-3. **Stop hiding `/buyers-guide` chapters on mobile.** Keep the accordion for
-   interaction, but render all six chapters in the DOM at every breakpoint.
-4. **Thicken `/mortgage-calculator` and `/home-valuation`** with real editorial
-   copy — CT-specific rates, property-tax context, an FAQ block. 272 words
-   around a calculator widget will not sustain an index entry.
-5. **Re-enable prerendering** (`SKIP_PRERENDER=false`). `scripts/prerender.cjs`
-   is fail-safe by design and already handles the Chromium-availability
-   problem that caused it to be disabled. Failing that, extend
-   `buildNoscriptBody()` to cover static routes.
-6. `/privacy-policy` is low-value by nature — consider dropping it from the
-   sitemap rather than chasing an index entry for it.
+1. **Give `/blog/selling-home-connecticut-lgbtq` a real freshness signal.**
+   Support an optional `updated` field in the blog data and have
+   `generate-sitemap.cjs` emit `<lastmod>` from `updated ?? date`. Set
+   `updated: "2026-07-11"` (or later) on this post so the sitemap advertises a
+   change newer than Google's last crawl.
+2. **Request indexing manually in GSC** for that URL. With a 66-day redirect on
+   record, the URL Inspection tool's "Request Indexing" is the fastest way to
+   force reprocessing; the sitemap fix keeps it from regressing.
+3. **Replace the hardcoded lists** in `gsc-index.js` and `request-indexing.js`
+   with a sitemap read, so dead URLs stop being submitted and live ones stop
+   being skipped.
+4. **Thicken `/agent/travis`** — Litchfield County market commentary, recent
+   transactions, client reviews, an FAQ. 310 words of bio will not sustain an
+   index entry. Allow `lastmod` on agent pages driven by an explicit `updated`
+   field, so future edits are visible to Google.
+5. **Fix the unencoded image path** — either rename
+   `public/Travis Lipinski headshot.jpg` to a hyphenated filename, or make
+   `SEOHead.tsx:27` `encodeURI()` the path the way the edge function does.
+6. **Leave `/agents` and `/blog/west-hartford-lgbtq-neighborhood-guide` alone.**
+   "Page with redirect" is the correct terminal state for both.
+
+---
+
+## Note on scope
+
+An earlier pass of this investigation ranked pages by internal-link risk and
+predicted a different five (`/buyers-guide`, `/mortgage-calculator`,
+`/marketing-your-home`, `/privacy-policy`, `/home-valuation`). Those findings
+are still accurate as *risk* — the nav dropdown in
+`components/ui/floating-navbar.tsx:117-161` renders "For Buyers"/"For Sellers"
+as `<button>` with no `href` and only mounts the child links on hover, so no
+crawlable navigation link points at any resource page, and the sitewide footer
+link is all they have. That is worth fixing. But it is not what GSC is
+reporting today, and it is not the cause of the four URLs above.
