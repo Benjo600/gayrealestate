@@ -29,7 +29,7 @@ export const BLOG_META: EdgeBlogMeta[] = [
     "category": "LGBTQ+ LIVING GUIDE",
     "date": "2026-02-22",
     "author": "Arek Wtulich",
-    "authorRole": "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance",
+    "authorRole": "Licensed CT Realtor & LGBTQ+ Community Advocate",
     "seoKeywords": "best places to live in Connecticut for LGBTQ, LGBTQ friendly Connecticut towns, gay friendly Connecticut, where to live in CT LGBTQ",
     "faq": [
       {
@@ -62,7 +62,7 @@ export const BLOG_META: EdgeBlogMeta[] = [
     "category": "LOCAL SPOTLIGHT",
     "date": "2026-02-18",
     "author": "Arek Wtulich",
-    "authorRole": "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance",
+    "authorRole": "Licensed CT Realtor & LGBTQ+ Community Advocate",
     "seoKeywords": "West Hartford LGBTQ friendly, West Hartford gay friendly, moving to West Hartford Connecticut, LGBTQ West Hartford CT",
     "faq": [
       {
@@ -95,7 +95,7 @@ export const BLOG_META: EdgeBlogMeta[] = [
     "category": "RELOCATION GUIDE",
     "date": "2026-02-15",
     "author": "Arek Wtulich",
-    "authorRole": "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance",
+    "authorRole": "Licensed CT Realtor & LGBTQ+ Community Advocate",
     "seoKeywords": "moving to Connecticut gay couple, relocating to CT LGBTQ, gay couple Connecticut real estate, same sex couple home buying Connecticut",
     "faq": [
       {
@@ -194,12 +194,12 @@ export const BLOG_META: EdgeBlogMeta[] = [
     "category": "COMMUNITY EVENTS",
     "date": "2026-03-01",
     "author": "Arek Wtulich",
-    "authorRole": "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance",
+    "authorRole": "Licensed CT Realtor & LGBTQ+ Community Advocate",
     "seoKeywords": "LGBTQ events Connecticut March 2026, gay events Connecticut March, queer events CT 2026, Connecticut Pride events 2026",
     "faq": [
       {
         "question": "What LGBTQ+ events are happening in Connecticut in March 2026?",
-        "answer": "March 2026 highlights include the Hartford LGBTQ+ Professional Networking Mixer (March 7), the New Haven Queer Film Series (March 14), a West Hartford Pride Committee planning session (March 19), the CT LGBTQ+ Real Estate Alliance buyer panel (March 22), and the Litchfield Hills LGBTQ+ Book Club (March 28)."
+        "answer": "March 2026 highlights include the Hartford LGBTQ+ Professional Networking Mixer (March 7), the New Haven Queer Film Series (March 14), a West Hartford Pride Committee planning session (March 19), a Connecticut LGBTQ+ homebuyer panel (March 22), and the Litchfield Hills LGBTQ+ Book Club (March 28)."
       },
       {
         "question": "What is True Colors Inc. in Hartford?",
@@ -392,7 +392,7 @@ export const BLOG_META: EdgeBlogMeta[] = [
     "category": "LOCAL SPOTLIGHT",
     "date": "2026-03-10",
     "author": "Arek Wtulich",
-    "authorRole": "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance",
+    "authorRole": "Licensed CT Realtor & LGBTQ+ Community Advocate",
     "seoKeywords": "best LGBTQ neighborhoods New Haven, gay neighborhood New Haven CT, moving to New Haven LGBTQ",
     "faq": [
       {
@@ -425,12 +425,12 @@ export const BLOG_META: EdgeBlogMeta[] = [
     "category": "EXPERT ADVICE",
     "date": "2026-03-05",
     "author": "Arek Wtulich",
-    "authorRole": "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance",
+    "authorRole": "Licensed CT Realtor & LGBTQ+ Community Advocate",
     "seoKeywords": "gay realtor Connecticut, LGBTQ realtor Connecticut, gay real estate agent CT",
     "faq": [
       {
         "question": "How do I find a gay realtor in Connecticut?",
-        "answer": "Start with the LGBTQ+ Real Estate Alliance directory at realestatealliance.org, which lists certified gay realtors and LGBT real estate agents by state. In Connecticut, GayRealEstateCT.net's team includes Alliance-certified agents across Hartford, New Haven, and Litchfield counties with direct LGBTQ+ community experience."
+        "answer": "Look for agents with a verifiable track record: client testimonials specifically from LGBTQ+ buyers and sellers, leadership roles in professional real estate associations, and sustained community involvement rather than a one-time credential. In Connecticut, GayRealEstateCT.net's team includes agents across Hartford, New Haven, and Litchfield counties with direct LGBTQ+ community experience."
       },
       {
         "question": "What makes an LGBTQ-affirming realtor different from a regular agent?",
@@ -524,7 +524,7 @@ export const BLOG_META: EdgeBlogMeta[] = [
     "category": "MARKET TRENDS",
     "date": "2026-04-08",
     "author": "Arek Wtulich",
-    "authorRole": "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance",
+    "authorRole": "Licensed CT Realtor & LGBTQ+ Community Advocate",
     "seoKeywords": "LGBTQ real estate Connecticut, lgbtq real estate searches 2026, Connecticut LGBTQ home buyers, Connecticut LGBTQ real estate demand, Google Trends LGBTQ housing CT",
     "faq": [
       {
@@ -533,7 +533,7 @@ export const BLOG_META: EdgeBlogMeta[] = [
       },
       {
         "question": "Why are so many LGBTQ people moving to Connecticut?",
-        "answer": "Five converging factors drive Connecticut's LGBTQ buyer demand: legal protections among the nation's strongest since 1991, genuine LGBTQ community fabric across multiple markets (West Hartford, New Haven, Middletown, Litchfield County), dramatic value versus NYC, a strong LGBTQ Real Estate Alliance chapter with certified agents, and increasing migration from states with hostile LGBTQ legislation."
+        "answer": "Five converging factors drive Connecticut's LGBTQ buyer demand: legal protections among the nation's strongest since 1991, genuine LGBTQ community fabric across multiple markets (West Hartford, New Haven, Middletown, Litchfield County), dramatic value versus NYC, a growing bench of community-connected affirming agents, and increasing migration from states with hostile LGBTQ legislation."
       },
       {
         "question": "Is Connecticut's LGBTQ real estate market competitive?",
@@ -590,7 +590,7 @@ export const BLOG_META: EdgeBlogMeta[] = [
     "category": "NEIGHBORHOOD GUIDE",
     "date": "2026-04-14",
     "author": "Arek Wtulich",
-    "authorRole": "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance",
+    "authorRole": "Licensed CT Realtor & LGBTQ+ Community Advocate",
     "seoKeywords": "gay areas in Connecticut, LGBTQ neighborhoods Connecticut, queer neighborhoods New Haven, Connecticut gayborhoods, LGBTQ friendly neighborhoods CT",
     "faq": [
       {
@@ -813,7 +813,7 @@ export const BLOG_META: EdgeBlogMeta[] = [
     "category": "COMMUNITY EVENTS",
     "date": "2026-06-01",
     "author": "Arek Wtulich",
-    "authorRole": "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance",
+    "authorRole": "Licensed CT Realtor & LGBTQ+ Community Advocate",
     "seoKeywords": "Connecticut Pride Month 2026, LGBTQ events Connecticut June, Hartford Pride 2026, Connecticut Pride festivals, gay events Connecticut",
     "faq": [
       {
@@ -846,7 +846,7 @@ export const BLOG_META: EdgeBlogMeta[] = [
     "category": "HEALTHCARE GUIDE",
     "date": "2026-07-10",
     "author": "Arek Wtulich",
-    "authorRole": "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance",
+    "authorRole": "Licensed CT Realtor & LGBTQ+ Community Advocate",
     "seoKeywords": "LGBTQ healthcare Connecticut, gender affirming care Connecticut, LGBTQ friendly doctors CT, trans healthcare Connecticut, Yale LGBTQ health program",
     "faq": [
       {
@@ -912,7 +912,7 @@ export const BLOG_META: EdgeBlogMeta[] = [
     "category": "MARKET REPORTS",
     "date": "2026-06-05",
     "author": "Arek Wtulich",
-    "authorRole": "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance",
+    "authorRole": "Licensed CT Realtor & LGBTQ+ Community Advocate",
     "seoKeywords": "Connecticut LGBTQ real estate market 2026, LGBTQ home prices Connecticut, CT real estate trends 2026, gay friendly Connecticut housing market, Norwalk home appreciation",
     "faq": [
       {
@@ -945,7 +945,7 @@ export const BLOG_META: EdgeBlogMeta[] = [
     "category": "FINANCE & MORTGAGES",
     "date": "2026-06-07",
     "author": "Arek Wtulich",
-    "authorRole": "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance",
+    "authorRole": "Licensed CT Realtor & LGBTQ+ Community Advocate",
     "seoKeywords": "Connecticut property taxes by town, CT mill rates 2026, Connecticut mill rate table, property tax calculator Connecticut, lowest property tax towns CT",
     "faq": [
       {
@@ -982,7 +982,7 @@ export const BLOG_META: EdgeBlogMeta[] = [
     "category": "FINANCE & MORTGAGES",
     "date": "2026-06-09",
     "author": "Arek Wtulich",
-    "authorRole": "Licensed CT Realtor | CT LGBTQ+ Real Estate Alliance",
+    "authorRole": "Licensed CT Realtor & LGBTQ+ Community Advocate",
     "seoKeywords": "Connecticut vs Massachusetts LGBTQ, CT vs MA home prices, LGBTQ home buyers New England, best state for LGBTQ buyers 2026, Connecticut vs Massachusetts real estate",
     "faq": [
       {
@@ -1015,7 +1015,7 @@ export const BLOG_META: EdgeBlogMeta[] = [
     "category": "BUYING GUIDE",
     "date": "2026-06-11",
     "author": "Arek Wtulich",
-    "authorRole": "Licensed CT Realtor | CT LGBTQ+ Real Estate Alliance",
+    "authorRole": "Licensed CT Realtor & LGBTQ+ Community Advocate",
     "seoKeywords": "how to buy a home in Connecticut, LGBTQ home buyer Connecticut, CHFA Time To Own, attorney closing Connecticut, oil heat underground tank Connecticut home",
     "faq": [
       {
@@ -1233,7 +1233,7 @@ export const BLOG_META: EdgeBlogMeta[] = [
     "category": "SELLING GUIDE",
     "date": "2026-06-23",
     "author": "Arek Wtulich",
-    "authorRole": "Licensed CT Realtor | CT LGBTQ+ Real Estate Alliance",
+    "authorRole": "Licensed CT Realtor & LGBTQ+ Community Advocate",
     "seoKeywords": "selling a home in Connecticut, Connecticut conveyance tax, CT seller closing costs, LGBTQ home seller Connecticut, how much to sell a house in CT",
     "faq": [
       {
@@ -1307,7 +1307,7 @@ export const BLOG_META: EdgeBlogMeta[] = [
     "category": "COMMUNITY RESOURCES",
     "date": "2026-07-02",
     "author": "Arek Wtulich",
-    "authorRole": "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance",
+    "authorRole": "Licensed CT Realtor & LGBTQ+ Community Advocate",
     "seoKeywords": "gay bars Connecticut, LGBTQ nightlife CT, drag shows Connecticut, gay bar Hartford, Partners Cafe New Haven, Sky Casper events",
     "faq": [
       {
@@ -1336,7 +1336,7 @@ export const BLOG_META: EdgeBlogMeta[] = [
     "category": "BUYING GUIDE",
     "date": "2026-07-04",
     "author": "Arek Wtulich",
-    "authorRole": "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance",
+    "authorRole": "Licensed CT Realtor & LGBTQ+ Community Advocate",
     "seoKeywords": "renting vs buying Connecticut, should I rent or buy CT, LGBTQ renters rights Connecticut, first apartment Connecticut LGBTQ",
     "faq": [
       {
@@ -1361,7 +1361,7 @@ export const BLOG_META: EdgeBlogMeta[] = [
     "category": "SELLING GUIDE",
     "date": "2026-07-06",
     "author": "Arek Wtulich",
-    "authorRole": "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance",
+    "authorRole": "Licensed CT Realtor & LGBTQ+ Community Advocate",
     "seoKeywords": "LGBTQ seller experience Connecticut, LGBTQ home staging Connecticut, affirming listing agent CT, selling as LGBTQ homeowner Connecticut, LGBTQ seller staging guide",
     "faq": [
       {
@@ -1461,7 +1461,7 @@ export const BLOG_META: EdgeBlogMeta[] = [
     "category": "BUYING GUIDE",
     "date": "2026-07-14",
     "author": "Arek Wtulich",
-    "authorRole": "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance",
+    "authorRole": "Licensed CT Realtor & LGBTQ+ Community Advocate",
     "seoKeywords": "home inspection Connecticut, first time buyer inspection CT, what to look for home inspection LGBTQ, Connecticut home inspector",
     "faq": [
       {
@@ -1486,7 +1486,7 @@ export const BLOG_META: EdgeBlogMeta[] = [
     "category": "RELOCATION GUIDE",
     "date": "2026-07-16",
     "author": "Arek Wtulich",
-    "authorRole": "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance",
+    "authorRole": "Licensed CT Realtor & LGBTQ+ Community Advocate",
     "seoKeywords": "moving to Connecticut LGBTQ, LGBTQ safe states 2026, relocate from anti LGBTQ state, Connecticut LGBTQ protections",
     "faq": [
       {
@@ -1511,7 +1511,7 @@ export const BLOG_META: EdgeBlogMeta[] = [
     "category": "FINANCE & MORTGAGES",
     "date": "2026-07-18",
     "author": "Arek Wtulich",
-    "authorRole": "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance",
+    "authorRole": "Licensed CT Realtor & LGBTQ+ Community Advocate",
     "seoKeywords": "LGBTQ generational wealth, real estate legacy LGBTQ, building equity Connecticut, LGBTQ family wealth homeownership",
     "faq": [
       {
@@ -1586,7 +1586,7 @@ export const BLOG_META: EdgeBlogMeta[] = [
     "category": "FINANCE & MORTGAGES",
     "date": "2026-07-24",
     "author": "Arek Wtulich",
-    "authorRole": "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance",
+    "authorRole": "Licensed CT Realtor & LGBTQ+ Community Advocate",
     "seoKeywords": "homeowners insurance Connecticut, LGBTQ insurance discrimination, home insurance for same sex couples, Connecticut insurance law LGBTQ",
     "faq": [
       {
@@ -1611,7 +1611,7 @@ export const BLOG_META: EdgeBlogMeta[] = [
     "category": "FINANCE & MORTGAGES",
     "date": "2026-07-26",
     "author": "Arek Wtulich",
-    "authorRole": "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance",
+    "authorRole": "Licensed CT Realtor & LGBTQ+ Community Advocate",
     "seoKeywords": "house hacking Connecticut, multi-family investment property CT, LGBTQ real estate investing, duplex triplex Connecticut buying guide",
     "faq": [
       {
@@ -1661,7 +1661,7 @@ export const AGENT_META: Record<string, EdgeAgentMeta> = {
     "title": "CT Realtor | William Raveis",
     "tagline": "Your dedicated advocate for inclusive home buying, selling or investing.",
     "image": "/images/Arek_Alt_1.jpg",
-    "bio": "Arek Wtulich is a full-time, licensed CT Realtor who proudly serves the LGBTQ+ community and allies with enthusiasm, integrity, and a deeply personal approach to real estate. Since 2020, Arek has helped buyers and sellers across the state turn their housing goals into reality, with a special passion for guiding first-time homebuyers through what can often feel like an emotional and overwhelming process. His clients know him for his optimism, clear communication, and ability to create a calm, empowering experience from the first showing to the closing table.\n\nArek's dedication to excellence was recognized early in his career when he earned the Century 21 Quality Award in his first full year in the business. He believes that every client deserves not only expert market knowledge, but also a trusted advocate who understands the importance of feeling safe, seen, and supported, especially when making one of life's biggest financial and personal decisions.\n\nA passionate leader and advocate, Arek is deeply involved in both the real estate and LGBTQ+ communities. He was a Co-Founder and Vice President of the Connecticut Chapter of the LGBTQ+ Real Estate Alliance, and served on the Board of Directors for the Tri-County Alliance of Realtors, where he was the 2025 Vice President. He is also a HYPE Ambassador with Hartford Young Professionals & Entrepreneurs and an active member of BNI Rocky Hill.",
+    "bio": "Arek Wtulich is a full-time, licensed CT Realtor who proudly serves the LGBTQ+ community and allies with enthusiasm, integrity, and a deeply personal approach to real estate. Since 2020, Arek has helped buyers and sellers across the state turn their housing goals into reality, with a special passion for guiding first-time homebuyers through what can often feel like an emotional and overwhelming process. His clients know him for his optimism, clear communication, and ability to create a calm, empowering experience from the first showing to the closing table.\n\nArek's dedication to excellence was recognized early in his career when he earned the Century 21 Quality Award in his first full year in the business. He believes that every client deserves not only expert market knowledge, but also a trusted advocate who understands the importance of feeling safe, seen, and supported, especially when making one of life's biggest financial and personal decisions.\n\nA passionate leader and advocate, Arek is deeply involved in both the real estate and LGBTQ+ communities. He served on the Board of Directors for the Tri-County Alliance of Realtors, where he was the 2025 Vice President. He is also a HYPE Ambassador with Hartford Young Professionals & Entrepreneurs and an active member of BNI Rocky Hill.",
     "specialties": [
       "First-Time Homebuyers",
       "LGBTQ+ Relocation",

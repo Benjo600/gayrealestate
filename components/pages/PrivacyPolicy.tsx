@@ -145,7 +145,7 @@ const PrivacyPolicy: React.FC = () => {
                         <div className="flex-1 text-center md:text-left">
                             <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">The Non-Disclosure Guarantee</h2>
                             <p className="text-slate-400 text-sm md:text-lg leading-relaxed">
-                                Our team members are part of the CT LGBTQ+ Real Estate Alliance. We will never share your inquiry with neighbors, family, or employers without your explicit consent. Your move is your business.
+                                Our team is deeply connected to Connecticut's LGBTQ+ community. We will never share your inquiry with neighbors, family, or employers without your explicit consent. Your move is your business.
                             </p>
                         </div>
                         <div className="flex-shrink-0">

@@ -70,7 +70,7 @@ export const BLOG_POSTS: BlogPost[] = [
 
       <h2>Your Next Step: Talk to Someone Who Knows This From the Inside</h2>
       <p>You can read rankings all day, but the most important insight comes from people who have lived this experience themselves - who have navigated Connecticut's market not just as realtors, but as members of the community they're helping you find. That's the difference we offer.</p>
-      <p>Our team includes licensed agents who are part of the LGBTQ+ Real Estate Alliance, who live in these communities, and who have helped hundreds of LGBTQ+ buyers find exactly what they were looking for - not just a house, but a home where they genuinely belong.</p>
+      <p>Our team includes licensed, community-connected agents who live in these communities and who have helped hundreds of LGBTQ+ buyers find exactly what they were looking for - not just a house, but a home where they genuinely belong.</p>
     
       <h2 data-seo-hub="seo-hub-best-places">Further Reading: Town Guides &amp; Market Data</h2>
       <p>Dig deeper into specific Connecticut markets and the numbers behind them:</p>
@@ -100,7 +100,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "2026-02-22",
     readTime: "8 MIN READ",
     author: "Arek Wtulich",
-    authorRole: "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance"
+    authorRole: "Licensed CT Realtor & LGBTQ+ Community Advocate"
   },
   {
     id: 5,
@@ -161,7 +161,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "2026-02-18",
     readTime: "7 MIN READ",
     author: "Arek Wtulich",
-    authorRole: "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance"
+    authorRole: "Licensed CT Realtor & LGBTQ+ Community Advocate"
   },
   {
     id: 6,
@@ -200,7 +200,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <p>The train to NYC runs regularly from New Haven, Hartford (through New Haven), and Fairfield County stations. Nobody's asking you to cut the cord. They're asking you to build something.</p>
 
       <h2>Our Team Has Lived This</h2>
-      <p>Arek Wtulich, our lead agent, was a Co-Founder and Vice President of the Connecticut Chapter of the LGBTQ+ Real Estate Alliance. He's not just an agent who serves this community — he is a part of the community. When you work with our team, you're working with people who understand the nuances of this kind of move from the inside, not from a brochure.</p>
+      <p>Arek Wtulich, our lead agent, has spent years building relationships across Connecticut's LGBTQ+ community — from local Pride committees to the professional networks that connect relocating buyers with the right people. He's not just an agent who serves this community — he is a part of the community. When you work with our team, you're working with people who understand the nuances of this kind of move from the inside, not from a brochure.</p>
     
       <h2 data-seo-hub="seo-hub-moving-couple">Further Reading: Relocation Playbooks</h2>
       <ul>
@@ -227,7 +227,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "2026-02-15",
     readTime: "9 MIN READ",
     author: "Arek Wtulich",
-    authorRole: "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance"
+    authorRole: "Licensed CT Realtor & LGBTQ+ Community Advocate"
   },
   {
     id: 7,
@@ -413,10 +413,10 @@ export const BLOG_POSTS: BlogPost[] = [
       <strong>Where:</strong> West Hartford Center (community room location TBA)<br/>
       Open to community members who want to be involved in West Hartford's summer Pride programming. This is one of the best ways to plug into West Hartford's LGBTQ+ organizing community — and if you're still exploring why <a href="/blog/why-west-hartford-is-lgbtq-friendly-connecticut" class="text-brand-600 hover:underline font-bold">West Hartford is one of Connecticut's most LGBTQ+-friendly towns</a>, this event gives you a firsthand look. Welcoming to new residents and prospective buyers who want to see the community from the inside.</p>
 
-      <h3>CT LGBTQ+ Real Estate Alliance Panel: Buying in Today's Market</h3>
+      <h3>Connecticut LGBTQ+ Homebuyer Panel: Buying in Today's Market</h3>
       <p><strong>When:</strong> March 22, 2026 | 2:00 PM – 4:00 PM<br/>
       <strong>Where:</strong> Hartford area (virtual attendance option available)<br/>
-      This quarterly panel brings together LGBTQ+ real estate professionals, lenders, and attorneys for an open Q&A on navigating the Connecticut market. Our own Arek Wtulich is a founding member of the Alliance. This panel is free, includes genuine expertise, and is an excellent resource if you're in the early stages of thinking about buying in Connecticut.</p>
+      This quarterly panel brings together LGBTQ+-affirming real estate professionals, lenders, and attorneys for an open Q&A on navigating the Connecticut market. This panel is free, includes genuine expertise, and is an excellent resource if you're in the early stages of thinking about buying in Connecticut.</p>
 
       <h3>Litchfield Hills LGBTQ+ Book Club</h3>
       <p><strong>When:</strong> March 28, 2026 | 4:00 PM<br/>
@@ -439,7 +439,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <p>Want introductions? That's part of what we do. When you work with our team, you're not just getting a real estate transaction — you're getting people who are embedded in these communities and can make the right connections at the right time. It's one of the less-talked-about but most valuable parts of working with agents who are genuinely part of the community they serve. If you're still deciding where to put down roots, our guide to the <a href="/blog/best-places-to-live-in-connecticut-lgbtq" class="text-brand-600 hover:underline font-bold">best places to live in Connecticut for LGBTQ+ people</a> is the definitive starting point.</p>
     `,
     faq: [
-      { question: "What LGBTQ+ events are happening in Connecticut in March 2026?", answer: "March 2026 highlights include the Hartford LGBTQ+ Professional Networking Mixer (March 7), the New Haven Queer Film Series (March 14), a West Hartford Pride Committee planning session (March 19), the CT LGBTQ+ Real Estate Alliance buyer panel (March 22), and the Litchfield Hills LGBTQ+ Book Club (March 28)." },
+      { question: "What LGBTQ+ events are happening in Connecticut in March 2026?", answer: "March 2026 highlights include the Hartford LGBTQ+ Professional Networking Mixer (March 7), the New Haven Queer Film Series (March 14), a West Hartford Pride Committee planning session (March 19), a Connecticut LGBTQ+ homebuyer panel (March 22), and the Litchfield Hills LGBTQ+ Book Club (March 28)." },
       { question: "What is True Colors Inc. in Hartford?", answer: "True Colors, Inc. is Connecticut's premier LGBTQ+ youth organization, based in Hartford. It runs ongoing programming, support groups, and community events throughout the year and is an excellent resource for LGBTQ+ families evaluating schools and youth support infrastructure in the state." },
       { question: "Does Connecticut have LGBTQ+ nightlife?", answer: "Yes. Hartford has consistent queer nightlife, including The Anchor, a longstanding queer bar that hosts themed nights, drag shows, and community events. New Haven and West Hartford also have LGBTQ+-friendly dining and social scenes, though Connecticut's queer nightlife is more community-oriented than major city scenes. For a full bar and drag calendar, see our guide to LGBTQ+ nightlife in Connecticut." },
       { question: "When is Connecticut Pride?", answer: "Connecticut's Pride season runs primarily through June and into July, with events across multiple cities. Hartford Pride and New Haven Pride are the largest celebrations, along with West Hartford events and gatherings in Litchfield County and Fairfield County. Specific dates are announced in spring each year." },
@@ -450,7 +450,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "2026-03-01",
     readTime: "6 MIN READ",
     author: "Arek Wtulich",
-    authorRole: "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance"
+    authorRole: "Licensed CT Realtor & LGBTQ+ Community Advocate"
   },
   {
     id: 1,
@@ -594,7 +594,7 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt: "Thinking about moving to Connecticut as a trans person? Here's what the state's protections actually cover, which towns are most welcoming, and what people don't tell you upfront.",
     seoKeywords: "trans moving Connecticut, transgender moving Connecticut, trans friendly towns CT, LGBTQ relocation Connecticut",
     content: `
-      <p class="lead-paragraph">Connecticut comes up a lot when trans people are looking for a safer state to move to — and it's not just hype. The legal protections are real, the general culture is more progressive than most of the country, and the state has actively passed shield laws protecting people fleeing anti-trans legislation elsewhere. What those shield laws actually do matters: they prohibit Connecticut law enforcement from cooperating with out-of-state investigations targeting individuals for receiving or providing gender-affirming care that is legal in CT, and they protect healthcare providers in the state from professional discipline or extradition requests related to gender-affirming treatment. If you are leaving a state that has criminalized care, Connecticut's shield framework is among the most robust in the country. National organizations like the <a href="https://realestatealliance.org" target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:underline">LGBTQ+ Real Estate Alliance</a> often highlight CT as a model for inclusive housing precisely because the protections extend beyond symbolic gestures.</p>
+      <p class="lead-paragraph">Connecticut comes up a lot when trans people are looking for a safer state to move to — and it's not just hype. The legal protections are real, the general culture is more progressive than most of the country, and the state has actively passed shield laws protecting people fleeing anti-trans legislation elsewhere. What those shield laws actually do matters: they prohibit Connecticut law enforcement from cooperating with out-of-state investigations targeting individuals for receiving or providing gender-affirming care that is legal in CT, and they protect healthcare providers in the state from professional discipline or extradition requests related to gender-affirming treatment. If you are leaving a state that has criminalized care, Connecticut's shield framework is among the most robust in the country. National fair-housing and LGBTQ+ advocacy organizations often point to CT as a model for inclusive housing precisely because the protections extend beyond symbolic gestures.</p>
 
       <p>But moving as a trans person involves more than just picking a state. You need movers you can trust, a realtor who gets it, a realistic picture of what healthcare looks like on the ground, and an honest sense of what the costs will be — including the parts that are still imperfect. This guide is designed to give you that picture.</p>
 
@@ -630,7 +630,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <h2>Finding an Affirming Realtor and Lender</h2>
       <p>The difference between a realtor who has "worked with LGBTQ clients" and one who genuinely understands trans-specific concerns is significant. You want someone who will use your correct name and pronouns consistently across all paperwork and communications, who will not hesitate to advocate for you when sellers or listing agents give off warning signals, and who understands how legal name discrepancies affect the transaction.</p>
 
-      <p>The <a href="https://realestatealliance.org" target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:underline">LGBTQ+ Real Estate Alliance</a> certifies agents who have completed specific training in LGBTQ+ client needs. That certification is a baseline to look for. Beyond the credential, ask directly: have you worked with trans buyers before? What did you do when a seller's agent seemed uncomfortable? Those conversations reveal a lot.</p>
+      <p>Look for an attorney or agent with a specific, checkable track record — not just a general statement of support. Ask directly: have you worked with trans buyers before? What did you do when a seller's agent seemed uncomfortable? Can you point me to a past client I could talk to? Those conversations reveal a lot more than any single credential.</p>
 
       <p><strong>Abby Dudarewicz</strong>, a licensed Connecticut realtor on our team, specifically serves LGBTQ+ buyers including trans clients. Abby brings lived experience as a queer woman — she lives in Glastonbury with her wife and son — and understands firsthand the questions trans buyers are navigating: which neighborhoods will actually feel safe day-to-day, how to handle name documentation in the transaction, and how to read a community's actual culture versus its performative one. If you're relocating to Connecticut as a trans person, working with an agent who has personal stakes in getting this right is a different experience.</p>
 
@@ -939,7 +939,7 @@ export const BLOG_POSTS: BlogPost[] = [
 
       <p>For someone commuting two or three days a week — a pattern that has become common for hybrid workers — this is genuinely manageable. It is not a daily commute that most people would sustain happily, but as a 2x-per-week arrangement it works for a significant number of people who have made exactly this trade-off. Union Station in downtown New Haven makes Ninth Square particularly convenient for commuters, and East Rock and Wooster Square are reasonable cab or bike rides from the station.</p>
 
-      <p>Arek Wtulich, the author of this post and co-founder of the LGBTQ+ Real Estate Alliance in Connecticut, has worked with LGBTQ buyers throughout New Haven’s neighborhoods for years. The neighborhood profiles here reflect real conversations with real buyers — what drew them to each area, what surprised them, and what they would tell someone starting the search today. If you are considering New Haven and want to talk through which neighborhood fits your specific situation, that is exactly the kind of conversation worth having before you start touring homes. And if you’re still deciding whether New Haven or another Connecticut city is the right fit, our full guide to the <a href="/blog/best-places-to-live-in-connecticut-lgbtq" class="text-brand-600 hover:underline font-bold">best places to live in Connecticut for LGBTQ+ people</a> covers all the top markets side by side.</p>
+      <p>Arek Wtulich, the author of this post and a licensed Connecticut Realtor and LGBTQ+ community advocate, has worked with LGBTQ buyers throughout New Haven’s neighborhoods for years. The neighborhood profiles here reflect real conversations with real buyers — what drew them to each area, what surprised them, and what they would tell someone starting the search today. If you are considering New Haven and want to talk through which neighborhood fits your specific situation, that is exactly the kind of conversation worth having before you start touring homes. And if you’re still deciding whether New Haven or another Connecticut city is the right fit, our full guide to the <a href="/blog/best-places-to-live-in-connecticut-lgbtq" class="text-brand-600 hover:underline font-bold">best places to live in Connecticut for LGBTQ+ people</a> covers all the top markets side by side.</p>
     `,
     faq: [
       { question: "What are the best LGBTQ neighborhoods in New Haven, CT?", answer: "New Haven’s top LGBTQ-friendly neighborhoods are Wooster Square (the historic queer hub with grassroots community presence), East Rock (quieter, more residential, popular with Yale faculty and queer families), and Westville (artsy village feel on the western edge with LGBTQ-owned businesses). Downtown’s Ninth Square is the most urban and dense option." },
@@ -953,7 +953,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "2026-03-10",
     readTime: "8 MIN READ",
     author: "Arek Wtulich",
-    authorRole: "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance"
+    authorRole: "Licensed CT Realtor & LGBTQ+ Community Advocate"
   },
   {
     id: 15,
@@ -977,7 +977,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <p>The phrase "gay realtor" gets used loosely, and it is worth understanding the meaningful distinctions:</p>
       <ul>
         <li><strong>LGBTQ+ community members who are licensed agents:</strong> These agents bring lived experience to the table. They understand the community not as an abstract market segment but as their own community. They have personally navigated the questions their clients face. This is the highest-value category — and it is what you get with several members of the GayRealEstateCT.net team.</li>
-        <li><strong>Ally agents with LGBTQ+ Real Estate Alliance certification:</strong> The <a href="/about" class="text-brand-600 hover:underline font-bold">LGBTQ+ Real Estate Alliance</a> is a national organization that vets and certifies agents through specific training and demonstrated commitment to serving LGBTQ+ clients. Alliance certification is not a self-designation — it requires coursework, community engagement, and accountability. An Alliance-certified ally agent is a meaningfully better choice than a self-described "LGBTQ-friendly" agent with no credentials.</li>
+        <li><strong>Ally agents with demonstrated community involvement:</strong> An ally agent doesn't need to be LGBTQ+ themselves to serve the community well — but real involvement shows up in specific, checkable ways: ongoing sponsorship of local Pride events, board or leadership roles in professional real estate associations, verifiable client testimonials from LGBTQ+ buyers and sellers, and a track record you can trace back years, not months. An ally agent with that kind of history is a meaningfully better choice than a self-described "LGBTQ-friendly" agent with no track record to back it up.</li>
         <li><strong>Agents who simply claim LGBTQ+ friendliness:</strong> Many agents add "LGBTQ+ friendly" to their profile as a marketing statement, with no training, certification, or community involvement to back it up. This category provides the least assurance. A warm smile and good intentions do not substitute for actual expertise.</li>
       </ul>
       <p>Only categories one and two offer real value for LGBTQ buyers and renters. When evaluating any agent, ask specifically about their credentials and community involvement — not just their general attitude.</p>
@@ -998,14 +998,14 @@ export const BLOG_POSTS: BlogPost[] = [
       <p>For LGBTQ buyers, this change is actually an opportunity. Before the settlement, buyers often drifted into working relationships with agents without formalizing anything. Now, you are required to be deliberate. Use that moment intentionally: <strong>sign a buyer representation agreement only with an agent who has demonstrated LGBTQ+ expertise.</strong> The formal commitment goes both ways — you are entitled to expect specific, qualified service in return.</p>
       <p>The settlement also changed commission structures in ways that make agent compensation more transparent. Sellers are no longer automatically covering buyer's agent commissions in the same way as before, and buyers need to understand how their agent is being paid. An honest, experienced agent will explain their compensation clearly upfront. If an agent is evasive about how they are being paid, that is a problem — for any buyer, but especially for LGBTQ buyers who need to trust the people representing them.</p>
 
-      <h2>What the LGBTQ+ Real Estate Alliance Certification Means</h2>
-      <p>The LGBTQ+ Real Estate Alliance is the national organization that sets the standard for LGBTQ+-affirming real estate practice. Alliance certification is not a self-declaration. Agents must complete specific training on LGBTQ+ client needs, demonstrate community commitment, and maintain active involvement. The Alliance vets its members and holds them accountable to a community standard, not just a legal one.</p>
-      <p>When evaluating agents, look for Alliance certification as a baseline credential for ally agents who are not themselves LGBTQ+. And look for founding-level or leadership involvement as a signal of institutional commitment, not just membership. <strong>Arek Wtulich is a founding member and former Vice President of the Connecticut chapter of the LGBTQ+ Real Estate Alliance.</strong> That is not a membership sticker — it is organizational leadership that shaped how the Alliance operates in this state. It means his expertise and his network are embedded in the institution itself.</p>
+      <h2>What Real Community Involvement Looks Like</h2>
+      <p>Credentials matter less than a verifiable track record. When evaluating an agent's community involvement, look past self-description to leadership roles you can actually confirm — board seats in professional real estate associations, sustained sponsorship of local LGBTQ+ events, and years of specific, checkable client history, not a single certification badge.</p>
+      <p>As one example: <strong>Arek Wtulich has served on the Board of Directors for the Tri-County Alliance of Realtors, including as 2025 Vice President,</strong> and is a HYPE Ambassador with Hartford Young Professionals & Entrepreneurs. That kind of leadership — accountable, ongoing, and checkable — is a more reliable signal than any one-time certification.</p>
 
       <h2>Meet the GayRealEstateCT.net Team</h2>
       <p>Working with the right team means having the right expertise at every stage of the transaction — from finding the home to financing it to closing it. Here is who we are:</p>
       <ul>
-        <li><strong>Arek Wtulich — Licensed CT Realtor, GayRealEstateCT.net Co-Founder:</strong> Arek is a licensed Connecticut Realtor and Co-Founder and former Vice President of the Connecticut LGBTQ+ Real Estate Alliance. His expertise is concentrated in Hartford County, and he specializes in first-time buyers — an area where LGBTQ+ clients often need the most guidance on legal structure, financial preparation, and neighborhood selection. If you are buying your first home in Connecticut as an LGBTQ person, Arek's combination of institutional knowledge and community connection is a significant advantage.</li>
+        <li><strong>Arek Wtulich — Licensed CT Realtor, GayRealEstateCT.net Co-Founder:</strong> Arek is a licensed Connecticut Realtor and a board member of the Tri-County Alliance of Realtors (2025 Vice President). His expertise is concentrated in Hartford County, and he specializes in first-time buyers — an area where LGBTQ+ clients often need the most guidance on legal structure, financial preparation, and neighborhood selection. If you are buying your first home in Connecticut as an LGBTQ person, Arek's combination of professional leadership and community connection is a significant advantage.</li>
         <li><strong>Abby Dudarewicz — Licensed CT Realtor with SERHANT.CT:</strong> Abby lives in Glastonbury with her wife, son, and two cats. Her lived experience as an LGBTQ person and her professional expertise combine to make her an exceptional resource for buyers in Hartford, Tolland, and Middlesex Counties. She is not translating LGBTQ+ experience from the outside — she is working within it every day.</li>
         <li><strong>Travis Lipinski — Licensed CT Realtor, Litchfield County Specialist:</strong> Travis was born in Torrington and has spent more than ten years in property management across Litchfield County. He is the team's go-to expert for second homes, rural properties, and historic homes in Northwestern Connecticut. If you are looking at a weekend retreat, a country estate, or a historic New England property in the Litchfield Hills, Travis knows this market at a level that no transplant agent can replicate.</li>
         <li><strong>Jake Earl — Senior VP, Total Mortgage, Top 1% Lender Nationwide:</strong> Jake has more than fifteen years of mortgage lending experience and consistently ranks in the top one percent of lenders nationally. His specialty includes complex loan scenarios — including non-traditional family structures, self-employed buyers, and situations where documentation is more involved than a standard W-2 purchase. For LGBTQ buyers whose financial situations do not fit neatly into conventional lending boxes, Jake is the resource you want in your corner.</li>
@@ -1036,7 +1036,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <h2>Online Research: What Actually Helps</h2>
       <p>Before your interview, do your homework. Here's what actually tells you something useful:</p>
       <ul>
-        <li><strong>The LGBTQ+ Real Estate Alliance directory.</strong> Search by name and location to verify membership before the conversation. Do not skip this step.</li>
+        <li><strong>Local LGBTQ+ community groups and forums.</strong> Ask in Connecticut LGBTQ+ Facebook groups, subreddits, or community centers for direct recommendations — word-of-mouth from people who've actually closed a deal is hard to fake.</li>
         <li><strong>Reviews specifically from LGBTQ+ clients.</strong> On Zillow and Google, read reviews carefully. LGBTQ+ clients often signal their identity in the language they use — "as a same-sex couple," "as a trans buyer," "they understood our family structure."</li>
         <li><strong>Social media presence and year-round engagement.</strong> Agents who post about LGBTQ+ housing topics and appear at community events in June, September, and February have made a different kind of commitment than those who add a rainbow filter once a year and go quiet.</li>
         <li><strong>Press and media appearances.</strong> Has the agent been quoted in LGBTQ+-specific press or featured in community publications? This distinguishes agents who have genuinely built community visibility from those new to claiming the credential.</li>
@@ -1056,7 +1056,7 @@ export const BLOG_POSTS: BlogPost[] = [
       </ul>
     `,
     faq: [
-      { question: "How do I find a gay realtor in Connecticut?", answer: "Start with the LGBTQ+ Real Estate Alliance directory at realestatealliance.org, which lists certified gay realtors and LGBT real estate agents by state. In Connecticut, GayRealEstateCT.net's team includes Alliance-certified agents across Hartford, New Haven, and Litchfield counties with direct LGBTQ+ community experience." },
+      { question: "How do I find a gay realtor in Connecticut?", answer: "Look for agents with a verifiable track record: client testimonials specifically from LGBTQ+ buyers and sellers, leadership roles in professional real estate associations, and sustained community involvement rather than a one-time credential. In Connecticut, GayRealEstateCT.net's team includes agents across Hartford, New Haven, and Litchfield counties with direct LGBTQ+ community experience." },
       { question: "What makes an LGBTQ-affirming realtor different from a regular agent?", answer: "A truly affirming gay realtor goes beyond non-discrimination. They know which Connecticut neighborhoods have strong queer communities versus which are merely tolerant, understand title and deed considerations specific to same-sex couples, are familiar with LGBTQ-specific mortgage programs, and have experience navigating trans clients' documentation realities in home purchases." },
       { question: "Is it legal to discriminate against LGBTQ buyers in Connecticut real estate?", answer: "No. Connecticut has prohibited housing discrimination based on sexual orientation since 1991 and gender identity since the same period — among the earliest and strongest state-level protections in the country. If you experience discrimination, file a complaint with the Connecticut Commission on Human Rights and Opportunities (CHRO)." },
       { question: "Do I need a gay realtor to buy a house in Connecticut as an LGBTQ person?", answer: "You're legally protected regardless of your agent. But working with a gay realtor or LGBT real estate agent who has specific LGBTQ+ community knowledge provides a meaningful strategic advantage: you'll get accurate guidance on which neighborhoods are genuinely affirming, proactive legal and financial advice specific to your situation, and representation that understands the full context of your move." },
@@ -1067,7 +1067,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "2026-03-05",
     readTime: "6 MIN READ",
     author: "Arek Wtulich",
-    authorRole: "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance"
+    authorRole: "Licensed CT Realtor & LGBTQ+ Community Advocate"
   },
   {
     id: 16,
@@ -1137,7 +1137,7 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt: "Google Trends data shows Connecticut ranks #1 nationally for LGBTQ real estate search volume — including \"gay realtor CT\" and \"gay real estate agent Connecticut.\" Here's what's driving it.",
     seoKeywords: "LGBTQ real estate Connecticut, lgbtq real estate searches 2026, Connecticut LGBTQ home buyers, Connecticut LGBTQ real estate demand, Google Trends LGBTQ housing CT",
     content: `
-<p>According to Google Trends data from May 2026, Connecticut ranks first in the United States for per-capita search volume around "LGBTQ real estate", ahead of Wisconsin, Maryland, Washington, and California. That's a striking finding for a small New England state, and it deserves a real explanation.</p><p>What is driving this demand? Who is searching? And what does it mean if you're an LGBTQ+ buyer or seller in Connecticut right now?</p><h2>The Data Behind the Ranking</h2><p>Google Trends measures relative search interest by state, normalized for population. Connecticut's #1 ranking means that relative to its population, no state generates more searches around LGBTQ real estate topics. The search index score for Connecticut was 100,  the maximum, in the most recent trailing 12-month window.</p><p>Related queries that show high volume from Connecticut include: "gay realtor CT," "gay real estate agent Connecticut," "LGBT realtor near me," "LGBT real estate agent Connecticut," "gay friendly towns Connecticut," "LGBTQ mortgage lenders CT," "same sex couple buying a home Connecticut," and "best places to live for gay couples." These aren't vanity searches, they represent real people actively exploring a purchase and looking for the right affirming agent to guide them.</p><h2>Why Connecticut Leads: 5 Converging Factors</h2><ul><li><strong>Factor 1:</strong> Legal protections that are among the nation's strongest.</li></ul><p>Connecticut prohibited housing discrimination based on sexual orientation in 1991, years before most states and decades before federal guidance. Gender identity protections followed. The state's legal infrastructure gives LGBTQ+ buyers confidence that the market is not hostile to them — and makes the search for an LGBTQ-affirming realtor in Connecticut feel like a natural, supported step.</p><ul><li><strong>Factor 2:</strong> A genuine LGBTQ+ community fabric in multiple markets.</li></ul><p>West Hartford, New Haven, Middletown, Hartford's Parkville neighborhood, and Litchfield County's rural retreat culture all represent distinct LGBTQ+ communities, not just a single "gay neighborhood." This distribution of welcoming environments across diverse price points and lifestyles creates broad appeal — see our guide to the <a href="/blog/best-places-to-live-in-connecticut-lgbtq" class="text-brand-600 hover:underline font-bold">best places to live in Connecticut for LGBTQ+ people</a> for a comprehensive breakdown of each market.</p><ul><li><strong>Factor 3:</strong> The NYC migration effect.</li></ul><p>Remote work has accelerated a migration of LGBTQ+ professionals and couples from New York City and Boston into Connecticut markets. West Hartford's median home price is roughly one-quarter of comparable Brooklyn neighborhoods. The math is compelling, and LGBTQ+ buyers are running it — and searching for affirming local representation to help them navigate the move.</p><ul><li><strong>Factor 4:</strong> Access to the LGBTQ+ Real Estate Alliance's active Connecticut chapter.</li></ul><p>Connecticut has an unusually strong Alliance presence, with multiple certified affirming agents across the state. This professional infrastructure helps connect buyers to specialists, which in turn generates more successful transactions and word-of-mouth referrals, fueling further search activity.</p><ul><li><strong>Factor 5:</strong> An increasingly hostile national climate driving "safe state" searches.</li></ul><p>In states where anti-LGBTQ+ legislation has increased, searches for relocation to affirming states have spiked. Connecticut consistently appears on "best states for LGBTQ relocation" lists, and that reputation drives inbound search interest from buyers currently elsewhere, many of whom are specifically looking for community-connected agents in Connecticut.</p><h2>What the Demand Means for Sellers</h2><p>If you're selling a home in a Connecticut market popular with LGBTQ+ buyers, the data suggests you have access to a motivated, financially capable buyer pool. West Hartford sellers, in particular, consistently report receiving multiple offers from LGBTQ+ buyers relocating from NYC and Boston who are pre-approved and ready to move.</p><p>Staging your home to feel explicitly inclusive: visible signals like community-oriented decor, neighborhood context included in listings, and sellers' agents who can speak to the community fabric, has been shown to attract stronger offers from this demographic.</p><h2>What the Demand Means for Buyers</h2><p>High search volume means competition. If you're an LGBTQ+ buyer looking at Connecticut's most desirable markets, you're not the only one. West Hartford and certain New Haven neighborhoods have seen bidding wars that mirror what major cities experienced in 2021. Being pre-approved, moving fast, and working with an LGBTQ-affirming realtor who has deep local relationships is not optional, it's the baseline.</p><p>The good news: demand is distributed across a wider range of Connecticut markets than most buyers initially consider. If you can't compete in West Hartford, towns like Middletown, Glastonbury, and Hamden offer strong LGBTQ+ acceptance at lower price points.</p><h2>The 2026 Market Outlook</h2><p>Connecticut's LGBTQ+ real estate market shows no signs of cooling. Migration from more hostile states continues to accelerate. Remote work enables buyers who would previously have needed to live within commuting distance of NYC or Boston. And Connecticut's own LGBTQ+ population continues to grow as the state's reputation spreads.</p><p>For buyers considering the market: the window of relative affordability compared to gateway cities may not stay open indefinitely. The areas most popular with LGBTQ+ buyers are appreciating. The data suggests now, not later, and starting with the right affirming agent makes all the difference. Our guide on <a href="/blog/gay-realtor-connecticut-guide" class="text-brand-600 hover:underline font-bold">how to find a gay realtor in Connecticut who actually helps</a> gives you the framework for finding the right representation.</p>
+<p>According to Google Trends data from May 2026, Connecticut ranks first in the United States for per-capita search volume around "LGBTQ real estate", ahead of Wisconsin, Maryland, Washington, and California. That's a striking finding for a small New England state, and it deserves a real explanation.</p><p>What is driving this demand? Who is searching? And what does it mean if you're an LGBTQ+ buyer or seller in Connecticut right now?</p><h2>The Data Behind the Ranking</h2><p>Google Trends measures relative search interest by state, normalized for population. Connecticut's #1 ranking means that relative to its population, no state generates more searches around LGBTQ real estate topics. The search index score for Connecticut was 100,  the maximum, in the most recent trailing 12-month window.</p><p>Related queries that show high volume from Connecticut include: "gay realtor CT," "gay real estate agent Connecticut," "LGBT realtor near me," "LGBT real estate agent Connecticut," "gay friendly towns Connecticut," "LGBTQ mortgage lenders CT," "same sex couple buying a home Connecticut," and "best places to live for gay couples." These aren't vanity searches, they represent real people actively exploring a purchase and looking for the right affirming agent to guide them.</p><h2>Why Connecticut Leads: 5 Converging Factors</h2><ul><li><strong>Factor 1:</strong> Legal protections that are among the nation's strongest.</li></ul><p>Connecticut prohibited housing discrimination based on sexual orientation in 1991, years before most states and decades before federal guidance. Gender identity protections followed. The state's legal infrastructure gives LGBTQ+ buyers confidence that the market is not hostile to them — and makes the search for an LGBTQ-affirming realtor in Connecticut feel like a natural, supported step.</p><ul><li><strong>Factor 2:</strong> A genuine LGBTQ+ community fabric in multiple markets.</li></ul><p>West Hartford, New Haven, Middletown, Hartford's Parkville neighborhood, and Litchfield County's rural retreat culture all represent distinct LGBTQ+ communities, not just a single "gay neighborhood." This distribution of welcoming environments across diverse price points and lifestyles creates broad appeal — see our guide to the <a href="/blog/best-places-to-live-in-connecticut-lgbtq" class="text-brand-600 hover:underline font-bold">best places to live in Connecticut for LGBTQ+ people</a> for a comprehensive breakdown of each market.</p><ul><li><strong>Factor 3:</strong> The NYC migration effect.</li></ul><p>Remote work has accelerated a migration of LGBTQ+ professionals and couples from New York City and Boston into Connecticut markets. West Hartford's median home price is roughly one-quarter of comparable Brooklyn neighborhoods. The math is compelling, and LGBTQ+ buyers are running it — and searching for affirming local representation to help them navigate the move.</p><ul><li><strong>Factor 4:</strong> A growing bench of community-connected, LGBTQ+-affirming agents.</li></ul><p>Connecticut has a growing number of experienced, community-connected affirming agents across the state. This professional infrastructure helps connect buyers to specialists, which in turn generates more successful transactions and word-of-mouth referrals, fueling further search activity.</p><ul><li><strong>Factor 5:</strong> An increasingly hostile national climate driving "safe state" searches.</li></ul><p>In states where anti-LGBTQ+ legislation has increased, searches for relocation to affirming states have spiked. Connecticut consistently appears on "best states for LGBTQ relocation" lists, and that reputation drives inbound search interest from buyers currently elsewhere, many of whom are specifically looking for community-connected agents in Connecticut.</p><h2>What the Demand Means for Sellers</h2><p>If you're selling a home in a Connecticut market popular with LGBTQ+ buyers, the data suggests you have access to a motivated, financially capable buyer pool. West Hartford sellers, in particular, consistently report receiving multiple offers from LGBTQ+ buyers relocating from NYC and Boston who are pre-approved and ready to move.</p><p>Staging your home to feel explicitly inclusive: visible signals like community-oriented decor, neighborhood context included in listings, and sellers' agents who can speak to the community fabric, has been shown to attract stronger offers from this demographic.</p><h2>What the Demand Means for Buyers</h2><p>High search volume means competition. If you're an LGBTQ+ buyer looking at Connecticut's most desirable markets, you're not the only one. West Hartford and certain New Haven neighborhoods have seen bidding wars that mirror what major cities experienced in 2021. Being pre-approved, moving fast, and working with an LGBTQ-affirming realtor who has deep local relationships is not optional, it's the baseline.</p><p>The good news: demand is distributed across a wider range of Connecticut markets than most buyers initially consider. If you can't compete in West Hartford, towns like Middletown, Glastonbury, and Hamden offer strong LGBTQ+ acceptance at lower price points.</p><h2>The 2026 Market Outlook</h2><p>Connecticut's LGBTQ+ real estate market shows no signs of cooling. Migration from more hostile states continues to accelerate. Remote work enables buyers who would previously have needed to live within commuting distance of NYC or Boston. And Connecticut's own LGBTQ+ population continues to grow as the state's reputation spreads.</p><p>For buyers considering the market: the window of relative affordability compared to gateway cities may not stay open indefinitely. The areas most popular with LGBTQ+ buyers are appreciating. The data suggests now, not later, and starting with the right affirming agent makes all the difference. Our guide on <a href="/blog/gay-realtor-connecticut-guide" class="text-brand-600 hover:underline font-bold">how to find a gay realtor in Connecticut who actually helps</a> gives you the framework for finding the right representation.</p>
     
       <h2 data-seo-hub="seo-hub-searches">Further Reading: Market Intelligence</h2>
       <ul>
@@ -1150,7 +1150,7 @@ export const BLOG_POSTS: BlogPost[] = [
     `,
     faq: [
       { question: "Does Connecticut really rank #1 in the US for LGBTQ real estate searches?", answer: "According to Google Trends data from May 2026, Connecticut ranks first in the United States for per-capita search volume around LGBTQ real estate topics, with a normalized index score of 100 (the maximum) in the most recent trailing 12-month window. Related queries include 'gay realtor CT,' 'gay real estate agent Connecticut,' and 'LGBTQ mortgage lenders CT.'" },
-      { question: "Why are so many LGBTQ people moving to Connecticut?", answer: "Five converging factors drive Connecticut's LGBTQ buyer demand: legal protections among the nation's strongest since 1991, genuine LGBTQ community fabric across multiple markets (West Hartford, New Haven, Middletown, Litchfield County), dramatic value versus NYC, a strong LGBTQ Real Estate Alliance chapter with certified agents, and increasing migration from states with hostile LGBTQ legislation." },
+      { question: "Why are so many LGBTQ people moving to Connecticut?", answer: "Five converging factors drive Connecticut's LGBTQ buyer demand: legal protections among the nation's strongest since 1991, genuine LGBTQ community fabric across multiple markets (West Hartford, New Haven, Middletown, Litchfield County), dramatic value versus NYC, a growing bench of community-connected affirming agents, and increasing migration from states with hostile LGBTQ legislation." },
       { question: "Is Connecticut's LGBTQ real estate market competitive?", answer: "Yes. West Hartford and certain New Haven neighborhoods have seen bidding wars, with desirable homes frequently going under contract within two weeks. High search volume means motivated competition from buyers relocating from NYC, Boston, and less LGBTQ-friendly states. Being pre-approved and working with a well-connected affirming agent is not optional — it's the baseline requirement." },
       { question: "What does the rising LGBTQ demand mean for Connecticut sellers?", answer: "Sellers in LGBTQ-popular markets like West Hartford have access to a motivated, financially capable buyer pool. Staging your home to feel explicitly inclusive and ensuring your listing agent can speak to neighborhood community fabric has been shown to attract stronger offers. Multiple offers from LGBTQ buyers relocating from NYC and Boston are common in top markets." },
       { question: "Will Connecticut's LGBTQ real estate market stay strong in 2026?", answer: "The 2026 market outlook is strong. Migration from more hostile states continues to accelerate, remote work enables buyers no longer tied to NYC or Boston metro areas, and Connecticut's own LGBTQ population is growing as its reputation spreads. The areas most popular with LGBTQ buyers are appreciating, and the window of affordability relative to gateway cities may not stay open indefinitely." },
@@ -1160,7 +1160,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "2026-04-08",
     readTime: "6 MIN READ",
     author: "Arek Wtulich",
-    authorRole: "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance"
+    authorRole: "Licensed CT Realtor & LGBTQ+ Community Advocate"
   },
   {
     id: 19,
@@ -1217,7 +1217,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "2026-04-14",
     readTime: "5 MIN READ",
     author: "Arek Wtulich",
-    authorRole: "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance"
+    authorRole: "Licensed CT Realtor & LGBTQ+ Community Advocate"
   },
   {
     id: 23,
@@ -1411,7 +1411,7 @@ export const BLOG_POSTS: BlogPost[] = [
 <h2>Connecticut: The Best Value Proposition in New England</h2>
 <p>Connecticut has the strongest combination of legal protections, genuine LGBTQ+ community density, and relative affordability compared to the other states LGBTQ+ buyers consistently consider. Its legal framework is among the most comprehensive in the country — prohibiting discrimination in housing, employment, and public accommodations based on sexual orientation and gender identity since 1991.</p>
 <p>The key advantage: Connecticut's most LGBTQ+-welcoming markets (West Hartford, New Haven, Middletown) are significantly more affordable than comparable markets in Massachusetts. A home that would cost $900,000 in Newton, Massachusetts costs $500,000 in West Hartford — often with comparable schools and a similar LGBTQ+ community presence. Our guide to the <a href="/blog/best-places-to-live-in-connecticut-lgbtq" class="text-brand-600 hover:underline font-bold">best places to live in Connecticut for LGBTQ+ people</a> covers each market in depth, and our post on <a href="/blog/why-west-hartford-is-lgbtq-friendly-connecticut" class="text-brand-600 hover:underline font-bold">why West Hartford is Connecticut's LGBTQ+ gold standard</a> explains the top pick in detail.</p>
-<p>For couples relocating from NYC, Connecticut also wins on commute time. West Hartford is a 2.5-hour drive to Manhattan; New Haven is 90 minutes by train. And Connecticut has an exceptionally strong network of <a href="/blog/gay-realtor-connecticut-guide" class="text-brand-600 hover:underline font-bold">LGBTQ-affirming realtors</a> — particularly through the LGBTQ+ Real Estate Alliance's active Connecticut chapter — which makes the buying process smoother than in states with fewer specialist agents. Read our <a href="/blog/moving-to-connecticut-as-a-gay-couple" class="text-brand-600 hover:underline font-bold">guide to moving to Connecticut as a gay couple</a> for the practical details on making the transition.</p>
+<p>For couples relocating from NYC, Connecticut also wins on commute time. West Hartford is a 2.5-hour drive to Manhattan; New Haven is 90 minutes by train. And Connecticut has an exceptionally strong network of <a href="/blog/gay-realtor-connecticut-guide" class="text-brand-600 hover:underline font-bold">LGBTQ-affirming realtors</a> — a growing bench of community-connected agents across the state — which makes the buying process smoother than in states with fewer specialist agents. Read our <a href="/blog/moving-to-connecticut-as-a-gay-couple" class="text-brand-600 hover:underline font-bold">guide to moving to Connecticut as a gay couple</a> for the practical details on making the transition.</p>
 <h2>Massachusetts: The Iconic Option</h2>
 <p>Massachusetts has a near-mythic status in LGBTQ+ history — it was the first state in the nation to legalize same-sex marriage in 2004. Its LGBTQ+ community is large, deeply established, and visible across multiple markets. Boston's South End and Jamaica Plain are among the most iconic gay neighborhoods in America. Northampton, in Western Massachusetts, has one of the highest per-capita LGBTQ+ populations of any city in the country.</p>
 <p>The tradeoff is cost. Boston-area real estate is among the most expensive in the nation — median single-family prices in communities comparable to West Hartford easily exceed $800,000. Northampton is more accessible but still running ahead of Connecticut's rural markets. For buyers with substantial budgets or significant coastal city equity to deploy, Massachusetts offers the deepest LGBTQ+ community roots in New England.</p>
@@ -1660,7 +1660,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "2026-06-01",
     readTime: "5 MIN READ",
     author: "Arek Wtulich",
-    authorRole: "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance"
+    authorRole: "Licensed CT Realtor & LGBTQ+ Community Advocate"
   },
   {
     id: 30,
@@ -1721,7 +1721,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "2026-07-10",
     readTime: "6 MIN READ",
     author: "Arek Wtulich",
-    authorRole: "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance"
+    authorRole: "Licensed CT Realtor & LGBTQ+ Community Advocate"
   },
   {
     id: 31,
@@ -1768,7 +1768,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "2026-06-05",
     readTime: "8 MIN READ",
     author: "Arek Wtulich",
-    authorRole: "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance"
+    authorRole: "Licensed CT Realtor & LGBTQ+ Community Advocate"
   },
   {
     id: 33,
@@ -1792,7 +1792,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "2026-06-07",
     readTime: "9 MIN READ",
     author: "Arek Wtulich",
-    authorRole: "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance"
+    authorRole: "Licensed CT Realtor & LGBTQ+ Community Advocate"
   },
   {
     id: 34,
@@ -1815,7 +1815,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "2026-06-09",
     readTime: "8 MIN READ",
     author: "Arek Wtulich",
-    authorRole: "Licensed CT Realtor | CT LGBTQ+ Real Estate Alliance"
+    authorRole: "Licensed CT Realtor & LGBTQ+ Community Advocate"
   },
   {
     id: 35,
@@ -1849,7 +1849,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "2026-06-11",
     readTime: "10 MIN READ",
     author: "Arek Wtulich",
-    authorRole: "Licensed CT Realtor | CT LGBTQ+ Real Estate Alliance"
+    authorRole: "Licensed CT Realtor & LGBTQ+ Community Advocate"
   },
   {
     id: 36,
@@ -1999,7 +1999,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "2026-06-23",
     readTime: "7 MIN READ",
     author: "Arek Wtulich",
-    authorRole: "Licensed CT Realtor | CT LGBTQ+ Real Estate Alliance"
+    authorRole: "Licensed CT Realtor & LGBTQ+ Community Advocate"
   },
   {
     id: 42,

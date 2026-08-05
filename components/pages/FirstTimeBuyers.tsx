@@ -26,7 +26,7 @@ const steps = [
         number: '03',
         title: 'Find Your LGBTQ+ Agent',
         description:
-            'Work with an agent who understands your priorities — not just floor plans and square footage, but community culture, school district inclusivity, and neighborhood vibe. Our team members are part of the CT LGBTQ+ Real Estate Alliance.',
+            'Work with an agent who understands your priorities — not just floor plans and square footage, but community culture, school district inclusivity, and neighborhood vibe. Our team is deeply connected to Connecticut\'s LGBTQ+ community.',
         tips: ['Ask about their experience with LGBTQ+ buyers', 'Confirm they offer full buyer representation', 'Understand how they get paid post-NAR settlement'],
     },
     {
