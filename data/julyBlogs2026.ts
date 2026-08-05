@@ -1,4 +1,4 @@
-/** July 2026 batch — 14 posts (idea #9 NAGLREP/Alliance credentials intentionally omitted). */
+/** July 2026 batch — 14 posts (idea #9, an Alliance-credentials explainer, intentionally skipped per client — no current Alliance affiliation). */
 export const JULY_2026_BLOGS = [
   {
     id: 43,
@@ -42,7 +42,7 @@ export const JULY_2026_BLOGS = [
     date: "2026-07-02",
     readTime: "8 MIN READ",
     author: "Arek Wtulich",
-    authorRole: "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance",
+    authorRole: "Licensed CT Realtor & LGBTQ+ Community Advocate",
   },
   {
     id: 44,
@@ -75,7 +75,7 @@ export const JULY_2026_BLOGS = [
     date: "2026-07-04",
     readTime: "7 MIN READ",
     author: "Arek Wtulich",
-    authorRole: "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance",
+    authorRole: "Licensed CT Realtor & LGBTQ+ Community Advocate",
   },
   {
     id: 45,
@@ -108,7 +108,7 @@ export const JULY_2026_BLOGS = [
     date: "2026-07-06",
     readTime: "7 MIN READ",
     author: "Arek Wtulich",
-    authorRole: "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance",
+    authorRole: "Licensed CT Realtor & LGBTQ+ Community Advocate",
   },
   {
     id: 46,
@@ -240,7 +240,7 @@ export const JULY_2026_BLOGS = [
     date: "2026-07-14",
     readTime: "7 MIN READ",
     author: "Arek Wtulich",
-    authorRole: "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance",
+    authorRole: "Licensed CT Realtor & LGBTQ+ Community Advocate",
   },
   {
     id: 50,
@@ -273,7 +273,7 @@ export const JULY_2026_BLOGS = [
     date: "2026-07-16",
     readTime: "8 MIN READ",
     author: "Arek Wtulich",
-    authorRole: "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance",
+    authorRole: "Licensed CT Realtor & LGBTQ+ Community Advocate",
   },
   {
     id: 51,
@@ -306,7 +306,7 @@ export const JULY_2026_BLOGS = [
     date: "2026-07-18",
     readTime: "8 MIN READ",
     author: "Arek Wtulich",
-    authorRole: "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance",
+    authorRole: "Licensed CT Realtor & LGBTQ+ Community Advocate",
   },
   {
     id: 52,
@@ -405,7 +405,7 @@ export const JULY_2026_BLOGS = [
     date: "2026-07-24",
     readTime: "6 MIN READ",
     author: "Arek Wtulich",
-    authorRole: "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance",
+    authorRole: "Licensed CT Realtor & LGBTQ+ Community Advocate",
   },
   {
     id: 55,
@@ -438,7 +438,7 @@ export const JULY_2026_BLOGS = [
     date: "2026-07-26",
     readTime: "8 MIN READ",
     author: "Arek Wtulich",
-    authorRole: "Licensed CT Realtor & Co-Founder, CT LGBTQ+ Real Estate Alliance",
+    authorRole: "Licensed CT Realtor & LGBTQ+ Community Advocate",
   },
   {
     id: 56,
