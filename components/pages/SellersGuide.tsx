@@ -17,7 +17,7 @@ const sellerFaqs = [
     },
     {
         question: 'How is my home marketed to LGBTQ+ buyers?',
-        answer: 'Your home will be marketed not just on the MLS, but across digital channels where serious buyers search — including Zillow, Realtor.com premium placement, targeted social media advertising, and the LGBTQ+ Real Estate Alliance network.',
+        answer: 'Your home will be marketed not just on the MLS, but across digital channels where serious buyers search — including Zillow, Realtor.com premium placement, targeted social media advertising, and our direct LGBTQ+ community network.',
     },
     {
         question: 'What happens after I accept an offer on my Connecticut home?',
@@ -45,7 +45,7 @@ const phases = [
         num: '03',
         title: 'Premium Marketing',
         body: 'Your home will be marketed not just on the MLS, but across the digital channels where serious buyers are actually searching — including LGBTQ+ real estate networks.',
-        checklist: ['Professional photography', 'Zillow, Realtor.com premium placement', 'Targeted social media advertising', 'LGBTQ+ Real Estate Alliance network'],
+        checklist: ['Professional photography', 'Zillow, Realtor.com premium placement', 'Targeted social media advertising', 'Direct LGBTQ+ community network'],
     },
     {
         icon: Users,

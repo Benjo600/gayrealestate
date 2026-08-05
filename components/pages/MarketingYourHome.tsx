@@ -29,9 +29,9 @@ const strategies = [
     {
         icon: Users,
         title: 'LGBTQ+ Buyer Network Outreach',
-        description: 'Our network within the Connecticut LGBTQ+ Real Estate Alliance — and our connections to agents in NYC, Boston, and beyond who work with LGBTQ+ buyers looking to relocate — is a distribution channel no other CT brokerage can match.',
+        description: 'Our own network within Connecticut\'s LGBTQ+ community — and our connections to agents in NYC, Boston, and beyond who work with LGBTQ+ buyers looking to relocate — is a distribution channel no other CT brokerage can match.',
         stats: 'Many of our sales come through our LGBTQ+ network before the home even hits the public MLS.',
-        checklist: ['CT LGBTQ+ Real Estate Alliance network', 'NYC and Boston relocation agent referrals', 'LGBTQ+ buyer community outreach', 'Off-market early access to vetted buyers'],
+        checklist: ['Direct LGBTQ+ community network', 'NYC and Boston relocation agent referrals', 'LGBTQ+ buyer community outreach', 'Off-market early access to vetted buyers'],
     },
     {
         icon: TrendingUp,

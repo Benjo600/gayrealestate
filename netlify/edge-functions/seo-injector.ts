@@ -127,7 +127,7 @@ const BLOG_DATA: Record<string, { title: string; description: string; image: str
 const AGENT_DATA: Record<string, { title: string; description: string; image: string }> = {
   "arek": {
     title: "Arek Wtulich | LGBTQ+ Real Estate Agent in CT",
-    description: "Expert real estate guidance from the co-founder of the CT LGBTQ+ Real Estate Alliance.",
+    description: "Expert, community-connected LGBTQ+ real estate guidance in Connecticut.",
     image: `${BASE_DOMAIN}/images/Arek_Alt_1.jpg`,
   },
   "abby": {
