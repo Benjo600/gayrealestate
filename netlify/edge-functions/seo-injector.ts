@@ -48,8 +48,8 @@ const AUTHOR_AGENT_MAP: Record<string, string> = {
 // correct meta automatically.
 const BLOG_DATA: Record<string, { title: string; description: string; image: string }> = {
   "best-places-to-live-in-connecticut-lgbtq": {
-    title: "Best Places to Live in Connecticut for LGBTQ+ People (2026 Guide)",
-    description: "Connecticut is more welcoming than you think — find your definitive guide to finding your people and your place.",
+    title: "Best Places to Live in Connecticut for LGBTQ+ People: Cities, Towns & Neighborhoods",
+    description: "Compare New Haven, West Hartford, Stamford, Norwalk, Middletown, the shoreline, and Litchfield County by lifestyle fit.",
     image: `${BASE_DOMAIN}/ct-lgbtq-places-hero.jpg`,
   },
   "why-west-hartford-is-lgbtq-friendly-connecticut": {
@@ -72,9 +72,9 @@ const BLOG_DATA: Record<string, { title: string; description: string; image: str
     description: "The stark contrast in quality of life and space between NYC and CT real estate.",
     image: `${BASE_DOMAIN}/nyc-vs-ct-value-hero.jpg`,
   },
-  "lgbtq-events-connecticut-march-2026": {
-    title: "LGBTQ+ Events in Connecticut – March 2026",
-    description: "Your monthly guide to the best LGBTQ+ events, community gatherings, and Pride celebrations in CT.",
+  "lgbtq-events-connecticut": {
+    title: "LGBTQ+ Events in Connecticut: Evergreen Community Calendar",
+    description: "Find reliable LGBTQ+ community resources across Connecticut year-round—organizations, Pride season, and how to plug in.",
     image: `${BASE_DOMAIN}/ct-pride-events-hero.jpg`,
   },
   "litchfield-county-second-homes-lgbtq-buyers": {
@@ -169,6 +169,10 @@ const BLOG_REDIRECTS: Record<string, string> = {
   "litchfield-county-towns-for-weekenders": "/blog/litchfield-county-second-homes-lgbtq-buyers",
   "gay-friendly-towns-in-connecticut-2026-ranked-guide": "/blog/best-places-to-live-in-connecticut-lgbtq",
   "wooster-square-new-haven-lgbtq-neighborhood": "/blog/best-lgbtq-neighborhoods-new-haven-ct",
+  // Consolidation merges (2026-08) — preserve link equity
+  "selling-your-home-lgbtq-homeowner-connecticut": "/blog/selling-home-connecticut-lgbtq",
+  "gay-areas-in-connecticut-neighborhood-by-neighborhood-guide": "/blog/best-places-to-live-in-connecticut-lgbtq",
+  "lgbtq-events-connecticut-march-2026": "/blog/lgbtq-events-connecticut",
 };
 
 // Legacy non-blog paths that must 301 to their current location. Handled here

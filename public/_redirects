@@ -26,5 +26,8 @@ https://gayrealestatect.net/*    https://www.gayrealestatect.net/:splat  301!
 /blog/litchfield-county-towns-for-weekenders              /blog/litchfield-county-second-homes-lgbtq-buyers    301
 /blog/gay-friendly-towns-in-connecticut-2026-ranked-guide /blog/best-places-to-live-in-connecticut-lgbtq       301
 /blog/wooster-square-new-haven-lgbtq-neighborhood         /blog/best-lgbtq-neighborhoods-new-haven-ct          301
+/blog/selling-your-home-lgbtq-homeowner-connecticut  /blog/selling-home-connecticut-lgbtq  301
+/blog/gay-areas-in-connecticut-neighborhood-by-neighborhood-guide  /blog/best-places-to-live-in-connecticut-lgbtq  301
+/blog/lgbtq-events-connecticut-march-2026  /blog/lgbtq-events-connecticut  301
 # SPA routing (must be last)
 /*  /index.html  200

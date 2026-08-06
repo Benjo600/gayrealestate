@@ -352,7 +352,7 @@ const SellersGuide: React.FC = () => {
                 <h2 className="text-2xl md:text-3xl font-display font-bold text-slate-900 mb-6 text-center">Related Seller Guides</h2>
                 <div className="grid sm:grid-cols-2 gap-4">
                     {[
-                        { to: '/blog/selling-home-connecticut-lgbtq', label: 'Selling a Home in Connecticut 2026: Costs & Timing' },
+                        { to: '/blog/selling-home-connecticut-lgbtq', label: 'Selling a Home in Connecticut 2026: Costs, Timing & Affirming Sale' },
                         { to: '/blog/connecticut-lgbtq-real-estate-market-report-2026', label: 'CT LGBTQ Real Estate Market Report 2026' },
                         { to: '/blog/gay-realtor-connecticut-guide', label: 'How to Find a Gay Realtor in Connecticut' },
                         { to: '/blog/do-you-need-an-lgbtq-real-estate-attorney', label: 'Do You Need an LGBTQ Real Estate Attorney?' },
