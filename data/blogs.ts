@@ -17,71 +17,72 @@ export interface BlogPost {
 }
 
 export const BLOG_POSTS: BlogPost[] = [
-  {
+    {
     id: 4,
     slug: "best-places-to-live-in-connecticut-lgbtq",
-    title: "Best Places to Live in Connecticut for LGBTQ+ People (2026 Guide)",
-    excerpt: "Connecticut is more welcoming than you think — and some of its cities and towns rank among the most LGBTQ+ friendly in the entire Northeast. Here's your definitive guide to finding your people and your place.",
-    seoKeywords: "best places to live in Connecticut for LGBTQ, LGBTQ friendly Connecticut towns, gay friendly Connecticut, where to live in CT LGBTQ",
+    title: "Best Places to Live in Connecticut for LGBTQ+ People: Cities, Towns & Neighborhoods",
+    excerpt: "Connecticut does not have one gay neighborhood — it has many. Compare New Haven, West Hartford, Stamford, Norwalk, Middletown, the shoreline, and Litchfield County by lifestyle fit.",
+    seoKeywords: "best places to live in Connecticut for LGBTQ, LGBTQ friendly Connecticut towns, gay friendly Connecticut, where to live in CT LGBTQ, gay areas in Connecticut, LGBTQ neighborhoods Connecticut",
     content: `
-      <p class="lead-paragraph">Let's be honest: when most people picture an LGBTQ+ friendly place to live, they think New York, San Francisco, or maybe Portland. Connecticut rarely makes that list. And that's exactly the problem - because what you don't know could cost you the home, the community, and the life you actually want.</p>
+      <p class="lead-paragraph">Connecticut does not have one single "gay neighborhood" in the way a much larger city might. Its LGBTQ+ community is spread across walkable cities, close-knit suburbs, shoreline towns, and quieter small towns. That can be a strength: the best place depends on the life you want to build, not just where you can find a nightlife district.</p>
+      <p>This guide starts with the practical question: where will you feel at home? Use it to narrow your search, then move to the individual town and neighborhood guides for a deeper real-estate comparison.</p>
 
-      <p>Connecticut has been quietly building one of the most robust LGBTQ+ protections frameworks in the country. It was the <strong>second state in the nation to legalize same-sex marriage</strong> back in 2008 - before it was federally mandated. It has comprehensive non-discrimination laws covering housing, employment, and public accommodations. And it's home to some genuinely thriving, deeply welcoming communities. You just have to know where to look.</p>
+      <h2>How to choose the right Connecticut community</h2>
+      <p>Start with four filters:</p>
+      <ol>
+        <li><strong>Community and visibility.</strong> Do you want a dense local network, or a quieter place with access to regional events?</li>
+        <li><strong>Daily life.</strong> Walkability, restaurants, arts, parks, schools, and transit make a bigger difference than a town's reputation alone.</li>
+        <li><strong>Housing fit.</strong> A condo near a train station and a single-family home with a yard are different searches, even at the same budget.</li>
+        <li><strong>Connection to work and family.</strong> Consider New York access, the Hartford job market, or proximity to the shoreline and your support system.</li>
+      </ol>
+      <p>Statewide legal protections are an important foundation. The lived experience, however, is local—so spend time in a town before you make an offer.</p>
 
-      <h2>Why Connecticut? The Case You Haven't Heard Yet</h2>
-      <p>Before we get into specific towns, let's address something: why Connecticut at all? The honest answer is value. If you're moving from NYC or Boston, you can get a 3-bedroom home with a yard, top-rated schools, and a 60-minute train commute for what a studio apartment costs in Brooklyn. And with remote work now permanent for many professionals, the calculus has completely changed.</p>
-      <p>For LGBTQ+ people specifically, Connecticut offers something rare: <strong>legal protection backed by culture</strong>. Laws matter, but so does whether your neighbors fly a Pride flag, whether your kids' teachers are affirming, and whether the local bar scene includes a queer space. In the towns below, you get all of it.</p>
+      <h2>Best for an active, walkable LGBTQ+ community: New Haven</h2>
+      <p>New Haven is the strongest choice for buyers who want city life, restaurants, arts, higher education, and an established LGBTQ+ community. Downtown, East Rock, and Wooster Square each offer a distinct version of that lifestyle: one more urban and connected to transit, one more residential and park-oriented, and one with historic character close to the city center.</p>
+      <p>Choose New Haven if you want a place where a car is less central to your social life and where there are frequent reasons to be out in the community. Review our <a href="/blog/best-lgbtq-neighborhoods-new-haven-ct" class="text-brand-600 hover:underline font-bold">New Haven LGBTQ neighborhood guide</a> before comparing listings.</p>
 
-      <h2>🏆 West Hartford: The Gold Standard</h2>
-      <p>If you only research one Connecticut town, make it West Hartford. This is the community that consistently tops every LGBTQ+ livability metric, and for good reason — read more about <a href="/blog/why-west-hartford-is-lgbtq-friendly-connecticut" class="text-brand-600 hover:underline font-bold">why West Hartford earns its reputation</a>. The local government has been explicitly pro-LGBTQ+ for decades. The school district is recognized for its inclusive curriculum and supportive staff. And the walkable Blue Back Square area has become a genuine hub for queer-friendly dining, shops, and nightlife.</p>
-      <p>Arek consistently shares information about West Hartford first when asked where the community is strongest. His deep roots in Hartford County's real estate and LGBTQ+ networks make him one of the most connected advocates for buyers navigating this market.</p>
-      <p>The median home price hovers around $487,000 for single family homes, with townhomes and condos available for first-time buyers in the $345s. The commute to Hartford is under 15 minutes. It's arguably the best all-around package in Connecticut.</p>
+      <h2>Best for polished suburbia with community access: West Hartford</h2>
+      <p>West Hartford works well for buyers who want an active town center, restaurants, parks, and a suburban home base without feeling isolated from queer community. West Hartford Center and Blue Back Square are the natural social hubs; neighborhoods farther out offer more space while remaining close to town.</p>
+      <p>It is a strong fit for couples and families who want a community-forward suburb, but buyers should compare taxes, housing age, and the home's total monthly cost rather than looking only at price. Read more on <a href="/blog/why-west-hartford-is-lgbtq-friendly-connecticut" class="text-brand-600 hover:underline font-bold">why West Hartford is LGBTQ+-friendly</a>.</p>
 
-      <h2>🌈 Northampton's Shadow: Northampton-Adjacent Towns</h2>
-      <p>The Pioneer Valley influence extends south into Connecticut's Tolland and Windham counties. Towns like <strong>Mansfield (Storrs)</strong>, home to UConn, have a progressive, academic culture that tends to be strongly LGBTQ+ inclusive. If you want lower home prices and don't need the urban amenities, this is worth exploring.</p>
+      <h2>Best for NYC access: Stamford and Norwalk</h2>
+      <p>For people relocating from New York, <a href="/blog/stamford-ct-lgbtq-guide" class="text-brand-600 hover:underline font-bold">Stamford</a> and <a href="/blog/norwalk-ct-lgbtq-guide" class="text-brand-600 hover:underline font-bold">Norwalk</a> offer the most practical rail connection and a more urban-to-suburban mix. Downtown Stamford is the clearest choice for high-rise living and walkability; Norwalk offers several distinct areas with transit access and a coastal edge.</p>
+      <p>These are not interchangeable. Commute time, condo fees, parking, flood considerations, and neighborhood feel should guide the comparison. Use the individual Stamford and Norwalk guides once you know which direction fits your routine. For the broader relocation path, see <a href="/blog/moving-nyc-to-connecticut-lgbtq" class="text-brand-600 hover:underline font-bold">moving from NYC to Connecticut</a>.</p>
 
-      <h2>🏙️ Hartford: Affordable, Authentic, and Underrated</h2>
-      <p>Hartford proper gets overlooked because of its urban challenges, but the LGBTQ+ community here is real, vibrant, and deeply rooted. The city has been a destination for queer nightlife in Connecticut for decades, and ongoing revitalization projects are making neighborhoods like Parkville and Blue Hills genuinely attractive. For investors or buyers willing to be early, Hartford offers <strong>extraordinary value</strong> - single-family homes under $250,000 are still possible.</p>
+      <h2>Best for a creative, community-centered small city: Middletown</h2>
+      <p>Middletown appeals to buyers who want an independent-town feel with a walkable main street, restaurants, and a community that feels less formal than some larger suburbs. It can be a strong middle ground between New Haven's city energy and a quieter small town. See our full <a href="/blog/middletown-ct-lgbtq-guide" class="text-brand-600 hover:underline font-bold">Middletown CT LGBTQ guide</a>.</p>
 
-      <h2>🌊 New Haven: Yale Energy, Queer Culture, and Coastal Proximity</h2>
-      <p>New Haven's Wooster Square and East Rock neighborhoods have long attracted artists, academics, and progressive thinkers - which translates to a strong, visible LGBTQ+ presence. Explore <a href="/blog/best-lgbtq-neighborhoods-new-haven-ct" class="text-brand-600 hover:underline font-bold">New Haven's best LGBTQ+ neighborhoods</a> to get a feel for where the community is strongest. Yale University anchors an intellectual culture that doesn't tolerate intolerance. Home prices are rising but still accessible compared to NYC, and you're 90 minutes from Manhattan by train.</p>
+      <h2>Best for shoreline lifestyle: Milford, Mystic and nearby towns</h2>
+      <p>Milford gives buyers a coastline, a train connection, and a town-center feel. <a href="/blog/mystic-ct-shoreline-lgbtq-buyers" class="text-brand-600 hover:underline font-bold">Mystic and the southeastern shoreline</a> offer a more destination-oriented lifestyle, with water access, tourism, and a smaller year-round community. They serve different needs: choose Milford for practical proximity to New Haven and New York; choose Mystic or the New London–Groton area when shoreline life and local employment patterns matter more.</p>
 
-      <h2>🍂 Litchfield County: For the LGBTQ+ Buyer Who Wants Space</h2>
-      <p>This surprises people: rural Northwestern Connecticut - Litchfield, Washington, Warren, and the lake communities - has long been a quiet retreat for LGBTQ+ professionals and couples from NYC and Boston. It's not the same as living in West Hartford, but the second-home and weekend community here is extremely welcoming. If you want land, privacy, and natural beauty, Travis Lipinski, our Litchfield County specialist, knows this market intimately.</p>
+      <h2>Best for privacy, nature and a quieter pace: Litchfield County and small towns</h2>
+      <p>Litchfield County and Connecticut's smaller towns can be deeply welcoming without looking like a traditional LGBTQ+ hub. This is where buyers find historic homes, open space, second-home possibilities, and more privacy. The trade-off is that community events, services, and nightlife are usually regional rather than around the corner.</p>
+      <p>The right question is not "Is there a gay neighborhood?" It is "Can I build the daily life I want here, and can I reach the people and resources I care about?" Explore our <a href="/blog/litchfield-county-second-homes-lgbtq-buyers" class="text-brand-600 hover:underline font-bold">Litchfield County second-home guide</a> and <a href="/blog/lgbtq-friendly-small-towns-connecticut" class="text-brand-600 hover:underline font-bold">LGBTQ-friendly small towns in Connecticut</a>.</p>
 
-      <h2>🏫 Glastonbury: Suburban Excellence with Strong Protections</h2>
-      <p>Glastonbury is an often-overlooked LGBTQ+ destination — a high-achieving suburb across the Connecticut River from Hartford with excellent schools and a community that has grown steadily more progressive over the past decade. Its school district has explicit LGBTQ+ student protections, and the town has a growing queer population of young families who have relocated from urban areas.</p>
-      <p>Home prices are higher than most CT markets — typically $450,000–$650,000 for single-family homes — but the school quality and community infrastructure justify the premium for families with children. Abby Dudarewicz lives in Glastonbury and can give you an unfiltered picture of what LGBTQ family life there actually looks like.</p>
+      <h2>A quick comparison</h2>
+      <table class="blog-table"><thead><tr><th>If you want…</th><th>Start with…</th></tr></thead><tbody>
+        <tr><td>Walkability, arts, active LGBTQ+ life</td><td>New Haven</td></tr>
+        <tr><td>Suburban town center and community</td><td>West Hartford</td></tr>
+        <tr><td>NYC rail access and urban density</td><td>Stamford or Norwalk</td></tr>
+        <tr><td>Independent small-city energy</td><td>Middletown</td></tr>
+        <tr><td>Coastline and a relaxed pace</td><td>Milford, Mystic, New London–Groton</td></tr>
+        <tr><td>Space, nature, and quieter community</td><td>Litchfield County and smaller towns</td></tr>
+      </tbody></table>
 
-      <h2>🌆 Hamden: New Haven's Affordable Alternative</h2>
-      <p>Hamden sits directly north of New Haven and shares much of its progressive community culture at more accessible prices. Median single-family prices in Hamden are approximately $320,000, compared to $390,000+ in New Haven proper. The town's diversity makes it naturally inclusive, and the LGBTQ+ presence is distributed throughout the town rather than concentrated in a single neighborhood — which many buyers find preferable.</p>
+      <h2>Next step: go deeper, don't duplicate</h2>
+      <p>This article is the statewide decision hub. It links out to individual city guides, the small-towns guide, affordability guides, and neighborhood-specific articles. Those child pages answer one local question well rather than repeating this statewide list.</p>
+      <p>Before buying, visit at different times of day, test the commute, explore the town center, and speak with a local agent about recent comparable sales and property-specific risks. Feeling at home is part of the decision; the numbers still need to work. Compare <a href="/blog/connecticut-property-taxes-by-town" class="text-brand-600 hover:underline font-bold">property taxes by town</a> and review the <a href="/blog/connecticut-lgbtq-real-estate-market-report-2026" class="text-brand-600 hover:underline font-bold">2026 LGBTQ real estate market report</a> before you write an offer.</p>
 
-      <h2>🚆 Norwalk: Fairfield County's Most Welcoming Option</h2>
-      <p>Fairfield County towns have historically been more conservative, but Norwalk is the exception. Its South Norwalk neighborhood has a genuinely mixed, progressive character that includes a visible LGBTQ+ presence. Proximity to the Metro-North train makes it appealing to NYC-connected buyers who want Connecticut pricing with easy commuter access.</p>
-
-      <h2>What to Look For When Evaluating Any Connecticut Town</h2>
-      <ul>
-        <li><strong>School district policies:</strong> Does the district have explicit protections for LGBTQ+ students? Formal anti-bullying policies that name sexual orientation and gender identity? See our breakdown of the <a href="/blog/most-lgbtq-inclusive-school-districts-connecticut" class="text-brand-600 hover:underline font-bold">most LGBTQ+-inclusive school districts in Connecticut</a>.</li>
-        <li><strong>Local government stance:</strong> Has the town passed local non-discrimination ordinances? Does it fly a Pride flag during June?</li>
-        <li><strong>Community organizations:</strong> Is there a local PFLAG chapter? An LGBTQ+ center? These signal an established, supported community.</li>
-        <li><strong>Business visibility:</strong> Rainbow stickers in windows aren't just decoration — they signal a business community that values your patronage and your identity.</li>
-        <li><strong>Healthcare access:</strong> For trans and non-binary buyers especially, proximity to affirming medical providers is critical. Connecticut has several excellent options, particularly near Hartford and New Haven.</li>
-      </ul>
-
-      <h2>Your Next Step: Talk to Someone Who Knows This From the Inside</h2>
-      <p>You can read rankings all day, but the most important insight comes from people who have lived this experience themselves - who have navigated Connecticut's market not just as realtors, but as members of the community they're helping you find. That's the difference we offer.</p>
-      <p>Our team includes licensed, community-connected agents who live in these communities and who have helped hundreds of LGBTQ+ buyers find exactly what they were looking for - not just a house, but a home where they genuinely belong.</p>
-    
       <h2 data-seo-hub="seo-hub-best-places">Further Reading: Town Guides &amp; Market Data</h2>
       <p>Dig deeper into specific Connecticut markets and the numbers behind them:</p>
       <ul>
-        <li><a href="/blog/gay-areas-in-connecticut-neighborhood-by-neighborhood-guide" class="text-brand-600 hover:underline font-bold">Gay areas in Connecticut — neighborhood-by-neighborhood guide</a></li>
         <li><a href="/blog/best-places-to-live-for-gay-couples-new-england" class="text-brand-600 hover:underline font-bold">Best places for gay couples across New England (CT vs MA &amp; more)</a></li>
         <li><a href="/blog/connecticut-is-1-in-the-us-for-lgbtq-real-estate-searches-here-s-why" class="text-brand-600 hover:underline font-bold">Why Connecticut ranks #1 for LGBTQ real estate searches</a></li>
         <li><a href="/blog/middletown-ct-lgbtq-guide" class="text-brand-600 hover:underline font-bold">Middletown CT LGBTQ guide</a> — value alternative to West Hartford</li>
         <li><a href="/blog/norwalk-ct-lgbtq-guide" class="text-brand-600 hover:underline font-bold">Norwalk CT LGBTQ guide</a> — Fairfield County + Metro-North</li>
         <li><a href="/blog/stamford-ct-lgbtq-guide" class="text-brand-600 hover:underline font-bold">Stamford CT LGBTQ guide</a> — closest train to Grand Central</li>
         <li><a href="/blog/mystic-ct-shoreline-lgbtq-buyers" class="text-brand-600 hover:underline font-bold">Mystic &amp; shoreline LGBTQ buyers guide</a></li>
+        <li><a href="/blog/best-lgbtq-neighborhoods-new-haven-ct" class="text-brand-600 hover:underline font-bold">Best LGBTQ neighborhoods in New Haven</a></li>
         <li><a href="/blog/condo-vs-single-family-lgbtq-connecticut" class="text-brand-600 hover:underline font-bold">Condo vs. single-family for LGBTQ buyers in CT</a></li>
         <li><a href="/blog/chosen-family-cohousing-lgbtq-connecticut" class="text-brand-600 hover:underline font-bold">Chosen family &amp; co-housing for LGBTQ households</a></li>
         <li><a href="/blog/connecticut-property-taxes-by-town" class="text-brand-600 hover:underline font-bold">Connecticut property taxes by town (2026 mill rates)</a></li>
@@ -89,16 +90,16 @@ export const BLOG_POSTS: BlogPost[] = [
       </ul>
     `,
     faq: [
-      { question: "What are the best places to live in Connecticut for LGBTQ+ people?", answer: "West Hartford consistently tops LGBTQ+ livability rankings in Connecticut due to its decades-long inclusive policies, walkable community, and strong school district. New Haven, Hartford's Parkville neighborhood, and Litchfield County also have established LGBTQ+ communities with distinct characters and price points." },
-      { question: "Is Connecticut a good state for LGBTQ+ people to live?", answer: "Yes. Connecticut was the second state in the nation to legalize same-sex marriage (2008) and has had comprehensive non-discrimination laws covering housing, employment, and public accommodations since 1991. Legal protection is backed by genuine community culture in its top towns." },
-      { question: "How much does a home cost in West Hartford, CT?", answer: "The median price for single-family homes in West Hartford is approximately $487,000, with condos and townhomes available from the mid-$300s. It's one of the most competitive markets in Connecticut, with desirable homes often going under contract in under two weeks." },
-      { question: "Are there LGBTQ+ communities in rural Connecticut?", answer: "Yes. Litchfield County in Northwestern Connecticut has a long-established, understated LGBTQ+ community of second-home owners, retirees, and weekenders from NYC and Boston. Towns like Washington, Warren, and Litchfield are well-known within the community for their welcoming culture." },
-      { question: "What should LGBTQ+ buyers look for when evaluating a Connecticut town?", answer: "Key factors include whether the school district explicitly names sexual orientation and gender identity in anti-bullying policies, whether local government has passed non-discrimination ordinances, the presence of PFLAG chapters and LGBTQ+ centers, visible business community support, and proximity to affirming healthcare providers." },
+      { question: "What are the best places to live in Connecticut for LGBTQ+ people?", answer: "It depends on the life you want. New Haven is strongest for walkable city energy and an established LGBTQ+ community. West Hartford fits community-forward suburban living. Stamford and Norwalk lead for NYC rail access. Middletown offers small-city independence. Milford, Mystic, and the shoreline suit coastal lifestyle. Litchfield County and smaller towns fit privacy, nature, and quieter pace." },
+      { question: "Does Connecticut have a gay neighborhood?", answer: "Not one single gayborhood like a larger metro. LGBTQ+ life is distributed across cities, suburbs, shoreline towns, and smaller communities. That spread is often a strength—you choose by lifestyle fit rather than one district." },
+      { question: "Is Connecticut a good state for LGBTQ+ people to live?", answer: "Yes. Statewide legal protections are a strong foundation, and lived experience is local. Spend time in towns you are considering, then compare housing fit, taxes, commute, and community access before you buy." },
+      { question: "Where should NYC transplants start looking in Connecticut?", answer: "Stamford and Norwalk are the most practical starting points for Metro-North access and an urban-to-suburban mix. Compare commute time, condo fees, parking, and neighborhood feel before expanding the search." },
+      { question: "What should LGBTQ+ buyers evaluate when comparing Connecticut towns?", answer: "Use four filters: community visibility, daily-life amenities, housing type fit, and connection to work or family. Then verify numbers—price, taxes, HOA fees, flood risk—and visit at different times of day before writing an offer." }
     ],
     image: "/ct-lgbtq-places-hero.jpg",
     category: "LGBTQ+ LIVING GUIDE",
-    date: "2026-02-22",
-    readTime: "8 MIN READ",
+    date: "2026-08-06",
+    readTime: "9 MIN READ",
     author: "Arek Wtulich",
     authorRole: "Licensed CT Realtor & LGBTQ+ Community Advocate"
   },
@@ -143,7 +144,7 @@ export const BLOG_POSTS: BlogPost[] = [
     
       <h2 data-seo-hub="seo-hub-westhartford">Further Reading</h2>
       <ul>
-        <li><a href="/blog/gay-areas-in-connecticut-neighborhood-by-neighborhood-guide" class="text-brand-600 hover:underline font-bold">Gay areas in Connecticut — neighborhood-by-neighborhood map</a></li>
+        <li><a href="/blog/best-places-to-live-in-connecticut-lgbtq" class="text-brand-600 hover:underline font-bold">Best places to live in Connecticut for LGBTQ+ people</a></li>
         <li><a href="/blog/middletown-ct-lgbtq-guide" class="text-brand-600 hover:underline font-bold">Middletown — more affordable LGBTQ-popular market</a></li>
         <li><a href="/blog/connecticut-property-taxes-by-town" class="text-brand-600 hover:underline font-bold">Compare West Hartford mill rates to other towns</a></li>
         <li><a href="/blog/how-to-buy-home-connecticut-lgbtq" class="text-brand-600 hover:underline font-bold">How to buy a home in Connecticut as an LGBTQ buyer</a></li>
@@ -209,7 +210,7 @@ export const BLOG_POSTS: BlogPost[] = [
         <li><a href="/blog/renting-vs-buying-connecticut-lgbtq" class="text-brand-600 hover:underline font-bold">Renting vs. buying in Connecticut as an LGBTQ+ person</a></li>
         <li><a href="/blog/connecticut-vs-massachusetts-lgbtq-buyers" class="text-brand-600 hover:underline font-bold">Connecticut vs Massachusetts for LGBTQ buyers</a></li>
         <li><a href="/blog/best-places-to-live-for-gay-couples-new-england" class="text-brand-600 hover:underline font-bold">Best places for gay couples across New England</a></li>
-        <li><a href="/blog/gay-areas-in-connecticut-neighborhood-by-neighborhood-guide" class="text-brand-600 hover:underline font-bold">Gay areas in Connecticut by neighborhood</a></li>
+        <li><a href="/blog/best-places-to-live-in-connecticut-lgbtq" class="text-brand-600 hover:underline font-bold">Best places to live in Connecticut for LGBTQ+ people</a></li>
         <li><a href="/blog/lgbtq-affirming-healthcare-connecticut" class="text-brand-600 hover:underline font-bold">LGBTQ+ affirming healthcare in Connecticut</a></li>
         <li><a href="/blog/lgbtq-organizations-connecticut-directory" class="text-brand-600 hover:underline font-bold">LGBTQ organizations in Connecticut directory</a></li>
         <li><a href="/blog/best-places-to-live-in-connecticut-lgbtq" class="text-brand-600 hover:underline font-bold">Best places to live in Connecticut for LGBTQ+ people</a></li>
@@ -385,69 +386,53 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "Jake Earl",
     authorRole: "Senior Vice President | Top 1% Mortgage Lender Nationwide"
   },
-  {
+    {
     id: 9,
-    slug: "lgbtq-events-connecticut-march-2026",
-    title: "LGBTQ+ Events in Connecticut – March 2026",
-    excerpt: "Your monthly guide to the best LGBTQ+ events, community gatherings, Pride celebrations, and queer-friendly happenings across Connecticut this March. Updated regularly so you never miss what matters.",
-    seoKeywords: "LGBTQ events Connecticut March 2026, gay events Connecticut March, queer events CT 2026, Connecticut Pride events 2026",
+    slug: "lgbtq-events-connecticut",
+    title: "LGBTQ+ Events in Connecticut: An Evergreen Community Calendar & Local Guide",
+    excerpt: "Find reliable LGBTQ+ community resources across Connecticut year-round—organizations, Pride season, and how to plug in without chasing expired event dates.",
+    seoKeywords: "LGBTQ events Connecticut, gay events Connecticut, queer events CT, Connecticut Pride events, LGBTQ community calendar Connecticut, True Colors Connecticut events",
     content: `
-      <p class="lead-paragraph">Connecticut's LGBTQ+ social calendar is more packed than most people realize — and March is no exception. Whether you're already a Connecticut resident or you're visiting (or considering a move), this is your guide to the community events that define what it actually means to live here as part of the LGBTQ+ family.</p>
+      <p class="lead-paragraph">Moving somewhere new is easier when you know where community happens. Connecticut's LGBTQ+ life is distributed across Hartford, New Haven, Fairfield County, the shoreline, and smaller regional networks. Rather than promise a static monthly list that will expire, this page points readers to the organizations and recurring event types most useful for finding current plans.</p>
 
-      <p>We update this guide monthly because the calendar evolves constantly, and Google loves fresh content almost as much as you love having something fun to do on a Saturday night. Bookmark this page and check back April 1st for next month's guide.</p>
-
-      <h2>📅 Featured Events: March 2026</h2>
-
-      <h3>Hartford LGBTQ+ Professional Networking Mixer</h3>
-      <p><strong>When:</strong> March 7, 2026 | 6:00 PM – 9:00 PM<br/>
-      <strong>Where:</strong> Hartford downtown venue (details via local LGBTQ+ community groups)<br/>
-      A regular gathering of LGBTQ+ professionals across industries. These events have become a genuine connector for queer professionals relocating to Connecticut or building a network here. Real estate, finance, law, tech, healthcare — usually a broad cross-section of Connecticut's LGBTQ+ professional community.</p>
-
-      <h3>New Haven Queer Film Series</h3>
-      <p><strong>When:</strong> March 14, 2026 | 7:00 PM<br/>
-      <strong>Where:</strong> New Haven arts district (various venues)<br/>
-      New Haven's consistently excellent queer film programming draws from Yale's arts infrastructure. March's screening is programmed around International Women's Day and features international LGBTQ+ filmmakers. Films followed by discussion panels. Excellent for newcomers looking to connect with New Haven's queer arts community.</p>
-
-      <h3>West Hartford Pride Committee Spring Planning Session</h3>
-      <p><strong>When:</strong> March 19, 2026 | 7:00 PM<br/>
-      <strong>Where:</strong> West Hartford Center (community room location TBA)<br/>
-      Open to community members who want to be involved in West Hartford's summer Pride programming. This is one of the best ways to plug into West Hartford's LGBTQ+ organizing community — and if you're still exploring why <a href="/blog/why-west-hartford-is-lgbtq-friendly-connecticut" class="text-brand-600 hover:underline font-bold">West Hartford is one of Connecticut's most LGBTQ+-friendly towns</a>, this event gives you a firsthand look. Welcoming to new residents and prospective buyers who want to see the community from the inside.</p>
-
-      <h3>Connecticut LGBTQ+ Homebuyer Panel: Buying in Today's Market</h3>
-      <p><strong>When:</strong> March 22, 2026 | 2:00 PM – 4:00 PM<br/>
-      <strong>Where:</strong> Hartford area (virtual attendance option available)<br/>
-      This quarterly panel brings together LGBTQ+-affirming real estate professionals, lenders, and attorneys for an open Q&A on navigating the Connecticut market. This panel is free, includes genuine expertise, and is an excellent resource if you're in the early stages of thinking about buying in Connecticut.</p>
-
-      <h3>Litchfield Hills LGBTQ+ Book Club</h3>
-      <p><strong>When:</strong> March 28, 2026 | 4:00 PM<br/>
-      <strong>Where:</strong> Litchfield County library network<br/>
-      The quieter side of LGBTQ+ community life in Litchfield County — but no less real. This monthly book club has been running for years and provides a genuine social anchor for the LGBTQ+ community in Northwestern CT. March's selection is a contemporary queer novel (announced at February meeting). Open to visitors and prospective residents.</p>
-
-      <h2>🌈 Ongoing & Monthly Programming</h2>
+      <h2>Start with reliable, current calendars</h2>
+      <p>Always confirm the date, venue, accessibility details, and age requirements directly with the organizer before you go. Event schedules change, and a useful local calendar should stay accurate rather than look complete on publication day.</p>
+      <p>Look first at:</p>
       <ul>
-        <li><strong>True Colors, Inc. (Hartford):</strong> Connecticut's premier LGBTQ+ youth organization runs ongoing programming, support groups, and community events throughout the month. True Colors is also an excellent resource for LGBTQ+ families evaluating schools and youth support infrastructure.</li>
-        <li><strong>The Anchor (Hartford):</strong> Hartford's longstanding queer bar hosts themed nights, drag shows, and community events throughout March. Check their social media for weekly programming. For a broader look at year-round venues and drag brunches, see our guide to <a href="/blog/lgbtq-nightlife-connecticut-bars-drag" class="text-brand-600 hover:underline font-bold">LGBTQ+ nightlife in Connecticut</a>.</li>
-        <li><strong>PFLAG Connecticut:</strong> Multiple chapters throughout the state run regular meetings and family support programming. An invaluable resource for LGBTQ+ families, parents of LGBTQ+ youth, and people new to the community.</li>
-        <li><strong>OutRight Connecticut:</strong> Ongoing advocacy and community programming across the state. Their events calendar is a reliable source for community gatherings statewide.</li>
+        <li>Statewide LGBTQ+ advocacy and community organizations</li>
+        <li>PFLAG Connecticut chapters and local support groups</li>
+        <li>LGBTQ+ youth and family-support organizations, including True Colors</li>
+        <li>Local Pride organizations in Hartford, New Haven, West Hartford, and Fairfield County</li>
+        <li>Queer-friendly venues and arts organizations in the city you are considering</li>
       </ul>
+      <p>For named groups and regional resources, start with our <a href="/blog/lgbtq-organizations-connecticut-directory" class="text-brand-600 hover:underline font-bold">LGBTQ organizations directory</a> and the <a href="/community" class="text-brand-600 hover:underline font-bold">community hub</a>.</p>
 
-      <h2>Pride Month Preview: Summer 2026</h2>
-      <p>It's not too early to plan. Connecticut's Pride season is robust: Hartford Pride, New Haven Pride, West Hartford celebrations, and events in Litchfield County and Fairfield County. Multiple parades, festivals, and community gatherings throughout June and into July. See our full <a href="/blog/connecticut-pride-month-2026-guide" class="text-brand-600 hover:underline font-bold">Connecticut Pride Month 2026 guide</a> for dates, venues, and highlights across the state.</p>
+      <h2>What Connecticut's LGBTQ+ calendar looks like through the year</h2>
+      <p><strong>Spring:</strong> planning meetings, film series, professional networking, campus and community programming, and the first announcements for Pride season.</p>
+      <p><strong>June and early summer:</strong> Pride events across the state, including larger city celebrations and smaller town gatherings. See the dedicated <a href="/blog/connecticut-pride-month-2026-guide" class="text-brand-600 hover:underline font-bold">Connecticut Pride guide</a> for season-specific information once organizers publish their calendars.</p>
+      <p><strong>Late summer and fall:</strong> community fundraisers, arts programming, sports leagues, professional events, and back-to-school family resources.</p>
+      <p><strong>Winter:</strong> indoor cultural events, mutual-aid and support programming, holiday gatherings, and planning for the following year.</p>
+      <p>For bars, drag, and recurring nightlife, see our guide to <a href="/blog/lgbtq-nightlife-connecticut-bars-drag" class="text-brand-600 hover:underline font-bold">LGBTQ+ nightlife in Connecticut</a>.</p>
 
-      <h2>New to Connecticut? Here's How to Connect Faster</h2>
-      <p>The LGBTQ+ community in Connecticut is tight-knit precisely because the state is small enough that communities overlap. Once you find your entry point — a professional network, a book club, a regular bar night, a community organization — you'll find the connections compound quickly. The people we help buy homes here consistently tell us that building community was faster and easier than they expected.</p>
-      <p>Want introductions? That's part of what we do. When you work with our team, you're not just getting a real estate transaction — you're getting people who are embedded in these communities and can make the right connections at the right time. It's one of the less-talked-about but most valuable parts of working with agents who are genuinely part of the community they serve. If you're still deciding where to put down roots, our guide to the <a href="/blog/best-places-to-live-in-connecticut-lgbtq" class="text-brand-600 hover:underline font-bold">best places to live in Connecticut for LGBTQ+ people</a> is the definitive starting point.</p>
+      <h2>Find your entry point</h2>
+      <p>The fastest way to build community is usually to choose one recurring activity that suits you. That might be a PFLAG meeting, an LGBTQ+ professional group, a queer sports league, a volunteer shift, a book club, or an arts event. Repetition turns a good event into a local network.</p>
+      <p>For people comparing towns, event access is also a useful location signal. New Haven and Hartford have more frequent city-based programming. West Hartford, Stamford, Norwalk, and shoreline communities offer their own networks, often supplemented by easy access to nearby cities. In smaller towns, community may be less visible but still active through regional organizations and informal networks.</p>
+
+      <h2>If you are relocating to Connecticut</h2>
+      <p>Do not choose a home from a map alone. Visit a local business, attend one community event, and spend time in the town center at the hours you would actually use it. Then pair that sense of fit with a clear real-estate comparison: price, taxes, commute, flood exposure, condo fees, and the condition of the specific home.</p>
+      <p>Our local guides can help you compare communities; this page remains the route to current event sources, not a substitute for organizer announcements. Start with the statewide hub for the <a href="/blog/best-places-to-live-in-connecticut-lgbtq" class="text-brand-600 hover:underline font-bold">best places to live in Connecticut for LGBTQ+ people</a>, then talk with our team when you are ready to tour.</p>
+      <p><a href="/contact" class="text-brand-600 hover:underline font-bold">Contact GayRealEstateCT</a> · <a href="/relocation" class="text-brand-600 hover:underline font-bold">Relocation services</a></p>
     `,
     faq: [
-      { question: "What LGBTQ+ events are happening in Connecticut in March 2026?", answer: "March 2026 highlights include the Hartford LGBTQ+ Professional Networking Mixer (March 7), the New Haven Queer Film Series (March 14), a West Hartford Pride Committee planning session (March 19), a Connecticut LGBTQ+ homebuyer panel (March 22), and the Litchfield Hills LGBTQ+ Book Club (March 28)." },
-      { question: "What is True Colors Inc. in Hartford?", answer: "True Colors, Inc. is Connecticut's premier LGBTQ+ youth organization, based in Hartford. It runs ongoing programming, support groups, and community events throughout the year and is an excellent resource for LGBTQ+ families evaluating schools and youth support infrastructure in the state." },
-      { question: "Does Connecticut have LGBTQ+ nightlife?", answer: "Yes. Hartford has consistent queer nightlife, including The Anchor, a longstanding queer bar that hosts themed nights, drag shows, and community events. New Haven and West Hartford also have LGBTQ+-friendly dining and social scenes, though Connecticut's queer nightlife is more community-oriented than major city scenes. For a full bar and drag calendar, see our guide to LGBTQ+ nightlife in Connecticut." },
-      { question: "When is Connecticut Pride?", answer: "Connecticut's Pride season runs primarily through June and into July, with events across multiple cities. Hartford Pride and New Haven Pride are the largest celebrations, along with West Hartford events and gatherings in Litchfield County and Fairfield County. Specific dates are announced in spring each year." },
-      { question: "How can I connect with the LGBTQ+ community after moving to Connecticut?", answer: "Connecticut's LGBTQ+ community is tight-knit and has many entry points: professional networking events, PFLAG chapters, community centers, queer nightlife, book clubs, and sports leagues. Organizations like OutRight Connecticut and True Colors maintain active event calendars, and our real estate team can make personal introductions within the communities we serve." },
+      { question: "Where can I find current LGBTQ+ events in Connecticut?", answer: "Start with statewide advocacy groups, PFLAG chapters, True Colors, local Pride organizations, and queer-friendly venues in the city you are considering. Always confirm date, venue, accessibility, and age requirements with the organizer before you go." },
+      { question: "When is Pride season in Connecticut?", answer: "June and early summer are the main Pride window, with larger city celebrations and smaller town gatherings. Check the Connecticut Pride guide each year after organizers publish dates." },
+      { question: "Does Connecticut have LGBTQ+ nightlife year-round?", answer: "Yes. Nightlife and drag programming are strongest in and around major cities, with community-oriented events across the state. See our nightlife guide for bars and recurring venues, and always verify current schedules." },
+      { question: "How do I connect with the LGBTQ+ community after moving to Connecticut?", answer: "Pick one recurring activity—PFLAG, a professional group, sports league, volunteer shift, book club, or arts event—and show up consistently. Event access also helps when comparing towns for a home search." },
+      { question: "Should I choose a Connecticut town based on the event calendar alone?", answer: "No. Visit businesses, attend one community event, and spend time in the town center at hours you would actually use it. Then compare price, taxes, commute, flood exposure, condo fees, and home condition with a local agent." }
     ],
     image: "/ct-pride-events-hero.jpg",
     category: "COMMUNITY EVENTS",
-    date: "2026-03-01",
+    date: "2026-08-06",
     readTime: "6 MIN READ",
     author: "Arek Wtulich",
     authorRole: "Licensed CT Realtor & LGBTQ+ Community Advocate"
@@ -1049,7 +1034,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <ul>
         <li><a href="/blog/how-to-buy-home-connecticut-lgbtq" class="text-brand-600 hover:underline font-bold">How to buy a home in Connecticut as an LGBTQ buyer</a></li>
         <li><a href="/blog/selling-home-connecticut-lgbtq" class="text-brand-600 hover:underline font-bold">Selling a home in Connecticut — costs &amp; timing</a></li>
-        <li><a href="/blog/selling-your-home-lgbtq-homeowner-connecticut" class="text-brand-600 hover:underline font-bold">LGBTQ seller experience, staging &amp; affirming listing agents</a></li>
+        <li><a href="/blog/selling-home-connecticut-lgbtq" class="text-brand-600 hover:underline font-bold">Selling a home in Connecticut — costs, timing &amp; affirming agents</a></li>
         <li><a href="/blog/lgbtq-friendly-home-service-providers-connecticut" class="text-brand-600 hover:underline font-bold">Vetting LGBTQ-friendly home service providers in CT</a></li>
         <li><a href="/blog/do-you-need-an-lgbtq-real-estate-attorney" class="text-brand-600 hover:underline font-bold">When you need an LGBTQ real estate attorney</a></li>
         <li><a href="/blog/connecticut-closing-costs" class="text-brand-600 hover:underline font-bold">What closing costs actually look like in CT</a></li>
@@ -1143,7 +1128,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <ul>
         <li><a href="/blog/connecticut-lgbtq-real-estate-market-report-2026" class="text-brand-600 hover:underline font-bold">Full Connecticut LGBTQ real estate market report 2026</a></li>
         <li><a href="/blog/best-places-to-live-in-connecticut-lgbtq" class="text-brand-600 hover:underline font-bold">Best places to live in Connecticut for LGBTQ+ people</a></li>
-        <li><a href="/blog/gay-areas-in-connecticut-neighborhood-by-neighborhood-guide" class="text-brand-600 hover:underline font-bold">Gay areas / neighborhoods across Connecticut</a></li>
+        <li><a href="/blog/best-places-to-live-in-connecticut-lgbtq" class="text-brand-600 hover:underline font-bold">Best places to live in Connecticut for LGBTQ+ people</a></li>
         <li><a href="/blog/connecticut-property-taxes-by-town" class="text-brand-600 hover:underline font-bold">2026 mill rates for all 169 towns</a></li>
         <li><a href="/blog/connecticut-vs-massachusetts-lgbtq-buyers" class="text-brand-600 hover:underline font-bold">Connecticut vs Massachusetts for LGBTQ buyers</a></li>
       </ul>
@@ -1185,41 +1170,7 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "Carolyn Futtner",
     authorRole: "Real Estate Attorney | MPF Law"
   },
-  {
-    id: 20,
-    slug: "gay-areas-in-connecticut-neighborhood-by-neighborhood-guide",
-    title: "Gay Areas in Connecticut: Neighborhood-by-Neighborhood Guide",
-    excerpt: "A real, specific guide to the most LGBTQ+ welcoming neighborhoods in Connecticut — from West Hartford's Blue Back Square to New Haven's Wooster Square and beyond.",
-    seoKeywords: "gay areas in Connecticut, LGBTQ neighborhoods Connecticut, queer neighborhoods New Haven, Connecticut gayborhoods, LGBTQ friendly neighborhoods CT",
-    content: `
-<p>Connecticut doesn't have one gay neighborhood. It has many, each with a distinct character, price point, and community energy. This guide breaks down the most welcoming areas neighborhood by neighborhood, with honest notes on what makes each one work and where the tradeoffs are.</p><p>This isn't based on assumptions or outdated reputation. This is based on direct client conversations, market data, and the on-the-ground knowledge of affirming agents who live and work in these communities.</p><h2>West Hartford: Blue Back Square</h2><p>Connecticut's gold standard for LGBTQ+ living. Blue Back Square is the closest thing the state has to a traditional gayborhood — pride flags year-round, queer-owned restaurants and coffee shops, and a community where LGBTQ+ families are embedded throughout the neighborhood fabric. Condos and townhomes in the immediate area run $320,000–$520,000. For the full picture, read our dedicated guide on <a href="/blog/why-west-hartford-is-lgbtq-friendly-connecticut" class="text-brand-600 hover:underline font-bold">why West Hartford is one of Connecticut's most LGBTQ+-friendly towns</a>.</p><h2>New Haven: Wooster Square, East Rock & Westville</h2><p>New Haven's LGBTQ+ scene is distributed across several distinct neighborhoods: Wooster Square (the historic queer hub with grassroots community presence and famous pizza), East Rock (quieter, residential, favored by Yale faculty and queer families), and Westville (artsy village feel with LGBTQ+-owned businesses on Whalley Ave). For the full neighborhood-by-neighborhood breakdown including prices, see our dedicated guide to the <a href="/blog/best-lgbtq-neighborhoods-new-haven-ct" class="text-brand-600 hover:underline font-bold">best LGBTQ neighborhoods in New Haven</a>.</p><h2>Hartford: Parkville</h2><p>Parkville is Hartford's most interesting neighborhood story, a former industrial area undergoing genuine creative revitalization with strong LGBTQ+ community roots. Several queer-owned businesses have anchored the neighborhood's transformation. Home prices are exceptional value for what you get: single-family homes in Parkville are typically available in the \$150,000–\$280,000 range, making it the most affordable LGBTQ+-welcoming neighborhood in the state.</p><p>The tradeoff is the urban realities of Hartford proper, which is still navigating significant fiscal and infrastructure challenges. Buyers who see the neighborhood's trajectory and can tolerate the imperfections of a city in transition are finding real value here.</p><h2>Middletown: Downtown and the Wesleyan Corridor</h2><p>Middletown doesn't have a single named "gay neighborhood", instead, the entire downtown and the corridor near Wesleyan University function as an LGBTQ+-affirming zone. The university's influence is profound and pervasive. It's the kind of town where queer visibility is normalized rather than concentrated, which some buyers find preferable to a more explicitly demarcated "gayborhood."</p><h2>Litchfield County: The Rural Alternative</h2><p>The Litchfield County market, particularly Washington, Warren, and the Lake Waramaug area, has a long history as a retreat for LGBTQ+ professionals and couples from NYC and Boston. It's not a "neighborhood" in the urban sense but rather a community of second-home owners and year-round residents who have chosen privacy, natural beauty, and space. The queer presence here is established but quieter, known within the community, invisible from the outside.</p><h2>How an Affirming Agent Unlocks These Neighborhoods</h2><p>Lists and rankings give you a starting point. An <a href="/blog/gay-realtor-connecticut-guide" class="text-brand-600 hover:underline font-bold">LGBTQ-affirming realtor</a> gives you the layer underneath — the specific block where the LGBTQ+ community is most active, the building where the residents' association is explicitly affirming, the street that's seen five queer families move in over the past two years. That intelligence doesn't appear in any public database.</p><p>Our agents live in these communities. When you start a conversation with our team, you're talking to someone who can tell you which block has the best energy, which condo building has an active LGBTQ+ residents' group, and which school principal is an exceptional ally. That's the layer of information that neighborhood guides don't provide — and it's why working with the right affirming agent makes every other part of your search more efficient. For buyers still comparing markets, our full guide to the <a href="/blog/best-places-to-live-in-connecticut-lgbtq" class="text-brand-600 hover:underline font-bold">best places to live in Connecticut for LGBTQ+ people</a> gives you the broad view before you zoom in.</p>
-    
-      <h2 data-seo-hub="seo-hub-areas">Further Reading: City Deep Dives</h2>
-      <ul>
-        <li><a href="/blog/best-places-to-live-in-connecticut-lgbtq" class="text-brand-600 hover:underline font-bold">Best places to live in Connecticut for LGBTQ+ people</a> — statewide hub</li>
-        <li><a href="/blog/lgbtq-friendly-small-towns-connecticut" class="text-brand-600 hover:underline font-bold">LGBTQ-friendly small towns in Connecticut</a></li>
-        <li><a href="/blog/middletown-ct-lgbtq-guide" class="text-brand-600 hover:underline font-bold">Middletown CT LGBTQ guide</a></li>
-        <li><a href="/blog/norwalk-ct-lgbtq-guide" class="text-brand-600 hover:underline font-bold">Norwalk CT LGBTQ guide (SoNo &amp; Rowayton)</a></li>
-        <li><a href="/blog/stamford-ct-lgbtq-guide" class="text-brand-600 hover:underline font-bold">Stamford CT LGBTQ guide</a></li>
-        <li><a href="/blog/mystic-ct-shoreline-lgbtq-buyers" class="text-brand-600 hover:underline font-bold">Mystic and Connecticut shoreline for LGBTQ buyers</a></li>
-        <li><a href="/blog/best-lgbtq-neighborhoods-new-haven-ct" class="text-brand-600 hover:underline font-bold">Best LGBTQ neighborhoods in New Haven</a></li>
-      </ul>
-    `,
-    faq: [
-      { question: "Where are the gay areas in Connecticut?", answer: "Connecticut doesn't have one gay neighborhood — it has many. West Hartford's Blue Back Square is the closest thing to a traditional gayborhood, with LGBTQ families and couples embedded throughout. New Haven's Wooster Square, East Rock, and Westville are established queer neighborhoods. Hartford's Parkville is an affordable, revitalizing neighborhood with strong LGBTQ roots. Middletown's downtown and Wesleyan corridor are organically LGBTQ-affirming." },
-      { question: "Is Hartford's Parkville neighborhood good for LGBTQ buyers?", answer: "Parkville is Hartford's most interesting LGBTQ neighborhood story — a former industrial area undergoing genuine creative revitalization with queer-owned businesses anchoring its transformation. Single-family homes are available in the $150,000–$280,000 range, making it the most affordable LGBTQ-welcoming neighborhood in Connecticut. The tradeoff is Hartford's ongoing urban challenges, which require research and realistic expectations." },
-      { question: "What is the LGBTQ scene like in West Hartford's Blue Back Square?", answer: "Blue Back Square is West Hartford's walkable commercial and residential hub and Connecticut's closest equivalent to a traditional gayborhood. Pride flags are a year-round presence, several restaurants and coffee shops have queer ownership, and the community feels genuinely affirming rather than merely tolerant. Housing nearby skews toward condos and townhomes ($320,000–$520,000)." },
-      { question: "Is Middletown, CT a good gay-friendly area?", answer: "Middletown's entire downtown and Wesleyan University corridor function as an LGBTQ-affirming zone — queer visibility is normalized throughout rather than concentrated in a single neighborhood. For buyers who prefer a distributed, community-integrated LGBTQ presence over a more explicitly demarcated 'gayborhood,' Middletown is one of Connecticut's most appealing options." },
-      { question: "What do affirming agents know about Connecticut neighborhoods that public data doesn't show?", answer: "An LGBTQ-affirming realtor who lives in these communities knows which specific blocks have the most active LGBTQ presence, which condo buildings have explicitly affirming residents' associations, which streets have seen queer families move in recently, and which school principals are exceptional allies. That hyperlocal intelligence doesn't appear in any public database and is one of the most valuable things an affirming agent provides." },
-    ],
-    image: "/ct-neighborhoods-guide-hero.jpg",
-    category: "NEIGHBORHOOD GUIDE",
-    date: "2026-04-14",
-    readTime: "5 MIN READ",
-    author: "Arek Wtulich",
-    authorRole: "Licensed CT Realtor & LGBTQ+ Community Advocate"
-  },
-  {
+    {
     id: 23,
     slug: "lgbtq-first-time-home-buyer-guide-connecticut-edition",
     title: "LGBTQ+ First-Time Home Buyer Guide (Connecticut Edition)",
@@ -1427,7 +1378,7 @@ export const BLOG_POSTS: BlogPost[] = [
 <h2>The Verdict for Most Gay Couples</h2>
 <p>For couples balancing legal protection, community density, housing affordability, and career access: Connecticut wins the calculus for most buyers. For those who prioritize historical LGBTQ+ community roots above all else and have the budget: Massachusetts. For those chasing lifestyle above economics: Vermont or Maine.</p>
 <p>Our team focuses on Connecticut, but we're happy to refer you to trusted, LGBTQ+-affirming agents in any New England state if another market is a better fit for your situation. Whatever you decide, working with an LGBTQ-affirming realtor who knows the specific market will make an enormous difference in how smoothly the process goes.</p>
-<p>Related: <a href="/blog/connecticut-vs-massachusetts-lgbtq-buyers" class="text-brand-600 hover:underline font-bold">Connecticut vs Massachusetts for LGBTQ buyers</a> · <a href="/blog/best-places-to-live-in-connecticut-lgbtq" class="text-brand-600 hover:underline font-bold">Best places to live in Connecticut (deep dive)</a> · <a href="/blog/gay-areas-in-connecticut-neighborhood-by-neighborhood-guide" class="text-brand-600 hover:underline font-bold">Gay areas in Connecticut by neighborhood</a> · <a href="/blog/moving-to-connecticut-as-a-gay-couple" class="text-brand-600 hover:underline font-bold">Moving to Connecticut as a gay couple</a></p>
+<p>Related: <a href="/blog/connecticut-vs-massachusetts-lgbtq-buyers" class="text-brand-600 hover:underline font-bold">Connecticut vs Massachusetts for LGBTQ buyers</a> · <a href="/blog/best-places-to-live-in-connecticut-lgbtq" class="text-brand-600 hover:underline font-bold">Best places to live in Connecticut (deep dive)</a> · <a href="/blog/best-places-to-live-in-connecticut-lgbtq" class="text-brand-600 hover:underline font-bold">Best places to live in Connecticut for LGBTQ+ people</a> · <a href="/blog/moving-to-connecticut-as-a-gay-couple" class="text-brand-600 hover:underline font-bold">Moving to Connecticut as a gay couple</a></p>
     `,
     faq: [
       { question: "What is the best place in New England for gay couples to live?", answer: "For most gay couples balancing legal protection, community density, housing affordability, and career access, Connecticut offers the best overall value proposition. West Hartford and New Haven provide genuine LGBTQ community fabric at prices significantly below comparable Massachusetts markets. Connecticut's commuter rail access to NYC and Boston keeps most major employers accessible for hybrid workers." },
@@ -1642,7 +1593,7 @@ export const BLOG_POSTS: BlogPost[] = [
       <h2 data-seo-hub="seo-hub-pride">Further Reading: Community Resources</h2>
       <ul>
         <li><a href="/blog/lgbtq-nightlife-connecticut-bars-drag" class="text-brand-600 hover:underline font-bold">LGBTQ+ nightlife in Connecticut — bars, drag &amp; events</a></li>
-        <li><a href="/blog/lgbtq-events-connecticut-march-2026" class="text-brand-600 hover:underline font-bold">LGBTQ+ events calendar snapshot (March 2026)</a></li>
+        <li><a href="/blog/lgbtq-events-connecticut" class="text-brand-600 hover:underline font-bold">LGBTQ+ events in Connecticut (evergreen calendar)</a></li>
         <li><a href="/blog/lgbtq-organizations-connecticut-directory" class="text-brand-600 hover:underline font-bold">Complete LGBTQ organizations directory for Connecticut</a></li>
         <li><a href="/blog/lgbtq-affirming-healthcare-connecticut" class="text-brand-600 hover:underline font-bold">LGBTQ+ affirming healthcare before you move</a></li>
         <li><a href="/blog/best-places-to-live-in-connecticut-lgbtq" class="text-brand-600 hover:underline font-bold">Best places to live for LGBTQ+ people in CT</a></li>
@@ -1970,34 +1921,84 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "Travis Lipinski",
     authorRole: "Licensed CT Realtor | Litchfield County Specialist"
   },
-  {
+    {
     id: 41,
     slug: "selling-home-connecticut-lgbtq",
-    title: "Selling a Home in Connecticut 2026: Costs & Timing",
-    excerpt: "CT sellers pay conveyance tax, commissions, and attorney fees — often $30K–$55K on a $500K sale. 2026 costs, timing, and LGBTQ seller considerations.",
-    seoKeywords: "selling a home in Connecticut, Connecticut conveyance tax, CT seller closing costs, LGBTQ home seller Connecticut, how much to sell a house in CT",
+    title: "Selling a Home in Connecticut in 2026: Costs, Timing, Staging & an Affirming Sale",
+    excerpt: "Connecticut sellers need a realistic net sheet first: conveyance tax, commissions, attorney fees, timing, and affirming staging. Your complete 2026 seller guide.",
+    seoKeywords: "selling a home in Connecticut, Connecticut conveyance tax, CT seller closing costs, LGBTQ home seller Connecticut, how much to sell a house in CT, LGBTQ seller staging Connecticut, affirming listing agent CT",
     content: `
-      <p class="lead-paragraph">Selling a home in Connecticut costs more than most sellers expect. On a \$500,000 sale, you'll typically net between \$445,000 and \$470,000 after commissions, attorney fees, and Connecticut's <a href="https://portal.ct.gov/drs" target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:underline font-bold">conveyance tax</a> — before any repairs, concessions, or mortgage payoff. Understanding the costs before you list gives you realistic expectations and room to negotiate strategically.</p><p>This guide covers every line item on a Connecticut seller's closing statement, the market timing that affects your final number, and the specific questions LGBTQ sellers need to think through.</p><h2>What It Costs to Sell a Home in Connecticut</h2><table class="blog-table"><thead><tr><th>Cost Item</th><th>Typical Range</th><th>Notes</th></tr></thead><tbody><tr><td>Real estate commission</td><td>5%–6% of sale price</td><td>Split between buyer's and seller's agents</td></tr><tr><td>Connecticut conveyance tax</td><td>1.00%–2.75% of sale price</td><td>State + municipal; graduated above \$800K</td></tr><tr><td>Attorney fee</td><td>\$1,000–\$2,000</td><td>Required in CT — attorney-closing state</td></tr><tr><td>Transfer tax (municipal)</td><td>0.25%–0.50%</td><td>Included in conveyance tax total above</td></tr><tr><td>Repairs and pre-listing work</td><td>\$0–\$15,000+</td><td>Varies widely by property condition</td></tr><tr><td>Staging</td><td>\$1,500–\$5,000</td><td>Optional but usually improves sale price</td></tr><tr><td>Seller concessions</td><td>\$0–\$10,000+</td><td>Often 1%–2% in buyer's market conditions</td></tr><tr><td>Home warranty (if offered)</td><td>\$700–\$1200</td><td>Sometimes requested by buyers</td></tr><tr><td><strong>Estimated total costs</strong></td><td><strong>\$30,000–\$55,000</strong></td><td><strong>On a \$500,000 sale</strong></td></tr></tbody></table><h2>The Connecticut Conveyance Tax: What It Actually Costs You</h2><p>Connecticut's real estate conveyance tax is the seller's most significant state-specific cost — and one that's easy to underestimate. It applies to every residential sale.</p><h3>State Conveyance Tax</h3><table class="blog-table"><thead><tr><th>Sale Price</th><th>State Tax Rate</th></tr></thead><tbody><tr><td>Up to \$800,000</td><td>0.75%</td></tr><tr><td>\$800,001–\$2,500,000</td><td>1.25%</td></tr><tr><td>Above \$2,500,000</td><td>2.25%</td></tr></tbody></table><h3>Municipal Conveyance Tax</h3><table class="blog-table"><thead><tr><th>Situation</th><th>Municipal Rate</th></tr></thead><tbody><tr><td>Most Connecticut towns</td><td>0.25%</td></tr><tr><td>Select municipalities</td><td>0.50%</td></tr></tbody></table><h3>What You Actually Pay at Closing</h3><table class="blog-table"><thead><tr><th>Sale Price</th><th>State Tax</th><th>Municipal Tax (0.25%)</th><th>Total Conveyance Tax</th></tr></thead><tbody><tr><td>\$350,000</td><td>\$2,625</td><td>\$875</td><td><strong>\$3,500</strong></td></tr><tr><td>\$500,000</td><td>\$3,750</td><td>\$1,250</td><td><strong>\$5,000</strong></td></tr><tr><td>\$700,000</td><td>\$5,250</td><td>\$1,750</td><td><strong>\$7,000</strong></td></tr><tr><td>\$850,000</td><td>\$7,250</td><td>\$2,125</td><td><strong>\$9,375</strong></td></tr><tr><td>\$1,000,000</td><td>\$8,750</td><td>\$2,500</td><td><strong>\$11,250</strong></td></tr></tbody></table><p><em>Note: The \$850K sale crosses the \$800K state tax threshold, which is why the state portion jumps. Sellers near the \$800K mark should model this difference carefully.</em></p><h2>Real Seller Net Sheets by Price</h2><h3>Selling at \$400,000</h3><table class="blog-table"><thead><tr><th>Item</th><th>Amount</th></tr></thead><tbody><tr><td>Sale price</td><td>\$400,000</td></tr><tr><td>Commission (5.5%)</td><td>-\$22,000</td></tr><tr><td>Conveyance tax (1.0%)</td><td>-\$4,000</td></tr><tr><td>Attorney fee</td><td>-\$1,500</td></tr><tr><td>Estimated repairs/prep</td><td>-\$3,000</td></tr><tr><td><strong>Gross proceeds (before mortgage payoff)</strong></td><td><strong>~\$369,500</strong></td></tr></tbody></table><h3>Selling at \$600,000</h3><table class="blog-table"><thead><tr><th>Item</th><th>Amount</th></tr></thead><tbody><tr><td>Sale price</td><td>\$600,000</td></tr><tr><td>Commission (5.5%)</td><td>-\$33,000</td></tr><tr><td>Conveyance tax (1.0%)</td><td>-\$6,000</td></tr><tr><td>Attorney fee</td><td>-\$1,500</td></tr><tr><td>Estimated repairs/prep</td><td>-\$5,000</td></tr><tr><td><strong>Gross proceeds (before mortgage payoff)</strong></td><td><strong>~\$554,500</strong></td></tr></tbody></table><p>Your net proceeds are further reduced by your remaining mortgage balance. If you purchased a \$400,000 home 5 years ago with 10% down and a 6% rate, your approximate remaining balance is ~\$330,000 — meaning your actual cash out at \$400,000 is roughly \$39,500 before closing costs.</p><h2>When to Sell: Connecticut's Market Timing Windows</h2><p>Connecticut's real estate market has a clear seasonal pattern that affects both price and speed.</p><table class="blog-table"><thead><tr><th>Season</th><th>Market Conditions</th><th>Best For</th></tr></thead><tbody><tr><td><strong>March–June</strong></td><td>Peak buyer activity; highest prices; fastest movement</td><td>Sellers who want top dollar</td></tr><tr><td>July–August</td><td>Summer slowdown; fewer buyers; longer days on market</td><td>More negotiating time for motivated sellers</td></tr><tr><td>September–November</td><td>Second active period; fall market</td><td>Solid prices; buyers serious about fall close</td></tr><tr><td>December–February</td><td>Slowest period; fewer buyers</td><td>Motivated buyers only; price becomes more important</td></tr></tbody></table><p><strong>The data for Connecticut in 2026:</strong> Glastonbury homes go to pending in 7 days in spring. Norwalk saw +12.8% year-over-year in 2025. For most sellers, listing in late March through early May captures peak buyer competition.</p><p><strong>Exception:</strong> If your target buyer is relocating from New York, fall can be strong — NYC corporate transfer cycles often drive relocation decisions in Q3.</p><h2>How to Price Using Total Monthly Cost Logic</h2><p>Most sellers price by looking at recent comparable sales. That's correct, but sophisticated sellers also understand how buyers evaluate price.</p><p>Buyers — especially those moving from NYC — often think in monthly payment terms, not total price. A \$499,000 listing and a \$520,000 listing look very different on paper but are only \$133/month apart on a 30-year mortgage. Buyers who think in terms of monthly budget will sometimes stretch for a well-prepared, attractively priced home at \$515,000 versus taking a worse home at \$490,000.</p><p>The flip side: buyers in high-mill-rate towns are acutely aware of <a href="/blog/connecticut-property-taxes-by-town" class="text-brand-600 hover:underline font-bold">property taxes</a>. A home priced at \$520,000 in <a href="/blog/why-west-hartford-is-lgbtq-friendly-connecticut" class="text-brand-600 hover:underline font-bold">West Hartford</a> (\$12,538/year property tax) carries \$1,045/month in just taxes. A seller in West Hartford competing with Glastonbury listings should understand that their buyer is making a value calculation that includes those ongoing carrying costs.</p><p>When pricing, ask your agent to show comparable sold prices <strong>and</strong> the total monthly cost (mortgage + taxes + insurance) at each price point. That's how buyers are actually deciding.</p><h2>LGBTQ-Specific Considerations for Connecticut Sellers</h2><h3>Legal Protections Apply to Sellers Too</h3><p>Connecticut's anti-discrimination laws prohibit discriminating against protected classes in home sales — but they also prohibit discriminatory treatment of sellers by agents and brokers. As an LGBTQ seller, you have full <a href="/blog/legal-protections-lgbtq-real-estate-connecticut" class="text-brand-600 hover:underline font-bold">legal protections</a>. If you experience discriminatory treatment in the sales process, the Connecticut Fair Housing Center (CFHC) handles complaints: (888) 247-4401.</p><h3>Disclosing What You're Required to Disclose</h3><p>Connecticut sellers must complete a Residential Property Condition Disclosure Report, covering known defects, mechanical systems, environmental issues, and more. Sexual orientation and gender identity of the seller are not disclosed — they're irrelevant to the transaction and have no legal bearing on the sale.</p><p>What you do disclose:</p><ul><li>Known material defects</li><li>Lead paint (pre-1978 homes — federal requirement)</li><li>Underground oil tanks (past or present)</li><li>Radon test results</li><li>Known drainage or flood issues</li><li>HVAC, electrical, and plumbing condition</li></ul><h3>Choosing Your Agent</h3><p>For LGBTQ sellers, working with an agent who is experienced, LGBTQ-affirming, and has strong relationships with buyer's agents in your price range matters. Not because you need protection — Connecticut's protections are real — but because your agent represents you and the marketing of your home to the broadest possible buyer pool.</p><p>Our agents have navigated CT sales across every price range and know the buyer pools in each market.</p><h2>The Pre-Listing Questions Worth Asking</h2><p><strong>1. What's my approximate net?</strong> Run the math before you commit to a list price. Commission + conveyance tax + attorney + payoff = your real bottom line.</p><p><strong>2. What repairs or staging are worth doing?</strong> In Connecticut's active spring market, well-prepared homes often earn 2%–5% more than equivalent homes shown in poor condition. A \$5,000 pre-listing investment can yield \$15,000–\$25,000 in incremental sale price.</p><p><strong>3. Do I need to buy next?</strong> Coordinating a CT sale with a CT purchase is more manageable in a balanced market. In a seller's market, you may sell quickly but face competition buying your next home. Talk to your agent about contingencies and bridge loan options.</p><p><strong>4. Should I offer a buyer's agent commission?</strong> Connecticut follows the NAR settlement structure implemented in 2024 — buyers' agents must be paid, but the arrangement is now typically negotiated and disclosed separately rather than built into the MLS listing. Discuss current best practices with your agent.</p><h2>Ready to Sell?</h2><p>Our team works with LGBTQ sellers across Connecticut — from Fairfield County to Hartford County to the shoreline. We'll help you price strategically, prepare your home, and navigate the process from listing to close.</p><p>Talk to Our Team | Connecticut Closing Costs Guide | Connecticut Property Taxes by Town</p>
-    
+      <p class="lead-paragraph">Selling a home in Connecticut is a financial decision first and a marketing decision second. Before you choose a list price, you need a realistic net sheet: commission, Connecticut conveyance tax, attorney fees, agreed repairs or credits, and your mortgage payoff all come out of the sale proceeds.</p>
+      <p>For LGBTQ+ homeowners, the process should also feel respectful and straightforward. You should not have to edit your life out of your home to market it well, and you should be able to work with an agent who understands the community and represents you professionally throughout the sale.</p>
+
+      <h2>What it costs to sell a home in Connecticut</h2>
+      <p>On a $500,000 sale, common seller costs include real estate compensation, conveyance tax, attorney fees, preparation work, and any negotiated buyer credits. Your exact total depends on your town, price point, condition, and agreement with the buyer, but this is why a seller net sheet matters before listing—not after an offer arrives.</p>
+      <table class="blog-table"><thead><tr><th>Cost</th><th>Typical planning range</th></tr></thead><tbody>
+        <tr><td>Agent compensation</td><td>Negotiated; often the largest transaction cost</td></tr>
+        <tr><td>Connecticut conveyance tax</td><td>Varies by sale price and municipality</td></tr>
+        <tr><td>Attorney and closing work</td><td>Typically a separate seller expense</td></tr>
+        <tr><td>Repairs, credits, or concessions</td><td>Depends on inspection and market conditions</td></tr>
+        <tr><td>Staging and pre-listing preparation</td><td>Optional; prioritize items buyers will notice</td></tr>
+      </tbody></table>
+      <p>Ask your agent to prepare at least three net sheets: your likely list price, a conservative sale price, and a best-case sale price. Each should show your mortgage payoff separately from closing costs, so you can see the actual cash you would receive. For a line-item buyer/seller cost breakdown, see our guide to <a href="/blog/connecticut-closing-costs" class="text-brand-600 hover:underline font-bold">Connecticut closing costs</a>.</p>
+
+      <h2>Connecticut conveyance tax and your net proceeds</h2>
+      <p>Connecticut's conveyance tax is generally paid by the seller. The state rate is graduated by sale price, and municipalities add a local component. Because the calculation can change at higher price thresholds and local rates differ, use the current state schedule and your town's rate when you prepare the final net sheet.</p>
+      <p>The other useful number is not simply the highest comparable sale; it is the monthly carrying cost a buyer sees. <a href="/blog/connecticut-property-taxes-by-town" class="text-brand-600 hover:underline font-bold">Property taxes</a>, insurance, HOA dues, and mortgage payment all shape a buyer's willingness to stretch. A strong listing strategy explains the value of the home while keeping its total monthly cost competitive against nearby alternatives.</p>
+
+      <h2>When to sell in Connecticut</h2>
+      <p>Spring often brings the broadest buyer pool, but the right launch date is local. Inventory, school calendars, weather, and the type of buyer for your home all matter. A well-prepared home can succeed outside spring; a rushed home can underperform in any season.</p>
+      <p>Before you choose a date, agree on a preparation calendar:</p>
+      <ol>
+        <li>Complete the repairs that remove buyer objections.</li>
+        <li>Deep-clean, photograph, and prepare the home before it goes live.</li>
+        <li>Decide what belongs in the listing and what stays private.</li>
+        <li>Set an offer-review plan rather than reacting to the first inquiry.</li>
+      </ol>
+
+      <h2>Staging without erasing yourself</h2>
+      <p>Good staging is not about making a home generic. It is about helping a buyer understand the room, the light, storage, and flow. Personal photographs, highly specific collections, and excess furniture can be reduced when they distract from the property. That does not mean you need to hide signs of your relationship, your family, or your identity.</p>
+      <p>An affirming listing agent should discuss this with you as a practical marketing choice, never as an instruction to make your home look less LGBTQ+. The standard is simple: protect your comfort and present the property at its best.</p>
+
+      <h2>Choosing an affirming Connecticut listing agent</h2>
+      <p>The right agent combines local pricing knowledge with clear communication. During an interview, ask:</p>
+      <ul>
+        <li>Which recent sales are the best comparables, and why?</li>
+        <li>What would you repair, stage, or leave alone?</li>
+        <li>How will you market the home beyond simply placing it in the MLS?</li>
+        <li>How will offers and buyer-agent communication be handled?</li>
+        <li>What is the plan if a buyer or agent behaves inappropriately?</li>
+      </ul>
+      <p>Connecticut <a href="/blog/legal-protections-lgbtq-real-estate-connecticut" class="text-brand-600 hover:underline font-bold">fair-housing protections</a> apply to real estate transactions. An agent should be able to explain the process and represent you professionally; they should not minimize discriminatory behavior or leave you to manage it alone. For more on selecting representation, see our guide to finding a <a href="/blog/gay-realtor-connecticut-guide" class="text-brand-600 hover:underline font-bold">gay realtor in Connecticut</a>.</p>
+
+      <h2>The pre-listing checklist</h2>
+      <p>Before listing, collect warranty information, permits, utility records, and documents related to major improvements. Complete the Connecticut property-condition disclosure accurately, disclose known material issues, and discuss any unusual property circumstances with your attorney and agent.</p>
+      <p>Then make your decision from the net sheet—not from a headline list price. The best plan is the one that matches your financial outcome, timeline, and next move.</p>
+
+      <h2>Ready to plan your sale?</h2>
+      <p>We help Connecticut homeowners price, prepare, market, and close with a process built around clear numbers and respectful representation. Start with a no-pressure seller consultation and a custom net-sheet estimate for your home.</p>
+      <p><a href="/home-valuation" class="text-brand-600 hover:underline font-bold">Get a free home valuation</a> · <a href="/sellers-guide" class="text-brand-600 hover:underline font-bold">Seller's guide</a> · <a href="/contact" class="text-brand-600 hover:underline font-bold">Contact our team</a></p>
+
       <h2 data-seo-hub="seo-hub-selling">Further Reading: Selling &amp; Next Steps</h2>
       <ul>
-        <li><a href="/blog/selling-your-home-lgbtq-homeowner-connecticut" class="text-brand-600 hover:underline font-bold">LGBTQ seller experience &amp; staging — affirming listing guide</a></li>
         <li><a href="/blog/connecticut-closing-costs" class="text-brand-600 hover:underline font-bold">Connecticut closing costs breakdown</a></li>
         <li><a href="/blog/connecticut-property-taxes-by-town" class="text-brand-600 hover:underline font-bold">Property taxes by town</a></li>
+        <li><a href="/blog/downsizing-connecticut-lgbtq-empty-nesters" class="text-brand-600 hover:underline font-bold">Downsizing for LGBTQ+ empty nesters</a></li>
+        <li><a href="/marketing-your-home" class="text-brand-600 hover:underline font-bold">Marketing your home</a></li>
       </ul>
     `,
     faq: [
-      { question: "Who pays the conveyance tax in Connecticut?", answer: "The seller pays Connecticut's conveyance tax. Buyers do not pay it. It's calculated as a percentage of the sale price and collected at closing." },
-      { question: "What is the conveyance tax rate in Connecticut?", answer: "State rate: 0.75% on the first $800,000 of sale price, then 1.25% up to $2.5M, then 2.25% above $2.5M. Municipal rate: 0.25% in most towns, 0.50% in some. Total combined: 1.0%–2.75% depending on sale price." },
-      { question: "Do I need an attorney to sell my home in Connecticut?", answer: "Yes. Connecticut is an attorney-closing state — a real estate attorney manages the title, document preparation, and deed transfer. Budget $1,000–$2,000." },
-      { question: "How long does it take to sell a home in Connecticut?", answer: "It varies significantly by market and season. In competitive spring markets (March–May), well-priced homes in desirable towns can go under contract in 7–30 days. In slower markets or slower seasons, 60–90 days is more typical." },
-      { question: "What capital gains tax do I owe when selling my home?", answer: "For a primary residence, the IRS allows an exclusion of up to $250,000 in capital gains per owner ($500,000 for married couples) if you've lived in the home for 2 of the past 5 years. Connecticut also taxes capital gains at ordinary income rates. If your gain exceeds the exclusion, consult a tax professional before listing." },
-      { question: "Can I sell my home in Connecticut if I'm unmarried with a partner?", answer: "Yes. Title can be held by unmarried co-owners as tenants in common or joint tenants. At sale, proceeds are distributed to owners based on ownership percentage (tenants in common) or equally (joint tenancy). There are no restrictions on unmarried couples selling jointly owned property." }
+      { question: "Who pays Connecticut conveyance tax?", answer: "It is generally a seller cost. The final amount depends on the sale price and municipal rate." },
+      { question: "Do I have to remove LGBTQ+ items or photos before a showing?", answer: "No. Staging should help buyers see the home, while respecting the people who live there. Your agent should discuss recommendations as choices, not demand that you conceal your identity." },
+      { question: "Can I sell a Connecticut home jointly with an unmarried partner?", answer: "Yes. Your attorney can confirm how title and sale proceeds should be handled for your situation." },
+      { question: "What costs should I expect when selling a home in Connecticut?", answer: "Plan for agent compensation, Connecticut conveyance tax (state plus municipal), attorney fees, any repairs or buyer credits, and optional staging. Ask for three net sheets so you can compare likely, conservative, and best-case outcomes." },
+      { question: "When is the best time to sell a home in Connecticut?", answer: "Spring often brings the broadest buyer pool, but the right launch date is local. Inventory, school calendars, weather, and your home type all matter. A well-prepared home can succeed outside peak season." },
+      { question: "How do I choose an affirming listing agent in Connecticut?", answer: "Interview agents on comparables, repairs vs staging, marketing beyond the MLS, offer handling, and how they would respond if a buyer or agent behaves inappropriately. Connecticut fair-housing protections apply to the full transaction." }
     ],
     image: "/selling-home-ct-lgbtq-hero.jpg",
     category: "SELLING GUIDE",
-    date: "2026-06-23",
-    readTime: "7 MIN READ",
+    date: "2026-08-06",
+    readTime: "8 MIN READ",
     author: "Arek Wtulich",
     authorRole: "Licensed CT Realtor & LGBTQ+ Community Advocate"
   },

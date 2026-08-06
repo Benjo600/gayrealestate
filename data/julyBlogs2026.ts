@@ -29,7 +29,7 @@ export const JULY_2026_BLOGS = [
       <p>Drive time to core LGBTQ+ venues and event calendars is a legitimate variable to discuss with your agent — the same way you would discuss a job or a gym. Over years of living somewhere, social access adds up.</p>
       <p>Our team helps LGBTQ+ buyers match towns to lifestyle, not just list price. If nightlife and community events are part of your "why," tell us up front so we factor them into the search.</p>
       <p><a href="/contact" class="text-brand-600 hover:underline font-bold">Talk with our team</a> · <a href="/sky-casper" class="text-brand-600 hover:underline font-bold">Sky Casper event calendar</a> · <a href="/community" class="text-brand-600 hover:underline font-bold">Community Hub</a></p>
-      <p>Related: <a href="/blog/connecticut-pride-month-2026-guide" class="text-brand-600 hover:underline font-bold">Connecticut Pride Month 2026 guide</a> · <a href="/blog/lgbtq-events-connecticut-march-2026" class="text-brand-600 hover:underline font-bold">LGBTQ+ events in Connecticut (March snapshot)</a> · <a href="/blog/best-places-to-live-in-connecticut-lgbtq" class="text-brand-600 hover:underline font-bold">Best places to live for LGBTQ+ people in CT</a> · <a href="/blog/lgbtq-organizations-connecticut-directory" class="text-brand-600 hover:underline font-bold">LGBTQ organizations directory</a></p>
+      <p>Related: <a href="/blog/connecticut-pride-month-2026-guide" class="text-brand-600 hover:underline font-bold">Connecticut Pride Month 2026 guide</a> · <a href="/blog/lgbtq-events-connecticut" class="text-brand-600 hover:underline font-bold">LGBTQ+ events in Connecticut (evergreen calendar)</a> · <a href="/blog/best-places-to-live-in-connecticut-lgbtq" class="text-brand-600 hover:underline font-bold">Best places to live for LGBTQ+ people in CT</a> · <a href="/blog/lgbtq-organizations-connecticut-directory" class="text-brand-600 hover:underline font-bold">LGBTQ organizations directory</a></p>
     `,
     faq: [
       { question: "Are there gay bars in Connecticut?", answer: "Yes. Chez Est in Hartford and Partners Café in New Haven are Connecticut's two longest-running dedicated LGBTQ+ bars, both with regular drag programming and community events." },
@@ -77,40 +77,7 @@ export const JULY_2026_BLOGS = [
     author: "Arek Wtulich",
     authorRole: "Licensed CT Realtor & LGBTQ+ Community Advocate",
   },
-  {
-    id: 45,
-    slug: "selling-your-home-lgbtq-homeowner-connecticut",
-    title: "Selling Your Home as an LGBTQ+ Homeowner in Connecticut: Staging & Affirming Agents",
-    excerpt: "LGBTQ+ seller experience in Connecticut — staging without erasing yourself, choosing an affirming listing agent, and legal protections when showings go sideways.",
-    seoKeywords: "LGBTQ seller experience Connecticut, LGBTQ home staging Connecticut, affirming listing agent CT, selling as LGBTQ homeowner Connecticut, LGBTQ seller staging guide",
-    content: `
-      <p class="lead-paragraph">Most LGBTQ+ real estate content focuses on buyers, but sellers face their own questions: marketing without inviting judgment, vetting buyers' agents, and knowing your legal protections if a showing goes sideways.</p>
-      <h2>Your Legal Protections as a Seller</h2>
-      <p>Connecticut law prohibits discriminatory statements or conduct from any party in a real estate transaction, including buyers' agents. Document hostility or inappropriate questions and tell your listing agent immediately — the CHRO process is available to sellers too.</p>
-      <h2>Staging Without Erasing Yourself</h2>
-      <p>You do not need to erase your identity to sell well. Neutral staging is decluttering and broad appeal, not hiding who lives there. Choose a listing agent who understands that balance.</p>
-      <h2>Choosing the Right Listing Agent</h2>
-      <p>Your listing agent controls who sees your home and how it is marketed. An agent embedded in the LGBTQ+ community generally has better instincts about which showings and buyer agents to prioritize.</p>
-      <h2>Timing Your Sale Around Connecticut's Market</h2>
-      <p>LGBTQ+-popular markets like West Hartford still see strong demand from NYC and Boston relocators. Price and timing expectations should match the micro-market you are in — not a generic statewide average.</p>
-      <h2>Talk With Someone Who Gets It</h2>
-      <p>Our team works with LGBTQ+ buyers and sellers across Connecticut every week. If you want straight answers about towns, timing, and process — without coding yourself for someone else's comfort — we are here.</p>
-      <p><a href="/contact" class="text-brand-600 hover:underline font-bold">Contact GayRealEstateCT</a></p>
-      <p>Related: <a href="/blog/selling-home-connecticut-lgbtq" class="text-brand-600 hover:underline font-bold">Selling a home in CT (LGBTQ guide)</a> · <a href="/sellers-guide" class="text-brand-600 hover:underline font-bold">Seller's guide</a> · <a href="/home-valuation" class="text-brand-600 hover:underline font-bold">Free home valuation</a></p>
-    `,
-    faq: [
-      { question: "Do I have legal protections as an LGBTQ+ home seller in Connecticut?", answer: "Yes. Connecticut fair housing law prohibits discriminatory conduct or statements from any party in a transaction, including buyers and buyers' agents, with CHRO complaint options available." },
-      { question: "Should I remove personal LGBTQ+ items before showings?", answer: "That is a personal choice, not a requirement. Neutral staging is about decluttering and broad appeal — not erasing who you are. A good listing agent will respect that balance." },
-      { question: "How do I choose a listing agent as an LGBTQ+ seller?", answer: "Choose someone embedded in the community who will control marketing, vet showings, and prioritize your comfort — not just the highest commission path." }
-    ],
-    image: "/images/blog-heroes/july-2026/selling-your-home-lgbtq-homeowner-connecticut-hero.jpg",
-    category: "SELLING GUIDE",
-    date: "2026-07-06",
-    readTime: "7 MIN READ",
-    author: "Arek Wtulich",
-    authorRole: "Licensed CT Realtor & LGBTQ+ Community Advocate",
-  },
-  {
+    {
     id: 46,
     slug: "downsizing-connecticut-lgbtq-empty-nesters",
     title: "Downsizing in Connecticut: A Guide for LGBTQ+ Empty Nesters",
