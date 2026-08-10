@@ -1,32 +1,37 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, Heart, Shield, Users, Home, Award, Instagram } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Heart, HeartHandshake, Scale, Network, Compass, Instagram } from 'lucide-react';
 import Footer from '../Footer';
 import SEOHead from '../SEOHead';
 import { agents } from '../../data/agents';
 
 const values = [
     {
-        icon: Heart,
+        icon: HeartHandshake,
         title: 'Community First',
         desc: 'We are members of the community we serve — not just allies.',
     },
     {
-        icon: Shield,
+        icon: Scale,
         title: 'Complete Representation',
         desc: 'Your interests come first — always. Full advocacy.',
     },
     {
-        icon: Users,
+        icon: Network,
         title: 'Professional Network',
         desc: 'Top 1% mortgage lenders and specialized title attorneys.',
     },
     {
-        icon: Home,
+        icon: Compass,
         title: 'Hyperlocal Knowledge',
         desc: 'We know which neighborhoods are experiencing growth.',
     },
 ];
+
+// Glass-gold gradient stops for the 3D icon badges.
+const GOLD_LIGHT = '#FCEFC3';
+const GOLD = '#D4AF37';
+const GOLD_DEEP = '#8B6914';
 
 const BASE_URL = 'https://www.gayrealestatect.net';
 
@@ -107,11 +112,31 @@ const AboutUs: React.FC = () => {
                         {values.map((v, i) => {
                             const Icon = v.icon;
                             return (
-                                <div key={i} className="flex flex-col items-center text-center p-5 rounded-2xl border border-slate-100 bg-white shadow-sm">
-                                    <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-3 shadow-md" style={{ background: 'linear-gradient(135deg, #C0003A 0%, #6B008A 45%, #0A2FA8 100%)' }}>
-                                        <Icon className="w-5 h-5 text-white" />
+                                <div
+                                    key={i}
+                                    className="relative flex flex-col items-center text-center p-5 pt-6 rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden"
+                                >
+                                    {/* Glass 3D gold icon badge: translucent gradient + backdrop blur + specular highlight + grounding shadow */}
+                                    <div
+                                        className="relative w-14 h-14 rounded-2xl flex items-center justify-center mb-3 border"
+                                        style={{
+                                            background: `linear-gradient(155deg, ${GOLD_LIGHT}b3 0%, ${GOLD}59 55%, ${GOLD_DEEP}59 100%)`,
+                                            borderColor: `${GOLD}66`,
+                                            backdropFilter: 'blur(6px) saturate(160%)',
+                                            WebkitBackdropFilter: 'blur(6px) saturate(160%)',
+                                            boxShadow: `0 10px 18px -9px ${GOLD_DEEP}80, inset 0 1.5px 2px rgba(255,255,255,0.85), inset 0 -5px 7px ${GOLD_DEEP}40`,
+                                        }}
+                                    >
+                                        <span className="absolute top-[7px] left-[9px] w-4 h-2.5 rounded-full bg-white/75 blur-[3px] pointer-events-none" />
+                                        <Icon
+                                            className="w-6 h-6 relative z-10"
+                                            strokeWidth={2.25}
+                                            style={{ color: GOLD_DEEP, filter: 'drop-shadow(0 1px 0 rgba(255,255,255,0.6))' }}
+                                        />
                                     </div>
-                                    <h3 className="text-xs md:text-xl font-bold text-slate-900 mb-1.5">{v.title}</h3>
+
+                                    <h3 className="text-xs md:text-xl font-bold text-slate-900 mb-2">{v.title}</h3>
+
                                     <p className="text-slate-500 leading-tight text-[10px] md:text-sm">{v.desc}</p>
                                 </div>
                             );

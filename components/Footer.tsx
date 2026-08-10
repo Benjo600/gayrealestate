@@ -2,6 +2,17 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Home, Twitter, Facebook, Instagram, Linkedin, Mail, Phone, MapPin, ArrowRight, Heart } from 'lucide-react';
 
+export const GOOGLE_BUSINESS_PROFILE_URL = 'https://share.google/Dd3f6SV4a50W2mTaZ';
+
+/** Official 4-color Google "G" logomark, inline so no external asset request is needed. */
+const GoogleGIcon: React.FC<{ className?: string }> = ({ className }) => (
+  <svg className={className} viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z" />
+    <path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z" />
+    <path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24s.85 6.91 2.34 9.88l7.35-5.7z" />
+    <path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z" />
+  </svg>
+);
 
 const Footer: React.FC = () => {
   return (
@@ -46,6 +57,32 @@ const Footer: React.FC = () => {
             <p className="text-[13px] md:text-sm text-slate-500 mb-8 md:mb-10 leading-relaxed max-w-sm font-light">
               We're dedicated to ensuring the LGBTQ+ community is represented, respected, and welcomed in every real estate transaction.
             </p>
+            <a
+              href={GOOGLE_BUSINESS_PROFILE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-3 pl-3 pr-4 py-2.5 rounded-2xl bg-white border border-slate-200/80 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:border-slate-300 transition-all duration-300"
+            >
+              <span className="flex items-center justify-center w-9 h-9 rounded-full bg-slate-50 group-hover:bg-white transition-colors">
+                <GoogleGIcon className="w-5 h-5" />
+              </span>
+              <span className="flex flex-col leading-tight">
+                <span className="text-sm font-bold text-slate-800">
+                  Find Us on Google
+                </span>
+                <span className="flex items-center gap-1 text-[11px] text-slate-500 font-medium">
+                  <span className="flex items-center gap-[1px] text-amber-400" aria-hidden="true">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <svg key={i} viewBox="0 0 20 20" fill="currentColor" className="w-2.5 h-2.5">
+                        <path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.9l-5.2 2.61.99-5.79-4.21-4.1 5.82-.85L10 1.5z" />
+                      </svg>
+                    ))}
+                  </span>
+                  5.0 rating &middot; Read reviews
+                </span>
+              </span>
+              <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-slate-600 group-hover:translate-x-1 transition-all" />
+            </a>
           </div>
 
           {/* For Buyers */}

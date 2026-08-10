@@ -213,17 +213,21 @@ const EnquiryForm: React.FC<{ titleAs?: 'h1' | 'h2' }> = ({ titleAs = 'h2' }) =>
                   ))}
                </div>
 
-               {/* Social proof — initials only (no stock photo avatars) */}
+               {/* Social proof — stock client headshots */}
                <div className="flex justify-center md:justify-start items-center gap-6 border-t border-slate-200 pt-8">
-                  <div className="flex -space-x-3" aria-hidden="true">
-                     {['A', 'J', 'M'].map((initial, i) => (
-                        <div
+                  <div className="flex -space-x-3 shrink-0" aria-hidden="true">
+                     {[
+                        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=faces&q=80',
+                        'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop&crop=faces&q=80',
+                        'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=faces&q=80',
+                     ].map((src, i) => (
+                        <img
                            key={i}
-                           className="w-10 h-10 rounded-full border-2 border-white flex items-center justify-center text-white text-xs font-bold shadow-sm"
-                           style={{ background: 'linear-gradient(135deg, #C0003A 0%, #6B008A 45%, #0A2FA8 100%)' }}
-                        >
-                           {initial}
-                        </div>
+                           src={src}
+                           alt=""
+                           onError={(e) => { (e.currentTarget as HTMLImageElement).src = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=faces&q=80'; }}
+                           className="w-10 h-10 rounded-full border-2 border-white object-cover shadow-sm shrink-0"
+                        />
                      ))}
                   </div>
                   <div className="text-left">

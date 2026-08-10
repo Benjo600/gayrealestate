@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
-import Footer from '../Footer';
+import Footer, { GOOGLE_BUSINESS_PROFILE_URL } from '../Footer';
 import SEOHead from '../SEOHead';
 import EnquiryForm from '../EnquiryForm';
 
@@ -19,6 +19,7 @@ const contactStructuredData = [
             '@type': 'RealEstateAgent',
             name: 'GayRealEstateCT.net',
             url: BASE_URL,
+            sameAs: [GOOGLE_BUSINESS_PROFILE_URL],
             areaServed: { '@type': 'State', name: 'Connecticut' },
         },
     },

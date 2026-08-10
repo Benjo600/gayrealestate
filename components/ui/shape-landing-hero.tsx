@@ -91,7 +91,7 @@ function HeroGeometric({
             <div className="hidden md:block absolute bottom-1/3 left-20 w-1 h-1 rounded-full bg-white/40 animate-float z-20" />
 
             {/* Content Container */}
-            <div className="relative z-50 container mx-auto px-4 md:px-6 pt-20 md:pt-24 pb-12">
+            <div className="relative z-50 container mx-auto px-4 md:px-6 pt-32 md:pt-40 pb-12">
                 <div className="max-w-7xl mx-auto">
                     <div className="max-w-3xl">
                         {/* Heading */}

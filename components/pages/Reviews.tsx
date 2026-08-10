@@ -6,6 +6,7 @@ import Header from '../Header';
 import Footer from '../Footer';
 import SEOHead from '../SEOHead';
 import { BookTestimonial } from '../ui/3d-book-testimonial';
+import { GOOGLE_BUSINESS_PROFILE_URL } from '../Footer';
 
 /* ──────────────────────────────────────────────
    CONDENSED REVIEW DATA
@@ -156,6 +157,7 @@ const reviewsStructuredData = [
         '@type': 'RealEstateAgent',
         name: 'GayRealEstateCT.net',
         url: BASE_URL,
+        sameAs: [GOOGLE_BUSINESS_PROFILE_URL],
         aggregateRating: {
             '@type': 'AggregateRating',
             ratingValue: '5',

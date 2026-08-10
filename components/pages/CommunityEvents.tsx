@@ -107,12 +107,12 @@ const CommunityEvents: React.FC = () => {
                                 Community Hub
                             </div>
                             
-                            <h1 className="text-4xl md:text-[9rem] font-display font-semibold text-slate-900 mb-8 tracking-tighter leading-[1.1] md:leading-[0.85]">
+                            <h1 className="text-4xl md:text-8xl font-display font-semibold text-slate-900 mb-8 tracking-tighter leading-[1.1] md:leading-[0.95]">
                                 Your <span className="pride-gradient-text italic">Journey</span> <br className="hidden md:block" />
                                 to Community.
                             </h1>
-                            
-                            <p className="text-md md:text-3xl text-slate-600 max-w-2xl mx-auto font-light leading-relaxed mb-8 md:mb-16">
+
+                            <p className="text-md md:text-2xl text-slate-600 max-w-2xl mx-auto font-light leading-relaxed mb-8 md:mb-12">
                                 We connect you with the vibrant, inclusive heartbeat of Connecticut life.
                             </p>
 
