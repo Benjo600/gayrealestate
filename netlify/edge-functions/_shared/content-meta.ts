@@ -1594,6 +1594,321 @@ export const BLOG_META: EdgeBlogMeta[] = [
         "answer": "Star ratings alone are weak signals. Look for reviews that mention family structure or personal treatment, and prioritize trusted referrals."
       }
     ]
+  },
+  {
+    "slug": "connecticut-radon-testing-home-buyers",
+    "title": "Connecticut Radon Testing When Buying a Home: Costs, Results & Next Steps",
+    "excerpt": "Buying a home in Connecticut? Learn when to test for radon, how to read the results, what mitigation involves, and how to protect your deal.",
+    "image": "/images/blog-heroes/august-2026/connecticut-radon-testing-home-buyers-hero.jpg",
+    "category": "BUYING GUIDE",
+    "date": "2026-08-01",
+    "author": "Arek Wtulich",
+    "authorRole": "Licensed CT Realtor & LGBTQ+ Community Advocate",
+    "seoKeywords": "Connecticut radon testing, radon home inspection CT, radon mitigation Connecticut, home buyers radon test",
+    "faq": [
+      {
+        "question": "Should I test for radon when buying a Connecticut home?",
+        "answer": "Yes. Include it in your inspection plan and evaluate the actual property rather than assuming a town is low-risk."
+      },
+      {
+        "question": "Can a high radon result be fixed?",
+        "answer": "Often, yes. A qualified mitigation contractor can recommend a system after reviewing the home and test result."
+      }
+    ]
+  },
+  {
+    "slug": "underground-oil-tanks-connecticut-home-buyers",
+    "title": "Underground Oil Tanks in Connecticut: What Home Buyers Need to Check Before Closing",
+    "excerpt": "Learn how Connecticut buyers can identify underground oil-tank risk, request an oil-tank sweep, and negotiate clear protections before closing.",
+    "image": "/images/blog-heroes/august-2026/underground-oil-tanks-connecticut-home-buyers-hero.jpg",
+    "category": "BUYING GUIDE",
+    "date": "2026-08-03",
+    "author": "Travis Lipinski",
+    "authorRole": "Licensed CT Realtor | Litchfield County Specialist",
+    "seoKeywords": "underground oil tank Connecticut, oil tank sweep CT, buried oil tank home buyers, oil heat Connecticut",
+    "faq": [
+      {
+        "question": "Can I buy a Connecticut house with oil heat?",
+        "answer": "Yes. The key question is the condition and documented history of the heating system and any tank."
+      },
+      {
+        "question": "Should I get an oil-tank sweep?",
+        "answer": "Consider one when the property's age or heating history leaves a reasonable question about a buried tank."
+      }
+    ]
+  },
+  {
+    "slug": "buying-house-well-septic-connecticut",
+    "title": "Buying a House With Well Water and Septic in Connecticut: The Due-Diligence Checklist",
+    "excerpt": "Buying a Connecticut home with private well water and septic? Use this practical checklist for testing, inspections, records, and contract protections.",
+    "image": "/images/blog-heroes/august-2026/buying-house-well-septic-connecticut-hero.jpg",
+    "category": "BUYING GUIDE",
+    "date": "2026-08-05",
+    "author": "Abby Dudarewicz",
+    "authorRole": "Licensed CT Realtor & LGBTQ+ Community Advocate",
+    "seoKeywords": "well water septic Connecticut, private well home inspection CT, septic inspection Connecticut buyers",
+    "faq": [
+      {
+        "question": "Is a private well safe?",
+        "answer": "It can be, but safety depends on testing, treatment when needed, and ongoing maintenance."
+      },
+      {
+        "question": "Does a home inspection include septic?",
+        "answer": "Not usually in the depth needed. Arrange a separate septic inspection."
+      }
+    ]
+  },
+  {
+    "slug": "buying-older-home-connecticut-risks",
+    "title": "Buying an Older Home in Connecticut: Lead Paint, Asbestos, Knob-and-Tube & Other Risks",
+    "excerpt": "Older Connecticut homes have character and special due-diligence needs. Learn what buyers should inspect before making an offer or ending contingencies.",
+    "image": "/images/blog-heroes/august-2026/buying-older-home-connecticut-risks-hero.jpg",
+    "category": "BUYING GUIDE",
+    "date": "2026-08-07",
+    "author": "Arek Wtulich",
+    "authorRole": "Licensed CT Realtor & LGBTQ+ Community Advocate",
+    "seoKeywords": "older home Connecticut, lead paint asbestos CT, knob and tube wiring Connecticut, historic home inspection",
+    "faq": [
+      {
+        "question": "Should I avoid an old Connecticut house?",
+        "answer": "No. Buy with stronger due diligence, realistic reserves, and specialists where needed."
+      },
+      {
+        "question": "Does lead paint mean I cannot buy the home?",
+        "answer": "No. It means you should understand the disclosure, condition, and any planned renovation work."
+      }
+    ]
+  },
+  {
+    "slug": "connecticut-seller-disclosure-form-buyers",
+    "title": "Connecticut Seller Disclosure Forms: What Buyers Should Look For Before Making an Offer",
+    "excerpt": "Learn how to read Connecticut seller disclosures, spot follow-up questions, and use inspections to verify a property's condition before closing.",
+    "image": "/images/blog-heroes/august-2026/connecticut-seller-disclosure-form-buyers-hero.jpg",
+    "category": "BUYING GUIDE",
+    "date": "2026-08-09",
+    "author": "Travis Lipinski",
+    "authorRole": "Licensed CT Realtor | Litchfield County Specialist",
+    "seoKeywords": "Connecticut seller disclosure, seller disclosure form CT, home buyer due diligence Connecticut",
+    "faq": [
+      {
+        "question": "Can I rely only on the seller disclosure?",
+        "answer": "No. Review it carefully, then use inspections and records to verify important conditions."
+      },
+      {
+        "question": "What if the seller marks an item unknown?",
+        "answer": "Ask for context and investigate the property condition through the appropriate inspection or specialist."
+      }
+    ]
+  },
+  {
+    "slug": "connecticut-home-appraisal-gap",
+    "title": "Connecticut Home-Appraisal Gaps: What Happens When the Appraisal Comes in Low?",
+    "excerpt": "A Connecticut appraisal gap does not have to end a home purchase. Learn your options, contract protections, and how buyers can respond calmly.",
+    "image": "/images/blog-heroes/august-2026/connecticut-home-appraisal-gap-hero.jpg",
+    "category": "FINANCE & MORTGAGES",
+    "date": "2026-08-11",
+    "author": "Abby Dudarewicz",
+    "authorRole": "Licensed CT Realtor & LGBTQ+ Community Advocate",
+    "seoKeywords": "appraisal gap Connecticut, low appraisal home purchase CT, appraisal contingency Connecticut",
+    "faq": [
+      {
+        "question": "Can a seller refuse to lower the price after a low appraisal?",
+        "answer": "Yes. The parties negotiate; the contract determines each side's rights if they do not agree."
+      },
+      {
+        "question": "Can I pay the appraisal gap in cash?",
+        "answer": "Often, but confirm the lender's requirements and make sure the cash commitment fits your total budget."
+      }
+    ]
+  },
+  {
+    "slug": "connecticut-real-estate-contingencies-explained",
+    "title": "Connecticut Real Estate Contingencies Explained: Inspection, Financing & Appraisal",
+    "excerpt": "Understand the major Connecticut real estate contingencies, what they protect, and how buyers can use deadlines without weakening their offer blindly.",
+    "image": "/images/blog-heroes/august-2026/connecticut-real-estate-contingencies-explained-hero.jpg",
+    "category": "BUYING GUIDE",
+    "date": "2026-08-13",
+    "author": "Arek Wtulich",
+    "authorRole": "Licensed CT Realtor & LGBTQ+ Community Advocate",
+    "seoKeywords": "Connecticut real estate contingencies, inspection contingency CT, financing contingency Connecticut",
+    "faq": [
+      {
+        "question": "Should I waive contingencies to win a Connecticut home?",
+        "answer": "Only after understanding the specific risk you would be accepting. A stronger offer is not useful if it creates an unaffordable problem."
+      },
+      {
+        "question": "Who explains my contract contingencies?",
+        "answer": "Your Connecticut real estate attorney can explain the legal effect; your agent and lender can explain the practical transaction impact."
+      }
+    ]
+  },
+  {
+    "slug": "fha-vs-conventional-loans-connecticut",
+    "title": "FHA vs. Conventional Loans in Connecticut: Which Is Better for First-Time Buyers?",
+    "excerpt": "Compare FHA and conventional mortgages for Connecticut first-time buyers, including down payment, credit, insurance, property standards, and next steps.",
+    "image": "/images/blog-heroes/august-2026/fha-vs-conventional-loans-connecticut-hero.jpg",
+    "category": "FINANCE & MORTGAGES",
+    "date": "2026-08-15",
+    "author": "Travis Lipinski",
+    "authorRole": "Licensed CT Realtor | Litchfield County Specialist",
+    "seoKeywords": "FHA vs conventional Connecticut, first time buyer loans CT, FHA loan Connecticut, conventional mortgage CT",
+    "faq": [
+      {
+        "question": "Is FHA always better for first-time buyers?",
+        "answer": "No. It can be useful for some borrowers, but conventional financing may be better depending on credit, cash, and payment goals."
+      },
+      {
+        "question": "Can I use an FHA loan on a Connecticut condo?",
+        "answer": "Possibly. Condo eligibility and building requirements can affect financing, so ask early."
+      }
+    ]
+  },
+  {
+    "slug": "va-home-loans-connecticut",
+    "title": "VA Home Loans in Connecticut: Eligibility, Zero Down, and Homes Veterans Can Buy",
+    "excerpt": "Explore VA home loans in Connecticut, including eligibility, zero-down financing, property standards, and practical steps before you start house hunting.",
+    "image": "/images/blog-heroes/august-2026/va-home-loans-connecticut-hero.jpg",
+    "category": "FINANCE & MORTGAGES",
+    "date": "2026-08-17",
+    "author": "Abby Dudarewicz",
+    "authorRole": "Licensed CT Realtor & LGBTQ+ Community Advocate",
+    "seoKeywords": "VA home loan Connecticut, zero down VA loan CT, veterans home buying Connecticut",
+    "faq": [
+      {
+        "question": "Can I use a VA loan to buy a Connecticut home?",
+        "answer": "Eligible borrowers can often use VA financing for a primary residence, subject to lender and program requirements."
+      },
+      {
+        "question": "Can I buy a multi-family home with a VA loan?",
+        "answer": "It may be possible when you occupy one unit and meet program requirements. Confirm the details with a VA-approved lender."
+      }
+    ]
+  },
+  {
+    "slug": "how-much-house-can-you-afford-connecticut",
+    "title": "How Much House Can You Afford in Connecticut? Include Taxes, Insurance, HOA Fees & Utilities",
+    "excerpt": "Estimate what you can afford in Connecticut by looking beyond the mortgage payment to property taxes, insurance, HOA fees, utilities, maintenance, and cash to close.",
+    "image": "/images/blog-heroes/august-2026/how-much-house-can-you-afford-connecticut-hero.jpg",
+    "category": "FINANCE & MORTGAGES",
+    "date": "2026-08-19",
+    "author": "Arek Wtulich",
+    "authorRole": "Licensed CT Realtor & LGBTQ+ Community Advocate",
+    "seoKeywords": "how much house afford Connecticut, Connecticut property taxes insurance HOA, home affordability CT",
+    "faq": [
+      {
+        "question": "What costs should I add to a Connecticut mortgage payment?",
+        "answer": "Include taxes, insurance, mortgage insurance if applicable, HOA fees, utilities, maintenance, and any special assessments."
+      },
+      {
+        "question": "Are property taxes included in my monthly payment?",
+        "answer": "Often they are collected through escrow, but confirm how your lender will structure the payment."
+      }
+    ]
+  },
+  {
+    "slug": "connecticut-home-solar-panels-buying-selling",
+    "title": "Buying or Selling a Connecticut Home With Solar Panels: Lease, Loan, and Transfer Questions",
+    "excerpt": "Buying or selling a Connecticut home with solar panels? Learn what to review for owned systems, loans, leases, liens, production, and transfer paperwork.",
+    "image": "/images/blog-heroes/august-2026/connecticut-home-solar-panels-buying-selling-hero.jpg",
+    "category": "BUYING GUIDE",
+    "date": "2026-08-21",
+    "author": "Travis Lipinski",
+    "authorRole": "Licensed CT Realtor | Litchfield County Specialist",
+    "seoKeywords": "solar panels home sale Connecticut, solar lease transfer CT, buying home with solar Connecticut",
+    "faq": [
+      {
+        "question": "Do solar panels transfer when a Connecticut home is sold?",
+        "answer": "Often, but the process depends on whether the system is owned, financed, leased, or under a power-purchase agreement."
+      },
+      {
+        "question": "Should my lender see the solar documents?",
+        "answer": "Yes. Provide them early so financing and closing questions can be identified before the final week."
+      }
+    ]
+  },
+  {
+    "slug": "selling-home-connecticut-after-divorce",
+    "title": "Selling a Home in Connecticut After Divorce: Timing, Equity, and Practical Next Steps",
+    "excerpt": "Selling a Connecticut home after divorce requires a clear plan for timing, equity, repairs, communication, and the next home. Start with practical steps.",
+    "image": "/images/blog-heroes/august-2026/selling-home-connecticut-after-divorce-hero.jpg",
+    "category": "SELLING GUIDE",
+    "date": "2026-08-23",
+    "author": "Abby Dudarewicz",
+    "authorRole": "Licensed CT Realtor & LGBTQ+ Community Advocate",
+    "seoKeywords": "selling home after divorce Connecticut, divorce home sale CT, marital home equity Connecticut",
+    "faq": [
+      {
+        "question": "Do both spouses have to agree to sell?",
+        "answer": "That depends on ownership and legal agreements. Get advice from your attorney before listing."
+      },
+      {
+        "question": "How do we divide sale proceeds?",
+        "answer": "The division is a legal and financial matter. Your closing attorney can coordinate the closing process once the parties' instructions are clear."
+      }
+    ]
+  },
+  {
+    "slug": "moving-new-jersey-connecticut-lgbtq-buyers",
+    "title": "Moving From New Jersey to Connecticut: An LGBTQ+ Buyer's Guide to Towns, Taxes & Commutes",
+    "excerpt": "Moving from New Jersey to Connecticut? Compare LGBTQ+ community, housing style, taxes, commuting, and the practical steps for a confident relocation.",
+    "image": "/images/blog-heroes/august-2026/moving-new-jersey-connecticut-lgbtq-buyers-hero.jpg",
+    "category": "RELOCATION GUIDE",
+    "date": "2026-08-25",
+    "author": "Arek Wtulich",
+    "authorRole": "Licensed CT Realtor & LGBTQ+ Community Advocate",
+    "seoKeywords": "moving New Jersey to Connecticut LGBTQ, NJ to CT relocation, Connecticut towns taxes commute",
+    "faq": [
+      {
+        "question": "Which Connecticut towns are popular with LGBTQ+ buyers?",
+        "answer": "The right answer varies by budget and lifestyle; New Haven, West Hartford, Stamford, Norwalk, Middletown, and shoreline communities each offer different strengths."
+      },
+      {
+        "question": "Are Connecticut property taxes the same everywhere?",
+        "answer": "No. Taxes are set locally, so compare the specific property and town before deciding what is affordable."
+      }
+    ]
+  },
+  {
+    "slug": "fairfield-county-towns-lgbtq-buyers",
+    "title": "Greenwich, Stamford, Norwalk or Westport? A Fairfield County Guide for LGBTQ+ Buyers",
+    "excerpt": "Compare Greenwich, Stamford, Norwalk, and Westport for LGBTQ+ buyers by lifestyle, housing, commute, community, and practical home-search fit.",
+    "image": "/images/blog-heroes/august-2026/fairfield-county-towns-lgbtq-buyers-hero.jpg",
+    "category": "NEIGHBORHOOD GUIDE",
+    "date": "2026-08-27",
+    "author": "Travis Lipinski",
+    "authorRole": "Licensed CT Realtor | Litchfield County Specialist",
+    "seoKeywords": "Fairfield County LGBTQ buyers, Greenwich Stamford Norwalk Westport, gay friendly Fairfield County CT",
+    "faq": [
+      {
+        "question": "Which Fairfield County town has the easiest NYC commute?",
+        "answer": "Stamford and Greenwich are often strong choices for rail access, but the right answer depends on your exact destination and schedule."
+      },
+      {
+        "question": "Which town is best for LGBTQ+ buyers?",
+        "answer": "There is no single best choice. Community style, budget, housing type, and commute should drive the decision."
+      }
+    ]
+  },
+  {
+    "slug": "lgbtq-senior-living-connecticut",
+    "title": "LGBTQ+ Senior Living in Connecticut: Housing, Community & Planning for the Next Chapter",
+    "excerpt": "Explore LGBTQ+ senior living in Connecticut, including housing choices, community, care planning, accessibility, and questions to ask before a move.",
+    "image": "/images/blog-heroes/august-2026/lgbtq-senior-living-connecticut-hero.jpg",
+    "category": "RETIREMENT GUIDE",
+    "date": "2026-08-29",
+    "author": "Abby Dudarewicz",
+    "authorRole": "Licensed CT Realtor & LGBTQ+ Community Advocate",
+    "seoKeywords": "LGBTQ senior living Connecticut, LGBTQ retirement housing CT, senior housing Connecticut gay friendly",
+    "faq": [
+      {
+        "question": "What should LGBTQ+ older adults ask a senior-living community?",
+        "answer": "Ask about inclusive policies, staff training, resident culture, access to care, visitor practices, and how concerns are handled."
+      },
+      {
+        "question": "Is downsizing the only option?",
+        "answer": "No. Many people adapt a current home, move to a smaller home, rent, or choose a community with services. The right choice depends on lifestyle and support needs."
+      }
+    ]
   }
 ];
 export const AGENT_META: Record<string, EdgeAgentMeta> = {

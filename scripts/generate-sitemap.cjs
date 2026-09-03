@@ -19,6 +19,7 @@ const NOINDEX_SLUGS = new Set([]);
 const blogSources = [
   path.join(ROOT, 'data', 'blogs.ts'),
   path.join(ROOT, 'data', 'julyBlogs2026.ts'),
+  path.join(ROOT, 'data', 'augustBlogs2026.ts'),
 ];
 const agentsSrc = fs.readFileSync(path.join(ROOT, 'data', 'agents.ts'), 'utf8');
 

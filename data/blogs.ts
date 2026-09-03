@@ -1,3 +1,4 @@
+import { AUGUST_2026_BLOGS } from './augustBlogs2026';
 import { JULY_2026_BLOGS } from './julyBlogs2026';
 
 export interface BlogPost {
@@ -2027,5 +2028,6 @@ export const BLOG_POSTS: BlogPost[] = [
     authorRole: "Licensed CT Realtor | Litchfield County Specialist"
   },
   ...JULY_2026_BLOGS as BlogPost[],
+  ...AUGUST_2026_BLOGS as BlogPost[],
 ];
 
